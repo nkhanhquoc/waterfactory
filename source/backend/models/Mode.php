@@ -25,6 +25,19 @@ class Mode extends ModeBase {
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function rules() {
+        return [
+            [['name'], 'required'],
+            [['updated_at', 'created_at'], 'safe'],
+            [['updated_by', 'created_by'], 'integer'],
+            [['name'], 'string', 'max' => 255],
+            [['image_path'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
+        ];
+    }
+
     public static function getAll() {
         $country = \backend\models\Mode::find()->all();
         $data = [];
@@ -32,6 +45,18 @@ class Mode extends ModeBase {
             $data[$item->id] = \yii\helpers\Html::encode($item->name);
         }
         return $data;
+    }
+
+    public function upload() {
+        if ($this->validate()) {
+            if (!is_dir(\Yii::getAlias('@webroot') . '/uploads/mode')) {
+                mkdir(\Yii::getAlias('@webroot') . '/uploads/mode', 0755, true);
+            }
+            $filePath = '/uploads/mode/' . md5(time()) . '.' . $this->image_path->extension;
+            $this->image_path->saveAs(\Yii::getAlias('@webroot') . $filePath);
+            return $filePath;
+        }
+        return '';
     }
 
 }

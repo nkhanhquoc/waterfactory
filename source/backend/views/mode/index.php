@@ -33,8 +33,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
             'name',
             'image_path',
+            'createdBy.username:html:Tạo bởi',
             'created_at',
-            'created_by',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]);

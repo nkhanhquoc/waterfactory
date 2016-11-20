@@ -10,11 +10,11 @@ use common\helpers\MenuHelper;
             </div>
             <div class="details">
                 <div class="number">
-                    <span data-value="<?php echo $news; ?>" data-counter="counterup"><?php echo $news; ?></span>
+                    <span data-value="0" data-counter="counterup">&nbsp;</span>
                 </div>
-                <div class="desc"> Tin tức </div>
+                <div class="desc">Module</div>
             </div>
-            <a href="/article-items/index" class="more"> Xem thêm
+            <a href="#" class="more"> Xem thêm
                 <i class="m-icon-swapright m-icon-white"></i>
             </a>
         </div>
@@ -26,10 +26,10 @@ use common\helpers\MenuHelper;
             </div>
             <div class="details">
                 <div class="number">
-                    <span data-value="<?php echo $videos; ?>" data-counter="counterup"><?php echo $videos; ?></span> </div>
-                <div class="desc"> Video </div>
+                    <span data-value="0" data-counter="counterup">&nbsp;</span> </div>
+                <div class="desc">Khách hàng</div>
             </div>
-            <a href="/video/index" class="more"> Xem thêm
+            <a href="#" class="more"> Xem thêm
                 <i class="m-icon-swapright m-icon-white"></i>
             </a>
         </div>

@@ -31,9 +31,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 'id',
             'code',
             'name',
-            'created_by',
+            'createdBy.username:html:Tạo bởi',
             'created_at',
-            'updated_by',
+            'updatedBy.username:html:Cập nhật',
             'updated_at',
     ],
     ]) ?>

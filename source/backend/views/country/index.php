@@ -13,34 +13,35 @@ $this->title = Yii::t('backend', 'Countries');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="country-index">
-                <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-    
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
     <p>
-        <?= Html::a(Yii::t('backend', 'Create {modelClass}', [
-    'modelClass' => 'Country',
-]), ['create'], ['class' => 'btn btn-success']) ?>
+        <?=
+        Html::a(Yii::t('backend', 'Create {modelClass}', [
+                    'modelClass' => 'Country',
+                ]), ['create'], ['class' => 'btn btn-success'])
+        ?>
     </p>
-    <?php 
+    <?php
     Pjax::begin(['formSelector' => 'form', 'enablePushState' => false]);
     ?>
-            <?= AwsGridView::widget([
+    <?=
+    AwsGridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-        ['class' => 'yii\grid\SerialColumn'],
-
-                    'id',
+            ['class' => 'yii\grid\SerialColumn'],
             'code',
             'name',
-            'created_by',
+            'createdBy.username:html:Tạo bởi',
             'created_at',
             // 'updated_by',
             // 'updated_at',
-
-        ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn'],
         ],
-        ]); ?>
-        <?php 
+    ]);
+    ?>
+    <?php
     Pjax::end();
     ?>
 </div>

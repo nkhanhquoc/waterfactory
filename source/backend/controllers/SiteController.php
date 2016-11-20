@@ -41,8 +41,6 @@ class SiteController extends AppController {
         $this->layout = 'main';
         if (!Yii::$app->user->isGuest) {
             return $this->render('index', [
-                        'news' => $news,
-                        'videos' => $videos
             ]);
         }
         $this->redirect('login');
@@ -68,8 +66,5 @@ class SiteController extends AppController {
 
         return $this->goHome();
     }
-
-
-
 
 }

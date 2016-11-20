@@ -16,35 +16,41 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a(Yii::t('backend', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->id], [
-        'class' => 'btn btn-danger',
-        'data' => [
-        'confirm' => Yii::t('backend', 'Are you sure you want to delete this item?'),
-        'method' => 'post',
-        ],
-        ]) ?>
+        <?=
+        Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => Yii::t('backend', 'Are you sure you want to delete this item?'),
+                'method' => 'post',
+            ],
+        ])
+        ?>
     </p>
 
-    <?= DetailView::widget([
-    'model' => $model,
-    'attributes' => [
-                'id',
+    <?=
+    DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            'id',
             'name',
-            'country_id',
-            'created_by',
+            'country.name:html:Country',
+            'createdBy.username:html:Tạo bởi',
             'created_at',
-            'updated_by',
+            'updatedBy.username:html:Cập nhật',
             'updated_at',
-    ],
-    ]) ?>
+        ],
+    ])
+    ?>
     <p>
         <?= Html::a(Yii::t('backend', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->id], [
-        'class' => 'btn btn-danger',
-        'data' => [
-        'confirm' => Yii::t('backend', 'Are you sure you want to delete this item?'),
-        'method' => 'post',
-        ],
-        ]) ?>
+        <?=
+        Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => Yii::t('backend', 'Are you sure you want to delete this item?'),
+                'method' => 'post',
+            ],
+        ])
+        ?>
     </p>
 </div>

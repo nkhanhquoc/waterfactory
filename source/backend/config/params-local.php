@@ -11,34 +11,7 @@ return [
             'extensions' => ['avi', 'mp4', 'wmv', 'mkv', 'm4v'],
             'maxSize' => 1 * 1024 * 1024 * 1024, //file size
         ],
-        'video_image' => [
-            'basePath' => '/images/videos',
-            'extensions' => ['gif', 'jpg', 'png'],
-            'maxSize' => 5 * 1024 * 1024, //file size,
-            'thumbnail' => [
-                'width' => 640,
-                'height' => 360
-            ]
-        ],
-        'upload_file_article' => [
-            'basePath' => '/images/articles',
-            'extensions' => ['gif', 'jpg', 'png'],
-            'maxSize' => 5 * 1024 * 1024, //file size
-            'thumbnail' => [
-                'width' => 640,
-                'height' => 360
-            ]
-        ],
-        'video-playlist' => [
-            'basePath' => '/images/playlist/video',
-            'extensions' => ['gif', 'jpg', 'png'],
-            'maxSize' => 5 * 1024 * 1024, //file size
-            'thumbnail' => [
-                'width' => 640,
-                'height' => 360
-            ]
-        ],
-        'slide' => [
+        'mode' => [
             'basePath' => '/images/slide/video',
             'extensions' => ['gif', 'jpg', 'png'],
             'maxSize' => 5 * 1024 * 1024, //file size
@@ -48,7 +21,7 @@ return [
             ]
         ],
     ],
-    'video_status' => [    
+    'video_status' => [
         5 => 'Chờ duyệt',
         1 => 'Đã duyệt',
         2 => 'Chờ convert',
