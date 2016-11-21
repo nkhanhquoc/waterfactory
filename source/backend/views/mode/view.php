@@ -33,7 +33,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'name',
-            'image_path',
+            [                      // the owner name of the model
+                'label' => 'Image',
+                'format' => 'html',
+                'value' => $model->getUrlImage(),
+            ],
             'createdBy.username:html:Tạo bởi',
             'created_at',
             'updatedBy.username:html:Cập nhật',

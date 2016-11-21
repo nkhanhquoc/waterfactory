@@ -25,4 +25,12 @@ class Modules extends ModulesBase {
         ];
     }
 
+    public static function getAll() {
+        $model = \backend\models\Modules::find()->all();
+        $data = [];
+        foreach ($model as $item) {
+            $data[$item->id] = \yii\helpers\Html::encode($item->name);
+        }
+    }
+
 }

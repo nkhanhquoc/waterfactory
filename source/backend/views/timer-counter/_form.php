@@ -14,6 +14,8 @@ use yii\widgets\ActiveForm;
 
         <?= $form->field($model, 'module_id')->textInput(['maxlength' => 11]) ?>
 
+    <?= $form->field($model, 'counter')->textInput(['maxlength' => 50]) ?>
+
     <?= $form->field($model, 'timer_1')->textInput(['maxlength' => 50]) ?>
 
     <?= $form->field($model, 'timer_2')->textInput(['maxlength' => 50]) ?>

@@ -8,6 +8,7 @@ use Yii;
  * This is the model class for table "modules".
  *
  * @property string $id
+ * @property string $name
  * @property string $msisdn
  * @property string $mode_id
  * @property string $country_id
@@ -20,7 +21,10 @@ use Yii;
  * @property string $created_at
  * @property integer $updated_by
  * @property string $updated_at
+ * @property string $money
  *
+ * @property DataClientDB[] $dataClients
+ * @property ModuleStatusDB[] $moduleStatuses
  * @property ModeDB $mode
  * @property CountryDB $country
  * @property ProvincialDB $privincial
@@ -29,6 +33,9 @@ use Yii;
  * @property UserDB $updatedBy
  * @property OutputModeDB[] $outputModes
  * @property ParamConfigDB[] $paramConfigs
+ * @property RuntimeStatisticsDB[] $runtimeStatistics
+ * @property SensorDB[] $sensors
+ * @property TimerCounterDB[] $timerCounters
  */
 class ModulesDB extends \yii\db\ActiveRecord
 {
@@ -49,10 +56,10 @@ class ModulesDB extends \yii\db\ActiveRecord
             [['msisdn'], 'required'],
             [['mode_id', 'country_id', 'privincial_id', 'distric_id', 'created_by', 'updated_by'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
+            [['name', 'address'], 'string', 'max' => 255],
             [['msisdn'], 'string', 'max' => 15],
             [['customer_code'], 'string', 'max' => 100],
-            [['address'], 'string', 'max' => 255],
-            [['alarm'], 'string', 'max' => 50],
+            [['alarm', 'money'], 'string', 'max' => 50],
             [['customer_code'], 'unique']
         ];
     }
@@ -64,6 +71,7 @@ class ModulesDB extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('backend', 'ID'),
+            'name' => Yii::t('backend', 'Name'),
             'msisdn' => Yii::t('backend', 'Msisdn'),
             'mode_id' => Yii::t('backend', 'Mode ID'),
             'country_id' => Yii::t('backend', 'Country ID'),
@@ -76,7 +84,24 @@ class ModulesDB extends \yii\db\ActiveRecord
             'created_at' => Yii::t('backend', 'Created At'),
             'updated_by' => Yii::t('backend', 'Updated By'),
             'updated_at' => Yii::t('backend', 'Updated At'),
+            'money' => Yii::t('backend', 'Money'),
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDataClients()
+    {
+        return $this->hasMany(DataClientDB::className(), ['module_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getModuleStatuses()
+    {
+        return $this->hasMany(ModuleStatusDB::className(), ['module_id' => 'id']);
     }
 
     /**
@@ -141,5 +166,29 @@ class ModulesDB extends \yii\db\ActiveRecord
     public function getParamConfigs()
     {
         return $this->hasMany(ParamConfigDB::className(), ['module_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRuntimeStatistics()
+    {
+        return $this->hasMany(RuntimeStatisticsDB::className(), ['module_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSensors()
+    {
+        return $this->hasMany(SensorDB::className(), ['module_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTimerCounters()
+    {
+        return $this->hasMany(TimerCounterDB::className(), ['module_id' => 'id']);
     }
 }

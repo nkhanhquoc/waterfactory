@@ -19,11 +19,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'module_id') ?>
 
+    <?= $form->field($model, 'counter') ?>
+
     <?= $form->field($model, 'timer_1') ?>
 
     <?= $form->field($model, 'timer_2') ?>
 
-    <?= $form->field($model, 'timer_3') ?>
+    <?php // echo $form->field($model, 'timer_3') ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('backend', 'Search'), ['class' => 'btn btn-primary']) ?>

@@ -16,19 +16,23 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a(Yii::t('backend', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->id], [
-        'class' => 'btn btn-danger',
-        'data' => [
-        'confirm' => Yii::t('backend', 'Are you sure you want to delete this item?'),
-        'method' => 'post',
-        ],
-        ]) ?>
+        <?=
+        Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => Yii::t('backend', 'Are you sure you want to delete this item?'),
+                'method' => 'post',
+            ],
+        ])
+        ?>
     </p>
 
-    <?= DetailView::widget([
-    'model' => $model,
-    'attributes' => [
-                'id',
+    <?=
+    DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            'id',
+            'name',
             'msisdn',
             'mode_id',
             'country_id',
@@ -40,16 +44,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'created_at',
             'updated_by',
             'updated_at',
-    ],
-    ]) ?>
+        ],
+    ])
+    ?>
     <p>
         <?= Html::a(Yii::t('backend', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->id], [
-        'class' => 'btn btn-danger',
-        'data' => [
-        'confirm' => Yii::t('backend', 'Are you sure you want to delete this item?'),
-        'method' => 'post',
-        ],
-        ]) ?>
+        <?=
+        Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => Yii::t('backend', 'Are you sure you want to delete this item?'),
+                'method' => 'post',
+            ],
+        ])
+        ?>
     </p>
 </div>

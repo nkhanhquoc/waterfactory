@@ -6,19 +6,19 @@ use yii\widgets\Pjax;
 use backend\widgets\AwsGridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\OutputModeSearch */
+/* @var $searchModel backend\models\RuntimeStatisticsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('backend', 'Output Modes');
+$this->title = Yii::t('backend', 'Runtime Statistics');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="output-mode-index">
+<div class="runtime-statistics-index">
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?=
         Html::a(Yii::t('backend', 'Create {modelClass}', [
-                    'modelClass' => 'Output Mode',
+                    'modelClass' => 'Runtime Statistics',
                 ]), ['create'], ['class' => 'btn btn-success'])
         ?>
     </p>
@@ -38,24 +38,24 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
                 'filter' => backend\models\Modules::getAll()
             ],
-            'convection_pump',
-            'cold_water_supply_pump',
-            'return_pump',
-            'incresed_pressure_pump',
-            'heat_pump',
-            'heater_resister',
-            'three_way_valve',
-            'backflow_valve',
-            'reserved',
-            // 'updated_at',
-            // 'updated_by',
-            // 'created_at',
-            // 'created_by',
+            'time_bom_doi_luu_1',
+            'time_bom_doi_luu_2',
+            'time_chay_bom_cap_nuoc_lanh_1',
+             'time_chay_bom_cap_nuoc_lanh_2',
+            'time_chay_bom_hoi_duong_ong_1',
+            'time_chay_bom_hoi_duong_ong_2',
+            'time_chay_bom_tang_ap_1',
+            'time_chay_bom_tang_ap_2',
+            'time_chay_bom_nhiet_bon_gia_nhiet_1',
+            'time_chay_bom_nhiet_bon_gia_nhiet_2',
+            'time_chay_van_dien_tu_ba_nga',
+            'time_chay_van_dien_tu_mot_chieu',
+            // 'du_phong',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]);
     ?>
-    <?php
-    Pjax::end();
-    ?>
+<?php
+Pjax::end();
+?>
 </div>

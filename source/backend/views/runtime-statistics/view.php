@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\ParamConfig */
+/* @var $model backend\models\RuntimeStatistics */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Param Configs'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Runtime Statistics'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="param-config-view">
+<div class="runtime-statistics-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -33,18 +33,19 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'module.name',
-            'convection_pump',
-            'cold_water_supply_pump',
-            'return_pump',
-            'incresed_pressure_pump',
-            'heat_pump',
-            'heat_resistor',
-            'three_way_valve',
-            'backflow_valve',
-            'updated_at',
-            'updated_by',
-            'created_at',
-            'created_by',
+            'time_bom_doi_luu_1',
+            'time_bom_doi_luu_2',
+            'time_chay_bom_cap_nuoc_lanh_1',
+            'time_chay_bom_cap_nuoc_lanh_2',
+            'time_chay_bom_hoi_duong_ong_1',
+            'time_chay_bom_hoi_duong_ong_2',
+            'time_chay_bom_tang_ap_1',
+            'time_chay_bom_tang_ap_2',
+            'time_chay_bom_nhiet_bon_gia_nhiet_1',
+            'time_chay_bom_nhiet_bon_gia_nhiet_2',
+            'time_chay_van_dien_tu_ba_nga',
+            'time_chay_van_dien_tu_mot_chieu',
+            'du_phong',
         ],
     ])
     ?>

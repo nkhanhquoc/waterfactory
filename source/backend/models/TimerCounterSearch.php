@@ -19,7 +19,7 @@ class TimerCounterSearch extends TimerCounter
     {
         return [
             [['id', 'module_id'], 'integer'],
-            [['timer_1', 'timer_2', 'timer_3'], 'safe'],
+            [['counter', 'timer_1', 'timer_2', 'timer_3'], 'safe'],
         ];
     }
 
@@ -61,7 +61,8 @@ class TimerCounterSearch extends TimerCounter
             'module_id' => $this->module_id,
         ]);
 
-        $query->andFilterWhere(['like', 'timer_1', $this->timer_1])
+        $query->andFilterWhere(['like', 'counter', $this->counter])
+            ->andFilterWhere(['like', 'timer_1', $this->timer_1])
             ->andFilterWhere(['like', 'timer_2', $this->timer_2])
             ->andFilterWhere(['like', 'timer_3', $this->timer_3]);
 

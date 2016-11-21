@@ -16,20 +16,23 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a(Yii::t('backend', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->id], [
-        'class' => 'btn btn-danger',
-        'data' => [
-        'confirm' => Yii::t('backend', 'Are you sure you want to delete this item?'),
-        'method' => 'post',
-        ],
-        ]) ?>
+        <?=
+        Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => Yii::t('backend', 'Are you sure you want to delete this item?'),
+                'method' => 'post',
+            ],
+        ])
+        ?>
     </p>
 
-    <?= DetailView::widget([
-    'model' => $model,
-    'attributes' => [
-                'id',
-            'module_id',
+    <?=
+    DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            'id',
+            'module.name',
             'cam_bien_dan_thu',
             'cam_bien_bon_solar',
             'cam_bien_muc_nuoc_bon_solar',
@@ -40,16 +43,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'cam_bien_nhiet_dinh_bon_solar',
             'cam_bien_tran',
             'du_phong',
-    ],
-    ]) ?>
+        ],
+    ])
+    ?>
     <p>
         <?= Html::a(Yii::t('backend', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->id], [
-        'class' => 'btn btn-danger',
-        'data' => [
-        'confirm' => Yii::t('backend', 'Are you sure you want to delete this item?'),
-        'method' => 'post',
-        ],
-        ]) ?>
+        <?=
+        Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => Yii::t('backend', 'Are you sure you want to delete this item?'),
+                'method' => 'post',
+            ],
+        ])
+        ?>
     </p>
 </div>

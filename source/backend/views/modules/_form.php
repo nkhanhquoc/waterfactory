@@ -16,6 +16,8 @@ $mode = backend\models\Mode::getAll();
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'name')->textInput(['maxlength' => 255]) ?>
+
     <?= $form->field($model, 'msisdn')->textInput(['maxlength' => 15]) ?>
 
     <?= $form->field($model, 'mode_id')->dropDownList($mode) ?>

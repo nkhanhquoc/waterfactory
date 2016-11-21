@@ -59,4 +59,8 @@ class Mode extends ModeBase {
         return '';
     }
 
+    public function getUrlImage() {
+        return \yii\helpers\Html::img($this->image_path, ['width' => 300, 'height' => 200]);
+    }
+
 }

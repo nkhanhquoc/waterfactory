@@ -1,13 +1,15 @@
 <?php
 
-use yii\helpers\Html;
+use backend\models\ModeSearch;
+use yii\data\ActiveDataProvider;
 use yii\grid\GridView;
+use yii\helpers\Html;
+use yii\web\View;
 use yii\widgets\Pjax;
-use backend\widgets\AwsGridView;
 
-/* @var $this yii\web\View */
-/* @var $searchModel backend\models\ModeSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $this View */
+/* @var $searchModel ModeSearch */
+/* @var $dataProvider ActiveDataProvider */
 
 $this->title = Yii::t('backend', 'Modes');
 $this->params['breadcrumbs'][] = $this->title;
@@ -26,13 +28,18 @@ $this->params['breadcrumbs'][] = $this->title;
     Pjax::begin(['formSelector' => 'form', 'enablePushState' => false]);
     ?>
     <?=
-    AwsGridView::widget([
+    GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             'name',
-            'image_path',
+            [
+                'label' => 'Ảnh',
+                'content' => function ($data) {
+                    return $data->getUrlImage();
+                }
+            ],
             'createdBy.username:html:Tạo bởi',
             'created_at',
             ['class' => 'yii\grid\ActionColumn'],

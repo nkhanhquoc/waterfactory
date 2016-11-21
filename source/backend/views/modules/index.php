@@ -21,7 +21,7 @@ use backend\components\common\Utility;
                     ?>
                     <img class="img-responsive" src="<?php echo Utility::getThumbImg($thumb); ?>" alt="<?php echo Utility::htmlEncode($val['mode_id']); ?>" />
                     <p class="">ID: <?php echo Utility::htmlEncode($val['mode_id']); ?></p>
-                    <p class=""><?php echo Utility::htmlEncode($val['msisdn']); ?></p>
+                    <p class=""><?php echo Utility::htmlEncode($val['name']); ?></p>
                 </a>
             </div>
             <?php
