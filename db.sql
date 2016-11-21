@@ -1,6 +1,6 @@
 /*
-SQLyog Community v12.09 (64 bit)
-MySQL - 5.6.25 : Database - proscom
+SQLyog Ultimate v11.11 (64 bit)
+MySQL - 5.7.14 : Database - proscom
 *********************************************************************
 */
 
@@ -15,6 +15,25 @@ MySQL - 5.6.25 : Database - proscom
 CREATE DATABASE /*!32312 IF NOT EXISTS*/`proscom` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
 USE `proscom`;
+
+/*Table structure for table `alarm` */
+
+DROP TABLE IF EXISTS `alarm`;
+
+CREATE TABLE `alarm` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `module_id` int(11) unsigned DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `qua_nhiet` varchar(255) DEFAULT NULL,
+  `qua_ap_suat` varchar(255) DEFAULT NULL,
+  `tran_be` varchar(255) DEFAULT NULL,
+  `mat_dien` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `module_id` (`module_id`),
+  CONSTRAINT `alarm_ibfk_1` FOREIGN KEY (`module_id`) REFERENCES `modules` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `alarm` */
 
 /*Table structure for table `auth_assignment` */
 
@@ -191,11 +210,11 @@ CREATE TABLE `menu` (
   PRIMARY KEY (`id`),
   KEY `parent` (`parent`),
   CONSTRAINT `menu_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `menu` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 /*Data for the table `menu` */
 
-insert  into `menu`(`id`,`name`,`parent`,`route`,`order`,`data`,`icon`) values (1,'Admin',NULL,NULL,1,NULL,'icon-user-following'),(2,'Account',1,'/admin/user/index',1,NULL,'icon-users'),(3,'Menu',1,'/menu/index',2,NULL,'icon-list'),(4,'Location',NULL,NULL,2,NULL,'icon-home'),(5,'Country',4,'/country/index',1,NULL,'icon-plane'),(6,'Distric',4,'/distric/index',3,NULL,'icon-plane'),(7,'Provincial',4,'/provincial/index',2,NULL,'icon-plane'),(8,'Modules',NULL,NULL,3,NULL,'icon-grid'),(9,'Mode',8,'/mode/index',1,NULL,'icon-plus'),(10,'Module',8,'/modules/index',2,NULL,'icon-plus'),(11,'Output mode',8,'/output-mode/index',3,NULL,'icon-plus'),(12,'Parameter',8,'/param-config/index',4,NULL,'icon-plus'),(13,'Sensor',8,'/sensor/index',11,NULL,'icon-plus'),(14,'Time counter',8,'/timer-counter/index',11,NULL,'icon-plus'),(15,'Runtime statistics',8,'/runtime-statistics/index',11,NULL,'icon-plus');
+insert  into `menu`(`id`,`name`,`parent`,`route`,`order`,`data`,`icon`) values (1,'Account manager',NULL,NULL,5,NULL,'icon-user-following'),(2,'Account',1,'/admin/user/index',1,NULL,'icon-users'),(3,'Menu',1,'/menu/index',2,NULL,'icon-list'),(4,'Location',NULL,NULL,2,NULL,'icon-home'),(5,'Country',4,'/country/index',1,NULL,'icon-plane'),(6,'Distric',4,'/distric/index',3,NULL,'icon-plane'),(7,'Provincial',4,'/provincial/index',2,NULL,'icon-plane'),(8,'Modules',NULL,NULL,3,NULL,'icon-grid'),(11,'Mode',NULL,'/output-mode/index',4,NULL,'icon-plus'),(12,'Parameter',NULL,'/param-config/index',3,NULL,'icon-plus'),(13,'Sensor value',NULL,'/sensor/index',2,NULL,'icon-plus'),(14,'Time counter',NULL,'/timer-counter/index',6,NULL,'icon-plus'),(15,'Data statistics',NULL,'/runtime-statistics/index',11,NULL,'icon-plus'),(17,'Home',NULL,'/modules/index',1,NULL,'icon-home');
 
 /*Table structure for table `migration` */
 

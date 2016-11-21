@@ -30,7 +30,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            //['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\ActionColumn'],
             [
                 'label' => 'Module',
                 'content' => function ($data) {
@@ -50,8 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'time_chay_bom_nhiet_bon_gia_nhiet_2',
             'time_chay_van_dien_tu_ba_nga',
             'time_chay_van_dien_tu_mot_chieu',
-            // 'du_phong',
-            ['class' => 'yii\grid\ActionColumn'],
+            // 'du_phong',            
         ],
     ]);
     ?>

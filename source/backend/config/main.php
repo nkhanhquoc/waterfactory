@@ -23,7 +23,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '/' => '/site/index',
+                '/' => '/modules/index',
                 'login' => '/site/login',
                 'logout' => '/site/logout',
             ]
