@@ -23,13 +23,5 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-//        'session' => [
-//            'class' => 'yii\redis\Session',
-//            'redis' => [
-//                'hostname' => '192.168.146.252',
-//                'port' => 9600,
-//                'database' => 7,
-//            ]
-//        ],
     ],
 ];
