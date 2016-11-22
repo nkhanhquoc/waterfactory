@@ -25,4 +25,8 @@ class OutputMode extends OutputModeBase {
         ];
     }
 
+    public function getConvectionMode(){
+      return substr($this->convection_pump,0,8);
+    }
+
 }

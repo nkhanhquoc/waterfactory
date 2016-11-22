@@ -19,6 +19,9 @@ define('CHECK_MONEY_DATA_IE_NAME', '01110010');
 define('MONEY_DATA_NOTIFY_IE_NAME', '01110011');
 define('CARD_MODE_IE_NAME', '01110100');
 define('CREATE_MODELE', '01110101');
-
-
-
+#output mode
+define('MANUAL_B1', '00000000');
+define('MANUAL_B2', '00000001');
+define('MANUAL_B12', '00000010');
+define('AUTO_B1', '00000011');
+define('AUTO_B2', '00000100');
