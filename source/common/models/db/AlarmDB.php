@@ -5,25 +5,26 @@ namespace common\models\db;
 use Yii;
 
 /**
- * This is the model class for table "timer_counter".
+ * This is the model class for table "alarm".
  *
  * @property string $id
  * @property string $module_id
- * @property string $counter
- * @property string $timer_1
- * @property string $timer_2
- * @property string $timer_3
+ * @property string $created_at
+ * @property string $qua_nhiet
+ * @property string $qua_ap_suat
+ * @property string $tran_be
+ * @property string $mat_dien
  *
  * @property ModulesDB $module
  */
-class TimerCounterDB extends \yii\db\ActiveRecord
+class AlarmDB extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'timer_counter';
+        return 'alarm';
     }
 
     /**
@@ -32,9 +33,9 @@ class TimerCounterDB extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['module_id'], 'required'],
             [['module_id'], 'integer'],
-            [['counter', 'timer_1', 'timer_2', 'timer_3'], 'string', 'max' => 50]
+            [['created_at'], 'safe'],
+            [['qua_nhiet', 'qua_ap_suat', 'tran_be', 'mat_dien'], 'string', 'max' => 255]
         ];
     }
 
@@ -46,10 +47,11 @@ class TimerCounterDB extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('backend', 'ID'),
             'module_id' => Yii::t('backend', 'Module ID'),
-            'counter' => Yii::t('backend', 'Counter'),
-            'timer_1' => Yii::t('backend', 'Timer 1'),
-            'timer_2' => Yii::t('backend', 'Timer 2'),
-            'timer_3' => Yii::t('backend', 'Timer 3'),
+            'created_at' => Yii::t('backend', 'Created At'),
+            'qua_nhiet' => Yii::t('backend', 'Qua Nhiet'),
+            'qua_ap_suat' => Yii::t('backend', 'Qua Ap Suat'),
+            'tran_be' => Yii::t('backend', 'Tran Be'),
+            'mat_dien' => Yii::t('backend', 'Mat Dien'),
         ];
     }
 

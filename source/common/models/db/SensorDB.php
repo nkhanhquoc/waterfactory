@@ -40,8 +40,7 @@ class SensorDB extends \yii\db\ActiveRecord
         return [
             [['module_id'], 'required'],
             [['module_id'], 'integer'],
-            [['cam_bien_dan_thu', 'cam_bien_bon_solar', 'cam_bien_muc_nuoc_bon_solar', 'cam_bien_nhiet_do_bon_gia_nhiet', 'cam_bien_ap_suat_bon_gia_nhiet', 'cam_bien_ap_suat_duong_ong', 'cam_bien_nhiet_do_duong_ong', 'cam_bien_nhiet_dinh_bon_solar', 'cam_bien_tran', 'du_phong'], 'string', 'max' => 50],
-            [['module_id'], 'unique']
+            [['cam_bien_dan_thu', 'cam_bien_bon_solar', 'cam_bien_muc_nuoc_bon_solar', 'cam_bien_nhiet_do_bon_gia_nhiet', 'cam_bien_ap_suat_bon_gia_nhiet', 'cam_bien_ap_suat_duong_ong', 'cam_bien_nhiet_do_duong_ong', 'cam_bien_nhiet_dinh_bon_solar', 'cam_bien_tran', 'du_phong'], 'string', 'max' => 50]
         ];
     }
 
