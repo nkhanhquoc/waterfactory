@@ -25,12 +25,13 @@ class AppAsset extends AssetBundle {
         'plugins/simple-line-icons/simple-line-icons.min.css',
         'plugins/bootstrap/css/bootstrap.min.css',
         'plugins/uniform/css/uniform.default.css',
-        'plugins/bootstrap-switch/css/bootstrap-switch.min.css',        
+        'plugins/bootstrap-switch/css/bootstrap-switch.min.css',
         'css/components-md.css',
         'css/plugins-md.css',
         'css/layout.css',
         'css/themes/darkblue.css',
-        'css/custom.css'
+        'css/custom.css',
+        'css/diagram.css'
     ];
     public $js = [
         'plugins/jquery-ui/jquery-ui.min.js',
