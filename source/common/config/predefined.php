@@ -25,3 +25,6 @@ define('MANUAL_B2', '00000001');
 define('MANUAL_B12', '00000010');
 define('AUTO_B1', '00000011');
 define('AUTO_B2', '00000100');
+define('PUMP_SLAVE', '00000000');
+define('PUMP_MASTER', '00000001');
+define('PUMP_ALL', '00000011');
