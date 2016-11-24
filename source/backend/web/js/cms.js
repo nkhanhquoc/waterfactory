@@ -1,4 +1,4 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -146,7 +146,33 @@ function addVideoToList(listId) {
     $('#video-modal').modal('show').find('#model-content').load('/video-playlist/list?id=' + listId);
 }
 
+function setPumpMode(id,val){
+  $('#'+id+'_auto').removeClass('active');
+  $('#'+id+'_manual').removeClass('active');
+    $('#'+id+'_mode').val(val);
+}
 
+function setPumpPump(id,val) {
+    var all = '00000011';
+    var slave = '00000000';
+    var master = '00000001';
+    var current = $('#'+id+'_pump').val();
 
+    if(val == slave && current == all){
+      $('#'+id+'_pump').val(master);
+    } else if(val == master && current == all){
+      $('#'+id+'_pump').val(slave);
+    } else if (val == master && current == slave) {
+      $('#'+id+'_pump').val(all);
+    }else if (val == slave && current == slave) {
+      $('#'+id+'_pump').val(slave);
+    }else if (val == slave && current == master) {
+      $('#'+id+'_pump').val(all);
+    }else if (val == master && current == master) {
+      $('#'+id+'_pump').val(master);
+    }
+}
 
-
+function changePumpTime(id) {
+  $('#'+id+'_time').val($('#'+id+'_select').val());
+}

@@ -80,8 +80,13 @@ class OutputModeController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        // if(Yii::$app->request->isPost){
+        //   $values = Yii::$app->request->post("OutputMode");
+        //   var_dump($values);die;
+        // }
+        if ($model->load(Yii::$app->request->post())) {
+          //Yii::$app->request->post()
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
