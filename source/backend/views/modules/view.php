@@ -68,7 +68,7 @@
 
     </div>
 
-    <div class="right-content">
+    <div class="right-content collapse1">
         <ol>
             <li><a href="#">Cường độ bức xạ của mặt trời</a></li>
             <li><a href="#">Nhiệt độ dàn thu</a></li>
@@ -91,3 +91,4 @@
         </ol>
     </div>
 </div>
+
