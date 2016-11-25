@@ -23,6 +23,7 @@ use Yii;
  * @property string $updated_at
  * @property string $money
  *
+ * @property AlarmDB[] $alarms
  * @property DataClientDB[] $dataClients
  * @property ModuleStatusDB[] $moduleStatuses
  * @property ModeDB $mode
@@ -59,7 +60,8 @@ class ModulesDB extends \yii\db\ActiveRecord
             [['name', 'address'], 'string', 'max' => 255],
             [['msisdn'], 'string', 'max' => 15],
             [['customer_code'], 'string', 'max' => 100],
-            [['alarm', 'money'], 'string', 'max' => 50],
+            [['alarm'], 'string', 'max' => 50],
+            [['money'], 'string', 'max' => 160],
             [['customer_code'], 'unique']
         ];
     }
@@ -86,6 +88,14 @@ class ModulesDB extends \yii\db\ActiveRecord
             'updated_at' => Yii::t('backend', 'Updated At'),
             'money' => Yii::t('backend', 'Money'),
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAlarms()
+    {
+        return $this->hasMany(AlarmDB::className(), ['module_id' => 'id']);
     }
 
     /**

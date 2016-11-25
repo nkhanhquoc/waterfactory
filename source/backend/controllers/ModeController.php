@@ -13,7 +13,7 @@ use yii\web\UploadedFile;
 /**
  * ModeController implements the CRUD actions for Mode model.
  */
-class ModeController extends Controller {
+class ModeController extends AppController {
 
     public function behaviors() {
         return [
