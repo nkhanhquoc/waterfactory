@@ -45,8 +45,11 @@ class ModulesController extends AppController {
      * @return mixed
      */
     public function actionView($id) {
+        $model = $this->findModel($id);
+        $sensors = $model->sensors;
         return $this->render('view', [
-                    'model' => $this->findModel($id),
+                    'model' => $model,
+                    'sensors' => $sensors,
         ]);
     }
 
