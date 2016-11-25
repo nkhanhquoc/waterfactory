@@ -13,6 +13,7 @@ use Yii;
  * @property string $timer_1
  * @property string $timer_2
  * @property string $timer_3
+ * @property string $created_at
  *
  * @property ModulesDB $module
  */
@@ -34,6 +35,7 @@ class TimerCounterDB extends \yii\db\ActiveRecord
         return [
             [['module_id'], 'required'],
             [['module_id'], 'integer'],
+            [['created_at'], 'safe'],
             [['counter', 'timer_1', 'timer_2', 'timer_3'], 'string', 'max' => 50]
         ];
     }
@@ -50,6 +52,7 @@ class TimerCounterDB extends \yii\db\ActiveRecord
             'timer_1' => Yii::t('backend', 'Timer 1'),
             'timer_2' => Yii::t('backend', 'Timer 2'),
             'timer_3' => Yii::t('backend', 'Timer 3'),
+            'created_at' => Yii::t('backend', 'Created At'),
         ];
     }
 
