@@ -3,7 +3,7 @@ $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Modules'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Load Mode'), 'url' => ['/output-mode/update?id=' . $model->outputModes->id]];
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Prameter'), 'url' => ['/param-config/update?id=' . $model->paramConfigs->id]];
-$this->params['breadcrumbs'][] = $model->getModuleId();
+$this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Html::encode($model->name);
 ?>
 <div class="output-mode-view">
     <div class="diagram">
