@@ -2,8 +2,16 @@
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Modules'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Update'), 'url' => ['/modules/update?id=' . $model->id]];
-$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Load Mode'), 'url' => ['/output-mode/update?id=' . $model->outputModes->id]];
-$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Prameter'), 'url' => ['/param-config/update?id=' . $model->paramConfigs->id]];
+if ($model->outputModes) {
+    $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Load Mode'), 'url' => ['/output-mode/update?id=' . $model->outputModes->id]];
+} else {
+    $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Load Mode'), 'url' => ['/output-mode/create']];
+}
+if ($model->paramConfigs) {
+    $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Prameter'), 'url' => ['/param-config/update?id=' . $model->paramConfigs->id]];
+} else {
+    $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Prameter'), 'url' => ['/param-config/create']];
+}
 $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Html::encode($model->name);
 ?>
 <div class="output-mode-view">
