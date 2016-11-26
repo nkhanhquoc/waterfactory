@@ -62,7 +62,7 @@ class ModulesController extends AppController {
      */
     public function actionCreate() {
         $model = new Modules();
-
+        $model->customer_code = $model->getMaxCustomerCode();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {

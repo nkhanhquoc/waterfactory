@@ -28,7 +28,7 @@ $mode = backend\models\Mode::getAll();
 
     <?= $form->field($model, 'distric_id')->dropDownList($distric) ?>
 
-    <?= $form->field($model, 'customer_code')->textInput(['maxlength' => 100]) ?>
+    <?= $form->field($model, 'customer_code')->textInput(['maxlength' => 100, 'readonly' => 'readonly']) ?>
 
     <?= $form->field($model, 'address')->textInput(['maxlength' => 255]) ?>
 

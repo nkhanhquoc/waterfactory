@@ -34,4 +34,10 @@ class Modules extends ModulesBase {
         return $data;
     }
 
+    public function getMaxCustomerCode() {
+        $model = \backend\models\Modules::find()->orderBy(['created_at' => SORT_DESC])->one();
+        $customerCode = bindec($model->customer_code) + 1;
+        return \common\socket\Socket::alldec2bin($customerCode, 6);
+    }
+
 }
