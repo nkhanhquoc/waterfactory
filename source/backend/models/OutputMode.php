@@ -144,7 +144,7 @@ class OutputMode extends OutputModeBase {
     }
 
     public function toClient() {
-        $id = module_id_dp . \common\socket\Socket::dec2bin($this->module->getModuleId());
+        $id = module_id_dp . \common\socket\Socket::dec2bin($this->module->country->code . $this->module->privincial->code . $this->module->distric->code . $this->module->customer_code);
         $id .= OUTPUT_MODE_IE_NAME . OUTPUT_MODE_IE_LEN;
         $data = new \backend\models\DataClient();
         $data->module_id = $this->module_id;
