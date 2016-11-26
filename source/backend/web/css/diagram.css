@@ -6,17 +6,23 @@
 
 /***************Right content *********************/
 .right-content {
-    width:1017px;
-    position:relative;
-    margin:0 auto;
+    font-size:14px;
+    clear: both;    
+    width:967px;
+    margin: 0 auto;
+}
+
+.right-content ol{
+    margin:0;
     padding:0;
+    padding-left:25px;
 }
 
 .right-content li{
     padding:10px 0;
+    list-style:decimal-leading-zero;
+    margin-right:50px;
     float:left;
-    margin-right:55px;
-    list-style:decimal-leading;
 }
 
 .right-content li a{
@@ -39,14 +45,17 @@
 
 
 
+
+
 /***************Left content *********************/
 .left-content {
     background:url(../images/bg.jpg) no-repeat 0 0;
-    width:967px;
     height:775px;
     position:relative;
-    margin:0 auto;
+    clear: both;
     border:1px solid #f8a21e;
+    width:966px;
+    margin: 0 auto;
 }
 
 .left-content p{
@@ -54,14 +63,72 @@
     font-weight:bold;
 }
 
-.c-00,.c-01,.c-02,.c-03,.c-04,.c-05,.c-06,.c-07,.c-08,.c-09,.c-10,.c-11,.c-12,.c-13,.c-14,.c-15,.c-16,.c-17,.c-18,.bg-04,.bg-06-green,.bg-06-red,.bg-07-green,.bg-07-red,.bg-10-green,.bg-10-red,.bg-11-green,.bg-12-red,.bg-12-green,.bg-15-green,.bg-15-red,.bg-16-green,.bg-16-red  {
+.c-00,.c-01,.c-02,.c-03,.c-04,.c-05,.c-06,.c-07,.c-08,.c-09,.c-10,.c-11,.c-12,.c-13,.c-14,.c-15,.c-16,.c-17,.c-18,.bg-04,.bg-06-green,.bg-06-red,.bg-07-green,.bg-07-red,.bg-10-green,.bg-10-red,.bg-11-green,.bg-12-red,.bg-12-green,.bg-15-green,.bg-15-red,.bg-16-green,.bg-16-red,.icon-02,.icon-03,.icon-05,.icon-08,.icon-09,.icon-13,.icon-14,.icon-17  {
     position:absolute;
     font-size:20px;
     text-align:center;
     display:none;
 }
 
+.icon-03,.icon-05{
+    width:45px;
+    height:16px;
+}
 
+.icon-02,.icon-08,.icon-09,.icon-13,.icon-14,.icon-17 {
+    width:16px;
+    height:45px;	
+}
+
+.icon-02{
+    display:block;
+    left:296px;
+    top:70px;
+}
+
+.icon-03{
+    display:block;
+    left:460px;
+    top:205px;
+}
+
+.icon-05{
+    display:block;
+    left:460px;
+    top:377px;
+}
+
+.icon-08{
+    display:block;
+    left:640px;
+    top:400px;
+}
+
+.icon-09{
+    display:block;
+    left:712px;
+    top:400px;
+}
+
+.icon-13{
+    display:block;
+    left: 680px;
+    top: 587px;
+}
+
+.icon-14{
+    display:block;
+    left: 455px;
+    top: 588px;
+}
+
+.icon-17{
+    display:block;
+    left: 453px;
+    top: 702px;
+}
+
+/*********************background**************/
 .bg-04 {
     display:block;
     position:absolute;
@@ -138,11 +205,11 @@
 
 .bg-07-red,.bg-07-green {
     display:block;
-    left:294px;
-    top:407px;
     width:18px;
-    height:15px;
     background:red;
+    height: 14px;
+    left: 295px;
+    top: 407px;
 }
 
 .bg-07-green {
@@ -230,8 +297,6 @@
     display: block;
     left: 135px;
     top: 43px;
-    text-align:center;
-    width:35px;
 }
 
 .c-01{
@@ -249,7 +314,7 @@
 .c-03{
     display:block;	
     left:477px;	
-    top:147px;
+    top:157px;
 }
 
 .c-04{
@@ -261,7 +326,7 @@
 .c-05{
     display:block;	
     left:477px;	
-    top:320px;
+    top:330px;
 }
 
 .c-06{
@@ -314,7 +379,7 @@
 
 .c-14{
     display:block;	
-    left:480px;	
+    left:470px;	
     top:565px;
 }
 
@@ -332,12 +397,34 @@
 
 .c-17{
     display:block;	
-    left:480px;	
+    left:470px;	
     top:679px;
 }
 
 .c-18{
     display:block;	
     left:580px;	
-    top:686px;
+    top:679px;
+}
+
+@media (max-width:1360px){
+    .left-content {
+        margin:0 auto;
+        float:none;
+        clear:both;
+    }	
+
+    .right-content {
+        float:none;
+        margin:0 auto;
+        width:1017px;
+        text-align:left;
+        margin-top:10px
+    }
+
+    .right-content li{
+        float:left;
+        margin-right:50px;
+    }	
+
 }
