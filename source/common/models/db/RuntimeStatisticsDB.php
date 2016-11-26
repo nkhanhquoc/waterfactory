@@ -22,6 +22,7 @@ use Yii;
  * @property string $time_chay_van_dien_tu_ba_nga
  * @property string $time_chay_van_dien_tu_mot_chieu
  * @property string $du_phong
+ * @property string $created_at
  *
  * @property ModulesDB $module
  */
@@ -43,8 +44,8 @@ class RuntimeStatisticsDB extends \yii\db\ActiveRecord
         return [
             [['module_id'], 'required'],
             [['module_id'], 'integer'],
-            [['time_bom_doi_luu_1', 'time_bom_doi_luu_2', 'time_chay_bom_cap_nuoc_lanh_1', 'time_chay_bom_cap_nuoc_lanh_2', 'time_chay_bom_hoi_duong_ong_1', 'time_chay_bom_hoi_duong_ong_2', 'time_chay_bom_tang_ap_1', 'time_chay_bom_tang_ap_2', 'time_chay_bom_nhiet_bon_gia_nhiet_1', 'time_chay_bom_nhiet_bon_gia_nhiet_2', 'time_chay_van_dien_tu_ba_nga', 'time_chay_van_dien_tu_mot_chieu', 'du_phong'], 'string', 'max' => 50],
-            [['module_id'], 'unique']
+            [['created_at'], 'safe'],
+            [['time_bom_doi_luu_1', 'time_bom_doi_luu_2', 'time_chay_bom_cap_nuoc_lanh_1', 'time_chay_bom_cap_nuoc_lanh_2', 'time_chay_bom_hoi_duong_ong_1', 'time_chay_bom_hoi_duong_ong_2', 'time_chay_bom_tang_ap_1', 'time_chay_bom_tang_ap_2', 'time_chay_bom_nhiet_bon_gia_nhiet_1', 'time_chay_bom_nhiet_bon_gia_nhiet_2', 'time_chay_van_dien_tu_ba_nga', 'time_chay_van_dien_tu_mot_chieu', 'du_phong'], 'string', 'max' => 50]
         ];
     }
 
@@ -69,6 +70,7 @@ class RuntimeStatisticsDB extends \yii\db\ActiveRecord
             'time_chay_van_dien_tu_ba_nga' => Yii::t('backend', 'Time Chay Van Dien Tu Ba Nga'),
             'time_chay_van_dien_tu_mot_chieu' => Yii::t('backend', 'Time Chay Van Dien Tu Mot Chieu'),
             'du_phong' => Yii::t('backend', 'Du Phong'),
+            'created_at' => Yii::t('backend', 'Created At'),
         ];
     }
 

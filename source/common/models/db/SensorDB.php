@@ -19,6 +19,7 @@ use Yii;
  * @property string $cam_bien_nhiet_dinh_bon_solar
  * @property string $cam_bien_tran
  * @property string $du_phong
+ * @property string $created_at
  *
  * @property ModulesDB $module
  */
@@ -40,6 +41,7 @@ class SensorDB extends \yii\db\ActiveRecord
         return [
             [['module_id'], 'required'],
             [['module_id'], 'integer'],
+            [['created_at'], 'safe'],
             [['cam_bien_dan_thu', 'cam_bien_bon_solar', 'cam_bien_muc_nuoc_bon_solar', 'cam_bien_nhiet_do_bon_gia_nhiet', 'cam_bien_ap_suat_bon_gia_nhiet', 'cam_bien_ap_suat_duong_ong', 'cam_bien_nhiet_do_duong_ong', 'cam_bien_nhiet_dinh_bon_solar', 'cam_bien_tran', 'du_phong'], 'string', 'max' => 50]
         ];
     }
@@ -62,6 +64,7 @@ class SensorDB extends \yii\db\ActiveRecord
             'cam_bien_nhiet_dinh_bon_solar' => Yii::t('backend', 'Cam Bien Nhiet Dinh Bon Solar'),
             'cam_bien_tran' => Yii::t('backend', 'Cam Bien Tran'),
             'du_phong' => Yii::t('backend', 'Du Phong'),
+            'created_at' => Yii::t('backend', 'Created At'),
         ];
     }
 

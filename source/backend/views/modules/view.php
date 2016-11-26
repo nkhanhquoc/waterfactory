@@ -1,12 +1,12 @@
 <div class="diagram">
     <div class="left-content">
-        <div class="c-00">255</div>
+        <div class="c-00"><?php echo bindec($sensors->cam_bien_ap_suat_duong_ong); ?></div>
         <div class="c-01">(1)</div>
 
-        <div class="c-02">(2)<p>10&deg;C</p></div>    
+        <div class="c-02">(2)<p><?php echo bindec($sensors->cam_bien_dan_thu); ?>&deg;C</p></div>    
         <div class="icon-02"><img src="/images/03.png"/></div>
 
-        <div class="c-03">(3)<p>10&deg;C</p></div>
+        <div class="c-03">(3)<p><?php echo bindec($sensors->cam_bien_nhiet_dinh_bon_solar); ?>&deg;C</p></div>
         <div class="icon-03"><img src="/images/01.png"/></div>    
 
         <div class="c-04">(4)</div>
@@ -18,7 +18,7 @@
             </div>
         </div>
 
-        <div class="c-05">(5)<p>10&deg;C</p></div>
+        <div class="c-05">(5)<p><?php echo bindec($sensors->cam_bien_bon_solar); ?>&deg;C</p></div>
         <div class="icon-05"><img src="/images/01.png"/></div>    
 
         <div class="c-06">(6)</div>
@@ -29,10 +29,10 @@
         <div class="bg-07-green"></div>
         <div class="bg-07-red"></div>        
 
-        <div class="c-08">(8)<p>10&deg;C</p></div>
+        <div class="c-08">(8)<p><?php echo bindec($sensors->cam_bien_nhiet_do_bon_gia_nhiet); ?>&deg;C</p></div>
         <div class="icon-08"><img src="/images/03.png"/></div>    
 
-        <div class="c-09">(9)<p>10&deg;C</p></div>
+        <div class="c-09">(9)<p><?php echo bindec($sensors->cam_bien_ap_suat_bon_gia_nhiet); ?>&deg;C</p></div>
         <div class="icon-09"><img src="/images/04.png"/></div>    
 
         <div class="c-10">(10)</div>
@@ -46,10 +46,10 @@
         <div class="bg-12-green"></div>
         <div class="bg-12-red"></div>        
 
-        <div class="c-13">(13)<p>10&deg;C</p></div>
+        <div class="c-13">(13)<p><?php echo bindec($sensors->cam_bien_nhiet_dinh_bon_solar); ?>&deg;C</p></div>
         <div class="icon-13"><img src="/images/04.png"/></div>	
 
-        <div class="c-14">(14)<p>10&deg;C</p></div>
+        <div class="c-14">(14)<p><?php echo bindec($sensors->cam_bien_tran); ?>&deg;C</p></div>
         <div class="icon-14"><img src="/images/03.png"/></div>    
 
         <div class="c-15">(15)</div>
@@ -60,7 +60,7 @@
         <div class="bg-16-green"></div>
         <div class="bg-16-red"></div>        
 
-        <div class="c-17">(17)<p>10&deg;C</p></div>
+        <div class="c-17">(17)<p><?php echo bindec($sensors->du_phong); ?>&deg;C</p></div>
         <div class="icon-17"><img src="/images/03.png"/></div>    
 
         <div class="c-18">(18)</div>
@@ -68,7 +68,7 @@
 
     </div>
 
-    <div class="right-content">
+    <div class="right-content collapse1">
         <ol>
             <li><a href="#">Cường độ bức xạ của mặt trời</a></li>
             <li><a href="#">Nhiệt độ dàn thu</a></li>
@@ -91,3 +91,4 @@
         </ol>
     </div>
 </div>
+

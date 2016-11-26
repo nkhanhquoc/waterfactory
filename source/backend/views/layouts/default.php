@@ -53,7 +53,7 @@ DefaultAsset::register($this);
         <?= $content ?>
     </div>
     <div class="copyright">
-        2016 © hoangtoanit. Admin Dashboard Template.
+        2016 © proscom. Admin Dashboard Template.
     </div>
     <?php $this->endBody() ?>
     </body>

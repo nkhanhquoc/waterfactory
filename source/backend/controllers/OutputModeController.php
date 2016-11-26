@@ -14,10 +14,9 @@ use common\socket\Socket;
 /**
  * OutputModeController implements the CRUD actions for OutputMode model.
  */
-class OutputModeController extends Controller
-{
-    public function behaviors()
-    {
+class OutputModeController extends AppController {
+
+    public function behaviors() {
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
@@ -32,14 +31,13 @@ class OutputModeController extends Controller
      * Lists all OutputMode models.
      * @return mixed
      */
-    public function actionIndex()
-    {
+    public function actionIndex() {
         $searchModel = new OutputModeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -48,10 +46,9 @@ class OutputModeController extends Controller
      * @param string $id
      * @return mixed
      */
-    public function actionView($id)
-    {
+    public function actionView($id) {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+                    'model' => $this->findModel($id),
         ]);
     }
 
@@ -60,8 +57,7 @@ class OutputModeController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
-    {
+    public function actionCreate() {
         $model = new OutputMode();
         $modules = Modules::getAll();
 
@@ -93,9 +89,9 @@ class OutputModeController extends Controller
      * @param string $id
      * @return mixed
      */
-    public function actionUpdate($id)
-    {
+    public function actionUpdate($id) {
         $model = $this->findModel($id);
+
         if (Yii::$app->request->isPost) {
             $values = Yii::$app->request->post();
             $model->convection_pump = $values['OutputMode']['convection_pump']['mode'].$values['OutputMode']['convection_pump']['pump'].Socket::alldec2bin($values['OutputMode']['convection_pump']['time'],8);
@@ -108,10 +104,11 @@ class OutputModeController extends Controller
             $model->backflow_valve = $values['OutputMode']['blakflow']['mode'].$values['OutputMode']['blakflow']['pump'].Socket::alldec2bin($values['OutputMode']['blakflow']['time'],8);
             $model->reserved = $values['OutputMode']['reserved']['mode'].$values['OutputMode']['reserved']['pump'].Socket::alldec2bin($values['OutputMode']['reserved']['time'],8);
             $model->save(false);
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
-                'model' => $model,
+                        'model' => $model,
             ]);
         }
     }
@@ -122,8 +119,7 @@ class OutputModeController extends Controller
      * @param string $id
      * @return mixed
      */
-    public function actionDelete($id)
-    {
+    public function actionDelete($id) {
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -136,12 +132,12 @@ class OutputModeController extends Controller
      * @return OutputMode the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
-    {
+    protected function findModel($id) {
         if (($model = OutputMode::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
 }

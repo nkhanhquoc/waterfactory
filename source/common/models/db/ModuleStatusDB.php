@@ -42,8 +42,7 @@ class ModuleStatusDB extends \yii\db\ActiveRecord
         return [
             [['module_id'], 'required'],
             [['module_id'], 'integer'],
-            [['bom_doi_luu_1', 'bom_doi_luu_2', 'bom_cap_nuoc_lanh_1', 'bom_cap_nuoc_lanh_2', 'bom_hoi_duong_ong_1', 'bom_hoi_duong_ong_2', 'bom_tang_ap_1', 'bom_tang_ap_2', 'bom_ha_nhiet_bon_gia_nhiet_1', 'bom_ha_nhiet_bon_gia_nhiet_2', 'van_dien_tu_ba_nga', 'van_dien_tu_mot_chieu'], 'string', 'max' => 50],
-            [['module_id'], 'unique']
+            [['bom_doi_luu_1', 'bom_doi_luu_2', 'bom_cap_nuoc_lanh_1', 'bom_cap_nuoc_lanh_2', 'bom_hoi_duong_ong_1', 'bom_hoi_duong_ong_2', 'bom_tang_ap_1', 'bom_tang_ap_2', 'bom_ha_nhiet_bon_gia_nhiet_1', 'bom_ha_nhiet_bon_gia_nhiet_2', 'van_dien_tu_ba_nga', 'van_dien_tu_mot_chieu'], 'string', 'max' => 50]
         ];
     }
 

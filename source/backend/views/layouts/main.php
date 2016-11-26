@@ -102,11 +102,11 @@ AppAsset::register($this);
                 <!-- END TOP NAVIGATION MENU -->
                 <div class="bottom-menu">
                     <ul>
-                        <li><a href="#">Menu 1</a></li>
-                        <li><a href="#">Menu 2</a></li>
-                        <li><a href="#">Menu 3</a></li>
-                        <li><a href="#">Menu 4</a></li>
-                        <li><a href="#">Menu 5</a></li>
+                        <li><a href="#">OVER TANK</a></li>
+                        <li><a href="#">LOST CONNECTION</a></li>
+                        <li><a href="#">OVER HEAT</a></li>
+                        <li><a href="#">OVER PRESSURE</a></li>
+                        <li><a href="#">LOST SUPPLY</a></li>
                     </ul>
                 </div>
             </div>
@@ -202,7 +202,7 @@ AppAsset::register($this);
         <!-- BEGIN FOOTER -->
         <div class="page-footer">
             <div class="page-footer-inner">
-                2016 &copy; Suppertheme by hoangtoanit.
+                2016 &copy; Suppertheme by proscom.
             </div>
             <div class="scroll-to-top">
                 <i class="icon-arrow-up"></i>
