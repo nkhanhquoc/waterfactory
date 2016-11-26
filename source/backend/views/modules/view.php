@@ -30,12 +30,12 @@ $this->params['breadcrumbs'][] = $model->getModuleId();
             <div class="icon-05"><img src="/images/01.png"/></div>    
 
             <div class="c-06">(6)</div>
-            <div class="bg-06-green"></div>
-            <div class="bg-06-red"></div>        
+            <div class="bg-06-<?php echo $statuses->bom_doi_luu_1 == '00' ? 'green' : 'red' ?>"></div>
+            <div class="bg-06-<?php echo $statuses->bom_doi_luu_2 == '00' ? 'green' : 'red' ?>"></div>    
 
             <div class="c-07">(7)</div>
-            <div class="bg-07-green"></div>
-            <div class="bg-07-red"></div>        
+            <div class="bg-07-<?php echo $statuses->van_dien_tu_ba_nga == '00' ? 'green' : 'red' ?>"></div>
+            <div class="bg-07-<?php echo $statuses->van_dien_tu_ba_nga == '00' ? 'green' : 'red' ?>"></div>   
 
             <div class="c-08">(8)<p><?php echo bindec($sensors->cam_bien_nhiet_do_bon_gia_nhiet); ?>&deg;C</p></div>
             <div class="icon-08"><img src="/images/03.png"/></div>    
@@ -44,15 +44,15 @@ $this->params['breadcrumbs'][] = $model->getModuleId();
             <div class="icon-09"><img src="/images/04.png"/></div>    
 
             <div class="c-10">(10)</div>
-            <div class="bg-10-green"></div>
-            <div class="bg-10-red"></div>        
+            <div class="bg-10-<?php echo $statuses->dien_tro_nhiet_bon_gia_nhiet_1 == '00' ? 'green' : 'red' ?>"></div>
+            <div class="bg-10-<?php echo $statuses->dien_tro_nhiet_bon_gia_nhiet_2 == '00' ? 'green' : 'red' ?>"></div>   
 
-            <div class="c-11">(11)</div>
-            <div class="bg-11 bg-red"></div>        
+            <div class="c-11">(11)</div> 
+            <div class="bg-11 bg-<?php echo $statuses->bom_nhiet_bon_gia_nhiet == '00' ? 'green' : 'red' ?>"></div>   
 
             <div class="c-12">(12)</div>
-            <div class="bg-12-green"></div>
-            <div class="bg-12-red"></div>        
+            <div class="bg-12-<?php echo $statuses->bom_tang_ap_1 == '00' ? 'green' : 'red' ?>"></div>
+            <div class="bg-12-<?php echo $statuses->bom_tang_ap_2 == '00' ? 'green' : 'red' ?>"></div>  
 
             <div class="c-13">(13)<p><?php echo bindec($sensors->cam_bien_nhiet_dinh_bon_solar); ?>&deg;C</p></div>
             <div class="icon-13"><img src="/images/04.png"/></div>	
@@ -61,12 +61,12 @@ $this->params['breadcrumbs'][] = $model->getModuleId();
             <div class="icon-14"><img src="/images/03.png"/></div>    
 
             <div class="c-15">(15)</div>
-            <div class="bg-15-green"></div>
-            <div class="bg-15-red"></div>
+            <div class="bg-15-<?php echo $statuses->bom_cap_nuoc_lanh_1 == '00' ? 'green' : 'red' ?>"></div>
+            <div class="bg-15-<?php echo $statuses->bom_cap_nuoc_lanh_2 == '00' ? 'green' : 'red' ?>"></div> 
 
             <div class="c-16">(16)</div>
-            <div class="bg-16-green"></div>
-            <div class="bg-16-red"></div>        
+            <div class="bg-16-<?php echo $statuses->bom_hoi_duong_ong_1 == '00' ? 'green' : 'red' ?>"></div>
+            <div class="bg-16-<?php echo $statuses->bom_hoi_duong_ong_2 == '00' ? 'green' : 'red' ?>"></div> 
 
             <div class="c-17">(17)<p><?php echo bindec($sensors->du_phong); ?>&deg;C</p></div>
             <div class="icon-17"><img src="/images/03.png"/></div>    
