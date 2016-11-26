@@ -199,16 +199,24 @@ class Socket {
         return $dec;
     }
 
-    public static function dec2bin($str) {
+    public static function dec2bin($str,$length = 4) {
         $bin = '';
         $len = strlen($str);
         for ($i = 0; $i < $len; $i ++) {
             $sub = decbin($str[$i]);
-            while (strlen($sub) < 4) {
+            while (strlen($sub) < $length) {
                 $sub = '0' . $sub;
             }
             $bin .= $sub;
         }
+        return $bin;
+    }
+
+    public static function alldec2bin($str,$length = 8) {
+        $bin = decbin($str);
+            while (strlen($bin) < $length) {
+                $bin = '0' . $bin;
+            }
         return $bin;
     }
 

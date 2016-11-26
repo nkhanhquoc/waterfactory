@@ -31,6 +31,7 @@ class Modules extends ModulesBase {
         foreach ($model as $item) {
             $data[$item->id] = \yii\helpers\Html::encode($item->name);
         }
+        return $data;
     }
 
 }

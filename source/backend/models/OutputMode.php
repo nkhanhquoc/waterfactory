@@ -36,7 +36,7 @@ class OutputMode extends OutputModeBase {
 
     public function getConvectionTime(){
       $bin = substr($this->convection_pump,16,8);
-      return Socket::bin2dec($bin);
+      return bindec($bin);
     }
 
     public function getCwspMode(){
@@ -49,7 +49,7 @@ class OutputMode extends OutputModeBase {
 
     public function getCwspTime(){
       $bin = substr($this->cold_water_supply_pump,16,8);
-      return Socket::bin2dec($bin);
+      return bindec($bin);
     }
 
     public function getReturnPumpMode(){
@@ -62,7 +62,7 @@ class OutputMode extends OutputModeBase {
 
     public function getReturnPumpTime(){
       $bin = substr($this->return_pump,16,8);
-      return Socket::bin2dec($bin);
+      return bindec($bin);
     }
 
     public function getPressurePumpMode(){
@@ -75,7 +75,7 @@ class OutputMode extends OutputModeBase {
 
     public function getPressurePumpTime(){
       $bin = substr($this->incresed_pressure_pump,16,8);
-      return Socket::bin2dec($bin);
+      return bindec($bin);
     }
 
 
@@ -89,7 +89,7 @@ class OutputMode extends OutputModeBase {
 
     public function getHeatPumpTime(){
       $bin = substr($this->heat_pump,16,8);
-      return Socket::bin2dec($bin);
+      return bindec($bin);
     }
 
     public function getHeaterResisMode(){
@@ -102,7 +102,7 @@ class OutputMode extends OutputModeBase {
 
     public function getHeaterResisTime(){
       $bin = substr($this->heater_resister,16,8);
-      return Socket::bin2dec($bin);
+      return bindec($bin);
     }
 
     public function get3wayMode(){
@@ -115,7 +115,7 @@ class OutputMode extends OutputModeBase {
 
     public function get3wayTime(){
       $bin = substr($this->three_way_valve,16,8);
-      return Socket::bin2dec($bin);
+      return bindec($bin);
     }
 
     public function getBlakflowMode(){
@@ -128,7 +128,22 @@ class OutputMode extends OutputModeBase {
 
     public function getBlakflowTime(){
       $bin = substr($this->backflow_valve,16,8);
-      return Socket::bin2dec($bin);
+      return bindec($bin);
     }
+
+    public function getReservedMode(){
+      return substr($this->reserved,0,8);
+    }
+
+    public function getReservedPump(){
+      return substr($this->reserved,8,8);
+    }
+
+    public function getReservedTime(){
+      $bin = substr($this->reserved,16,8);
+      return bindec($bin);
+    }
+
+
 
 }
