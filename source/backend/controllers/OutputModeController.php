@@ -74,7 +74,7 @@ class OutputModeController extends AppController {
           $model->backflow_valve = $values['OutputMode']['blakflow']['mode'].$values['OutputMode']['blakflow']['pump'].Socket::alldec2bin($values['OutputMode']['blakflow']['time'],8);
           $model->reserved = $values['OutputMode']['reserved']['mode'].$values['OutputMode']['reserved']['pump'].Socket::alldec2bin($values['OutputMode']['reserved']['time'],8);
           $model->save(false);
-          return $this->redirect(['view', 'id' => $model->id]);
+          return $this->redirect(['/modules/view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -105,7 +105,7 @@ class OutputModeController extends AppController {
             $model->reserved = $values['OutputMode']['reserved']['mode'].$values['OutputMode']['reserved']['pump'].Socket::alldec2bin($values['OutputMode']['reserved']['time'],8);
             $model->save(false);
 
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['/modules/view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                         'model' => $model,
