@@ -41,8 +41,8 @@ class Modules extends ModulesBase {
     }
 
     public function toClient() {
-        $id = module_id_dp . \common\socket\Socket::dec2bin($this->country->code . $this->privincial->code . $this->distric->code);
-        $id .= $this->customer_code . ID_IE_NAME . module_id_len;
+        $id = module_id_dp . \common\socket\Socket::dec2bin($this->getModuleId());
+        $id .= ID_IE_NAME . module_id_len;
 
         $client = new \backend\models\DataClient();
         $client->data = $id;
