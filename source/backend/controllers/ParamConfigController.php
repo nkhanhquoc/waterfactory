@@ -62,50 +62,38 @@ class ParamConfigController extends AppController {
         $model = new ParamConfig();
         $modules = Modules::getAll();
         if (Yii::$app->request->isPost) {
-          $values = Yii::$app->request->post();
+            $values = Yii::$app->request->post();
 
-          $model->module_id = $values['module_id'];
-          $model->convection_pump = Socket::alldec2bin($values['convection_pump']);
-          $model->cold_water_supply_pump = Socket::alldec2bin($values['cold_water_supply_pump_lv1'])
-                                          .Socket::alldec2bin($values['cold_water_supply_pump_lv2']);
-          $model->return_pump = Socket::alldec2bin($values['return_pump_t1_start'])
-                                .Socket::alldec2bin($values['return_pump_t2_start'])
-                                .Socket::alldec2bin($values['return_pump_t1_end'])
-                                .Socket::alldec2bin($values['return_pump_t2_end'])
-                                .Socket::alldec2bin($values['return_pump_delta_t']);
-          $model->incresed_pressure_pump = Socket::alldec2bin($values['pressure_pump_p1']);
-          $model->heat_pump = Socket::alldec2bin($values['heat_pump_t1']);
-          $model->heat_resistor = Socket::alldec2bin($values['heater_resis_t1'])
-                                    .Socket::alldec2bin($values['heater_resister_t2'])
-                                    .Socket::alldec2bin($values['heater_resister_delay_time']);
-          $model->three_way_valve = Socket::alldec2bin($values['3way_t1_h'])
-                                    .Socket::alldec2bin($values['3way_t1_m'])
-                                    .Socket::alldec2bin($values['3way_t2_h'])
-                                    .Socket::alldec2bin($values['3way_t2_m'])
-                                    .Socket::alldec2bin($values['3way_temp']);
-          $model->backflow_valve = Socket::alldec2bin($values['backflow_temp']);
-          $model->save(false);
+            $model->module_id = $values['module_id'];
+            $model->convection_pump = Socket::alldec2bin($values['convection_pump']);
+            $model->cold_water_supply_pump = Socket::alldec2bin($values['cold_water_supply_pump_lv1'])
+                    . Socket::alldec2bin($values['cold_water_supply_pump_lv2']);
+            $model->return_pump = Socket::alldec2bin($values['return_pump_t1_start'])
+                    . Socket::alldec2bin($values['return_pump_t2_start'])
+                    . Socket::alldec2bin($values['return_pump_t1_end'])
+                    . Socket::alldec2bin($values['return_pump_t2_end'])
+                    . Socket::alldec2bin($values['return_pump_delta_t']);
+            $model->incresed_pressure_pump = Socket::alldec2bin($values['pressure_pump_p1']);
+            $model->heat_pump = Socket::alldec2bin($values['heat_pump_t1']);
+            $model->heat_resistor = Socket::alldec2bin($values['heater_resis_t1'])
+                    . Socket::alldec2bin($values['heater_resister_t2'])
+                    . Socket::alldec2bin($values['heater_resister_delay_time']);
+            $model->three_way_valve = Socket::alldec2bin($values['3way_t1_h'])
+                    . Socket::alldec2bin($values['3way_t1_m'])
+                    . Socket::alldec2bin($values['3way_t2_h'])
+                    . Socket::alldec2bin($values['3way_t2_m'])
+                    . Socket::alldec2bin($values['3way_temp']);
+            $model->backflow_valve = Socket::alldec2bin($values['backflow_temp']);
 
-
-          $data = new DataClient();
-          $data->module_id = $model->module_id;
-          $data->data = $model->convection_pump
-                        .$model->cold_water_supply_pump
-                        .$model->return_pump
-                        .$model->incresed_pressure_pump
-                        .$model->heat_pump
-                        .$model->heat_resistor
-                        .$model->three_way_valve
-                        .$model->backflow_valve;
-          $data->status = 0;
-          $data->save(false);
-            return $this->redirect(['/modules/view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                        'model' => $model,
-                        'modules' => $modules
-            ]);
+            if ($model->save(false)) {
+                $model->toClient();
+                return $this->redirect(['/modules/view', 'id' => $model->id]);
+            }
         }
+        return $this->render('create', [
+                    'model' => $model,
+                    'modules' => $modules
+        ]);
     }
 
     /**
@@ -118,50 +106,37 @@ class ParamConfigController extends AppController {
         $model = $this->findModel($id);
         $modules = Modules::getAll();
         if (Yii::$app->request->isPost) {
-          $values = Yii::$app->request->post();
+            $values = Yii::$app->request->post();
 
-          $model->module_id = $values['module_id'];
-          $model->convection_pump = Socket::alldec2bin($values['convection_pump']);
-          $model->cold_water_supply_pump = Socket::alldec2bin($values['cold_water_supply_pump_lv1'])
-                                          .Socket::alldec2bin($values['cold_water_supply_pump_lv2']);
-          $model->return_pump = Socket::alldec2bin($values['return_pump_t1_start'])
-                                .Socket::alldec2bin($values['return_pump_t2_start'])
-                                .Socket::alldec2bin($values['return_pump_t1_end'])
-                                .Socket::alldec2bin($values['return_pump_t2_end'])
-                                .Socket::alldec2bin($values['return_pump_delta_t']);
-          $model->incresed_pressure_pump = Socket::alldec2bin($values['pressure_pump_p1']);
-          $model->heat_pump = Socket::alldec2bin($values['heat_pump_t1']);
-          $model->heat_resistor = Socket::alldec2bin($values['heater_resis_t1'])
-                                    .Socket::alldec2bin($values['heater_resister_t2'])
-                                    .Socket::alldec2bin($values['heater_resister_delay_time']);
-          $model->three_way_valve = Socket::alldec2bin($values['3way_t1_h'])
-                                    .Socket::alldec2bin($values['3way_t1_m'])
-                                    .Socket::alldec2bin($values['3way_t2_h'])
-                                    .Socket::alldec2bin($values['3way_t2_m'])
-                                    .Socket::alldec2bin($values['3way_temp']);
-          $model->backflow_valve = Socket::alldec2bin($values['backflow_temp']);
-          $model->save(false);
-
-          $data = new DataClient();
-          $data->module_id = $model->module_id;
-          $data->data = $model->convection_pump
-                        .$model->cold_water_supply_pump
-                        .$model->return_pump
-                        .$model->incresed_pressure_pump
-                        .$model->heat_pump
-                        .$model->heat_resistor
-                        .$model->three_way_valve
-                        .$model->backflow_valve;
-          $data->status = 0;
-          $data->save(false);
-
-            return $this->redirect(['/modules/view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                        'model' => $model,
-                        'modules' => $modules
-            ]);
+            $model->module_id = $values['module_id'];
+            $model->convection_pump = Socket::alldec2bin($values['convection_pump']);
+            $model->cold_water_supply_pump = Socket::alldec2bin($values['cold_water_supply_pump_lv1'])
+                    . Socket::alldec2bin($values['cold_water_supply_pump_lv2']);
+            $model->return_pump = Socket::alldec2bin($values['return_pump_t1_start'])
+                    . Socket::alldec2bin($values['return_pump_t2_start'])
+                    . Socket::alldec2bin($values['return_pump_t1_end'])
+                    . Socket::alldec2bin($values['return_pump_t2_end'])
+                    . Socket::alldec2bin($values['return_pump_delta_t']);
+            $model->incresed_pressure_pump = Socket::alldec2bin($values['pressure_pump_p1']);
+            $model->heat_pump = Socket::alldec2bin($values['heat_pump_t1']);
+            $model->heat_resistor = Socket::alldec2bin($values['heater_resis_t1'])
+                    . Socket::alldec2bin($values['heater_resister_t2'])
+                    . Socket::alldec2bin($values['heater_resister_delay_time']);
+            $model->three_way_valve = Socket::alldec2bin($values['3way_t1_h'])
+                    . Socket::alldec2bin($values['3way_t1_m'])
+                    . Socket::alldec2bin($values['3way_t2_h'])
+                    . Socket::alldec2bin($values['3way_t2_m'])
+                    . Socket::alldec2bin($values['3way_temp']);
+            $model->backflow_valve = Socket::alldec2bin($values['backflow_temp']);
+            if ($model->save(false)) {
+                $model->toClient();
+                return $this->redirect(['/modules/view', 'id' => $model->id]);
+            }
         }
+        return $this->render('update', [
+                    'model' => $model,
+                    'modules' => $modules
+        ]);
     }
 
     /**
