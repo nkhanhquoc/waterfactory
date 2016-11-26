@@ -1,21 +1,28 @@
 .diagram {
     font-size:14px;
     font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    min-height:1030px;
 }
 
 /***************Right content *********************/
 .right-content {
-    float:right;
     font-size:14px;
-    width:27%;
+    clear: both;    
+    width:967px;
+    margin: 0 auto;
 }
 
 .right-content ol{
     margin:0;
+    padding:0;
+    padding-left:25px;
 }
 
 .right-content li{
     padding:10px 0;
+    list-style:decimal-leading-zero;
+    margin-right:50px;
+    float:left;
 }
 
 .right-content li a{
@@ -38,14 +45,17 @@
 
 
 
+
+
 /***************Left content *********************/
 .left-content {
     background:url(../images/bg.jpg) no-repeat 0 0;
     height:775px;
     position:relative;
-    float:left;
+    clear: both;
     border:1px solid #f8a21e;
     width:966px;
+    margin: 0 auto;
 }
 
 .left-content p{

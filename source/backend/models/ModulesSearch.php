@@ -10,13 +10,12 @@ use backend\models\Modules;
 /**
  * ModulesSearch represents the model behind the search form about `backend\models\Modules`.
  */
-class ModulesSearch extends Modules
-{
+class ModulesSearch extends Modules {
+
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['id', 'mode_id', 'country_id', 'privincial_id', 'distric_id', 'created_by', 'updated_by'], 'integer'],
             [['msisdn', 'customer_code', 'address', 'created_at', 'updated_at'], 'safe'],
@@ -26,8 +25,7 @@ class ModulesSearch extends Modules
     /**
      * @inheritdoc
      */
-    public function scenarios()
-    {
+    public function scenarios() {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
@@ -39,13 +37,12 @@ class ModulesSearch extends Modules
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
-    {
+    public function search($params) {
         $query = Modules::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort' => ['defaultOrder' => ['id' => SORT_DESC]]
+            'sort' => ['defaultOrder' => ['created_at' => SORT_ASC]]
         ]);
 
         $this->load($params);
@@ -69,9 +66,10 @@ class ModulesSearch extends Modules
         ]);
 
         $query->andFilterWhere(['like', 'msisdn', $this->msisdn])
-            ->andFilterWhere(['like', 'customer_code', $this->customer_code])
-            ->andFilterWhere(['like', 'address', $this->address]);
+                ->andFilterWhere(['like', 'customer_code', $this->customer_code])
+                ->andFilterWhere(['like', 'address', $this->address]);
 
         return $dataProvider;
     }
+
 }

@@ -44,7 +44,7 @@ DefaultAsset::register($this);
     <!-- END SIDEBAR TOGGLER BUTTON -->
     <!-- BEGIN LOGO -->
     <div class="logo">
-        <a href="index.php">
+        <a href="/">
             <img src="/img/logo.png" alt="" height="46"/>
         </a>
     </div>

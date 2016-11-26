@@ -4,7 +4,7 @@
  *  define const default
  */
 define('NO_IMAGE', '/img/no-image.png');
-
+#ie name
 define('ID_IE_NAME', '11001000');
 define('SYSTEM_MODE_IE_NAME', '00000000');
 define('OUTPUT_MODE_IE_NAME', '00000001');
@@ -19,6 +19,8 @@ define('CHECK_MONEY_DATA_IE_NAME', '01110010');
 define('MONEY_DATA_NOTIFY_IE_NAME', '01110011');
 define('CARD_MODE_IE_NAME', '01110100');
 define('CREATE_MODELE', '01110101');
+#ie length
+define('module_id_len', '11001000');
 #output mode
 define('MANUAL_B1', '00000000');
 define('MANUAL_B2', '00000001');
@@ -28,3 +30,5 @@ define('AUTO_B2', '00000100');
 define('PUMP_SLAVE', '00000000');
 define('PUMP_MASTER', '00000001');
 define('PUMP_ALL', '00000011');
+#du phong
+define('module_id_dp', '0000');

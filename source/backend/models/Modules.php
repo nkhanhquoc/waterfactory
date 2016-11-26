@@ -34,4 +34,22 @@ class Modules extends ModulesBase {
         return $data;
     }
 
+    public function getMaxCustomerCode() {
+        $model = \backend\models\Modules::find()->orderBy(['created_at' => SORT_DESC])->one();
+        $customerCode = bindec($model->customer_code) + 1;
+        return \common\socket\Socket::alldec2bin($customerCode, 6);
+    }
+
+    public function toClient() {
+        $id = module_id_dp . \common\socket\Socket::dec2bin($this->country->code . $this->privincial->code . $this->distric->code);
+        $id .= $this->customer_code . ID_IE_NAME . module_id_len;
+
+        $client = new \backend\models\DataClient();
+        $client->data = $id;
+        $client->module_id = $this->id;
+        $client->status = 0;
+        $client->created_at = new Expression('NOW()');
+        $client->save(false);
+    }
+
 }

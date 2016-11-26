@@ -47,9 +47,11 @@ class ModulesController extends AppController {
     public function actionView($id) {
         $model = $this->findModel($id);
         $sensors = $model->sensors;
+        $statuses = $model->moduleStatuses;
         return $this->render('view', [
                     'model' => $model,
                     'sensors' => $sensors,
+                    'statuses' => $statuses,
         ]);
     }
 
@@ -60,8 +62,9 @@ class ModulesController extends AppController {
      */
     public function actionCreate() {
         $model = new Modules();
-
+        $model->customer_code = $model->getMaxCustomerCode();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->toClient();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -80,6 +83,7 @@ class ModulesController extends AppController {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->toClient();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
