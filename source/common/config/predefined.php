@@ -22,6 +22,7 @@ define('CREATE_MODELE', '01110101');
 #ie length
 define('module_id_len', '11001000');
 define('PARAMETTER_IE_LEN', '11010010');
+define('OUTPUT_MODE_IE_LEN', '11011000');
 #output mode
 define('MANUAL_B1', '00000000');
 define('MANUAL_B2', '00000001');

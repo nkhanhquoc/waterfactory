@@ -60,44 +60,32 @@ class OutputModeController extends AppController {
      */
     public function actionCreate() {
         $model = new OutputMode();
+        $moduleId = ($_GET['module_id']) ? intval($_GET['module_id']) : 0;
+        $model->module_id = $moduleId;
         $modules = Modules::getAll();
 
         if (Yii::$app->request->isPost) {
-          $values = Yii::$app->request->post();
-          $model->module_id = $values['module_id'];
-          $model->convection_pump = $values['OutputMode']['convection_pump']['mode'].$values['OutputMode']['convection_pump']['pump'].Socket::alldec2bin($values['OutputMode']['convection_pump']['time'],8);
-          $model->cold_water_supply_pump = $values['OutputMode']['cwsp_pump']['mode'].$values['OutputMode']['cwsp_pump']['pump'].Socket::alldec2bin($values['OutputMode']['cwsp_pump']['time'],8);
-          $model->return_pump = $values['OutputMode']['return_pump']['mode'].$values['OutputMode']['return_pump']['pump'].Socket::alldec2bin($values['OutputMode']['return_pump']['time'],8);
-          $model->incresed_pressure_pump = $values['OutputMode']['pressure_pump']['mode'].$values['OutputMode']['pressure_pump']['pump'].Socket::alldec2bin($values['OutputMode']['pressure_pump']['time'],8);
-          $model->heat_pump = $values['OutputMode']['heat_pump']['mode'].$values['OutputMode']['heat_pump']['pump'].Socket::alldec2bin($values['OutputMode']['heat_pump']['time'],8);
-          $model->heater_resister = $values['OutputMode']['heater_resis']['mode'].$values['OutputMode']['heater_resis']['pump'].Socket::alldec2bin($values['OutputMode']['heater_resis']['time'],8);
-          $model->three_way_valve = $values['OutputMode']['3way']['mode'].$values['OutputMode']['3way']['pump'].Socket::alldec2bin($values['OutputMode']['3way']['time'],8);
-          $model->backflow_valve = $values['OutputMode']['blakflow']['mode'].$values['OutputMode']['blakflow']['pump'].Socket::alldec2bin($values['OutputMode']['blakflow']['time'],8);
-          $model->reserved = $values['OutputMode']['reserved']['mode'].$values['OutputMode']['reserved']['pump'].Socket::alldec2bin($values['OutputMode']['reserved']['time'],8);
-          $model->save(false);
+            $values = Yii::$app->request->post();
+            $model->module_id = $values['module_id'];
+            $model->convection_pump = $values['OutputMode']['convection_pump']['mode'] . $values['OutputMode']['convection_pump']['pump'] . Socket::alldec2bin($values['OutputMode']['convection_pump']['time'], 8);
+            $model->cold_water_supply_pump = $values['OutputMode']['cwsp_pump']['mode'] . $values['OutputMode']['cwsp_pump']['pump'] . Socket::alldec2bin($values['OutputMode']['cwsp_pump']['time'], 8);
+            $model->return_pump = $values['OutputMode']['return_pump']['mode'] . $values['OutputMode']['return_pump']['pump'] . Socket::alldec2bin($values['OutputMode']['return_pump']['time'], 8);
+            $model->incresed_pressure_pump = $values['OutputMode']['pressure_pump']['mode'] . $values['OutputMode']['pressure_pump']['pump'] . Socket::alldec2bin($values['OutputMode']['pressure_pump']['time'], 8);
+            $model->heat_pump = $values['OutputMode']['heat_pump']['mode'] . $values['OutputMode']['heat_pump']['pump'] . Socket::alldec2bin($values['OutputMode']['heat_pump']['time'], 8);
+            $model->heater_resister = $values['OutputMode']['heater_resis']['mode'] . $values['OutputMode']['heater_resis']['pump'] . Socket::alldec2bin($values['OutputMode']['heater_resis']['time'], 8);
+            $model->three_way_valve = $values['OutputMode']['3way']['mode'] . $values['OutputMode']['3way']['pump'] . Socket::alldec2bin($values['OutputMode']['3way']['time'], 8);
+            $model->backflow_valve = $values['OutputMode']['blakflow']['mode'] . $values['OutputMode']['blakflow']['pump'] . Socket::alldec2bin($values['OutputMode']['blakflow']['time'], 8);
+            $model->reserved = $values['OutputMode']['reserved']['mode'] . $values['OutputMode']['reserved']['pump'] . Socket::alldec2bin($values['OutputMode']['reserved']['time'], 8);
 
-
-          $data = new DataClient();
-          $data->module_id = $model->module_id;
-          $data->data = $model->convection_pump
-                        .$model->cold_water_supply_pump
-                        .$model->return_pump
-                        .$model->incresed_pressure_pump
-                        .$model->heat_pump
-                        .$model->heater_resister
-                        .$model->three_way_valve
-                        .$model->backflow_valve
-                        .$model->reserved;
-          $data->status = 0;
-          $data->save(false);
-
-          return $this->redirect(['/modules/view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-                'modules' =>$modules
-            ]);
+            if ($model->save(false)) {
+                $model->toClient();
+                return $this->redirect(['/modules/view', 'id' => $model->module_id]);
+            }
         }
+        return $this->render('create', [
+                    'model' => $model,
+                    'modules' => $modules
+        ]);
     }
 
     /**
@@ -111,37 +99,23 @@ class OutputModeController extends AppController {
 
         if (Yii::$app->request->isPost) {
             $values = Yii::$app->request->post();
-            $model->convection_pump = $values['OutputMode']['convection_pump']['mode'].$values['OutputMode']['convection_pump']['pump'].Socket::alldec2bin($values['OutputMode']['convection_pump']['time'],8);
-            $model->cold_water_supply_pump = $values['OutputMode']['cwsp_pump']['mode'].$values['OutputMode']['cwsp_pump']['pump'].Socket::alldec2bin($values['OutputMode']['cwsp_pump']['time'],8);
-            $model->return_pump = $values['OutputMode']['return_pump']['mode'].$values['OutputMode']['return_pump']['pump'].Socket::alldec2bin($values['OutputMode']['return_pump']['time'],8);
-            $model->incresed_pressure_pump = $values['OutputMode']['pressure_pump']['mode'].$values['OutputMode']['pressure_pump']['pump'].Socket::alldec2bin($values['OutputMode']['pressure_pump']['time'],8);
-            $model->heat_pump = $values['OutputMode']['heat_pump']['mode'].$values['OutputMode']['heat_pump']['pump'].Socket::alldec2bin($values['OutputMode']['heat_pump']['time'],8);
-            $model->heater_resister = $values['OutputMode']['heater_resis']['mode'].$values['OutputMode']['heater_resis']['pump'].Socket::alldec2bin($values['OutputMode']['heater_resis']['time'],8);
-            $model->three_way_valve = $values['OutputMode']['3way']['mode'].$values['OutputMode']['3way']['pump'].Socket::alldec2bin($values['OutputMode']['3way']['time'],8);
-            $model->backflow_valve = $values['OutputMode']['blakflow']['mode'].$values['OutputMode']['blakflow']['pump'].Socket::alldec2bin($values['OutputMode']['blakflow']['time'],8);
-            $model->reserved = $values['OutputMode']['reserved']['mode'].$values['OutputMode']['reserved']['pump'].Socket::alldec2bin($values['OutputMode']['reserved']['time'],8);
-            $model->save(false);
-
-            $data = new DataClient();
-            $data->module_id = $model->module_id;
-            $data->data = $model->convection_pump
-                          .$model->cold_water_supply_pump
-                          .$model->return_pump
-                          .$model->incresed_pressure_pump
-                          .$model->heat_pump
-                          .$model->heater_resister
-                          .$model->three_way_valve
-                          .$model->backflow_valve
-                          .$model->reserved;
-            $data->status = 0;
-            $data->save(false);
-
-            return $this->redirect(['/modules/view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                        'model' => $model,
-            ]);
+            $model->convection_pump = $values['OutputMode']['convection_pump']['mode'] . $values['OutputMode']['convection_pump']['pump'] . Socket::alldec2bin($values['OutputMode']['convection_pump']['time'], 8);
+            $model->cold_water_supply_pump = $values['OutputMode']['cwsp_pump']['mode'] . $values['OutputMode']['cwsp_pump']['pump'] . Socket::alldec2bin($values['OutputMode']['cwsp_pump']['time'], 8);
+            $model->return_pump = $values['OutputMode']['return_pump']['mode'] . $values['OutputMode']['return_pump']['pump'] . Socket::alldec2bin($values['OutputMode']['return_pump']['time'], 8);
+            $model->incresed_pressure_pump = $values['OutputMode']['pressure_pump']['mode'] . $values['OutputMode']['pressure_pump']['pump'] . Socket::alldec2bin($values['OutputMode']['pressure_pump']['time'], 8);
+            $model->heat_pump = $values['OutputMode']['heat_pump']['mode'] . $values['OutputMode']['heat_pump']['pump'] . Socket::alldec2bin($values['OutputMode']['heat_pump']['time'], 8);
+            $model->heater_resister = $values['OutputMode']['heater_resis']['mode'] . $values['OutputMode']['heater_resis']['pump'] . Socket::alldec2bin($values['OutputMode']['heater_resis']['time'], 8);
+            $model->three_way_valve = $values['OutputMode']['3way']['mode'] . $values['OutputMode']['3way']['pump'] . Socket::alldec2bin($values['OutputMode']['3way']['time'], 8);
+            $model->backflow_valve = $values['OutputMode']['blakflow']['mode'] . $values['OutputMode']['blakflow']['pump'] . Socket::alldec2bin($values['OutputMode']['blakflow']['time'], 8);
+            $model->reserved = $values['OutputMode']['reserved']['mode'] . $values['OutputMode']['reserved']['pump'] . Socket::alldec2bin($values['OutputMode']['reserved']['time'], 8);
+            if ($model->save(false)) {
+                $model->toClient();
+                return $this->redirect(['/modules/view', 'id' => $model->module_id]);
+            }
         }
+        return $this->render('update', [
+                    'model' => $model,
+        ]);
     }
 
     /**
