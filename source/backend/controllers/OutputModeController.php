@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use backend\models\OutputMode;
 use backend\models\Modules;
+use backend\models\DataClient;
 use backend\models\OutputModeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -74,6 +75,22 @@ class OutputModeController extends AppController {
           $model->backflow_valve = $values['OutputMode']['blakflow']['mode'].$values['OutputMode']['blakflow']['pump'].Socket::alldec2bin($values['OutputMode']['blakflow']['time'],8);
           $model->reserved = $values['OutputMode']['reserved']['mode'].$values['OutputMode']['reserved']['pump'].Socket::alldec2bin($values['OutputMode']['reserved']['time'],8);
           $model->save(false);
+
+
+          $data = new DataClient();
+          $data->module_id = $model->module_id;
+          $data->data = $model->convection_pump
+                        .$model->cold_water_supply_pump
+                        .$model->return_pump
+                        .$model->incresed_pressure_pump
+                        .$model->heat_pump
+                        .$model->heater_resister
+                        .$model->three_way_valve
+                        .$model->backflow_valve
+                        .$model->reserved;
+          $data->status = 0;
+          $data->save(false);
+
           return $this->redirect(['/modules/view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -104,6 +121,20 @@ class OutputModeController extends AppController {
             $model->backflow_valve = $values['OutputMode']['blakflow']['mode'].$values['OutputMode']['blakflow']['pump'].Socket::alldec2bin($values['OutputMode']['blakflow']['time'],8);
             $model->reserved = $values['OutputMode']['reserved']['mode'].$values['OutputMode']['reserved']['pump'].Socket::alldec2bin($values['OutputMode']['reserved']['time'],8);
             $model->save(false);
+
+            $data = new DataClient();
+            $data->module_id = $model->module_id;
+            $data->data = $model->convection_pump
+                          .$model->cold_water_supply_pump
+                          .$model->return_pump
+                          .$model->incresed_pressure_pump
+                          .$model->heat_pump
+                          .$model->heater_resister
+                          .$model->three_way_valve
+                          .$model->backflow_valve
+                          .$model->reserved;
+            $data->status = 0;
+            $data->save(false);
 
             return $this->redirect(['/modules/view', 'id' => $model->id]);
         } else {

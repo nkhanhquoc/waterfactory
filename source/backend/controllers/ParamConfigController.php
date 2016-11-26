@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use backend\models\ParamConfig;
 use backend\models\Modules;
+use backend\models\DataClient;
 use backend\models\ParamConfigSearch;
 use common\socket\Socket;
 use yii\web\Controller;
@@ -84,6 +85,20 @@ class ParamConfigController extends AppController {
                                     .Socket::alldec2bin($values['3way_temp']);
           $model->backflow_valve = Socket::alldec2bin($values['backflow_temp']);
           $model->save(false);
+
+
+          $data = new DataClient();
+          $data->module_id = $model->module_id;
+          $data->data = $model->convection_pump
+                        .$model->cold_water_supply_pump
+                        .$model->return_pump
+                        .$model->incresed_pressure_pump
+                        .$model->heat_pump
+                        .$model->heat_resistor
+                        .$model->three_way_valve
+                        .$model->backflow_valve;
+          $data->status = 0;
+          $data->save(false);
             return $this->redirect(['/modules/view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -126,6 +141,19 @@ class ParamConfigController extends AppController {
                                     .Socket::alldec2bin($values['3way_temp']);
           $model->backflow_valve = Socket::alldec2bin($values['backflow_temp']);
           $model->save(false);
+
+          $data = new DataClient();
+          $data->module_id = $model->module_id;
+          $data->data = $model->convection_pump
+                        .$model->cold_water_supply_pump
+                        .$model->return_pump
+                        .$model->incresed_pressure_pump
+                        .$model->heat_pump
+                        .$model->heat_resistor
+                        .$model->three_way_valve
+                        .$model->backflow_valve;
+          $data->status = 0;
+          $data->save(false);
 
             return $this->redirect(['/modules/view', 'id' => $model->id]);
         } else {
