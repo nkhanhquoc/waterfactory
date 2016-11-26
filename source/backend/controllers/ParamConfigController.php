@@ -61,6 +61,8 @@ class ParamConfigController extends AppController {
     public function actionCreate() {
         $model = new ParamConfig();
         $modules = Modules::getAll();
+        $moduleId = ($_GET['module_id']) ? intval($_GET['module_id']) : 0;
+        $model->module_id = $moduleId;
         if (Yii::$app->request->isPost) {
             $values = Yii::$app->request->post();
 
