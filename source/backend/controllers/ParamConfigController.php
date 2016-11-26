@@ -87,7 +87,7 @@ class ParamConfigController extends AppController {
 
             if ($model->save(false)) {
                 $model->toClient();
-                return $this->redirect(['/modules/view', 'id' => $model->id]);
+                return $this->redirect(['/modules/view', 'id' => $model->module_id]);
             }
         }
         return $this->render('create', [
@@ -130,7 +130,7 @@ class ParamConfigController extends AppController {
             $model->backflow_valve = Socket::alldec2bin($values['backflow_temp']);
             if ($model->save(false)) {
                 $model->toClient();
-                return $this->redirect(['/modules/view', 'id' => $model->id]);
+                return $this->redirect(['/modules/view', 'id' => $model->module_id]);
             }
         }
         return $this->render('update', [
