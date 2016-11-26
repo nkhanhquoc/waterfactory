@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $model->getModuleId();
             <div class="icon-09"><img src="/images/04.png"/></div>    
 
             <div class="c-10">(10)</div>
-            <div class="bg-10-red <?php echo $statuses->dien_tro_nhiet_bon_gia_nhiet_1 == '11' ? 'bg-green' : 'bg-red' ?>"></div>
+            <div class="bg-10-red <?php echo $statuses->dien_tro_nhiet_bon_gia_nhiet_1 == '00' ? 'bg-green' : 'bg-red' ?>"></div>
             <div class="bg-10-green <?php echo $statuses->dien_tro_nhiet_bon_gia_nhiet_2 == '00' ? 'bg-green' : 'bg-red' ?>"></div>   
 
             <div class="c-11">(11)</div> 
