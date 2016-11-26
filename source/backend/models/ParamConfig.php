@@ -25,4 +25,81 @@ class ParamConfig extends ParamConfigBase {
         ];
     }
 
+    public function getConvectionTemp()
+    {
+      return bindec($this->convection_pump);
+    }
+
+    public function getCwsplv1()
+    {
+      return bindec(substr($this->cold_water_supply_pump,0,8));
+    }
+    public function getCwsplv2()
+    {
+      return bindec(substr($this->cold_water_supply_pump,8,8));
+    }
+    public function getReturnPumpT1Start()
+    {
+      return bindec(substr($this->return_pump,0,8));
+    }
+    public function getReturnPumpT2Start()
+    {
+      return bindec(substr($this->return_pump,8,8));
+    }
+    public function getReturnPumpT1End()
+    {
+      return bindec(substr($this->return_pump,16,8));
+    }
+    public function getReturnPumpT2End()
+    {
+      return bindec(substr($this->return_pump,24,8));
+    }
+    public function getReturnPumpDeltat()
+    {
+      return bindec(substr($this->return_pump,32,8));
+    }
+    public function getPressurePumpP1()
+    {
+      return bindec($this->incresed_pressure_pump);
+    }
+    public function getHeatPumpT1()
+    {
+      return bindec($this->heat_pump);
+    }
+    public function getHeaterResisT1()
+    {
+      return bindec(substr($this->heat_resistor,0,8));
+    }
+    public function getHeaterResisT2()
+    {
+      return bindec(substr($this->heat_resistor,8,8));
+    }
+    public function getHeaterResisDelay()
+    {
+      return bindec(substr($this->heat_resistor,16,8));
+    }
+    public function get3wayT1h()
+    {
+      return bindec(substr($this->three_way_valve,0,8));
+    }
+    public function get3wayT1m()
+    {
+      return bindec(substr($this->three_way_valve,8,8));
+    }
+    public function get3wayT2h()
+    {
+      return bindec(substr($this->three_way_valve,16,8));
+    }
+    public function get3wayT2m()
+    {
+      return bindec(substr($this->three_way_valve,24,8));
+    }
+    public function get3wayTemp()
+    {
+      return bindec(substr($this->three_way_valve,32,8));
+    }
+    public function getBackflowTemp()
+    {
+      return bindec($this->backflow_valve);
+    }
 }
