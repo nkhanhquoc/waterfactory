@@ -100,15 +100,17 @@ AppAsset::register($this);
                     </ul>
                 </div>
                 <!-- END TOP NAVIGATION MENU -->
-                <div class="bottom-menu">
-                    <ul>
-                        <li><a href="#">OVER TANK</a></li>
-                        <li><a href="#">LOST CONNECTION</a></li>
-                        <li><a href="#">OVER HEAT</a></li>
-                        <li><a href="#">OVER PRESSURE</a></li>
-                        <li><a href="#">LOST SUPPLY</a></li>
-                    </ul>
-                </div>
+                <?php // if (Yii::$app->controller->id == 'modules' && Yii::$app->controller->action->id == 'view') { ?>
+                <!--                    <div class="bottom-menu">
+                                        <ul>
+                                            <li><a href="#">OVER TANK</a></li>
+                                            <li><a href="#">LOST CONNECTION</a></li>
+                                            <li><a href="#">OVER HEAT</a></li>
+                                            <li><a href="#">OVER PRESSURE</a></li>
+                                            <li><a href="#">LOST SUPPLY</a></li>
+                                        </ul>
+                                    </div>-->
+                <?php // } ?>
             </div>
             <!-- END HEADER INNER -->
         </div>

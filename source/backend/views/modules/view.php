@@ -15,6 +15,17 @@ if ($model->paramConfigs) {
 $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Html::encode($model->name);
 ?>
 <div class="output-mode-view">
+    <?php if (Yii::$app->controller->id == 'modules' && Yii::$app->controller->action->id == 'view') { ?>
+        <div class="bottom-menu">
+            <ul>
+                <li><a href="#">OVER TANK</a></li>
+                <li><a href="#">LOST CONNECTION</a></li>
+                <li><a href="#">OVER HEAT</a></li>
+                <li><a href="#">OVER PRESSURE</a></li>
+                <li><a href="#">LOST SUPPLY</a></li>
+            </ul>
+        </div>
+    <?php } ?>
     <div class="diagram">
         <div class="left-content">
             <div class="c-00"><?php echo bindec($sensors->cam_bien_ap_suat_duong_ong); ?></div>
