@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
     <div class="diagram">
         <div class="left-content">
             <div class="c-00"><?php echo bindec($sensors->cam_bien_ap_suat_duong_ong); ?></div>
-            <!--<div class="c-01">(1)</div>-->
+            <div class="c-01">&nbsp;</div>
 
             <div class="c-02"><p><?php echo bindec($sensors->cam_bien_dan_thu); ?>&deg;C</p></div>    
             <div class="icon-02"><img src="/images/03.png"/></div>
@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
             <div class="c-03"><p><?php echo bindec($sensors->cam_bien_nhiet_dinh_bon_solar); ?>&deg;C</p></div>
             <div class="icon-03"><img src="/images/01.png"/></div>    
 
-            <!--<div class="c-04">(4)</div>-->
+            <div class="c-04">&nbsp;</div>
             <div class="bg-04">
                 <div class="ctn">
                 <!--<span class="row-01"></span>-->
@@ -38,11 +38,11 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
             <div class="c-05"><p><?php echo bindec($sensors->cam_bien_bon_solar); ?>&deg;C</p></div>
             <div class="icon-05"><img src="/images/01.png"/></div>    
 
-            <!--<div class="c-06">(6)</div>-->
+            <div class="c-06">&nbsp;</div>
             <div class="bg-06-green <?php echo $statuses->bom_doi_luu_1 == '00' ? 'bg-green' : 'bg-red' ?>"></div>
             <div class="bg-06-red <?php echo $statuses->bom_doi_luu_2 == '00' ? 'bg-green' : 'bg-red' ?>"></div>    
 
-            <!--<div class="c-07">(7)</div>-->
+            <div class="c-07">&nbsp;</div>
             <div class="bg-07-green <?php echo $statuses->van_dien_tu_ba_nga == '00' ? 'bg-green' : 'bg-red' ?>"></div>
             <div class="bg-07-red <?php echo $statuses->van_dien_tu_ba_nga == '00' ? 'bg-green' : 'bg-red' ?>"></div>   
 
@@ -52,14 +52,14 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
             <div class="c-09"><p><?php echo bindec($sensors->cam_bien_ap_suat_bon_gia_nhiet); ?>&deg;C</p></div>
             <div class="icon-09"><img src="/images/04.png"/></div>    
 
-            <!--<div class="c-10">(10)</div>-->
+            <div class="c-10">&nbsp;</div>
             <div class="bg-10-red <?php echo $statuses->dien_tro_nhiet_bon_gia_nhiet_1 == '00' ? 'bg-green' : 'bg-red' ?>"></div>
             <div class="bg-10-green <?php echo $statuses->dien_tro_nhiet_bon_gia_nhiet_2 == '00' ? 'bg-green' : 'bg-red' ?>"></div>   
 
             <div class="c-11">&nbsp;</div> 
             <div class="bg-11 <?php echo $statuses->bom_nhiet_bon_gia_nhiet == '00' ? 'bg-green' : 'bg-red' ?>"></div>   
 
-            <!--<div class="c-12">(12)</div>-->
+            <div class="c-12">&nbsp;</div>
             <div class="bg-12-green <?php echo $statuses->bom_tang_ap_1 == '00' ? 'bg-green' : 'bg-red' ?>"></div>
             <div class="bg-12-red <?php echo $statuses->bom_tang_ap_2 == '00' ? 'bg-green' : 'bg-red' ?>"></div>  
 
@@ -69,18 +69,18 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
             <div class="c-14"><p><?php echo bindec($sensors->cam_bien_tran); ?>&deg;C</p></div>
             <div class="icon-14"><img src="/images/03.png"/></div>    
 
-            <!--<div class="c-15">(15)</div>-->
+            <div class="c-15">&nbsp;</div>
             <div class="bg-15-green <?php echo $statuses->bom_cap_nuoc_lanh_1 == '00' ? 'bg-green' : 'bg-red' ?>"></div>
             <div class="bg-15-red <?php echo $statuses->bom_cap_nuoc_lanh_2 == '00' ? 'bg-green' : 'bg-red' ?>"></div> 
 
-            <!--<div class="c-16">(16)</div>-->
+            <div class="c-16">&nbsp;</div>
             <div class="bg-16-green <?php echo $statuses->bom_hoi_duong_ong_1 == '00' ? 'bg-green' : 'bg-red' ?>"></div>
             <div class="bg-16-red <?php echo $statuses->bom_hoi_duong_ong_2 == '00' ? 'bg-green' : 'bg-red' ?>"></div> 
 
             <div class="c-17"><p><?php echo bindec($sensors->du_phong); ?>&deg;C</p></div>
             <div class="icon-17"><img src="/images/03.png"/></div>    
 
-            <!--<div class="c-18">(18)</div>-->
+            <div class="c-18">&nbsp;</div>
         </div>
 
         <!--        <div class="right-content collapse1">
