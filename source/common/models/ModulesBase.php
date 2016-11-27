@@ -7,6 +7,28 @@ use Yii;
 class ModulesBase extends \common\models\db\ModulesDB {
 
     /**
+     * @inheritdoc
+     */
+    public function attributeLabels() {
+        return [
+            'id' => Yii::t('backend', 'ID'),
+            'name' => Yii::t('backend', 'Tên khách hàng'),
+            'msisdn' => Yii::t('backend', 'Số điện thoại'),
+            'country_id' => Yii::t('backend', 'Quốc gia'),
+            'privincial_id' => Yii::t('backend', 'Tỉnh'),
+            'distric_id' => Yii::t('backend', 'Huyện/Quận'),
+            'customer_code' => Yii::t('backend', 'Mã khách hàng'),
+            'address' => Yii::t('backend', 'Address'),
+            'alarm' => Yii::t('backend', 'Alarm'),
+            'created_by' => Yii::t('backend', 'Created By'),
+            'created_at' => Yii::t('backend', 'Created At'),
+            'updated_by' => Yii::t('backend', 'Updated By'),
+            'updated_at' => Yii::t('backend', 'Updated At'),
+            'money' => Yii::t('backend', 'Money'),
+        ];
+    }
+
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getSensors() {

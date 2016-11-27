@@ -19,7 +19,7 @@ use backend\components\common\Utility;
                         $thumb = $val->thumb;
                     }
                     ?>
-                    <img class="img-responsive" src="<?php echo Utility::getThumbImg($thumb); ?>" alt="<?php echo \yii\helpers\Html::encode($val->mode_id); ?>" />
+                    <img class="img-responsive" src="<?php echo Utility::getThumbImg($thumb); ?>" alt="<?php echo \yii\helpers\Html::encode($val->name); ?>" />
                     <p class="">ID: <?php echo \yii\helpers\Html::encode($val->getModuleId()); ?></p>
                     <p class=""><?php echo \yii\helpers\Html::encode($val->name); ?></p>
                 </a>

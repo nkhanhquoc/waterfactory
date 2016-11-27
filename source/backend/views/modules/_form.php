@@ -9,7 +9,6 @@ use yii\widgets\ActiveForm;
 $country = backend\models\Country::getAll();
 $provincial = backend\models\Provincial::getAll();
 $distric = backend\models\Distric::getAll();
-$mode = backend\models\Mode::getAll();
 ?>
 
 <div class="modules-form">
@@ -18,17 +17,15 @@ $mode = backend\models\Mode::getAll();
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => 255]) ?>
 
-    <?= $form->field($model, 'msisdn')->textInput(['maxlength' => 15]) ?>
+    <?= $form->field($model, 'customer_code')->textInput(['maxlength' => 100, 'readonly' => 'readonly']) ?>
 
-    <?= $form->field($model, 'mode_id')->dropDownList($mode) ?>
+    <?= $form->field($model, 'msisdn')->textInput(['maxlength' => 15]) ?>
 
     <?= $form->field($model, 'country_id')->dropDownList($country) ?>
 
     <?= $form->field($model, 'privincial_id')->dropDownList($provincial) ?>
 
-    <?= $form->field($model, 'distric_id')->dropDownList($distric) ?>
-
-    <?= $form->field($model, 'customer_code')->textInput(['maxlength' => 100, 'readonly' => 'readonly']) ?>
+    <?= $form->field($model, 'distric_id')->dropDownList($distric) ?>    
 
     <?= $form->field($model, 'address')->textInput(['maxlength' => 255]) ?>
 

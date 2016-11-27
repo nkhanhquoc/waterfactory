@@ -17,7 +17,7 @@ class ModulesSearch extends Modules {
      */
     public function rules() {
         return [
-            [['id', 'mode_id', 'country_id', 'privincial_id', 'distric_id', 'created_by', 'updated_by'], 'integer'],
+            [['id', 'country_id', 'privincial_id', 'distric_id', 'created_by', 'updated_by'], 'integer'],
             [['msisdn', 'customer_code', 'address', 'created_at', 'updated_at'], 'safe'],
         ];
     }
@@ -54,8 +54,6 @@ class ModulesSearch extends Modules {
         }
 
         $query->andFilterWhere([
-            'id' => $this->id,
-            'mode_id' => $this->mode_id,
             'country_id' => $this->country_id,
             'privincial_id' => $this->privincial_id,
             'distric_id' => $this->distric_id,
