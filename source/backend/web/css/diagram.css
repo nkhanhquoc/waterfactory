@@ -205,15 +205,15 @@
 
 .bg-07-red,.bg-07-green {
     display:block;
+    left:294px;
+    top:422px;
     width:18px;
+    height:15px;
     background:red;
-    height: 14px;
-    left: 295px;
-    top: 407px;
 }
 
 .bg-07-green {
-    top:422px;
+    top:407px;
     background:green;
 }
 
