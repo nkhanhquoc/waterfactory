@@ -15,6 +15,7 @@ use yii\web\Controller;
 class AppController extends Controller {
 
     public function beforeAction($action) {
+        date_default_timezone_set('Asia/Saigon');
         if (Yii::$app->session->has('lang')) {
             Yii::$app->language = Yii::$app->session->get('lang');
         } else {

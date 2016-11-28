@@ -29,8 +29,8 @@ class Modules extends ModulesBase {
     }
 
     function setVan_dien_tu_ba_nga_up() {
+        date_default_timezone_set('Asia/Saigon');
         if (trim($this->moduleStatuses->van_dien_tu_ba_nga) == '00') {
-            echo date('Y-m-d H:i:s');die;
             if (strtotime(date('Y-m-d 6:00:00')) <= strtotime(date('Y-m-d H:i:s')) && strtotime(date('Y-m-d H:i:s')) <= strtotime(date('Y-m-d 18:00:00'))) {
                 $this->van_dien_tu_ba_nga_up = '00';
                 $this->van_dien_tu_ba_nga_down = '11';
