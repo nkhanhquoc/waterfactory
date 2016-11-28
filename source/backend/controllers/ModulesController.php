@@ -49,6 +49,7 @@ class ModulesController extends AppController {
         $sensors = $model->sensors;
         $statuses = $model->moduleStatuses;
         $alarms = $model->alarms;
+        $model->setVan_dien_tu_ba_nga_up();
         return $this->render('view', [
                     'model' => $model,
                     'sensors' => $sensors,
