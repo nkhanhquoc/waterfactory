@@ -33,7 +33,6 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
         <div class="row80 params-right border-left">
             <div class="row50 border-right">
                 <ul class="mode-select">
-
                     <li class="row50" id="loadmode-1">
                         <span id="convection_pump_auto" onclick="setPumpMode('convection_pump','<?php echo AUTO_B1 ?>')" class="<?php if($model->getConvectionMode() == AUTO_B1) echo 'active'; else echo ''; ?>">Auto</span>
                     </li>
@@ -50,7 +49,8 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
             </div>
             <div class="row50 padding10">
                 <p>Time wait for master pump</p>
-                <select class="form-control row80" id="convection_pump_select" onchange="changePumpTime('convection_pump')">
+                <select class="form-control row80" id="convection_pump_select" onchange="changePumpTime('convection_pump')" <?php if($model->getConvectionMode() == MANUAL_B1) echo 'disabled' ?>>
+                    <option <?php if($model->getConvectionTime() == 0) echo 'selected="selected"'; ?>>0</option>
                     <option <?php if($model->getConvectionTime() == 1) echo 'selected="selected"'; ?>>1</option>
                     <option <?php if($model->getConvectionTime() == 2) echo 'selected="selected"'; ?>>2</option>
                     <option <?php if($model->getConvectionTime() == 3) echo 'selected="selected"'; ?>>3</option>
@@ -82,13 +82,14 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
                         <span id="cwsp_pump_manual" onclick="setPumpMode('cwsp_pump','<?php echo MANUAL_B1 ?>')" class="<?php if($model->getCwspMode() == MANUAL_B1) echo 'active'; else echo ''; ?>">Manual</span>
                     </li>
                     <li class="row50 border-left border-top" id="loadmode-8">
-                        <span id="cwsp_pump_slave" onclick="setPumpPump('cwsp_pump','<?php echo PUMP_MASTER ?>')" class="<?php if($model->getCwspPump() == PUMP_ALL || $model->getCwspPump() == PUMP_MASTER) echo 'active'; else echo ''; ?>">Pump 2</span>
+                        <span id="cwsp_pump_master" onclick="setPumpPump('cwsp_pump','<?php echo PUMP_MASTER ?>')" class="<?php if($model->getCwspPump() == PUMP_ALL || $model->getCwspPump() == PUMP_MASTER) echo 'active'; else echo ''; ?>">Pump 2</span>
                     </li>
                 </ul>
             </div>
             <div class="row50 padding10">
                 <p>Time wait for master pump</p>
-                <select class="form-control row80" id="cwsp_pump_select" onchange="changePumpTime('cwsp_pump')">
+                <select class="form-control row80" id="cwsp_pump_select" onchange="changePumpTime('cwsp_pump')" <?php if($model->getCwspMode() == MANUAL_B1) echo 'disabled' ?>>
+                    <option <?php if($model->getCwspTime() == 0) echo 'selected="selected"'; ?>>0</option>
                     <option <?php if($model->getCwspTime() == 1) echo 'selected="selected"'; ?>>1</option>
                     <option <?php if($model->getCwspTime() == 2) echo 'selected="selected"'; ?>>2</option>
                     <option <?php if($model->getCwspTime() == 3) echo 'selected="selected"'; ?>>3</option>
@@ -126,7 +127,8 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
             </div>
             <div class="row50 padding10">
                 <p>Time wait for master pump</p>
-                <select class="form-control row80" id="return_pump_select" onchange="changePumpTime('return_pump')">
+                <select class="form-control row80" id="return_pump_select" onchange="changePumpTime('return_pump')" <?php if($model->getReturnPumpMode() == MANUAL_B1) echo 'disabled' ?>>
+                    <option <?php if($model->getReturnPumpTime() == 0) echo 'selected="selected"'; ?>>0</option>
                     <option <?php if($model->getReturnPumpTime() == 1) echo 'selected="selected"'; ?>>1</option>
                     <option <?php if($model->getReturnPumpTime() == 2) echo 'selected="selected"'; ?>>2</option>
                     <option <?php if($model->getReturnPumpTime() == 3) echo 'selected="selected"'; ?>>3</option>
@@ -164,7 +166,8 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
             </div>
             <div class="row50 padding10">
                 <p>Time wait for master pump</p>
-                <select class="form-control row80" id="pressure_pump_select" onchange="changePumpTime('pressure_pump')">
+                <select class="form-control row80" id="pressure_pump_select" onchange="changePumpTime('pressure_pump')" <?php if($model->getPressurePumpMode() == MANUAL_B1) echo 'disabled' ?>>
+                    <option <?php if($model->getPressurePumpTime() == 0) echo 'selected="selected"'; ?>>0</option>
                     <option <?php if($model->getPressurePumpTime() == 1) echo 'selected="selected"'; ?>>1</option>
                     <option <?php if($model->getPressurePumpTime() == 2) echo 'selected="selected"'; ?>>2</option>
                     <option <?php if($model->getPressurePumpTime() == 3) echo 'selected="selected"'; ?>>3</option>
@@ -202,7 +205,8 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
             </div>
             <div class="row50 padding10">
                 <p>Time wait for master pump</p>
-                <select class="form-control row80" id="heat_pump_select" onchange="changePumpTime('heat_pump')">
+                <select class="form-control row80" id="heat_pump_select" onchange="changePumpTime('heat_pump')" <?php if($model->getHeatPumpMode() == MANUAL_B1) echo 'disabled' ?>>
+                    <option <?php if($model->getHeatPumpTime() == 0) echo 'selected="selected"'; ?>>0</option>
                     <option <?php if($model->getHeatPumpTime() == 1) echo 'selected="selected"'; ?>>1</option>
                     <option <?php if($model->getHeatPumpTime() == 2) echo 'selected="selected"'; ?>>2</option>
                     <option <?php if($model->getHeatPumpTime() == 3) echo 'selected="selected"'; ?>>3</option>
@@ -240,7 +244,8 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
             </div>
             <div class="row50 padding10">
                 <p>Time wait for master Resistor</p>
-                <select class="form-control row80" id="heater_resis_select" onchange="changePumpTime('heater_resis')">
+                <select class="form-control row80" id="heater_resis_select" onchange="changePumpTime('heater_resis')" <?php if($model->getHeaterResisMode() == MANUAL_B1) echo 'disabled' ?>>
+                    <option <?php if($model->getHeaterResisTime() == 0) echo 'selected="selected"'; ?>>0</option>
                     <option <?php if($model->getHeaterResisTime() == 1) echo 'selected="selected"'; ?>>1</option>
                     <option <?php if($model->getHeaterResisTime() == 2) echo 'selected="selected"'; ?>>2</option>
                     <option <?php if($model->getHeaterResisTime() == 3) echo 'selected="selected"'; ?>>3</option>
@@ -278,7 +283,8 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
             </div>
             <div class="row50 padding10">
                 <p>Time wait for master Valve</p>
-                <select class="form-control row80" id="3way_select" onchange="changePumpTime('3way')">
+                <select class="form-control row80" id="3way_select" onchange="changePumpTime('3way')" <?php if($model->get3wayMode() == MANUAL_B1) echo 'disabled' ?>>
+                    <option <?php if($model->get3wayTime() == 0) echo 'selected="selected"'; ?>>0</option>
                     <option  <?php if($model->get3wayTime() == 1) echo 'selected="selected"'; ?>>1</option>
                     <option  <?php if($model->get3wayTime() == 2) echo 'selected="selected"'; ?>>2</option>
                     <option  <?php if($model->get3wayTime() == 3) echo 'selected="selected"'; ?>>3</option>
@@ -316,7 +322,8 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
             </div>
             <div class="row50 padding10">
                 <p>Time wait for master Valve</p>
-                <select class="form-control row80" id="blakflow_select" onchange="changePumpTime('blakflow')">
+                <select class="form-control row80" id="blakflow_select" onchange="changePumpTime('blakflow')" <?php if($model->getBlakflowMode() == MANUAL_B1) echo 'disabled' ?>>
+                    <option <?php if($model->getBlakflowTime() == 0) echo 'selected="selected"'; ?>>0</option>
                     <option <?php if($model->getBlakflowTime() == 1) echo 'selected="selected"'; ?>>1</option>
                     <option <?php if($model->getBlakflowTime() == 2) echo 'selected="selected"'; ?>>2</option>
                     <option <?php if($model->getBlakflowTime() == 3) echo 'selected="selected"'; ?>>3</option>
@@ -354,7 +361,8 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
             </div>
             <div class="row50 padding10">
                 <p>Time wait for master Valve</p>
-                <select class="form-control row80" id="reserved_select" onchange="changePumpTime('reserved')">
+                <select class="form-control row80" id="reserved_select" onchange="changePumpTime('reserved')" <?php if($model->getReservedMode() == MANUAL_B1) echo 'disabled' ?>>
+                    <option <?php if($model->getReservedTime() == 0) echo 'selected="selected"'; ?>>0</option>
                     <option <?php if($model->getReservedTime() == 1) echo 'selected="selected"'; ?>>1</option>
                     <option <?php if($model->getReservedTime() == 2) echo 'selected="selected"'; ?>>2</option>
                     <option <?php if($model->getReservedTime() == 3) echo 'selected="selected"'; ?>>3</option>
