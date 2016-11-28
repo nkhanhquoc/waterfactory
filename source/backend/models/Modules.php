@@ -20,7 +20,15 @@ class Modules extends ModulesBase {
         return $this->van_dien_tu_ba_nga_down;
     }
 
-    function setVan_dien_tu_ba_nga_up($van_dien_tu_ba_nga_up) {
+    function setVan_dien_tu_ba_nga_down() {
+        if ($this->van_dien_tu_ba_nga_up == '00') {
+            $this->van_dien_tu_ba_nga_down = '11';
+        } else {
+            $this->van_dien_tu_ba_nga_down = '00';
+        }
+    }
+
+    function setVan_dien_tu_ba_nga_up() {
         if ($this->moduleStatuses->van_dien_tu_ba_nga == '00') {
             if (strtotime(date('Y-m-d 6:00:00')) <= strtotime(date('Y-m-d H:i:s')) && strtotime(date('Y-m-d H:i:s')) <= strtotime(date('Y-m-d 18:00:00'))) {
                 $this->van_dien_tu_ba_nga_up = '00';
