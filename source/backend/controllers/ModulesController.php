@@ -48,10 +48,12 @@ class ModulesController extends AppController {
         $model = $this->findModel($id);
         $sensors = $model->sensors;
         $statuses = $model->moduleStatuses;
+        $alarms = $model->alarms;
         return $this->render('view', [
                     'model' => $model,
                     'sensors' => $sensors,
                     'statuses' => $statuses,
+                    'alarms' => $alarms,
         ]);
     }
 

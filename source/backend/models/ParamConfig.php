@@ -103,7 +103,7 @@ class ParamConfig extends ParamConfigBase {
 
     public function toClient() {
         $id = module_id_dp . \common\socket\Socket::dec2bin($this->module->country->code . $this->module->privincial->code . $this->module->distric->code . $this->module->customer_code);
-        $id .= PARAMETTER_IE_NAME . PARAMETTER_IE_LEN;
+        $id .= PARAMETTER_IE_NAME;
         $data = new \backend\models\DataClient();
         $data->module_id = $this->module_id;
         $data->data = $id . $this->convection_pump

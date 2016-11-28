@@ -2644,7 +2644,6 @@ ul,li{
     width: 100%;
     text-align: center;
     color: #fff;
-    background: red;
     height: 25px;
     line-height: 25px;
     display: block;
@@ -2654,6 +2653,9 @@ ul,li{
     padding: 0px 20px;
     text-transform: uppercase;
 }
+.bottom-menu ul li a.alarm{
+    background: red !important;
+}    
 .modules a p{
     text-align: center;
 }

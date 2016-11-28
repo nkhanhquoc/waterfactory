@@ -70,6 +70,13 @@ class ModulesBase extends \common\models\db\ModulesDB {
         return \common\models\ParamConfigBase::find()->where(['module_id' => $this->id])->orderBy(['created_at' => SORT_DESC])->one();
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAlarms() {
+        return \common\models\AlarmBase::find()->where(['module_id' => $this->id])->orderBy(['created_at' => SORT_DESC])->one();
+    }
+
     public function getModuleId() {
         return $this->country->code . $this->privincial->code . $this->distric->code . $this->customer_code;
     }

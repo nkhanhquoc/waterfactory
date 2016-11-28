@@ -18,10 +18,10 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
     <?php if (Yii::$app->controller->id == 'modules' && Yii::$app->controller->action->id == 'view') { ?>
         <div class="bottom-menu">
             <ul>
-                <li><a href="#">OVER TANK</a></li>
+                <li><a href="#" <?php echo $alarms->tran_be == '11' ? "class='alarm'" : '' ?>>OVER TANK</a></li>
                 <li><a href="#">LOST CONNECTION</a></li>
-                <li><a href="#">OVER HEAT</a></li>
-                <li><a href="#">OVER PRESSURE</a></li>
+                <li><a href="#" <?php echo $alarms->qua_nhiet == '11' ? "class='alarm'" : '' ?>>OVER HEAT</a></li>
+                <li><a href="#" <?php echo $alarms->qua_ap_suat == '11' ? "class='alarm'" : '' ?>>OVER PRESSURE</a></li>
                 <li><a href="#">LOST SUPPLY</a></li>
             </ul>
         </div>
@@ -54,8 +54,8 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
             <div class="bg-06-red <?php echo $statuses->bom_doi_luu_2 == '00' ? 'bg-green' : 'bg-red' ?>"></div>    
 
             <div class="c-07">&nbsp;</div>
-            <div class="bg-07-green <?php echo $statuses->van_dien_tu_ba_nga == '00' ? 'bg-green' : 'bg-red' ?>"></div>
-            <div class="bg-07-red <?php echo $statuses->van_dien_tu_ba_nga == '00' ? 'bg-green' : 'bg-red' ?>"></div>   
+            <div class="bg-07-green <?php echo $model->van_dien_tu_ba_nga_up == '00' ? 'bg-green' : 'bg-red' ?>"></div>
+            <div class="bg-07-red <?php echo $model->van_dien_tu_ba_nga_down == '00' ? 'bg-green' : 'bg-red' ?>"></div>   
 
             <div class="c-08"><p><?php echo bindec($sensors->cam_bien_nhiet_do_bon_gia_nhiet); ?>&deg;C</p></div>
             <div class="icon-08"><img src="/images/03.png"/></div>    
