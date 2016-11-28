@@ -19,6 +19,7 @@ use Yii;
  * @property string $data
  * @property string $address
  * @property string $alarm
+ * @property string $password
  * @property integer $created_by
  * @property string $created_at
  * @property integer $updated_by
@@ -26,6 +27,7 @@ use Yii;
  *
  * @property AlarmDB[] $alarms
  * @property DataClientDB[] $dataClients
+ * @property ImsiDB[] $imsis
  * @property ModuleStatusDB[] $moduleStatuses
  * @property CountryDB $country
  * @property ProvincialDB $privincial
@@ -58,7 +60,7 @@ class ModulesDB extends \yii\db\ActiveRecord
             [['name', 'msisdn', 'country_id', 'privincial_id', 'distric_id', 'customer_code'], 'required'],
             [['country_id', 'privincial_id', 'distric_id', 'mode_id', 'created_by', 'updated_by'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['name', 'address'], 'string', 'max' => 255],
+            [['name', 'address', 'password'], 'string', 'max' => 255],
             [['msisdn'], 'string', 'max' => 15],
             [['customer_code'], 'string', 'max' => 100],
             [['money'], 'string', 'max' => 160],
@@ -85,6 +87,7 @@ class ModulesDB extends \yii\db\ActiveRecord
             'data' => Yii::t('backend', 'Data'),
             'address' => Yii::t('backend', 'Address'),
             'alarm' => Yii::t('backend', 'Alarm'),
+            'password' => Yii::t('backend', 'Password'),
             'created_by' => Yii::t('backend', 'Created By'),
             'created_at' => Yii::t('backend', 'Created At'),
             'updated_by' => Yii::t('backend', 'Updated By'),
@@ -106,6 +109,14 @@ class ModulesDB extends \yii\db\ActiveRecord
     public function getDataClients()
     {
         return $this->hasMany(DataClientDB::className(), ['module_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getImsis()
+    {
+        return $this->hasMany(ImsiDB::className(), ['module_id' => 'id']);
     }
 
     /**

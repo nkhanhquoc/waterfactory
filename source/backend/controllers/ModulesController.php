@@ -50,6 +50,7 @@ class ModulesController extends AppController {
         $statuses = $model->moduleStatuses;
         $alarms = $model->alarms;
         $model->setVan_dien_tu_ba_nga_up();
+        echo $model->van_dien_tu_ba_nga_up . '<br>' . $model->van_dien_tu_ba_nga_down;die;
         return $this->render('view', [
                     'model' => $model,
                     'sensors' => $sensors,
