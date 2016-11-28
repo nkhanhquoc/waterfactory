@@ -54,8 +54,8 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
             <div class="bg-06-red <?php echo $statuses->bom_doi_luu_2 == '00' ? 'bg-green' : 'bg-red' ?>"></div>    
 
             <div class="c-07">&nbsp;</div>
-            <div class="bg-07-green <?php echo $model->van_dien_tu_ba_nga_up == '11' ? 'bg-green' : 'bg-red' ?>" van_dien_tu_ba_nga_up="<?php echo $model->van_dien_tu_ba_nga_up; ?>"></div>
-            <div class="bg-07-red <?php echo $model->van_dien_tu_ba_nga_down == '11' ? 'bg-green' : 'bg-red' ?>" van_dien_tu_ba_nga_down="<?php echo $model->van_dien_tu_ba_nga_down; ?>"></div>   
+            <div class="bg-07-green <?php echo $model->van_dien_tu_ba_nga_up == '00' ? 'bg-green' : 'bg-red' ?>" van_dien_tu_ba_nga_up="<?php echo $model->van_dien_tu_ba_nga_up; ?>"></div>
+            <div class="bg-07-red <?php echo $model->van_dien_tu_ba_nga_down == '00' ? 'bg-green' : 'bg-red' ?>" van_dien_tu_ba_nga_down="<?php echo $model->van_dien_tu_ba_nga_down; ?>"></div>   
 
             <div class="c-08"><p><?php echo bindec($sensors->cam_bien_nhiet_do_bon_gia_nhiet); ?>&deg;C</p></div>
             <div class="icon-08"><img src="/images/03.png"/></div>    
