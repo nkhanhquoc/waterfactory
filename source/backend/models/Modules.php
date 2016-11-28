@@ -33,13 +33,16 @@ class Modules extends ModulesBase {
             if (strtotime(date('Y-m-d 6:00:00')) <= strtotime(date('Y-m-d H:i:s')) && strtotime(date('Y-m-d H:i:s')) <= strtotime(date('Y-m-d 18:00:00'))) {
                 $this->van_dien_tu_ba_nga_up = '00';
                 $this->van_dien_tu_ba_nga_down = '11';
+                return;
             } else {
                 if (bindec(trim($this->sensors->cam_bien_nhiet_dinh_bon_solar)) >= bindec(trim($this->sensors->cam_bien_nhiet_do_bon_gia_nhiet))) {
                     $this->van_dien_tu_ba_nga_up = '11';
                     $this->van_dien_tu_ba_nga_down = '00';
+                    return;
                 } else {
                     $this->van_dien_tu_ba_nga_up = '00';
                     $this->van_dien_tu_ba_nga_down = '11';
+                    return;
                 }
             }
         } else {
