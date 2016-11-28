@@ -149,7 +149,16 @@ function addVideoToList(listId) {
 function setPumpMode(id,val){
   $('#'+id+'_auto').removeClass('active');
   $('#'+id+'_manual').removeClass('active');
-    $('#'+id+'_mode').val(val);
+  $('#'+id+'_mode').val(val);
+  if(val == '00000000'){
+      $('#'+id+'_select').prop('disabled','disabled');
+      $('#'+id+'_select').val(0);
+      $('#'+id+'_time').val('00000000');
+  } else {
+    $('#'+id+'_select').prop('disabled',false);
+  }
+
+
 }
 
 function setPumpPump(id,val) {
@@ -157,20 +166,35 @@ function setPumpPump(id,val) {
     var slave = '00000000';
     var master = '00000001';
     var current = $('#'+id+'_pump').val();
+    var mode = $('#'+id+'_mode').val();
 
-    if(val == slave && current == all){
-      $('#'+id+'_pump').val(master);
-    } else if(val == master && current == all){
-      $('#'+id+'_pump').val(slave);
-    } else if (val == master && current == slave) {
-      $('#'+id+'_pump').val(all);
-    }else if (val == slave && current == slave) {
-      $('#'+id+'_pump').val(slave);
-    }else if (val == slave && current == master) {
-      $('#'+id+'_pump').val(all);
-    }else if (val == master && current == master) {
-      $('#'+id+'_pump').val(master);
+    if(mode == '00000000'){//manual
+      if(val == slave && current == all){
+        $('#'+id+'_pump').val(master);
+      } else if(val == master && current == all){
+        $('#'+id+'_pump').val(slave);
+      } else if (val == master && current == slave) {
+        $('#'+id+'_pump').val(all);
+      }else if (val == slave && current == slave) {
+        $('#'+id+'_pump').val(slave);
+        $('#'+id+'_slave').removeClass("active");
+      }else if (val == slave && current == master) {
+        $('#'+id+'_pump').val(all);
+      }else if (val == master && current == master) {
+        $('#'+id+'_pump').val(master);
+        $('#'+id+'_master').removeClass("active");
+      }
+    } else {
+       $('#'+id+'_pump').val(val);
+      //  $('#'+id+'_master').removeClass("active");
+      //  $('#'+id+'_slave').removeClass("active");
+       if(val == '00000000'){
+         $("#"+id+"_master").removeClass("active");
+       } else {
+         $("#"+id+"_slave").removeClass("active");
+       }
     }
+
 }
 
 function changePumpTime(id) {
