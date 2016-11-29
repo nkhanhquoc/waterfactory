@@ -69,10 +69,11 @@ class ModulesController extends AppController {
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if ($model->toClient()) {
                 Yii::$app->session->setFlash('success', 'Set ID tới module ' . $model->getModuleId() . ' thành công!');
+                return $this->redirect(['view', 'id' => $model->id]);
             } else {
                 Yii::$app->session->setFlash('error', 'Không tìm thấy client nào có imsi ' . $model->msisdn);
             }
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                         'model' => $model,
@@ -92,10 +93,11 @@ class ModulesController extends AppController {
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if ($model->toClient()) {
                 Yii::$app->session->setFlash('success', 'Set ID tới module ' . $model->getModuleId() . ' thành công!');
+                return $this->redirect(['view', 'id' => $model->id]);
             } else {
                 Yii::$app->session->setFlash('error', 'Không tìm thấy client nào có imsi ' . $model->msisdn);
             }
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                         'model' => $model,
