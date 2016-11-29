@@ -54,7 +54,8 @@ class Modules extends ModulesBase {
      */
     public function rules() {
         return [
-            [['name', 'msisdn', 'country_id', 'privincial_id', 'distric_id', 'customer_code'], 'required'],
+            [['name', 'country_id', 'privincial_id', 'distric_id', 'customer_code'], 'required'],
+            [['msisdn'], 'required', 'message' => 'Không có client nào chờ thiết lập ID'],
             [['country_id', 'privincial_id', 'distric_id', 'mode_id', 'created_by', 'updated_by'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['name', 'address', 'password'], 'string', 'max' => 255],

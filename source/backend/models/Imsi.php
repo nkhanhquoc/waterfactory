@@ -6,4 +6,13 @@ use Yii;
 
 class Imsi extends \common\models\ImsiBase {
 
+    public static function getClientRequest() {
+        $model = \backend\models\Imsi::find()->where(['status' => 0])->all();
+        $data = ['' => 'Chọn client'];
+        foreach ($model as $item) {
+            $data[$item->imsi] = $item->imsi;
+        }
+        return $data;
+    }
+
 }
