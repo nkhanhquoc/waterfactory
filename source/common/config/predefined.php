@@ -38,8 +38,8 @@ define('PUMP_MASTER', '00000001');
 define('PUMP_ALL', '00000011');
 #du phong
 define('module_id_dp', '0000');
-define('ID_ASSIGNMENT_DP', '0000000000000000');
+define('ID_ASSIGNMENT_DP', '00000000000000000000');
 #IE length
 define('IE_ID_LENGTH', '11001000');
-define('IMSI_LENGTH', '10001000');
+define('IMSI_LENGTH', '00001010');
 
