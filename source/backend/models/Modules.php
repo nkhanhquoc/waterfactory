@@ -101,9 +101,8 @@ class Modules extends ModulesBase {
     }
 
     public function toClient() {
-        $sim = \common\socket\Socket::dec2bin($this->msisdn) . ID_ASSIGNMENT_DP;
+        $sim = ID_ASSIGNMENT . \common\socket\Socket::dec2bin($this->msisdn) . ID_ASSIGNMENT_DP;
         $id = module_id_dp . \common\socket\Socket::dec2bin($this->getModuleId());
-        $id .= ID_ASSIGNMENT;
 
         $newid = \backend\models\Imsi::find()->where(['imsi' => $this->msisdn])->one();
         if ($newid) {

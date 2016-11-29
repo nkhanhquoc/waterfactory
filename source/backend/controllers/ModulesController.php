@@ -29,6 +29,8 @@ class ModulesController extends AppController {
      * @return mixed
      */
     public function actionIndex() {
+        echo \common\socket\Socket::alldec2bin(136, 8);
+        die;
         $searchModel = new ModulesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
