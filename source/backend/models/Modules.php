@@ -74,7 +74,6 @@ class Modules extends ModulesBase {
         return $data;
     }
 
-
     public function getMaxCustomerCode() {
         $model = \backend\models\Modules::find()->orderBy(['created_at' => SORT_DESC])->one();
         $customerCode = bindec($model->customer_code) + 1;
@@ -82,15 +81,18 @@ class Modules extends ModulesBase {
     }
 
     public function toClient() {
+        $sim = \common\socket\Socket::dec2bin($this->msisdn);
         $id = module_id_dp . \common\socket\Socket::dec2bin($this->getModuleId());
-        $id .= ID_IE_NAME;
+        $id .= ID_ASSIGNMENT;
 
-        $client = new \backend\models\DataClient();
-        $client->data = $id;
-        $client->module_id = $this->id;
-        $client->status = 0;
-        $client->created_at = new Expression('NOW()');
-        $client->save(false);
+        $newid = \backend\models\Imsi::find()->where(['imsi' => $this->msisdn])->one();
+        if ($newid) {
+            $newid->module_id = $this->id;
+            $newid->module_id_assignment = $sim . $id;
+            $newid->status = 0;
+            $newid->updated_by = \Yii::$app->user->getId();
+            $newid->save(false);
+        }
     }
 
 }

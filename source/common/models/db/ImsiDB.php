@@ -10,6 +10,7 @@ use Yii;
  * @property integer $id
  * @property string $imsi
  * @property string $module_id
+ * @property string $module_id_assignment
  * @property integer $status
  * @property string $created_at
  * @property integer $created_by
@@ -34,10 +35,12 @@ class ImsiDB extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['imsi'], 'required'],
+            [['imsi', 'module_id_assignment'], 'required'],
             [['module_id', 'status', 'created_by', 'updated_by'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['imsi'], 'string', 'max' => 20]
+            [['imsi'], 'string', 'max' => 20],
+            [['module_id_assignment'], 'string', 'max' => 255],
+            [['imsi'], 'unique']
         ];
     }
 
@@ -50,6 +53,7 @@ class ImsiDB extends \yii\db\ActiveRecord
             'id' => Yii::t('backend', 'ID'),
             'imsi' => Yii::t('backend', 'Imsi'),
             'module_id' => Yii::t('backend', 'Module ID'),
+            'module_id_assignment' => Yii::t('backend', 'Module Id Assignment'),
             'status' => Yii::t('backend', 'Status'),
             'created_at' => Yii::t('backend', 'Created At'),
             'created_by' => Yii::t('backend', 'Created By'),
