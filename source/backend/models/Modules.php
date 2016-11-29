@@ -91,8 +91,9 @@ class Modules extends ModulesBase {
             $newid->module_id_assignment = $sim . $id;
             $newid->status = 0;
             $newid->updated_by = \Yii::$app->user->getId();
-            $newid->save(false);
+            return $newid->save(false);
         }
+        return false;
     }
 
 }
