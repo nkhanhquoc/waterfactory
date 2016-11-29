@@ -102,7 +102,7 @@ class Modules extends ModulesBase {
 
     public function toClient() {
         $sim = ID_ASSIGNMENT . NEW_MODULE_NOTIFY . IMSI_LENGTH . \common\socket\Socket::dec2bin($this->msisdn) . ID_ASSIGNMENT_DP;
-        $id = ID_IE_NAME . IE_ID_LENGTH . \common\socket\Socket::dec2bin($this->getModuleId()) . module_id_dp;
+        $id = ID_IE_NAME . IE_ID_LENGTH . module_id_dp . \common\socket\Socket::dec2bin($this->getModuleId());
 
         $newid = \backend\models\Imsi::find()->where(['imsi' => $this->msisdn])->one();
         if ($newid) {

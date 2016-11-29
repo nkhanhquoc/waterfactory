@@ -40,6 +40,6 @@ define('PUMP_ALL', '00000011');
 define('module_id_dp', '0000');
 define('ID_ASSIGNMENT_DP', '00000000000000000000');
 #IE length
-define('IE_ID_LENGTH', '11001000');
+define('IE_ID_LENGTH', '00001000');
 define('IMSI_LENGTH', '00001010');
 
