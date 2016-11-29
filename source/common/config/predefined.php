@@ -37,3 +37,4 @@ define('PUMP_MASTER', '00000001');
 define('PUMP_ALL', '00000011');
 #du phong
 define('module_id_dp', '0000');
+define('ID_ASSIGNMENT_DP', '0000000000000000');
