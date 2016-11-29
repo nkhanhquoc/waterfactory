@@ -109,7 +109,7 @@ class Modules extends ModulesBase {
         if ($newid) {
             $newid->module_id = $this->id;
             $newid->module_id_assignment = $sim . $id;
-            $newid->status = 0;
+            $newid->status = 1;
             $newid->updated_by = \Yii::$app->user->getId();
             return $newid->save(false);
         }
