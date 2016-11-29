@@ -5,7 +5,7 @@
  */
 define('NO_IMAGE', '/img/no-image.png');
 #ie name (downlink)
-define('ID_IE_NAME', '11001000');
+define('ID_IE_NAME', '01110000');
 define('NEW_MODULE_NOTIFY', '01110101');
 define('ID_ASSIGNMENT', '10100000');
 define('SYSTEM_MODE_IE_NAME', '10000000');
