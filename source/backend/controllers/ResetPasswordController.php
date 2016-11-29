@@ -34,7 +34,7 @@ class ResetPasswordController extends AppController {
                 $decpass = Yii::$app->params['default_password'];
                 $binpass .= Socket::dec2bin($decpass);
                 $id = module_id_dp . \common\socket\Socket::dec2bin($module->getModuleId());
-                $id .= ID_IE_NAME;
+                $id .= PASS_RESET;
                 $data = new \backend\models\DataClient();
                 $data->module_id = $values['module_id'];
                 $data->data = $id . $binpass;

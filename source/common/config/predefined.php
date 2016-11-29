@@ -19,6 +19,7 @@ define('CHECK_MONEY_DATA_IE_NAME', '11110010');
 define('MONEY_DATA_NOTIFY_IE_NAME', '11110011');
 define('CARD_MODE_IE_NAME', '11110100');
 define('CREATE_MODELE', '11110101');
+define('PASS_RESET', '10100100');
 #ie length
 define('module_id_len', '');
 define('PARAMETTER_IE_LEN', '');
