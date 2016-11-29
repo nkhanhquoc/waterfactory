@@ -49,6 +49,25 @@ class Modules extends ModulesBase {
         }
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function rules() {
+        return [
+            [['name', 'msisdn', 'country_id', 'privincial_id', 'distric_id', 'customer_code'], 'required'],
+            [['country_id', 'privincial_id', 'distric_id', 'mode_id', 'created_by', 'updated_by'], 'integer'],
+            [['created_at', 'updated_at'], 'safe'],
+            [['name', 'address', 'password'], 'string', 'max' => 255],
+            [['msisdn'], 'match', 'pattern' => '((?=.*\d))',
+                'message' => \Yii::t('backend', 'Số điện thoại phải là chữ số')],
+            [['msisdn'], 'string', 'min' => 15, 'max' => 15],
+            [['customer_code'], 'string', 'max' => 100],
+            [['money'], 'string', 'max' => 160],
+            [['data', 'alarm'], 'string', 'max' => 50],
+            [['customer_code'], 'unique']
+        ];
+    }
+
     public function behaviors() {
         return [
             [
