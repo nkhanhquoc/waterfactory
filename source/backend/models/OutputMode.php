@@ -144,15 +144,17 @@ class OutputMode extends OutputModeBase {
     }
 
     public function toClient() {
-        $id = module_id_dp . \common\socket\Socket::dec2bin($this->module->country->code . $this->module->privincial->code . $this->module->distric->code . $this->module->customer_code);
-        $id .= OUTPUT_MODE_IE_NAME;
+        $id = ID_HEADER . \common\socket\Socket::dec2bin($this->module->country->code . $this->module->privincial->code . $this->module->distric->code . $this->module->customer_code);
         $data = new \backend\models\DataClient();
         $data->module_id = $this->module_id;
-        $data->data = $id . $this->convection_pump
-                . $this->cold_water_supply_pump
-                . $this->return_pump
-                . $this->incresed_pressure_pump
-                . $this->heat_pump
+        $data->data = OUTPUT_MODE_CONFIG_HEADER
+                . $id
+                . OUTPUT_MODE_HEADER
+                . $this->convection_pump . '00000000'
+                . $this->cold_water_supply_pump . '00000000'
+                . $this->return_pump . '00000000'
+                . $this->incresed_pressure_pump . '00000000'
+                . $this->heat_pump . '00000000'
                 . $this->heater_resister
                 . $this->three_way_valve
                 . $this->backflow_valve

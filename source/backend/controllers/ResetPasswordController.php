@@ -31,13 +31,10 @@ class ResetPasswordController extends AppController {
             $values = Yii::$app->request->post();
             $module = Modules::find()->where(['id' => $values['module_id']])->one();
             if ($module) {
-                $decpass = Yii::$app->params['default_password'];
-                $binpass .= Socket::dec2bin($decpass);
-                $id = module_id_dp . \common\socket\Socket::dec2bin($module->getModuleId());
-                $id .= PASS_RESET;
+                $id = ID_HEADER . \common\socket\Socket::dec2bin($module->getModuleId());
                 $data = new \backend\models\DataClient();
-                $data->module_id = $values['module_id'];
-                $data->data = $id . $binpass;
+                $data->module_id = $module->id;
+                $data->data = PASS_RESET_HEADER . $id;
                 $data->status = 0;
                 $data->created_at = new Expression('NOW()');
                 $data->save(false);

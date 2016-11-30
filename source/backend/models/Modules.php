@@ -101,13 +101,13 @@ class Modules extends ModulesBase {
     }
 
     public function toClient() {
-        $sim = ID_ASSIGNMENT . NEW_MODULE_NOTIFY . IMSI_LENGTH . \common\socket\Socket::dec2bin($this->msisdn) . ID_ASSIGNMENT_DP;
-        $id = ID_IE_NAME . IE_ID_LENGTH . module_id_dp . \common\socket\Socket::dec2bin($this->getModuleId());
+        $sim = IMSI_HEADER . \common\socket\Socket::dec2bin($this->msisdn) . ID_ASSIGNMENT_DP;
+        $id = ID_HEADER . \common\socket\Socket::dec2bin($this->getModuleId());
 
         $newid = \backend\models\Imsi::find()->where(['imsi' => $this->msisdn])->one();
         if ($newid) {
             $newid->module_id = $this->id;
-            $newid->module_id_assignment = $sim . $id;
+            $newid->module_id_assignment = ID_ASSIGNMENT_HEADER . $sim . $id;
             $newid->status = 1;
             $newid->updated_by = \Yii::$app->user->getId();
             return $newid->save(false);
