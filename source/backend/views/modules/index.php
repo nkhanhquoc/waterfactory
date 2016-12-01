@@ -10,9 +10,6 @@ $this->params['breadcrumbs'][] = $this->title;
     $data = $dataProvider->getModels();
     if (!empty($data)) {
         foreach ($data as $val) {
-            $route = Yii::$app->controller->route;
-            $arrayParams = ['p1' => 'v1', 'p2' => 'v2'];
-            $params = array_merge([$route], $arrayParams);
             ?>
             <div class="col-md-4">
                 <a href="/modules/view?id=<?php echo $val->id; ?>" title="<?php echo \yii\helpers\Html::encode($val->name); ?>">
