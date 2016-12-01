@@ -59,6 +59,7 @@ class TimerCounterController extends AppController {
         $model = new TimerCounter();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->toClient();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -77,6 +78,7 @@ class TimerCounterController extends AppController {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->toClient();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

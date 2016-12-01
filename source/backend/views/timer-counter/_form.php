@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-        <?= $form->field($model, 'module_id')->textInput(['maxlength' => 11]) ?>
+    <?= $form->field($model, 'module_id')->dropDownList(backend\models\Modules::getAll()) ?>
 
     <?= $form->field($model, 'counter')->textInput(['maxlength' => 50]) ?>
 

@@ -9,10 +9,10 @@ use Yii;
  *
  * @property string $id
  * @property string $module_id
- * @property string $counter
- * @property string $timer_1
- * @property string $timer_2
- * @property string $timer_3
+ * @property integer $counter
+ * @property integer $timer_1
+ * @property integer $timer_2
+ * @property integer $timer_3
  * @property string $created_at
  *
  * @property ModulesDB $module
@@ -34,9 +34,8 @@ class TimerCounterDB extends \yii\db\ActiveRecord
     {
         return [
             [['module_id'], 'required'],
-            [['module_id'], 'integer'],
-            [['created_at'], 'safe'],
-            [['counter', 'timer_1', 'timer_2', 'timer_3'], 'string', 'max' => 50]
+            [['module_id', 'counter', 'timer_1', 'timer_2', 'timer_3'], 'integer'],
+            [['created_at'], 'safe']
         ];
     }
 
