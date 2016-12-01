@@ -19,7 +19,7 @@ $distric = backend\models\Distric::getAll();
 
     <?= $form->field($model, 'customer_code')->textInput(['maxlength' => 100, 'readonly' => 'readonly']) ?>
 
-    <?= $form->field($model, 'msisdn')->dropDownList(backend\models\Imsi::getClientRequest())->label('Client') ?>
+    <?= $form->field($model, 'msisdn')->dropDownList($clients)->label('Client') ?>
 
     <?= $form->field($model, 'country_id')->dropDownList($country) ?>
 

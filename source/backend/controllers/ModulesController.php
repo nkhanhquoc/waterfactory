@@ -65,6 +65,12 @@ class ModulesController extends AppController {
     public function actionCreate() {
         $model = new Modules();
         $model->customer_code = $model->getMaxCustomerCode();
+
+        $clients = \backend\models\Imsi::getClientRequest();
+        if (sizeof($clients) == 1) {
+            Yii::$app->session->setFlash('info', 'Hiện không có client nào gửi request khởi tạo ID');
+        }
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if ($model->toClient()) {
                 Yii::$app->session->setFlash('success', 'Set ID tới module ' . $model->getModuleId() . ' thành công!');
@@ -74,11 +80,11 @@ class ModulesController extends AppController {
                 $this->findModel($model->id)->delete();
             }
             return $this->redirect(['index']);
-        } else {
-            return $this->render('create', [
-                        'model' => $model,
-            ]);
         }
+        return $this->render('create', [
+                    'model' => $model,
+                    'clients' => $clients,
+        ]);
     }
 
     /**
