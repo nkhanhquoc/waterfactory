@@ -16,7 +16,7 @@ class ModulesBase extends \common\models\db\ModulesDB {
             'msisdn' => Yii::t('backend', 'Số điện thoại'),
             'country_id' => Yii::t('backend', 'Quốc gia'),
             'privincial_id' => Yii::t('backend', 'Tỉnh'),
-            'distric_id' => Yii::t('backend', 'Huyện/Quận'),
+            'distric_id' => Yii::t('backend', 'Quận/Huyện'),
             'customer_code' => Yii::t('backend', 'Mã khách hàng'),
             'address' => Yii::t('backend', 'Address'),
             'alarm' => Yii::t('backend', 'Alarm'),
