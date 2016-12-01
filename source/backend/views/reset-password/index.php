@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 
-$this->title = "Cập nhật mật khẩu";
+$this->title = "Reset mật khẩu mặc định";
 ?>
 <h1><?= Html::encode($this->title) ?></h1>
 <form method="post" action="/index.php/reset-password/index">

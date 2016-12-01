@@ -68,7 +68,7 @@ class ModulesController extends AppController {
 
         $clients = \backend\models\Imsi::getClientRequest();
         if (sizeof($clients) == 1) {
-            Yii::$app->session->setFlash('info', 'Hiện không có client nào gửi request khởi tạo ID');
+            Yii::$app->session->setFlash('error', 'Hiện không có client nào gửi request khởi tạo ID');
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
