@@ -1,6 +1,9 @@
 <?php
 
 use backend\components\common\Utility;
+
+$this->title = Yii::t('backend', 'Modules');
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row modules">
     <?php
