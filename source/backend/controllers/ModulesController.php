@@ -112,7 +112,9 @@ class ModulesController extends AppController {
      * @return mixed
      */
     public function actionDelete($id) {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        \backend\models\Imsi::deleteAll(['module_id' => $model->id]);
+        $model->delete();
 
         return $this->redirect(['index']);
     }
