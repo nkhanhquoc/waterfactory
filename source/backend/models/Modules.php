@@ -122,7 +122,7 @@ class Modules extends ModulesBase {
         $data->data = SYSTEM_MODE_CONFIG_HEADER
                 . $id
                 . SYSTEM_MODE_HEADER
-                . \common\socket\Socket::dec2bin($this->mode->mode, 8);
+                . \common\socket\Socket::alldec2bin($this->mode->mode, 8);
         $data->status = 0;
         $data->created_at = new Expression('NOW()');
         return $data->save(false);
