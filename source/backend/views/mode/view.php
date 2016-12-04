@@ -33,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'name',
+            'mode',
             [                      // the owner name of the model
                 'label' => 'Image',
                 'format' => 'html',
