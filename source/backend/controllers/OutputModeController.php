@@ -67,59 +67,59 @@ class OutputModeController extends AppController {
         if (Yii::$app->request->isPost) {
             $values = Yii::$app->request->post();
             $model->module_id = $values['module_id'];
-            if($values['OutputMode']['convection_pump']['time'] > 255){
-              $convectionPumptime = Socket::alldec2bin($values['OutputMode']['convection_pump']['time'],16);
+            if ($values['OutputMode']['convection_pump']['time'] > 255) {
+                $convectionPumptime = Socket::alldec2bin($values['OutputMode']['convection_pump']['time'], 16);
             } else {
-              $convectionPumptime = Socket::alldec2bin($values['OutputMode']['convection_pump']['time'],8).'00000000';
+                $convectionPumptime = Socket::alldec2bin($values['OutputMode']['convection_pump']['time'], 8) . BACKUP;
             }
             $model->convection_pump = $values['OutputMode']['convection_pump']['mode'] . $values['OutputMode']['convection_pump']['pump'] . $convectionPumptime;
 
-            if($values['OutputMode']['cwsp_pump']['time'] > 255){
-              $cwspPumptime = Socket::alldec2bin($values['OutputMode']['cwsp_pump']['time'],16);
+            if ($values['OutputMode']['cwsp_pump']['time'] > 255) {
+                $cwspPumptime = Socket::alldec2bin($values['OutputMode']['cwsp_pump']['time'], 16);
             } else {
-              $cwspPumptime = Socket::alldec2bin($values['OutputMode']['cwsp_pump']['time'],8).'00000000';
+                $cwspPumptime = Socket::alldec2bin($values['OutputMode']['cwsp_pump']['time'], 8) . BACKUP;
             }
             $model->cold_water_supply_pump = $values['OutputMode']['cwsp_pump']['mode'] . $values['OutputMode']['cwsp_pump']['pump'] . $cwspPumptime;
 
-            if($values['OutputMode']['return_pump']['time'] > 255){
-              $returnPumptime = Socket::alldec2bin($values['OutputMode']['return_pump']['time'],16);
+            if ($values['OutputMode']['return_pump']['time'] > 255) {
+                $returnPumptime = Socket::alldec2bin($values['OutputMode']['return_pump']['time'], 16);
             } else {
-              $returnPumptime = Socket::alldec2bin($values['OutputMode']['return_pump']['time'],8).'00000000';
+                $returnPumptime = Socket::alldec2bin($values['OutputMode']['return_pump']['time'], 8) . BACKUP;
             }
             $model->return_pump = $values['OutputMode']['return_pump']['mode'] . $values['OutputMode']['return_pump']['pump'] . $returnPumptime;
 
-            if($values['OutputMode']['pressure_pump']['time'] > 255){
-              $pressurePumptime = Socket::alldec2bin($values['OutputMode']['pressure_pump']['time'],16);
+            if ($values['OutputMode']['pressure_pump']['time'] > 255) {
+                $pressurePumptime = Socket::alldec2bin($values['OutputMode']['pressure_pump']['time'], 16);
             } else {
-              $pressurePumptime = Socket::alldec2bin($values['OutputMode']['pressure_pump']['time'],8).'00000000';
+                $pressurePumptime = Socket::alldec2bin($values['OutputMode']['pressure_pump']['time'], 8) . BACKUP;
             }
             $model->incresed_pressure_pump = $values['OutputMode']['pressure_pump']['mode'] . $values['OutputMode']['pressure_pump']['pump'] . $pressurePumptime;
 
-            if($values['OutputMode']['heat_pump']['time'] > 255){
-              $heatPumptime = Socket::alldec2bin($values['OutputMode']['heat_pump']['time'],16);
+            if ($values['OutputMode']['heat_pump']['time'] > 255) {
+                $heatPumptime = Socket::alldec2bin($values['OutputMode']['heat_pump']['time'], 16);
             } else {
-              $heatPumptime = Socket::alldec2bin($values['OutputMode']['heat_pump']['time'],8).'00000000';
+                $heatPumptime = Socket::alldec2bin($values['OutputMode']['heat_pump']['time'], 8) . BACKUP;
             }
             $model->heat_pump = $values['OutputMode']['heat_pump']['mode'] . $values['OutputMode']['heat_pump']['pump'] . $heatPumptime;
 
-            if($values['OutputMode']['heater_resis']['time'] > 255){
-              $heaterResisPumptime = Socket::alldec2bin($values['OutputMode']['heater_resis']['time'],16);
+            if ($values['OutputMode']['heater_resis']['time'] > 255) {
+                $heaterResisPumptime = Socket::alldec2bin($values['OutputMode']['heater_resis']['time'], 16);
             } else {
-              $heaterResisPumptime = Socket::alldec2bin($values['OutputMode']['heater_resis']['time'],8).'00000000';
+                $heaterResisPumptime = Socket::alldec2bin($values['OutputMode']['heater_resis']['time'], 8) . BACKUP;
             }
             $model->heater_resister = $values['OutputMode']['heater_resis']['mode'] . $values['OutputMode']['heater_resis']['pump'] . $heaterResisPumptime;
 
-            if($values['OutputMode']['3way']['time'] > 255){
-              $twayPumptime = Socket::alldec2bin($values['OutputMode']['3way']['time'],16);
+            if ($values['OutputMode']['3way']['time'] > 255) {
+                $twayPumptime = Socket::alldec2bin($values['OutputMode']['3way']['time'], 16);
             } else {
-              $twayPumptime = Socket::alldec2bin($values['OutputMode']['3way']['time'],8).'00000000';
+                $twayPumptime = Socket::alldec2bin($values['OutputMode']['3way']['time'], 8) . BACKUP;
             }
             $model->three_way_valve = $values['OutputMode']['3way']['mode'] . $values['OutputMode']['3way']['pump'] . $twayPumptime;
 
-            if($values['OutputMode']['blakflow']['time'] > 255){
-              $blakflowPumptime = Socket::alldec2bin($values['OutputMode']['blakflow']['time'],16);
+            if ($values['OutputMode']['blakflow']['time'] > 255) {
+                $blakflowPumptime = Socket::alldec2bin($values['OutputMode']['blakflow']['time'], 16);
             } else {
-              $blakflowPumptime = Socket::alldec2bin($values['OutputMode']['blakflow']['time'],8).'00000000';
+                $blakflowPumptime = Socket::alldec2bin($values['OutputMode']['blakflow']['time'], 8) . BACKUP;
             }
             $model->backflow_valve = $values['OutputMode']['blakflow']['mode'] . $values['OutputMode']['blakflow']['pump'] . $blakflowPumptime;
 
@@ -128,6 +128,7 @@ class OutputModeController extends AppController {
 
             if ($model->save(false)) {
                 $model->toClient();
+                Yii::$app->session->setFlash('success', 'Đã gửi bản tin Load Mode thành công!');
                 return $this->redirect(['/modules/view', 'id' => $model->module_id]);
             }
         }
@@ -159,6 +160,7 @@ class OutputModeController extends AppController {
             $model->reserved = $values['OutputMode']['reserved']['mode'] . $values['OutputMode']['reserved']['pump'] . Socket::alldec2bin($values['OutputMode']['reserved']['time'], 8);
             if ($model->save(false)) {
                 $model->toClient();
+                Yii::$app->session->setFlash('success', 'Đã gửi bản tin Load Mode thành công!');
                 return $this->redirect(['/modules/view', 'id' => $model->module_id]);
             }
         }

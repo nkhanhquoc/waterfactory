@@ -89,6 +89,7 @@ class ParamConfigController extends AppController {
 
             if ($model->save(false)) {
                 $model->toClient();
+                Yii::$app->session->setFlash('success', 'Đã gửi bản tin Parameter Config thành công!');
                 return $this->redirect(['/modules/view', 'id' => $model->module_id]);
             }
         }
@@ -132,6 +133,7 @@ class ParamConfigController extends AppController {
             $model->backflow_valve = Socket::alldec2bin($values['backflow_temp']);
             if ($model->save(false)) {
                 $model->toClient();
+                Yii::$app->session->setFlash('success', 'Đã gửi bản tin Parameter Config thành công!');
                 return $this->redirect(['/modules/view', 'id' => $model->module_id]);
             }
         }
