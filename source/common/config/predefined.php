@@ -58,4 +58,4 @@ define('PUMP_MASTER', '00000001');
 define('PUMP_ALL', '00000011');
 #du phong
 define('ID_ASSIGNMENT_DP', '00000000000000000000');
-
+define('BACKUP', '00000000');
