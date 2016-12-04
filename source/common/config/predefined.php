@@ -38,7 +38,7 @@ define('CHECK_ACCOUNT_HEADER', '10100010');
 define('CHECK_MONEY_DATA_HEADER', '0111001011001110');
 #Gửi mã thẻ cào xuống Module để nạp. Sau khi nhận được bản tin này, Module sẽ thực hiện việc nạp thẻ.
 define('RECHARGE_ACCOUNT_HEADER', '10100011');
-define('CARD_CODE_HEADER', '0111010011010000');
+define('CARD_CODE_HEADER', '0111010011010110');
 #Xác nhận đã nhận được báo cáo dừng khẩn cấp từ Module
 define('HARD_EMERGENCY_STOP_ACKNOWLEDGE_HEADER', '10110000');
 #Thông báo đã nhận được bản tin CANCEL dừng khẩn cấp từ phía Module (khi khắc phục xong lỗi).

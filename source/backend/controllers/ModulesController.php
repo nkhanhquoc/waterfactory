@@ -135,14 +135,33 @@ class ModulesController extends AppController {
     public function actionAccountmanager($id){
       $model = $this->findModel($id);
       if(Yii::$app->request->isPost){
-        try{
-          $model->toClientManager();
-        } catch(Exception $e){
+        $values = Yii::$app->request->post();
+        if($values['check']){
+          try{
+            $model->toClientManager();
+            $alert = "Gửi yêu cầu kiểm tra thành công!";
+          } catch(Exception $e){
+            $alert = "Có lỗi xảy ra";
+          }
+        }
+        if($values['pay']){
+          if($values['card_info']){
+            try{
+              $model->toClientPay($values['card_info']);
+              $alert = "Gửi yêu cầu thanh toán thành công!";
+            } catch(Exception $e){
+              $alert = "Có lỗi xảy ra";
+            }
+          } else {
+            $alert = "Bạn phải nhập mã thẻ!";
+          }
 
         }
+
       }
       return $this->render('accountManager', [
                   'model' => $model,
+                  'alert' => $alert
       ]);
     }
 

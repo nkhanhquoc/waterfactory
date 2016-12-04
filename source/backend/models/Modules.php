@@ -116,9 +116,9 @@ class Modules extends ModulesBase {
     }
 
     public function toClientManager(){
-      $id = BACKUP . \common\socket\Socket::dec2bin($this->module->country->code . $this->module->privincial->code . $this->module->distric->code . $this->module->customer_code);
+      $id = BACKUP . \common\socket\Socket::dec2bin($this->country->code . $this->privincial->code . $this->distric->code . $this->customer_code);
       $data = new \backend\models\DataClient();
-      $data->module_id = $this->module_id;
+      $data->module_id = $this->id;
       $data->data = CHECK_ACCOUNT_HEADER
               . $id
               . CHECK_MONEY_DATA_HEADER
@@ -126,6 +126,33 @@ class Modules extends ModulesBase {
               .BACKUP.BACKUP
               .'0010101000110001001100000011001000100011'//*102#
               .BACKUP.BACKUP;
+      $data->status = 0;
+      $data->created_at = new Expression('NOW()');
+      $data->save(false);
+    }
+
+    public function toClientPay($cardCode){
+      $bkLen = 16 - strlen($cardCode);
+      $binCode = "";
+      $bkCode = "";
+      for($i = 0;$i< strlen($cardCode);$i++){
+        $binCode .= \common\socket\Socket::alldec2bin($cardCode[$i]);
+      }
+      if($bkLen > 0){
+        for($i = 0;$i< strlen($bkLen);$i++){
+            $bkCode .= \common\socket\Socket::alldec2bin("0");
+        }
+      }
+      $id = BACKUP . \common\socket\Socket::dec2bin($this->country->code . $this->privincial->code . $this->distric->code . $this->customer_code);
+      $data = new \backend\models\DataClient();
+      $data->module_id = $this->id;
+      $data->data = RECHARGE_ACCOUNT_HEADER
+              . $id
+              . CARD_CODE_HEADER
+              . '0010101000110001001100000011000000101010'//*100*
+              .$binCode
+              .'00100011' //#
+              .$bkCode;
       $data->status = 0;
       $data->created_at = new Expression('NOW()');
       $data->save(false);
