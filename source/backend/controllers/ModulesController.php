@@ -45,6 +45,7 @@ class ModulesController extends AppController {
      */
     public function actionView($id) {
         $model = $this->findModel($id);
+        
         $sensors = $model->sensors;
         $statuses = $model->moduleStatuses;
         $alarms = $model->alarms;
