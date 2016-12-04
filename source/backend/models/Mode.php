@@ -50,7 +50,7 @@ class Mode extends ModeBase {
     public function upload() {
         if ($this->validate()) {
             if (!is_dir(\Yii::getAlias('@webroot') . '/uploads/mode')) {
-                mkdir(\Yii::getAlias('@webroot') . '/uploads/mode', 0755, true);
+                mkdir(\Yii::getAlias('@webroot') . '/uploads/mode', 0664, true);
             }
             $filePath = '/uploads/mode/' . md5(time()) . '.' . $this->image_path->extension;
             $this->image_path->saveAs(\Yii::getAlias('@webroot') . $filePath);
@@ -58,8 +58,10 @@ class Mode extends ModeBase {
             try {
                 $height = 480;
                 $width = 640;
-                if (is_file($filePath)) {
-                    \Imagine\Gd\Image::thumbnail($filePath, $width, $height)->save($filePath, ['quality' => 100]);
+                if (is_file(\Yii::getAlias('@webroot') . $filePath)) {
+                    die;
+                    \yii\imagine\Image::thumbnail(\Yii::getAlias('@webroot') . $filePath, $width, $height)
+                            ->save(\Yii::getAlias('@webroot') . $filePath, ['quality' => 100]);
                 }
             } catch (\yii\base\Exception $e) {
                 \Yii::error($e->getMessage());

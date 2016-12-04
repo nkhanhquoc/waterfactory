@@ -13,7 +13,7 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => 255]) ?>
-    <?= $form->field($model, 'mode')->textInput(['maxlength' => 4]) ?>
+    <?= $form->field($model, 'mode')->dropDownList(range(Yii::$app->params['mode_range'][0], Yii::$app->params['mode_range'][1])) ?>
 
     <?= $form->field($model, 'image_path')->fileInput() ?>
 
