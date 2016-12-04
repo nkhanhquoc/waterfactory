@@ -115,4 +115,25 @@ class Modules extends ModulesBase {
         return false;
     }
 
+    public function toClientManager(){
+      $id = ID_HEADER . \common\socket\Socket::dec2bin($this->module->country->code . $this->module->privincial->code . $this->module->distric->code . $this->module->customer_code);
+      $data = new \backend\models\DataClient();
+      $data->module_id = $this->module_id;
+      $data->data = CHECK_ACCOUNT_HEADER
+              . $id
+              . OUTPUT_MODE_HEADER
+              . $this->convection_pump . '00000000'
+              . $this->cold_water_supply_pump . '00000000'
+              . $this->return_pump . '00000000'
+              . $this->incresed_pressure_pump . '00000000'
+              . $this->heat_pump . '00000000'
+              . $this->heater_resister
+              . $this->three_way_valve
+              . $this->backflow_valve
+              . $this->reserved;
+      $data->status = 0;
+      $data->created_at = new Expression('NOW()');
+      $data->save(false);
+    }
+
 }

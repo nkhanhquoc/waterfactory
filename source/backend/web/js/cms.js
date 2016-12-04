@@ -200,3 +200,15 @@ function setPumpPump(id,val) {
 function changePumpTime(id) {
   $('#'+id+'_time').val($('#'+id+'_select').val());
 }
+
+function loadManagerInfo(){
+  console.log("reload module data");
+  var id = $("#module-id").val();
+  $.get("/index.php/modules/loadinfo?id="+id,{},function(data){
+    var values = JSON.parse(data);
+    $("#money-info").html(values.money);
+    $("#data-info").html(values.data);
+
+  });
+
+}

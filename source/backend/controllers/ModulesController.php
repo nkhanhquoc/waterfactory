@@ -132,4 +132,26 @@ class ModulesController extends AppController {
         }
     }
 
+    public function actionAccountmanager($id){
+      $model = $this->findModel($id);
+      if(Yii::$app->request->isPost){
+      }
+      return $this->render('accountManager', [
+                  'model' => $model,
+      ]);
+    }
+
+
+    public function actionLoadinfo($id){
+      $this->layout = false;
+      $model = $this->findModel($id);
+      // var_dump($model);
+      // die("123");
+      \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+      return [
+          'money' => $model->money,
+          'data' => $model->data,
+      ];
+    }
+
 }
