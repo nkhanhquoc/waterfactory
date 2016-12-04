@@ -14,6 +14,7 @@ use Yii;
  * @property integer $updated_by
  * @property string $created_at
  * @property integer $created_by
+ * @property integer $mode
  *
  * @property UserDB $updatedBy
  * @property UserDB $createdBy
@@ -37,7 +38,7 @@ class ModeDB extends \yii\db\ActiveRecord
         return [
             [['name', 'image_path'], 'required'],
             [['updated_at', 'created_at'], 'safe'],
-            [['updated_by', 'created_by'], 'integer'],
+            [['updated_by', 'created_by', 'mode'], 'integer'],
             [['name', 'image_path'], 'string', 'max' => 255]
         ];
     }
@@ -55,6 +56,7 @@ class ModeDB extends \yii\db\ActiveRecord
             'updated_by' => Yii::t('backend', 'Updated By'),
             'created_at' => Yii::t('backend', 'Created At'),
             'created_by' => Yii::t('backend', 'Created By'),
+            'mode' => Yii::t('backend', 'Mode'),
         ];
     }
 

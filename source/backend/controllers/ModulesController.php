@@ -106,13 +106,39 @@ class ModulesController extends AppController {
     }
 
     /**
+     * Updates an existing Modules model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param string $id
+     * @return mixed
+     */
+    public function actionMode($id) {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save(false, ['mode_id'])) {
+                if ($model->mode2Client()) {
+                    Yii::$app->session->setFlash('success', 'Đã gửi bản tin set Mode cho ' . $model->name . ' thành công!');
+                    return $this->redirect(['view', 'id' => $model->id]);
+                } else {
+                    Yii::$app->session->setFlash('success', 'Gửi bản tin set Mode cho ' . $model->name . ' không thành công!');
+                }
+            }
+        }
+        return $this->render('mode', [
+                    'model' => $model,
+        ]);
+    }
+
+    /**
      * Deletes an existing Modules model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
      * @return mixed
      */
     public function actionDelete($id) {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        \backend\models\Imsi::deleteAll(['module_id' => $model->id]);
+        $model->delete();
 
         return $this->redirect(['index']);
     }
