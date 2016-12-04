@@ -59,7 +59,6 @@ class Mode extends ModeBase {
                 $height = 480;
                 $width = 640;
                 if (is_file(\Yii::getAlias('@webroot') . $filePath)) {
-                    die;
                     \yii\imagine\Image::thumbnail(\Yii::getAlias('@webroot') . $filePath, $width, $height)
                             ->save(\Yii::getAlias('@webroot') . $filePath, ['quality' => 100]);
                 }
