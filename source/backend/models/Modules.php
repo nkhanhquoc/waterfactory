@@ -130,8 +130,8 @@ class Modules extends ModulesBase {
 
     public function toClientManager() {
         #Ban tin ID module la cai nay:
-        #$id = ID_HEADER . \common\socket\Socket::dec2bin($this->getModuleId());
-        $id = BACKUP . \common\socket\Socket::dec2bin($this->country->code . $this->privincial->code . $this->distric->code . $this->customer_code);
+        $id = ID_HEADER . \common\socket\Socket::dec2bin($this->getModuleId());
+        #$id = BACKUP . \common\socket\Socket::dec2bin($this->country->code . $this->privincial->code . $this->distric->code . $this->customer_code);
         $data = new \backend\models\DataClient();
         $data->module_id = $this->id;
         $data->data = CHECK_ACCOUNT_HEADER
@@ -150,17 +150,19 @@ class Modules extends ModulesBase {
         $bkLen = 16 - strlen($cardCode);
         $binCode = "";
         $bkCode = "";
+        #Dung cai nay thi phai for nua - \common\socket\Socket::dec2bin()
         for ($i = 0; $i < strlen($cardCode); $i++) {
             $binCode .= \common\socket\Socket::alldec2bin($cardCode[$i]);
         }
         if ($bkLen > 0) {
+            #Dung cai nay thi phai for nua - \common\socket\Socket::dec2bin()
             for ($i = 0; $i < strlen($bkLen); $i++) {
                 $bkCode .= \common\socket\Socket::alldec2bin("0");
             }
         }
         #Ban tin ID module la cai nay:
-        #$id = ID_HEADER . \common\socket\Socket::dec2bin($this->getModuleId());
-        $id = BACKUP . \common\socket\Socket::dec2bin($this->country->code . $this->privincial->code . $this->distric->code . $this->customer_code);
+        $id = ID_HEADER . \common\socket\Socket::dec2bin($this->getModuleId());
+        #$id = BACKUP . \common\socket\Socket::dec2bin($this->country->code . $this->privincial->code . $this->distric->code . $this->customer_code);
         $data = new \backend\models\DataClient();
         $data->module_id = $this->id;
         $data->data = RECHARGE_ACCOUNT_HEADER
