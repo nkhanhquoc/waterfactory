@@ -1,6 +1,7 @@
 <?php
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Modules'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Update'), 'url' => ['/modules/update?id=' . $model->id]];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'System mode config'), 'url' => ['/modules/mode?id=' . $model->id]];
 $urlOP = ($model->outputModes) ? ['/output-mode/update?id=' . $model->outputModes->id] : ['/output-mode/create' . '?module_id=' . $model->id];
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Load Mode'), 'url' => $urlOP];
 $urlPC = ($model->paramConfigs) ? ['/param-config/update?id=' . $model->paramConfigs->id] : ['/param-config/create' . '?module_id=' . $model->id];

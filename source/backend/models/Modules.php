@@ -115,4 +115,17 @@ class Modules extends ModulesBase {
         return false;
     }
 
+    public function mode2Client() {
+        $id = ID_HEADER . \common\socket\Socket::dec2bin($this->getModuleId());
+        $data = new \backend\models\DataClient();
+        $data->module_id = $this->module_id;
+        $data->data = SYSTEM_MODE_CONFIG_HEADER
+                . $id
+                . SYSTEM_MODE_HEADER
+                . \common\socket\Socket::dec2bin($this->mode->mode, 8);
+        $data->status = 0;
+        $data->created_at = new Expression('NOW()');
+        return $data->save(false);
+    }
+
 }

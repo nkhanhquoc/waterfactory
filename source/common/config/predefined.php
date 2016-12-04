@@ -9,6 +9,9 @@ define('ID_HEADER', '01110000000010000000');
 define('IMSI_HEADER', '0111010100001010');
 #Phân phối ID cho Module (với một SIM cho trước), dùng cho quá trình khởi tạo một Module mới hoặc tái quy hoạch ID.
 define('ID_ASSIGNMENT_HEADER', '10100000');
+#Chọn 1 chế độ trong 32 chế độ của hệ thống
+define('SYSTEM_MODE_CONFIG_HEADER', '10000000');
+define('SYSTEM_MODE_HEADER', '0000000011000001');
 #Chọn chế độ Auto/Manual cho các tải
 define('OUTPUT_MODE_HEADER', '0000000111011000');
 define('OUTPUT_MODE_CONFIG_HEADER', '10000001');
