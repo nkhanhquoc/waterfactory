@@ -173,7 +173,7 @@ class ModulesController extends AppController {
             if ($values['pay']) {
                 if ($values['card_info']) {
                     try {
-                        $model->toClientPay($values['card_info']);
+                        $model->toClientPay(trim($values['card_info']));
                         $alert = "Gửi yêu cầu thanh toán thành công!";
                     } catch (Exception $e) {
                         $alert = "Có lỗi xảy ra";
