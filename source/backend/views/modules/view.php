@@ -6,6 +6,7 @@ $urlOP = ($model->outputModes) ? ['/output-mode/update?id=' . $model->outputMode
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Load Mode'), 'url' => $urlOP];
 $urlPC = ($model->paramConfigs) ? ['/param-config/update?id=' . $model->paramConfigs->id] : ['/param-config/create' . '?module_id=' . $model->id];
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Parameter Config'), 'url' => $urlPC];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Account'), 'url' => ['accountmanager', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Html::encode($model->name);
 ?>
 <div class="output-mode-view">

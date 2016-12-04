@@ -2,7 +2,7 @@
 
 use backend\components\common\Utility;
 
-$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Modules'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Modules'), 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Html::encode($model->name);
 ?>
 <div class="row modules">
