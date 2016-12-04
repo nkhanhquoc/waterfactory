@@ -117,10 +117,10 @@ class ModulesController extends AppController {
         if ($model->load(Yii::$app->request->post())) {
             if ($model->save(false, ['mode_id'])) {
                 if ($model->mode2Client()) {
-                    Yii::$app->session->setFlash('success', 'Đã gửi bản tin set Mode cho ' . $model->name . ' thành công!');
+                    Yii::$app->session->setFlash('success', 'Đã gửi bản tin set System Mode thành công!');
                     return $this->redirect(['view', 'id' => $model->id]);
                 } else {
-                    Yii::$app->session->setFlash('success', 'Gửi bản tin set Mode cho ' . $model->name . ' không thành công!');
+                    Yii::$app->session->setFlash('success', 'Gửi bản tin set System Mode không thành công!');
                 }
             }
         }
