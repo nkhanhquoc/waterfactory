@@ -150,15 +150,15 @@ class OutputMode extends OutputModeBase {
         $data->data = OUTPUT_MODE_CONFIG_HEADER
                 . $id
                 . OUTPUT_MODE_HEADER
-                . $this->convection_pump . '00000000'
-                . $this->cold_water_supply_pump . '00000000'
-                . $this->return_pump . '00000000'
-                . $this->incresed_pressure_pump . '00000000'
-                . $this->heat_pump . '00000000'
+                . $this->convection_pump
+                . $this->cold_water_supply_pump
+                . $this->return_pump
+                . $this->incresed_pressure_pump
+                . $this->heat_pump
                 . $this->heater_resister
+                . $this->reserved
                 . $this->three_way_valve
-                . $this->backflow_valve
-                . $this->reserved;
+                . $this->backflow_valve;
         $data->status = 0;
         $data->created_at = new Expression('NOW()');
         $data->save(false);
