@@ -129,6 +129,8 @@ class Modules extends ModulesBase {
     }
 
     public function toClientManager() {
+        #Ban tin ID module la cai nay:
+        #$id = ID_HEADER . \common\socket\Socket::dec2bin($this->getModuleId());
         $id = BACKUP . \common\socket\Socket::dec2bin($this->country->code . $this->privincial->code . $this->distric->code . $this->customer_code);
         $data = new \backend\models\DataClient();
         $data->module_id = $this->id;
@@ -156,6 +158,8 @@ class Modules extends ModulesBase {
                 $bkCode .= \common\socket\Socket::alldec2bin("0");
             }
         }
+        #Ban tin ID module la cai nay:
+        #$id = ID_HEADER . \common\socket\Socket::dec2bin($this->getModuleId());
         $id = BACKUP . \common\socket\Socket::dec2bin($this->country->code . $this->privincial->code . $this->distric->code . $this->customer_code);
         $data = new \backend\models\DataClient();
         $data->module_id = $this->id;
