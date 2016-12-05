@@ -55,7 +55,7 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
             <div class="c-08"><p><?php echo bindec($sensors->cam_bien_nhiet_do_bon_gia_nhiet); ?>&deg;C</p></div>
             <div class="icon-08"><img src="/images/03.png"/></div>    
 
-            <div class="c-09"><p><?php echo bindec($sensors->cam_bien_ap_suat_bon_gia_nhiet); ?>&deg;C</p></div>
+            <div class="c-09"><p><?php echo bindec($sensors->cam_bien_nhiet_do_duong_ong_1); ?>Bar</p></div>
             <div class="icon-09"><img src="/images/04.png"/></div>    
 
             <div class="c-10">&nbsp;</div>
@@ -69,7 +69,7 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
             <div class="bg-12-green <?php echo $statuses->bom_tang_ap_1 == '00' ? 'bg-green' : 'bg-red' ?>"></div>
             <div class="bg-12-red <?php echo $statuses->bom_tang_ap_2 == '00' ? 'bg-green' : 'bg-red' ?>"></div>  
 
-            <div class="c-13"><p><?php echo bindec($sensors->cam_bien_nhiet_dinh_bon_solar); ?>&deg;C</p></div>
+            <div class="c-13"><p><?php echo bindec($sensors->cam_bien_nhiet_do_duong_ong_2); ?>Bar</p></div>
             <div class="icon-13"><img src="/images/04.png"/></div>	
 
             <div class="c-14"><p><?php echo bindec($sensors->cam_bien_tran); ?>&deg;C</p></div>
