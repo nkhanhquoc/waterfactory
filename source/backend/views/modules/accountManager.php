@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
             <div class="row50 padding10">
                 <select class="form-control row80" id="module_id" name="module_id" onchange="updateModuleInput()">
                     <?php foreach ($modules as $key => $m): ?>
-                        <option value="<?php echo $key ?>" <?php if ($model->id == $key) echo 'selected="selected"'; ?>><?php echo $m ?></option>
+                        <option value="<?php echo $key ?>" <?php if ($model->id == $key) echo 'selected="selected"'; ?>><?php echo $m."-".$model->id ?></option>
                     <?php endforeach; ?>
                 </select>
                 <span class="row20">&nbsp;</span>

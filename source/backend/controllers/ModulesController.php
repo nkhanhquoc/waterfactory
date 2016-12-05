@@ -174,12 +174,17 @@ class ModulesController extends AppController {
             }
             if ($values['pay']) {
                 if ($values['card_info']) {
+                  if(!is_numeric($values['card_info'])){
                     try {
                         $model->toClientPay(trim($values['card_info']));
                         $alert = "Gửi yêu cầu thanh toán thành công!";
                     } catch (Exception $e) {
                         $alert = "Có lỗi xảy ra";
                     }
+                  } else {
+                    $alert = "Mã thẻ cào chưa chính xác!";
+                  }
+
                 } else {
                     $alert = "Bạn phải nhập mã thẻ!";
                 }
