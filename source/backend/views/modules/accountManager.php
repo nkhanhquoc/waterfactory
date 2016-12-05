@@ -5,7 +5,7 @@ use backend\components\common\Utility;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Modules'), 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Html::encode($model->name);
 ?>
-<div class="row modules">
+<div class="row modules padding10">
     <input type="hidden" id="module-id" value="<?php echo $model->id ?>">
     <div class="row row100">
         <div class="row20 params-left padding10">
@@ -71,8 +71,8 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
         $.get("/modules/loadinfo?id=" + id, {}, function (values) {
             console.log(values);
             // var values = JSON.parse(data);
-            $("#money-info").html(values.money);
-            $("#data-info").html(values.data);
+            $("#money-info").val(values.money);
+            $("#data-info").val(values.data);
         });
 
     }
@@ -82,10 +82,10 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
         var id = $("#module-id").val();
 
         $.get("/modules/loadinfo?id=" + id, {}, function (values) {
-            // console.log(data);
+            console.log(values);
             // var values = JSON.parse(data);
-            $("#money-info").html(values.money);
-            $("#data-info").html(values.data);
+            $("#money-info").val(values.money);
+            $("#data-info").val(values.data);
         });
 
     }, 10000);
