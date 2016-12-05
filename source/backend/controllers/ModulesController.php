@@ -45,7 +45,7 @@ class ModulesController extends AppController {
      */
     public function actionView($id) {
         $model = $this->findModel($id);
-        
+
         $sensors = $model->sensors;
         $statuses = $model->moduleStatuses;
         $alarms = $model->alarms;
@@ -161,6 +161,7 @@ class ModulesController extends AppController {
 
     public function actionAccountmanager($id) {
         $model = $this->findModel($id);
+        $modules = Modules::getAll();
         if (Yii::$app->request->isPost) {
             $values = Yii::$app->request->post();
             if ($values['check']) {
@@ -186,7 +187,8 @@ class ModulesController extends AppController {
         }
         return $this->render('accountManager', [
                     'model' => $model,
-                    'alert' => $alert
+                    'alert' => $alert,
+                    'modules' => $modules
         ]);
     }
 
