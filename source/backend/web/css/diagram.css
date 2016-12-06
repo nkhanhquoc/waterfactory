@@ -151,7 +151,7 @@
     background:#8dd7f6;
     width: 28px;
     height: 12px;
-    border-bottom:1px solid #000;
+    /*border-bottom:1px solid #000;*/
 }
 
 .bg-04 .ctn{
