@@ -53,7 +53,7 @@
     height:775px;
     position:relative;
     clear: both;
-    border:1px solid #f8a21e;
+    /*border:1px solid #f8a21e;*/
     width:966px;
     margin: 0 auto;
 }
@@ -151,7 +151,7 @@
     background:#8dd7f6;
     width: 28px;
     height: 12px;
-    /*border-bottom:1px solid #000;*/
+    border-bottom:1px solid #000;
 }
 
 .bg-04 .ctn{
