@@ -14,13 +14,14 @@ use Yii;
  * @property string $cam_bien_muc_nuoc_bon_solar
  * @property string $cam_bien_nhiet_do_bon_gia_nhiet
  * @property string $cam_bien_ap_suat_bon_gia_nhiet
- * @property string $cam_bien_ap_suat_duong_ong
- * @property string $cam_bien_nhiet_do_duong_ong_1
- * @property string $cam_bien_nhiet_do_duong_ong_2
+ * @property string $cam_bien_buc_xa_dan_thu
  * @property string $cam_bien_nhiet_dinh_bon_solar
  * @property string $cam_bien_tran
+ * @property string $cam_bien_nhiet_do_duong_ong_2
  * @property string $du_phong
  * @property string $created_at
+ * @property string $cam_bien_ap_suat_duong_ong
+ * @property string $cam_bien_nhiet_do_duong_ong_1
  *
  * @property ModulesDB $module
  */
@@ -43,7 +44,7 @@ class SensorDB extends \yii\db\ActiveRecord
             [['module_id'], 'required'],
             [['module_id'], 'integer'],
             [['created_at'], 'safe'],
-            [['cam_bien_dan_thu', 'cam_bien_bon_solar', 'cam_bien_muc_nuoc_bon_solar', 'cam_bien_nhiet_do_bon_gia_nhiet', 'cam_bien_ap_suat_bon_gia_nhiet', 'cam_bien_ap_suat_duong_ong', 'cam_bien_nhiet_do_duong_ong_1', 'cam_bien_nhiet_do_duong_ong_2', 'cam_bien_nhiet_dinh_bon_solar', 'cam_bien_tran'], 'string', 'max' => 50],
+            [['cam_bien_dan_thu', 'cam_bien_bon_solar', 'cam_bien_muc_nuoc_bon_solar', 'cam_bien_nhiet_do_bon_gia_nhiet', 'cam_bien_ap_suat_bon_gia_nhiet', 'cam_bien_buc_xa_dan_thu', 'cam_bien_nhiet_dinh_bon_solar', 'cam_bien_tran', 'cam_bien_nhiet_do_duong_ong_2', 'cam_bien_ap_suat_duong_ong', 'cam_bien_nhiet_do_duong_ong_1'], 'string', 'max' => 50],
             [['du_phong'], 'string', 'max' => 200]
         ];
     }
@@ -61,13 +62,14 @@ class SensorDB extends \yii\db\ActiveRecord
             'cam_bien_muc_nuoc_bon_solar' => Yii::t('backend', 'Cam Bien Muc Nuoc Bon Solar'),
             'cam_bien_nhiet_do_bon_gia_nhiet' => Yii::t('backend', 'Cam Bien Nhiet Do Bon Gia Nhiet'),
             'cam_bien_ap_suat_bon_gia_nhiet' => Yii::t('backend', 'Cam Bien Ap Suat Bon Gia Nhiet'),
-            'cam_bien_ap_suat_duong_ong' => Yii::t('backend', 'Cam Bien Ap Suat Duong Ong'),
-            'cam_bien_nhiet_do_duong_ong_1' => Yii::t('backend', 'Cam Bien Nhiet Do Duong Ong 1'),
-            'cam_bien_nhiet_do_duong_ong_2' => Yii::t('backend', 'Cam Bien Nhiet Do Duong Ong 2'),
+            'cam_bien_buc_xa_dan_thu' => Yii::t('backend', 'Cam Bien Buc Xa Dan Thu'),
             'cam_bien_nhiet_dinh_bon_solar' => Yii::t('backend', 'Cam Bien Nhiet Dinh Bon Solar'),
             'cam_bien_tran' => Yii::t('backend', 'Cam Bien Tran'),
+            'cam_bien_nhiet_do_duong_ong_2' => Yii::t('backend', 'Cam Bien Nhiet Do Duong Ong 2'),
             'du_phong' => Yii::t('backend', 'Du Phong'),
             'created_at' => Yii::t('backend', 'Created At'),
+            'cam_bien_ap_suat_duong_ong' => Yii::t('backend', 'Cam Bien Ap Suat Duong Ong'),
+            'cam_bien_nhiet_do_duong_ong_1' => Yii::t('backend', 'Cam Bien Nhiet Do Duong Ong 1'),
         ];
     }
 
