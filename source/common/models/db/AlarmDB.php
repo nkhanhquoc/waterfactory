@@ -16,7 +16,6 @@ use Yii;
  * @property string $mat_dien
  * @property string $time_start_alarm
  * @property string $time_cancal_alarm
- * @property integer $status
  *
  * @property ModulesDB $module
  */
@@ -36,7 +35,7 @@ class AlarmDB extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['module_id', 'status'], 'integer'],
+            [['module_id'], 'integer'],
             [['created_at', 'time_start_alarm', 'time_cancal_alarm'], 'safe'],
             [['qua_nhiet', 'qua_ap_suat', 'tran_be', 'mat_dien'], 'string', 'max' => 255]
         ];
@@ -57,7 +56,6 @@ class AlarmDB extends \yii\db\ActiveRecord
             'mat_dien' => Yii::t('backend', 'Mat Dien'),
             'time_start_alarm' => Yii::t('backend', 'Time Start Alarm'),
             'time_cancal_alarm' => Yii::t('backend', 'Time Cancal Alarm'),
-            'status' => Yii::t('backend', 'Status'),
         ];
     }
 
