@@ -10,6 +10,51 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Account'), 'url'
 $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Html::encode($model->name);
 ?>
 <div class="output-mode-view">
+    <div class="info-diagram">
+        <h3 class="title">ID: <?php echo $model->getModuleId() . ' - ' . \yii\helpers\Html::encode($model->name); ?></h3>
+        <div class="info-block">
+            <div class="info-block-item">
+                <span class="text-02">Solar panels temp</span>
+                <span class="text-01"><?php echo bindec($sensors->cam_bien_dan_thu); ?><sup>o</sup>C</span>
+            </div>
+            <div class="info-block-item">
+                <span class="text-02">Solar tank temp</span>
+                <span class="text-01"><?php echo bindec($sensors->cam_bien_bon_solar); ?><sup>o</sup>C</span>
+            </div>
+            <div class="info-block-item">
+                <span class="text-02">Solar tank level</span>
+                <span class="text-01"><?php echo bindec($sensors->cam_bien_muc_nuoc_bon_solar); ?><sup>o</sup>C</span>
+            </div>
+        </div>
+        <div class="info-block">
+            <div class="info-block-item">
+                <span class="text-02">Heater tank temp</span>
+                <span class="text-01"><?php echo bindec($sensors->cam_bien_nhiet_do_bon_gia_nhiet); ?><sup>o</sup>C</span>
+            </div>
+            <div class="info-block-item">
+                <span class="text-02">Heater tank pressure</span>
+                <span class="text-01"><?php echo bindec($sensors->cam_bien_ap_suat_bon_gia_nhiet); ?><sup>o</sup>C</span>
+            </div>
+            <div class="info-block-item">
+                <span class="text-02">Lingh intensity</span>
+                <span class="text-01"><?php echo bindec($sensors->cam_bien_buc_xa_dan_thu); ?><sup>o</sup>C</span>
+            </div>
+        </div>
+        <div class="info-block">
+            <div class="info-block-item">
+                <span class="text-02">Top of Solar tank temp</span>
+                <span class="text-01"><?php echo bindec($sensors->cam_bien_nhiet_dinh_bon_solar); ?><sup>o</sup>C</span>
+            </div>
+            <div class="info-block-item">
+                <span class="text-02">Pipeline pressure</span>
+                <span class="text-01"><?php echo bindec($sensors->cam_bien_ap_suat_duong_ong); ?><sup>o</sup>C</span>
+            </div>
+            <div class="info-block-item">
+                <span class="text-02">Pipeline temp 1</span>
+                <span class="text-01"><?php echo bindec($sensors->cam_bien_nhiet_do_duong_ong_1); ?><sup>o</sup>C</span>
+            </div>
+        </div>
+    </div>
     <div class="diagram">
         <div class="left-content">
             <div class="c-00"><?php echo bindec($sensors->cam_bien_ap_suat_duong_ong); ?></div>
