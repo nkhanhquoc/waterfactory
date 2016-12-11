@@ -1,3 +1,5 @@
+/*By Vietnt Version.1.2.0*/
+
 .diagram {
     font-size:14px;
     font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -5,9 +7,7 @@
 
 /***************Right content *********************/
 .right-content {
-    float:left;
     font-size:14px;
-    width:320px;
     margin-left:50px;
 }
 
@@ -64,9 +64,11 @@
     background:url(../images/bg.jpg) no-repeat 0 0;
     height:510px;
     position:relative;
-    float:left;
-    border:1px solid #f8a21e;
+    /*float:left;
+    border:1px solid #f8a21e;*/
     width:585px;
+    margin: 0 auto;
+
 }
 
 .left-content p{
@@ -307,8 +309,9 @@
 
 .c-00{
     display: block;
-    left: 79px;
+    left: 76px;
     top: 25px;
+    width:30px;
 }
 
 .c-01{
@@ -432,7 +435,7 @@
         width:100%;
         margin-left:20px;
         text-align:left;
-        margin-top:10px
+        margin-top:10px;
     }
 
     .right-content li{
@@ -481,7 +484,7 @@
     margin:20px 0;
 }
 
-.info-diagram .check-account .row-check-account{
+.info-diagram .check-account .row-check-account,.info-diagram .check-account .row-form{
     padding:5px 0;
     float:left;
     width:100%;
@@ -535,21 +538,22 @@
 
 .info-diagram .capcha{
     display:inline-block;
-    height:32px;
+    height:27px;
     overflow:hidden;
     float:left;
     border-radius:4px;
     background:#fff;
     margin-left:10px;
+    margin-top:10px;
 }
 
 .info-diagram .capcha img{
-    max-height:32px;
-    height:32px;
+    max-height:27px;
+    height:27px;
     vertical-align:middle;
 }	
 
-.info-diagram .check-account .col-02{
+.info-diagram .check-account .col-02 {
     float:left;
     width:80%;
     padding-left:10px;
@@ -574,9 +578,9 @@
     padding:5px 0;
 }
 
-.info-diagram .check-account .link-2{
-    color:#00cc99;
+.info-diagram .check-account .link-2 {
     text-decoration:none;
+    color:#000;
 }
 
 .btn-link{
@@ -634,6 +638,135 @@
     color:#009966;
     background-color:transparent !important;
 }	
+
+.form-2 {
+    border:1px solid #000;
+    width:400px;
+    margin:0 auto;
+    background:#c4c1dd;
+}
+
+.form-2 .row-form{
+    border-top:1px solid #000;	
+}
+
+.form-2 .row-form{
+    border-top:1px solid #000;	
+    padding:0 !important;
+    font-size:14px;
+}
+
+.form-2 .row-form .col-02{
+    border-left:1px solid #000;	
+    width:65%;
+    float:left;
+    padding:0 10px;
+}
+
+.form-2 .row-form .col-01{
+    width:30%;
+}	
+
+.form-2 .btn-link{
+    border-radius:0;
+    margin:0;
+    padding:15px;
+    background: linear-gradient(90deg, rgba(0,147,213,1) 0%, rgba(255,255,255,1) 50%, rgba(0,147,213,1) 100%); /* Standard syntax */	
+    color:#000;
+    font-weight:bold;
+    font-size:16px;
+    text-transform:uppercase;
+}	
+
+.form-2 .row-form .text-field-2{
+    width:100%;
+    font-family:Arial;
+    font-size:14px;
+    margin:10px 0;
+    padding:5px 0;
+    border:0;
+    background:transparent;
+}	
+
+.form-2 .row-form-last{
+    clear:both;
+    border-top:1px solid #000;
+}
+
+.form-2 p{
+    padding:15px 10px !important;
+}	
+
+.form-2 h3{
+    padding:15px;
+    text-transform:uppercase;
+    margin:0;
+    background: linear-gradient(90deg, rgba(108,138,195,1) 0%, rgba(255,255,255,1) 50%, rgba(108,138,195,1) 100%); /* Standard syntax */		
+}		
+
+.header {
+    float:left;
+    width:100%;
+    clear:both;
+}
+
+.header .header-left{
+    float:left;
+    width:150px;
+    height:150px;
+    background:#fff;
+    text-align:center;
+    line-height:150px;
+}
+
+.header .header-left .logo{
+    display:inline-block;
+    vertical-align:middle;
+    height:100px;
+    width:100px;
+    overflow:hidden;
+    background-color:#fff;
+    border-radius:50px;
+    line-height: 0;
+}
+
+.header .header-left .logo img{
+    height:100px;
+    width:100px;
+}	
+
+.header .banner{
+    background:#756fb0;
+}
+
+.header .banner .banner-image{
+    height:117px;
+    background-color:#756fb0;
+    text-align:center;
+}
+
+.header .banner .banner-image img{
+    max-height:117px;
+    width:88%;
+}	
+
+.header .banner .banner-menu{
+    background-color:#595586;
+    text-align:right;
+}
+
+.header .banner .banner-menu a{
+    border-left:1px solid #595586;
+    display:inline-block;
+    padding:7px 15px;
+    text-decoration:none;
+    color:#fff;
+    background:#1caf9a;
+}
+
+.header .banner .banner-menu .active{
+    background:#cd3d11;
+}		
 
 .clearfix {
     clear:both;
