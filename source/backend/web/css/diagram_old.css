@@ -3,7 +3,6 @@
 .diagram {
     font-size:14px;
     font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    clear:both;
 }
 
 /***************Right content *********************/
@@ -778,33 +777,4 @@
 .clearfix:before, .clearfix:after {
     content: " ";
     display: table
-}
-
-
-/*btn-check*/
-.btn-check{
-    background-color: #337ab7;
-    border:0;
-    color: #fff;
-    border-radius:10px;
-    display: inline-block;
-    text-decoration:none;
-    padding:20px;
-    margin:20px;
-    font-size:0;
-}
-
-.info-diagram .row-check-account .btn-check:hover,.info-diagram .row-check-account .select-button{
-    background-color:#1caf9a !important;
-    border:0;
-    color: #fff;
-    border-radius:10px;
-    display: inline-block;
-    text-decoration:none;
-    padding:20px;
-    margin:20px;
-}
-
-.btn-check img{
-    border-radius:5px;
 }
