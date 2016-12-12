@@ -49,7 +49,7 @@ AppAsset::register($this);
             <!-- BEGIN HEADER INNER -->
             <div class="header">
                 <div class="header-left">
-                    <a href="#" class="logo"><img src="/images/logo.png"/></a>
+                    <a href="/" class="logo"><img src="/images/logo.png"/></a>
                 </div>
                 <div class="banner">
                     <div class="banner-image">
