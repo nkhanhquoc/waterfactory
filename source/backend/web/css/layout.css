@@ -861,7 +861,7 @@ Page container
 .page-container {
     margin: 0px;
     padding: 0px;
-    position: relative;
+    /*position: relative;*/
     /* Fixed header */
     /* Fixed footer for mobile */
 }
