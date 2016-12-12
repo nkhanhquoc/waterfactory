@@ -56,11 +56,13 @@ AppAsset::register($this);
                         <img src="/images/banner.jpg"  alt=""/>
                     </div>
                     <div class="banner-menu">
-                        <a href="#" class="active">Over tank</a>
-                        <a class="active" href="#">Lost connection</a>
-                        <a href="#">Over heat</a>
-                        <a href="#">Over pressure</a>
-                        <a href="#">Lost supply</a>                                                                
+                        <div class="content-menu">
+                            <a href="#" class="active">Over tank</a>
+                            <a href="#">Lost connection</a>
+                            <a href="#">Over heat</a>
+                            <a href="#">Over pressure</a>
+                            <a href="#">Lost supply</a>                                                                
+                        </div>  
                     </div>
                 </div>
             </div>

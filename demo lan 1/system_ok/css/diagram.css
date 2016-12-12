@@ -754,6 +754,7 @@
 .header .banner .banner-menu{
     background-color:#595586;
     text-align:right;
+	height:33px;
 }
 
 .header .banner .banner-menu a{
@@ -763,6 +764,10 @@
     text-decoration:none;
     color:#fff;
     background:#1caf9a;
+}
+
+.header .banner .banner-menu .content-menu{
+    float:right;
 }
 
 .header .banner .banner-menu .active{
