@@ -135,6 +135,16 @@ $(document).ready(function () {
             $("li#" + idLi + " span").addClass("active");
         }
     });
+
+    $('#report_from').datetimepicker({
+      format: 'Y-m-d H:i:s',
+      step:5,
+    });
+
+    $('#report_to').datetimepicker({
+      format: 'Y-m-d H:i:s',
+      step:5,
+    });
 });
 
 function setImageUrl(path, url) {
