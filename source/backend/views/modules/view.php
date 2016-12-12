@@ -10,17 +10,51 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Account'), 'url'
 $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Html::encode($model->name);
 ?>
 <div class="output-mode-view">
-    <?php if (Yii::$app->controller->id == 'modules' && Yii::$app->controller->action->id == 'view') { ?>
-        <div class="bottom-menu">
-            <ul>
-                <li><a href="#" <?php echo $alarms->tran_be == '11' ? "class='alarm'" : '' ?>>OVER TANK</a></li>
-                <li><a href="#">LOST CONNECTION</a></li>
-                <li><a href="#" <?php echo $alarms->qua_nhiet == '11' ? "class='alarm'" : '' ?>>OVER HEAT</a></li>
-                <li><a href="#" <?php echo $alarms->qua_ap_suat == '11' ? "class='alarm'" : '' ?>>OVER PRESSURE</a></li>
-                <li><a href="#">LOST SUPPLY</a></li>
-            </ul>
+    <div class="info-diagram">
+        <h3 class="title">ID: <?php echo $model->getModuleId() . ' - ' . \yii\helpers\Html::encode($model->name); ?></h3>
+        <div class="info-block">
+            <div class="info-block-item">
+                <span class="text-02">Solar panels temp</span>
+                <span class="text-01"><?php echo bindec($sensors->cam_bien_dan_thu); ?><sup>o</sup>C</span>
+            </div>
+            <div class="info-block-item">
+                <span class="text-02">Solar tank temp</span>
+                <span class="text-01"><?php echo bindec($sensors->cam_bien_bon_solar); ?><sup>o</sup>C</span>
+            </div>
+            <div class="info-block-item">
+                <span class="text-02">Solar tank level</span>
+                <span class="text-01"><?php echo bindec($sensors->cam_bien_muc_nuoc_bon_solar); ?><sup>o</sup>C</span>
+            </div>
         </div>
-    <?php } ?>
+        <div class="info-block">
+            <div class="info-block-item">
+                <span class="text-02">Heater tank temp</span>
+                <span class="text-01"><?php echo bindec($sensors->cam_bien_nhiet_do_bon_gia_nhiet); ?><sup>o</sup>C</span>
+            </div>
+            <div class="info-block-item">
+                <span class="text-02">Heater tank pressure</span>
+                <span class="text-01"><?php echo bindec($sensors->cam_bien_ap_suat_bon_gia_nhiet); ?><sup>o</sup>C</span>
+            </div>
+            <div class="info-block-item">
+                <span class="text-02">Lingh intensity</span>
+                <span class="text-01"><?php echo bindec($sensors->cam_bien_buc_xa_dan_thu); ?><sup>o</sup>C</span>
+            </div>
+        </div>
+        <div class="info-block">
+            <div class="info-block-item">
+                <span class="text-02">Top of Solar tank temp</span>
+                <span class="text-01"><?php echo bindec($sensors->cam_bien_nhiet_dinh_bon_solar); ?><sup>o</sup>C</span>
+            </div>
+            <div class="info-block-item">
+                <span class="text-02">Pipeline pressure</span>
+                <span class="text-01"><?php echo bindec($sensors->cam_bien_ap_suat_duong_ong); ?><sup>o</sup>C</span>
+            </div>
+            <div class="info-block-item">
+                <span class="text-02">Pipeline temp 1</span>
+                <span class="text-01"><?php echo bindec($sensors->cam_bien_nhiet_do_duong_ong_1); ?><sup>o</sup>C</span>
+            </div>
+        </div>
+    </div>
     <div class="diagram">
         <div class="left-content">
             <div class="c-00"><?php echo bindec($sensors->cam_bien_ap_suat_duong_ong); ?></div>
@@ -29,7 +63,7 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
             <div class="c-02"><p><?php echo bindec($sensors->cam_bien_dan_thu); ?>&deg;C</p></div>    
             <div class="icon-02"><img src="/images/03.png"/></div>
 
-            <div class="c-03"><p><?php echo bindec($sensors->cam_bien_nhiet_dinh_bon_solar); ?>&deg;C</p></div>
+            <div class="c-03">&nbsp;<p><?php echo bindec($sensors->cam_bien_nhiet_dinh_bon_solar); ?>&deg;C</p></div>
             <div class="icon-03"><img src="/images/01.png"/></div>    
 
             <div class="c-04">&nbsp;</div>
@@ -41,7 +75,7 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
                 </div>
             </div>
 
-            <div class="c-05"><p><?php echo bindec($sensors->cam_bien_bon_solar); ?>&deg;C</p></div>
+            <div class="c-05">&nbsp;<p><?php echo bindec($sensors->cam_bien_bon_solar); ?>&deg;C</p></div>
             <div class="icon-05"><img src="/images/01.png"/></div>    
 
             <div class="c-06">&nbsp;</div>
@@ -52,10 +86,10 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
             <div class="bg-07-green <?php echo $model->van_dien_tu_ba_nga_up == '00' ? 'bg-green' : 'bg-red' ?>" van_dien_tu_ba_nga_up="<?php echo $model->van_dien_tu_ba_nga_up; ?>"></div>
             <div class="bg-07-red <?php echo $model->van_dien_tu_ba_nga_down == '00' ? 'bg-green' : 'bg-red' ?>" van_dien_tu_ba_nga_down="<?php echo $model->van_dien_tu_ba_nga_down; ?>"></div>   
 
-            <div class="c-08"><p><?php echo bindec($sensors->cam_bien_nhiet_do_bon_gia_nhiet); ?>&deg;C</p></div>
+            <div class="c-08">&nbsp;<p><?php echo bindec($sensors->cam_bien_nhiet_do_bon_gia_nhiet); ?>&deg;C</p></div>
             <div class="icon-08"><img src="/images/03.png"/></div>    
 
-            <div class="c-09"><p><?php echo bindec($sensors->cam_bien_nhiet_do_duong_ong_1); ?>Bar</p></div>
+            <div class="c-09">&nbsp;<p><?php echo bindec($sensors->cam_bien_nhiet_do_duong_ong_1); ?>Bar</p></div>
             <div class="icon-09"><img src="/images/04.png"/></div>    
 
             <div class="c-10">&nbsp;</div>
@@ -69,10 +103,10 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
             <div class="bg-12-green <?php echo $statuses->bom_tang_ap_1 == '00' ? 'bg-green' : 'bg-red' ?>"></div>
             <div class="bg-12-red <?php echo $statuses->bom_tang_ap_2 == '00' ? 'bg-green' : 'bg-red' ?>"></div>  
 
-            <div class="c-13"><p><?php echo bindec($sensors->cam_bien_nhiet_do_duong_ong_2); ?>Bar</p></div>
+            <div class="c-13">&nbsp;<p><?php echo bindec($sensors->cam_bien_nhiet_do_duong_ong_2); ?>Bar</p></div>
             <div class="icon-13"><img src="/images/04.png"/></div>	
 
-            <div class="c-14"><p><?php echo bindec($sensors->cam_bien_tran); ?>&deg;C</p></div>
+            <div class="c-14">&nbsp;<p><?php echo bindec($sensors->cam_bien_tran); ?>&deg;C</p></div>
             <div class="icon-14"><img src="/images/03.png"/></div>    
 
             <div class="c-15">&nbsp;</div>
@@ -83,7 +117,7 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
             <div class="bg-16-green <?php echo $statuses->bom_hoi_duong_ong_1 == '00' ? 'bg-green' : 'bg-red' ?>"></div>
             <div class="bg-16-red <?php echo $statuses->bom_hoi_duong_ong_2 == '00' ? 'bg-green' : 'bg-red' ?>"></div> 
 
-            <div class="c-17"><p><?php echo bindec($sensors->du_phong); ?>&deg;C</p></div>
+            <div class="c-17">&nbsp;<p><?php echo bindec($sensors->du_phong); ?>&deg;C</p></div>
             <div class="icon-17"><img src="/images/03.png"/></div>    
 
             <div class="c-18">&nbsp;</div>

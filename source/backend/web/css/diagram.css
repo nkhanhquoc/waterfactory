@@ -1,28 +1,28 @@
+/*By Vietnt Version.1.2.0*/
+
 .diagram {
     font-size:14px;
     font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    /*min-height:1030px;*/
 }
 
 /***************Right content *********************/
 .right-content {
     font-size:14px;
-    clear: both;    
-    width:967px;
-    margin: 0 auto;
+    margin-left:50px;
 }
 
 .right-content ol{
     margin:0;
     padding:0;
-    padding-left:25px;
 }
 
 .right-content li{
-    padding:10px 0;
+    padding:5px 0;
     list-style:decimal-leading-zero;
-    margin-right:50px;
-    float:left;
+}
+
+.right-content li:first-child{
+    padding-top:0;
 }
 
 .right-content li a{
@@ -43,19 +43,32 @@
     color:#60bb47;
 }
 
+.collapse1 {
+    float:right;
+    width:100% !important;
+}
 
+.collapse1 ol{
+    padding-left:25px;
+}
+
+.collapse1 ol li{
+    margin-right:50px;
+    float:left;
+}
 
 
 
 /***************Left content *********************/
 .left-content {
     background:url(../images/bg.jpg) no-repeat 0 0;
-    height:775px;
+    height:510px;
     position:relative;
-    clear: both;
-    /*border:1px solid #f8a21e;*/
-    width:966px;
+    /*float:left;
+    border:1px solid #f8a21e;*/
+    width:585px;
     margin: 0 auto;
+
 }
 
 .left-content p{
@@ -65,7 +78,7 @@
 
 .c-00,.c-01,.c-02,.c-03,.c-04,.c-05,.c-06,.c-07,.c-08,.c-09,.c-10,.c-11,.c-12,.c-13,.c-14,.c-15,.c-16,.c-17,.c-18,.bg-04,.bg-06-green,.bg-06-red,.bg-07-green,.bg-07-red,.bg-10-green,.bg-10-red,.bg-11-green,.bg-12-red,.bg-12-green,.bg-15-green,.bg-15-red,.bg-16-green,.bg-16-red,.icon-02,.icon-03,.icon-05,.icon-08,.icon-09,.icon-13,.icon-14,.icon-17  {
     position:absolute;
-    font-size:20px;
+    font-size:14px;
     text-align:center;
     display:none;
 }
@@ -82,50 +95,50 @@
 
 .icon-02{
     display:block;
-    left:296px;
-    top:70px;
+    left:174px;
+    top:39px;
 }
 
 .icon-03{
     display:block;
-    left:460px;
-    top:205px;
+    left:266px;
+    top:122px;
 }
 
 .icon-05{
     display:block;
-    left:460px;
-    top:377px;
+    left:269px;
+    top:226px;
 }
 
 .icon-08{
     display:block;
-    left:640px;
-    top:400px;
+    left:379px;
+    top:240px;
 }
 
 .icon-09{
     display:block;
-    left:712px;
-    top:400px;
+    left:424px;
+    top:239px;
 }
 
 .icon-13{
     display:block;
-    left: 680px;
-    top: 587px;
+    left: 402px;
+    top: 351px;
 }
 
 .icon-14{
     display:block;
-    left: 455px;
-    top: 588px;
+    left: 265px;
+    top: 351px;
 }
 
 .icon-17{
     display:block;
-    left: 453px;
-    top: 702px;
+    left: 265px;
+    top: 419px;
 }
 
 /*********************background**************/
@@ -133,10 +146,10 @@
     display:block;
     position:absolute;
     background:#fff;
-    top: 193px;
-    left: 402px;
-    width: 28px;
-    height: 39px;
+    top: 116px;
+    left: 242px;
+    width: 17px;
+    height: 24px;
     border:1px solid #000;
     border-bottom:0;
     vertical-align:bottom;
@@ -149,32 +162,33 @@
     vertical-align:bottom;
     line-height:0;
     background:#8dd7f6;
-    width: 28px;
-    height: 12px;
+    width: 15px;
+    height: 8px;
     border-bottom:1px solid #000;
 }
 
 .bg-04 .ctn{
     position:relative;
     background:#fff;
-    width: 28px;
-    height: 39px;
+    width: 15px;
+    height: 23px;
 }
 
 .bg-04 .row-01{
     top:0px;
     left:0;
     position:absolute;
+    height:7px;
 }
 
 .bg-04 .row-02{
-    top:13px;
+    top:7px;
     left:0;	
     position:absolute;	
 }
 
 .bg-04 .row-03{
-    top:26px;
+    top:15px;
     left:0;	
     position:absolute;	
 }
@@ -191,94 +205,94 @@
 
 .bg-06-red,.bg-06-green {
     display:block;
-    left:24px;
-    top:355px;
-    width:24px;
-    height:30px;
+    left:13px;
+    top:212px;
+    width:15px;
+    height:19px;
     background:red;
 }
 
 .bg-06-green {
-    top:298px;
+    top:179px;
     background:green;
 }
 
 .bg-07-red,.bg-07-green {
     display:block;
-    left:294px;
-    top:422px;
-    width:18px;
-    height:15px;
+    width:10px;
     background:red;
+    height: 9px;
+    left: 177px;
+    top: 244px;
 }
 
 .bg-07-green {
-    top:407px;
+    top:253px;
     background:green;
 }
 
 .bg-10-red,.bg-10-green {
     display:block;
-    left:582px;
-    top:473px;
-    width:20px;
-    height:10px;
+    left:348px;
+    top:283px;
+    width:14px;
+    height:7px;
     background:red;
 }
 
 .bg-10-green {
-    top:486px;
+    top:292px;
     background:green;
 }
 
 .bg-11{
     display:block;
     position:absolute;
-    left:860px;
-    top:471px;
-    width:22px;
-    height:27px;
+    left:514px;
+    top:284px;
+    width:15px;
+    height:14px;
 }
 
 .bg-12-red,.bg-12-green {
     display:block;
-    left:866px;
-    top:540px;
-    width:20px;
-    height:25px;
+    left:514px;
+    top:324px;
+    width:15px;
+    height:14px;
     background:red;
 }
 
 .bg-12-green {
-    top:597px;
+    top:358px;
     background:green;
 }
 
 .bg-15-red,.bg-15-green {
     display:block;
-    left:177px;
-    top:588px;
-    width:24px;
-    height:30px;
+    left:104px;
+    top:316px;
+    width:15px;
+    height:19px;
     background:red;
 }
 
 .bg-15-green {
-    top:528px;
+    top:350px;
     background:green;
 }
 
 .bg-16-red,.bg-16-green {
     display:block;
-    left:335px;
-    top:749px;
-    width:19px;
-    height:24px;
+    left:194px;
+    top:451px;
+    width:15px;
+    height:19px;
     background:red;
 }
 
 .bg-16-green {
-    top:697px;
+    top:417px;
     background:green;
 }
 
@@ -295,119 +309,120 @@
 
 .c-00{
     display: block;
-    left: 140px;
-    top: 43px;
+    left: 76px;
+    top: 25px;
+    width:30px;
 }
 
 .c-01{
     display:block;	
-    left:60px;
-    top:41px;
+    left:30px;
+    top:25px;
 }
 
 .c-02{
     display:block;	
-    left:313px;
-    top:48px;
+    left:195px;
+    top:30px;
 }
 
 .c-03{
     display:block;	
-    left:477px;	
-    top:157px;
+    left:285px;	
+    top:89px;
 }
 
 .c-04{
     display:block;	
-    left: 375px;
-    top: 200px;
+    left: 241px;
+    top: 140px;
 }
 
 .c-05{
     display:block;	
-    left:477px;	
-    top:330px;
+    left:285px;	
+    top:192px;
 }
 
 .c-06{
     display:block;	
-    left:24px;	
-    top:258px;
+    left:13px;	
+    top:151px;
 }
 
 .c-07{
     display:block;	
-    left: 260px;
-    top: 428px;
+    left: 156px;
+    top: 259px;
 }
 
 .c-08{
     display:block;	
-    left:624px;	
-    top:344px;
+    left:372px;	
+    top:200px;
 }
 
 .c-09{
     display:block;	
-    left:698px;	
-    top:344px;
+    left:418px;	
+    top:199px;
 }
 
 .c-10{
     display:block;	
-    left:540px;
-    top:470px;
+    left:323px;
+    top:280px;
 }
 
 .c-11{
     display:block;	
-    left:899px;	
-    top:472px;
+    left:539px;	
+    top:281px;
 }
 
 .c-12{
     display:block;	
-    left:899px;	
-    top:540px;
+    left:539px;	
+    top:320px;
 }
 
 .c-13{
     display:block;	
-    left: 700px;
-    top: 565px;
+    left: 419px;
+    top: 327px;
 }
 
 .c-14{
     display:block;	
-    left:470px;	
-    top:565px;
+    left:283px;	
+    top:327px;
 }
 
 .c-15{
     display:block;	
-    left:169px;	
-    top:632px;
+    left:98px;	
+    top:378px;
 }
 
 .c-16{
     display:block;	
-    left: 329px;
-    top: 658px;
+    left: 190px;
+    top: 477px;
 }
 
 .c-17{
     display:block;	
-    left:470px;	
-    top:679px;
+    left:283px;	
+    top:399px;
 }
 
 .c-18{
     display:block;	
-    left:580px;	
-    top:679px;
+    left:345px;	
+    top:406px;
 }
 
-@media (max-width:1360px){
+@media (max-width:1280px){
     .left-content {
         margin:0 auto;
         float:none;
@@ -417,9 +432,10 @@
     .right-content {
         float:none;
         margin:0 auto;
-        width:1017px;
+        width:100%;
+        margin-left:20px;
         text-align:left;
-        margin-top:10px
+        margin-top:10px;
     }
 
     .right-content li{
@@ -427,4 +443,338 @@
         margin-right:50px;
     }	
 
+}
+
+/***********************************************/
+/***********************************************/
+/*info-diagram*/
+.info-diagram {
+    float:left;
+    width:100%;
+    clear:both;
+    font-family:Arial;
+    /*margin:20px 0;*/
+}
+
+.info-diagram .title{
+    text-align:center;
+}	
+
+.info-diagram .info-block{
+    float:left;
+    width:33.33333%;
+}
+
+.info-diagram .info-block .info-block-item{
+    background:#fcf8e3;
+    border:1px solid #fcd16b;
+    padding:10px;
+    border-radius:4px;
+    margin:5px;
+}
+
+.info-diagram .info-block .info-block-item .text-01{
+    float:right;
+    font-weight:bold;
+}	
+
+.info-diagram .check-account{
+    float:left;
+    width:100%;
+    margin:20px 0;
+}
+
+.info-diagram .check-account .row-check-account,.info-diagram .check-account .row-form{
+    padding:5px 0;
+    float:left;
+    width:100%;
+    vertical-align:middle;
+    clear:both;
+}
+
+.info-diagram .check-account .col-01{
+    float:left;
+    width:20%;
+}
+
+
+.check-account .form{
+    background:#f7f7f9;
+    border:1px solid #ddd;
+    margin:0 auto;
+    width:700px;
+    padding:20px;
+    border-radius:4px;
+    clear:both;
+
+}	
+
+.info-diagram .check-account .col-01 strong{
+    padding:6px 0;
+    display:inline-block;
+}	
+
+.info-diagram .check-account p{
+    padding:6px 0;
+    margin:0;
+}		
+
+.info-diagram .check-account .col-02 select,.info-diagram .row-check-account .text-field-2{
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #555;
+    display: block;
+    font-size: 14px;
+    height: 34px;
+    line-height: 1.42857;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    width: 100%;
+    font-family:Arial;	
+}
+
+.info-diagram .capcha{
+    display:inline-block;
+    height:27px;
+    overflow:hidden;
+    float:left;
+    border-radius:4px;
+    background:#fff;
+    margin-left:10px;
+    margin-top:10px;
+}
+
+.info-diagram .capcha img{
+    max-height:27px;
+    height:27px;
+    vertical-align:middle;
+}	
+
+.info-diagram .check-account .col-02 {
+    float:left;
+    width:80%;
+    padding-left:10px;
+}		
+
+.link{
+    background-color: #337ab7;
+    border:0;
+    color: #fff;
+    border-radius:4px;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 0;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration:none;
+    float:left;
+    width:10%;	
+    font-family:Arial;
+    height:46px;
+    padding:5px 0;
+}
+
+.info-diagram .check-account .link-2 {
+    text-decoration:none;
+    color:#000;
+}
+
+.btn-link{
+    background-color: #337ab7;
+    border:0;
+    color: #fff;
+    border-radius:4px;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 0;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration:none;
+    font-family:Arial;
+    padding:10px;
+    margin-top:10px;
+    min-width:200px;
+}	
+
+.info-diagram .row-check-account .content{
+    float:left;	
+    width:90%;
+    padding-left:10px;	
+}
+
+.info-diagram .row-check-account .text-02{
+    background-color: #fff;
+    border: 1px solid #ddd;
+    color: #000;
+    border-radius:4px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857;
+    margin-bottom: 0;
+    padding: 12px 15px;
+    vertical-align: middle;
+}	
+
+.info-diagram .row-check-account .text-03{
+    color: #ff3300;
+}							
+
+.info-diagram .row-check-account .text-field{
+    border:0;	
+    font-family:Arial;
+}
+
+.info-diagram .row-check-account button:hover,.info-diagram .row-check-account a:hover,.btn-link:hover{
+    cursor:pointer;
+    background-color:#286090 !important;
+}	
+
+.info-diagram .check-account .link-2:hover{
+    color:#009966;
+    background-color:transparent !important;
+}	
+
+.form-2 {
+    border:1px solid #000;
+    width:400px;
+    margin:0 auto;
+    background:#c4c1dd;
+}
+
+.form-2 .row-form{
+    border-top:1px solid #000;	
+}
+
+.form-2 .row-form{
+    border-top:1px solid #000;	
+    padding:0 !important;
+    font-size:14px;
+}
+
+.form-2 .row-form .col-02{
+    border-left:1px solid #000;	
+    width:65%;
+    float:left;
+    padding:0 10px;
+}
+
+.form-2 .row-form .col-01{
+    width:30%;
+}	
+
+.form-2 .btn-link{
+    border-radius:0;
+    margin:0;
+    padding:15px;
+    background: linear-gradient(90deg, rgba(0,147,213,1) 0%, rgba(255,255,255,1) 50%, rgba(0,147,213,1) 100%); /* Standard syntax */	
+    color:#000;
+    font-weight:bold;
+    font-size:16px;
+    text-transform:uppercase;
+}	
+
+.form-2 .row-form .text-field-2{
+    width:100%;
+    font-family:Arial;
+    font-size:14px;
+    margin:10px 0;
+    padding:5px 0;
+    border:0;
+    background:transparent;
+}	
+
+.form-2 .row-form-last{
+    clear:both;
+    border-top:1px solid #000;
+}
+
+.form-2 p{
+    padding:15px 10px !important;
+}	
+
+.form-2 h3{
+    padding:15px;
+    text-transform:uppercase;
+    margin:0;
+    background: linear-gradient(90deg, rgba(108,138,195,1) 0%, rgba(255,255,255,1) 50%, rgba(108,138,195,1) 100%); /* Standard syntax */		
+}		
+
+.header {
+    float:left;
+    width:100%;
+    clear:both;
+}
+
+.header .header-left{
+    float:left;
+    width:150px;
+    height:150px;
+    background:#fff;
+    text-align:center;
+    line-height:150px;
+}
+
+.header .header-left .logo{
+    display:inline-block;
+    vertical-align:middle;
+    height:100px;
+    width:100px;
+    overflow:hidden;
+    background-color:#fff;
+    border-radius:50px;
+    line-height: 0;
+}
+
+.header .header-left .logo img{
+    height:100px;
+    width:100px;
+}	
+
+.header .banner{
+    background:#756fb0;
+}
+
+.header .banner .banner-image{
+    height:117px;
+    background-color:#756fb0;
+    text-align:center;
+}
+
+.header .banner .banner-image img{
+    max-height:117px;
+    width:88%;
+}	
+
+.header .banner .banner-menu{
+    background-color:#595586;
+    text-align:right;
+}
+
+.header .banner .banner-menu a{
+    border-left:1px solid #595586;
+    display:inline-block;
+    padding:7px 15px;
+    text-decoration:none;
+    color:#fff;
+    background:#1caf9a;
+}
+
+.header .banner .banner-menu .active{
+    background:#cd3d11;
+}		
+
+.clearfix {
+    clear:both;
+    width:100%;
+    float:left;
+}	
+
+.clearfix:before, .clearfix:after {
+    content: " ";
+    display: table
 }

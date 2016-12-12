@@ -45,73 +45,86 @@ AppAsset::register($this);
     <body class="page-md page-header-fixed page-quick-sidebar-over-content page-sidebar-closed-hide-logo ">
         <?php $this->beginBody() ?>
         <!-- BEGIN HEADER -->
-        <div class="page-header md-shadow-z-1-i navbar navbar-fixed-top">
+        <div class="page-header md-shadow-z-1-i navbar">
             <!-- BEGIN HEADER INNER -->
-            <div class="page-header-inner">
-                <!-- BEGIN LOGO -->
-                <div class="page-logo" style="padding-right: 0;">
-                    <a href="/">
-                        <img src="/img/logo.png" alt="logo" class="logo-default" height="30"/>
-                    </a>
-                    <div class="page-sidebar sidebar-toggler-container">
-                        <div class="sidebar-toggler">
-                        </div>
+            <div class="header">
+                <div class="header-left">
+                    <a href="#" class="logo"><img src="/images/logo.png"/></a>
+                </div>
+                <div class="banner">
+                    <div class="banner-image">
+                        <img src="/images/banner.jpg"  alt=""/>
+                    </div>
+                    <div class="banner-menu">
+                        <a href="#" class="active">Over tank</a><a class="active" href="#">Lost connection</a><a href="#">Over heat</a><a href="#">Over pressure</a><a href="#">Lost supply</a>                                                                
                     </div>
                 </div>
-                <!-- END LOGO -->
-                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
-                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"></a>
-                <!-- END RESPONSIVE MENU TOGGLER -->
-                <!-- BEGIN TOP NAVIGATION MENU -->
-                <div class="top-menu">
-                    <ul class="nav navbar-nav pull-right">
-                        <!-- BEGIN USER LOGIN DROPDOWN -->
-                        <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                        <li class="dropdown dropdown-user">
-                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                <img alt="" class="img-circle" src="/img/avatar3_small.jpg"/>
-                                <span class="username username-hide-on-mobile">
-                                    <?php echo (!Yii::$app->user->isGuest) ? Html::encode(Yii::$app->user->identity->username) : 'Guest'; ?>
-                                </span>
-                                <i class="fa fa-angle-down"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-default">
-                                <?php if (!\Yii::$app->user->isGuest) { ?>
-                                    <li>
-                                        <a href="/user/view?id=<?php echo Yii::$app->user->identity->id; ?>">
-                                            <i class="icon-user"></i> My Profile </a>
-                                    </li>
-                                <?php } ?>
-                                <li class="divider"></li>
-                                <li>
-                                    <?php if (!\Yii::$app->user->isGuest) { ?>
-                                        <a href="/logout">
-                                            <i class="icon-key"></i> Log Out
-                                        </a>
-                                    <?php } else { ?>
-                                        <a href="/login">
-                                            <i class="icon-key"></i> Sign In
-                                        </a>
-                                    <?php } ?>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- END USER LOGIN DROPDOWN -->
-                    </ul>
-                </div>
-                <!-- END TOP NAVIGATION MENU -->
-                <?php // if (Yii::$app->controller->id == 'modules' && Yii::$app->controller->action->id == 'view') { ?>
-                <!--                    <div class="bottom-menu">
-                                        <ul>
-                                            <li><a href="#">OVER TANK</a></li>
-                                            <li><a href="#">LOST CONNECTION</a></li>
-                                            <li><a href="#">OVER HEAT</a></li>
-                                            <li><a href="#">OVER PRESSURE</a></li>
-                                            <li><a href="#">LOST SUPPLY</a></li>
-                                        </ul>
-                                    </div>-->
-                <?php // } ?>
             </div>
+            <!--            <div class="page-header-inner">
+                             BEGIN LOGO 
+                            <div class="page-logo" style="padding-right: 0;">
+                                <a href="/">
+                                    <img src="/img/logo.png" alt="logo" class="logo-default" height="30"/>
+                                </a>
+                                <div class="page-sidebar sidebar-toggler-container">
+                                    <div class="sidebar-toggler">
+                                    </div>
+                                </div>
+                            </div>
+                             END LOGO 
+                             BEGIN RESPONSIVE MENU TOGGLER 
+                            <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"></a>
+                             END RESPONSIVE MENU TOGGLER 
+                             BEGIN TOP NAVIGATION MENU 
+                            <div class="top-menu">
+                                <ul class="nav navbar-nav pull-right">
+                                     BEGIN USER LOGIN DROPDOWN 
+                                     DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte 
+                                    <li class="dropdown dropdown-user">
+                                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                            <img alt="" class="img-circle" src="/img/avatar3_small.jpg"/>
+                                            <span class="username username-hide-on-mobile">
+            <?php echo (!Yii::$app->user->isGuest) ? Html::encode(Yii::$app->user->identity->username) : 'Guest'; ?>
+                                            </span>
+                                            <i class="fa fa-angle-down"></i>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-default">
+            <?php if (!\Yii::$app->user->isGuest) { ?>
+                                                                            <li>
+                                                                                <a href="/user/view?id=<?php echo Yii::$app->user->identity->id; ?>">
+                                                                                    <i class="icon-user"></i> My Profile </a>
+                                                                            </li>
+            <?php } ?>
+                                            <li class="divider"></li>
+                                            <li>
+            <?php if (!\Yii::$app->user->isGuest) { ?>
+                                                                                <a href="/logout">
+                                                                                    <i class="icon-key"></i> Log Out
+                                                                                </a>
+            <?php } else { ?>
+                                                                                <a href="/login">
+                                                                                    <i class="icon-key"></i> Sign In
+                                                                                </a>
+            <?php } ?>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                     END USER LOGIN DROPDOWN 
+                                </ul>
+                            </div>
+                             END TOP NAVIGATION MENU 
+            <?php // if (Yii::$app->controller->id == 'modules' && Yii::$app->controller->action->id == 'view') { ?>
+                                                <div class="bottom-menu">
+                                                    <ul>
+                                                        <li><a href="#">OVER TANK</a></li>
+                                                        <li><a href="#">LOST CONNECTION</a></li>
+                                                        <li><a href="#">OVER HEAT</a></li>
+                                                        <li><a href="#">OVER PRESSURE</a></li>
+                                                        <li><a href="#">LOST SUPPLY</a></li>
+                                                    </ul>
+                                                </div>
+            <?php // } ?>
+                        </div>-->
             <!-- END HEADER INNER -->
         </div>
         <!-- END HEADER -->
@@ -151,8 +164,7 @@ AppAsset::register($this);
                                         'items' => $menu['children'],
                                         'visible' => $menu['is_active'],
                                         'icon' => $menu['icon'],
-                                        'parent' => $menu['parent']
-                                    ];
+                                        'parent' => $menu['parent']];
                                 return [
                                     'label' => $menu['name'],
                                     'items' => $menu['children'],
@@ -178,8 +190,7 @@ AppAsset::register($this);
                 <div class="page-content">
                     <div class="page-bar">
                         <?=
-                        Breadcrumbs::widget([
-                            'itemTemplate' => "<li>{link}<i class='fa fa-angle-right'></i></i></li>\n", // template for all links
+                        Breadcrumbs::widget([ 'itemTemplate' => "<li>{link}<i class='fa fa-angle-right'></i></i></li>\n", // template for all links
                             'activeItemTemplate' => "<li>{link}</li>\n", // template for all links
                             'options' => [
                                 'class' => 'page-breadcrumb'
