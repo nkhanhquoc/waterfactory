@@ -764,6 +764,10 @@
     text-decoration:none;
     color:#fff;
     background:#1caf9a;
+    float:left;
+}
+
+.header .banner .banner-menu .content-menu{
     float:right;
 }
 
