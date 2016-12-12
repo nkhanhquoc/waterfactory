@@ -5,7 +5,7 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 use backend\widgets\AwsGridView;
 use common\socket\Socket;
-$this->title = Yii::t('backend', 'Report');
+$this->title = Yii::t('backend', 'Report Sensors');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <form method="post" action="/index.php/report/index" id="report-sensor-alarm">
@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <input type="text" name="to" id="report_to" value="<?php echo $to ?>">
 
     <input type="hidden" name="export" id="export" value="0">
-    <input type="submit" class="btn btn-primary" value="Report">
+    <button onclick="drawGraph()" class="btn btn-primary">Report</button>
     <button onclick="exportFile()" class="btn btn-primary">Excel</button>
   </div>
 </form>
@@ -123,6 +123,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
     function exportFile(){
       $('#export').val(1);
+      $('#report-sensor-alarm').submit();
+    }
+
+    function drawGraph(){
+      $('#export').val(0);
       $('#report-sensor-alarm').submit();
     }
 </script>

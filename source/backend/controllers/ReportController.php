@@ -25,7 +25,7 @@ public function actionIndex(){
       $this->exportCsv($module_id,$from, $to);
     }
     $sensors = Sensor::getReport($from,$to,$module_id);
-    $alarms = Alarm::getReport($from,$to,$module_id);
+    // $alarms = Alarm::getReport($from,$to,$module_id);
     // var_dump($sensors);die;
   }
   return $this->render('index.php',[
@@ -37,12 +37,40 @@ public function actionIndex(){
   ]);
 }
 
+public function actionReportalarm(){
+  $alarms = array();
+  $from = "";
+  $to = "";
+  $module_id = "";
+  $modules = Modules::getAll();
+  if(Yii::$app->request->isPost){
+    $values = Yii::$app->request->post();
+    $module_id = $values['module_id'];
+    $from = $values['from'];
+    $to = $values['to'];
+    if($values['export']){
+      $this->exportAlarmCsv($module_id,$from, $to);
+    }
+    $alarms = Alarm::getReport($from,$to,$module_id);
+    // $alarms = Alarm::getReport($from,$to,$module_id);
+    // var_dump($sensors);die;
+  }
+  return $this->render('index.php',[
+    'alarms' =>$alarms,
+    'from' => $from,
+    'to' => $to,
+    'modules' => $modules,
+    'module_id' => $module_id
+  ]);
+
+}
+
 public function exportCsv($moduleId, $from, $to){
   $sensors = Sensor::getReport($from,$to,$moduleId);
   $alarms = Alarm::getReport($from,$to,$moduleId);
   ini_set('max_execution_time', 3600);
    ini_set('memory_limit', '-1');
-   $fileName = 'report_' . date('Ymd_His') . '.csv';
+   $fileName = 'report_sensor_' . date('Ymd_His') . '.csv';
    ob_start();
    header('Content-Encoding: UTF-8');
    header("Content-type: text/x-csv; charset=UTF-8");
