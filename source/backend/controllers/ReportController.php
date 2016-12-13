@@ -52,7 +52,6 @@ public function actionReportalarm(){
       $this->exportAlarmCsv($module_id,$from, $to);
     }
     $alarms = Alarm::getReport($from,$to,$module_id);
-    // var_dump($alarms);die;
   }
   return $this->render('reportalarm.php',[
     'alarms' =>$alarms,
@@ -107,6 +106,50 @@ public function exportCsv($moduleId, $from, $to){
          bindec($sens->cam_bien_ap_suat_duong_ong),
          bindec($sens->du_phong)
 
+       );
+       fputcsv($fp, $put, $delimiter);
+            $j++;
+     }
+     fclose($fp);
+        die;
+        // var_dump($from."|".$to."|".$moduleId);
+        // die;
+
+}
+
+public function exportAlarmCsv($moduleId, $from, $to){
+  // $sensors = Sensor::getReport($from,$to,$moduleId);
+  $alarms = Alarm::getReport($from,$to,$moduleId);
+  ini_set('max_execution_time', 3600);
+   ini_set('memory_limit', '-1');
+   $fileName = 'report_alarm_' . date('Ymd_His') . '.csv';
+   ob_start();
+   header('Content-Encoding: UTF-8');
+   header("Content-type: text/x-csv; charset=UTF-8");
+   header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+   header('Content-Transfer-Encoding: binary');
+   header('Expires: 0');
+   header('Content-Disposition: attachment;filename=' . $fileName);
+  //  echo "\xEF\xBB\xBF"; //cau echo nay de hien thi duoc tieng viet trong file csv khi mo bang excel
+
+   $fp = fopen('php://output', 'w');
+   fputs($fp, "\xEF\xBB\xBF" ); // UTF-8 BOM !!!!!
+   $delimiter = ',';
+   fputcsv($fp,array("\t","Module ID: ",$moduleId, "From: ",$from, "To:",$to));
+   fputcsv($fp, array(), $delimiter);
+   fputcsv($fp,array("#","Module","Over heat","Over Pressure", "Over Power","Overflow","Start alarm time", "Cancel alarm time"),$delimiter);
+
+     $j = 1;
+     foreach ($alarms as $alarm) {
+       $put = array(
+         $j,
+         $moduleId,
+         bindec($alarm->qua_nhiet),
+         bindec($alarm->qua_ap_suat),
+         bindec($alarm->tran_be),
+         bindec($alarm->mat_dien),
+         "'".$alarm->time_start_alarm,
+         "'".$alarm->time_cancal_alarm
        );
        fputcsv($fp, $put, $delimiter);
             $j++;
