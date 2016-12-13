@@ -861,7 +861,7 @@ Page container
 .page-container {
     margin: 0px;
     padding: 0px;
-    position: relative;
+    /*position: relative;*/
     /* Fixed header */
     /* Fixed footer for mobile */
 }
@@ -2113,7 +2113,7 @@ Page content
 .page-bar {
     padding: 0px;
     background-color: #f7f7f7;
-    margin-bottom: 25px;
+    /*margin-bottom: 25px;*/
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
