@@ -52,10 +52,9 @@ public function actionReportalarm(){
       $this->exportAlarmCsv($module_id,$from, $to);
     }
     $alarms = Alarm::getReport($from,$to,$module_id);
-    // $alarms = Alarm::getReport($from,$to,$module_id);
-    // var_dump($sensors);die;
+    // var_dump($alarms);die;
   }
-  return $this->render('index.php',[
+  return $this->render('reportalarm.php',[
     'alarms' =>$alarms,
     'from' => $from,
     'to' => $to,

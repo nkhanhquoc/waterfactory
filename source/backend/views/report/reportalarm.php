@@ -33,24 +33,30 @@ $this->params['breadcrumbs'][] = $this->title;
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
 console.log("start chart");
-google.charts.load('current', {'packages':['line']});
+google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(initChart);
 
 function initChart() {
   console.log("init chart alarm");
   var quanhiet = initData();
   var quaapsuat = initData();
-  var quaapsuat = initData();
+  var tranbe = initData();
   var matdien = initData();
 
 quanhiet.addRows(<?php echo count($alarms)?>);
 quaapsuat.addRows(<?php echo count($alarms)?>);
-quaapsuat.addRows(<?php echo count($alarms)?>);
+tranbe.addRows(<?php echo count($alarms)?>);
 matdien.addRows(<?php echo count($alarms)?>);
 <?php foreach($alarms as $k => $al):?>
-  quanhiet = addData(quanhiet,'<?php echo $al->created_at ?>');
+  quanhiet = addData(quanhiet,<?php echo $k ?>,'<?php echo $al->time_start_alarm."     -      ".$al->time_cancal_alarm ?>',<?php echo bindec($al->qua_nhiet)?>);
+  quaapsuat = addData(quaapsuat,<?php echo $k ?>,'<?php echo $al->time_start_alarm."-".$al->time_cancal_alarm ?>',<?php echo bindec($al->qua_ap_suat)?>);
+  tranbe = addData(tranbe,<?php echo $k ?>,'<?php echo $al->time_start_alarm."    -   ".$al->time_cancal_alarm ?>',<?php echo bindec($al->tran_be)?>);
+  matdien = addData(matdien,<?php echo $k ?>,'<?php echo $al->time_start_alarm."-".$al->time_cancal_alarm ?>',<?php echo bindec($al->mat_dien)?>);
 <?php endforeach; ?>
-
+  drawChart(quanhiet,'draw-qua-nhiet','Cảnh báo quá nhiệt');
+  drawChart(quaapsuat,'draw-quaapsuat','Cảnh báo quá áp suất');
+  drawChart(tranbe,'draw-tranbe','Cảnh báo tràn bể');
+  drawChart(matdien,'draw-matdien','Cảnh báo mất điện');
 }
 
 function initData(){
@@ -74,10 +80,11 @@ function drawChart(data, id,tit){
       title: tit,
     },
     width: 900,
-    height: 300
+    height: 200,
+    vAxis: { ticks: [{v:0,f:'OFF'},{v:3,f:'ON'}] }
   };
 
-  var chart = new google.charts.Line(document.getElementById(id));
+  var chart = new google.visualization.SteppedAreaChart(document.getElementById(id));
   console.log("draw "+tit);
   chart.draw(data, options);
 }
@@ -94,3 +101,7 @@ function drawGraph(){
 
 </script>
 <?php endif; ?>
+
+<div id="report-view">
+
+</div>
