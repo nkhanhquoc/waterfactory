@@ -15,18 +15,18 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
           <input type="hidden" id="module-id" value="<?php echo $model->id ?>">
           <h3 class="title">ID: <?php echo $model->id ?></h3>
           <div class="row-check-account">
-  		          <span class="link" onclick="$('#manager-form').submit()">Check <br>Account</span>
+  		          <a href="javascript:void(0)" class="link" onclick="$('#manager-form').submit()">Check <br>Account</a>
     		      <div class="content">
               	<div class="text-02">Số tiền còn lại trong tài khoản của bạn là : <strong id="money-info"><?php echo number_format($model->money) ?></strong> đ</div>
               </div>
           </div>
           <div class="row-check-account">
-        		  <a href="#" class="link">Check <br>Data</a>
+        		  <a href="javascript:void(0)" onclick="$('#manager-form').submit()" class="link">Check <br>Data</a>
         		  <div class="content">
            	 <div class="text-02">Data con lại của bạn là : <strong id="data-info"><?php echo number_format($model->data) ?></strong> KB</div>
             </div>
           </div>
-        <form>
+        </form>
           <form action="/index.php/modules/accountmanager?id=<?php echo $model->id ?>" id="pay_card_form" method="post">
             <input type="hidden" name="_csrf" value="<?php Yii::$app->request->csrfToken ?>">
             <input type="hidden" name="pay" value="1">
