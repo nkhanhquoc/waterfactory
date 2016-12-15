@@ -11,19 +11,21 @@ $this->params['breadcrumbs'][] = $this->title;
 <form method="post" action="/index.php/report/index" id="report-sensor-alarm">
   <div class="params">
     <input type="hidden" name="_csrf" value="<?php Yii::$app->request->csrfToken ?>">
-
-    <select class="row20" id="module_id" name="module_id">
+Module:
+    <select class="" style="width:20%" id="module_id" name="module_id">
         <?php foreach ($modules as $key => $m): ?>
             <option value="<?php echo $key ?>" <?php if ($module_id == $key) echo 'selected="selected"'; ?>><?php echo $m ?></option>
         <?php endforeach; ?>
     </select>
+
     From:
     <input type="text" name="from" id="report_from" value="<?php echo $from ?>">
 
     To:
-    <input type="text" name="to" id="report_to" value="<?php echo $to ?>">
+    <input type="text"  name="to" id="report_to" value="<?php echo $to ?>">
 
     <input type="hidden" name="export" id="export" value="0">
+    <br>
     <button onclick="drawGraph()" class="btn btn-primary">Report</button>
     <button onclick="exportFile()" class="btn btn-primary">Excel</button>
   </div>
@@ -67,6 +69,7 @@ $this->params['breadcrumbs'][] = $this->title;
       nhietdo_duongong_1.addRows(<?php echo count($sensors)?>);
       <?php foreach($sensors as $k => $sens):?>
             danthu = addData(danthu,<?php echo $k ?>,'<?php echo $sens->created_at ?>',<?php echo Socket::bin2dec($sens->cam_bien_dan_thu)?>);
+
             bonsolar = addData(danthu,<?php echo $k ?>,'<?php echo $sens->created_at ?>',<?php echo Socket::bin2dec($sens->cam_bien_bon_solar)?>);
             mucnuoc_bonsolar = addData(mucnuoc_bonsolar,<?php echo $k ?>,'<?php echo $sens->created_at ?>',<?php echo Socket::bin2dec($sens->cam_bien_muc_nuoc_bon_solar)?>);
             nhietdo_bongianhiet = addData(nhietdo_bongianhiet,<?php echo $k ?>,'<?php echo $sens->created_at ?>',<?php echo Socket::bin2dec($sens->cam_bien_nhiet_do_bon_gia_nhiet)?>);
@@ -113,7 +116,14 @@ $this->params['breadcrumbs'][] = $this->title;
           title: tit,
         },
         width: 900,
-        height: 300
+        height: 300,
+        vAxis: {
+          viewWindowMode: 'explicit',
+          viewWindow:{
+            min:0
+          }
+
+        }
       };
 
       var chart = new google.charts.Line(document.getElementById(id));

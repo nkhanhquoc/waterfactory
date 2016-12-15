@@ -24,13 +24,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <input type="text" name="to" id="report_to" value="<?php echo $to ?>">
 
     <input type="hidden" name="export" id="export" value="0">
+    <br>
     <button onclick="drawGraph()" class="btn btn-primary">Report</button>
     <button onclick="exportFile()" class="btn btn-primary">Excel</button>
   </div>
 </form>
 
 <?php if(count($alarms) > 0 ):?>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
 <script type="text/javascript">
 console.log("start chart");
 google.charts.load('current', {'packages':['corechart']});

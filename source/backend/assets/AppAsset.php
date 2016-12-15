@@ -48,6 +48,7 @@ class AppAsset extends AssetBundle {
         'js/metronic/quick-sidebar.js',
         'js/metronic/datatable.js',
         'js/metronic/aws-datatable.js',
+        'js/loader.js',
         'js/cms.js',
         'js/jquery.datetimepicker.full.min.js',
     ];
