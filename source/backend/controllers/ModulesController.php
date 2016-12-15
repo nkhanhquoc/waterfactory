@@ -46,6 +46,8 @@ class ModulesController extends AppController {
     public function actionView($id) {
         $model = $this->findModel($id);
 
+        \Yii::$app->session->set('module_id', $model->id);
+
         $sensors = $model->sensors;
         $statuses = $model->moduleStatuses;
         $alarms = $model->alarms;
@@ -159,7 +161,8 @@ class ModulesController extends AppController {
         }
     }
 
-    public function actionAccountmanager($id) {
+    public function actionAccountmanager() {
+        $id = \Yii::$app->session->get('module_id');
         $model = $this->findModel($id);
         $modules = Modules::getAll();
         if (Yii::$app->request->isPost) {
@@ -174,17 +177,16 @@ class ModulesController extends AppController {
             }
             if ($values['pay']) {
                 if ($values['card_info']) {
-                  if(is_numeric($values['card_info'])){
-                    try {
-                        $model->toClientPay(trim($values['card_info']));
-                        $alert = "Gửi yêu cầu thanh toán thành công!";
-                    } catch (Exception $e) {
-                        $alert = "Có lỗi xảy ra";
+                    if (is_numeric($values['card_info'])) {
+                        try {
+                            $model->toClientPay(trim($values['card_info']));
+                            $alert = "Gửi yêu cầu thanh toán thành công!";
+                        } catch (Exception $e) {
+                            $alert = "Có lỗi xảy ra";
+                        }
+                    } else {
+                        $alert = "Mã thẻ cào chưa chính xác!";
                     }
-                  } else {
-                    $alert = "Mã thẻ cào chưa chính xác!";
-                  }
-
                 } else {
                     $alert = "Bạn phải nhập mã thẻ!";
                 }
