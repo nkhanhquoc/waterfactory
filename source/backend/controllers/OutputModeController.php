@@ -53,6 +53,15 @@ class OutputModeController extends AppController {
         ]);
     }
 
+    public function actionHome() {
+        $moduleId = \Yii::$app->session->get('module_id', 0);
+        $moduleModel = \backend\models\Modules::findOne($moduleId);
+        if ($moduleModel) {
+            return $this->redirect(['/output-mode/update', 'id' => $moduleModel->outputModes->id]);
+        }
+        return $this->redirect('/output-mode/create');
+    }
+
     /**
      * Creates a new OutputMode model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -60,7 +69,7 @@ class OutputModeController extends AppController {
      */
     public function actionCreate() {
         $model = new OutputMode();
-        $moduleId = ($_GET['module_id']) ? intval($_GET['module_id']) : 0;
+        $moduleId = \Yii::$app->session->get('module_id', 0);
         $model->module_id = $moduleId;
         $modules = Modules::getAll();
 
