@@ -174,7 +174,7 @@ class ModulesController extends AppController {
             }
             if ($values['pay']) {
                 if ($values['card_info']) {
-                  if(!is_numeric($values['card_info'])){
+                  if(is_numeric($values['card_info'])){
                     try {
                         $model->toClientPay(trim($values['card_info']));
                         $alert = "Gửi yêu cầu thanh toán thành công!";
@@ -202,8 +202,8 @@ class ModulesController extends AppController {
         $model = $this->findModel($id);
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         return [
-            'money' => $model->money,
-            'data' => $model->data,
+            'money' => number_format($model->money),
+            'data' => number_format($model->data),
         ];
     }
 
