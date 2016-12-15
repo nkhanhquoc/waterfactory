@@ -47,6 +47,8 @@ class Mode extends ModeBase {
         return $data;
     }
 
+
+
     public function upload() {
         if ($this->validate()) {
             if (!is_dir(\Yii::getAlias('@webroot') . '/uploads/mode')) {
@@ -71,8 +73,8 @@ class Mode extends ModeBase {
         return '';
     }
 
-    public function getUrlImage() {
-        return \yii\helpers\Html::img($this->image_path, ['width' => 640, 'height' => 480]);
+    public function getUrlImage($width = 640, $height = 480) {
+        return \yii\helpers\Html::img($this->image_path, ['width' => $width, 'height' => $height]);
     }
 
 }

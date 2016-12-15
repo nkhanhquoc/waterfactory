@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use backend\models\Modules;
+use backend\models\Mode;
 use backend\models\ModulesSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -45,6 +46,8 @@ class ModulesController extends AppController {
      */
     public function actionView($id) {
         $model = $this->findModel($id);
+
+        \Yii::$app->session->set('module_id', $model->id);
 
         $sensors = $model->sensors;
         $statuses = $model->moduleStatuses;
@@ -114,8 +117,10 @@ class ModulesController extends AppController {
      */
     public function actionMode($id) {
         $model = $this->findModel($id);
+        $modes = Mode::find()->all();
 
         if ($model->load(Yii::$app->request->post())) {
+          die("abc");
             if ($model->save(false, ['mode_id'])) {
                 if ($model->mode2Client()) {
                     Yii::$app->session->setFlash('success', 'Đã gửi bản tin set System Mode thành công!');
@@ -127,6 +132,7 @@ class ModulesController extends AppController {
         }
         return $this->render('mode', [
                     'model' => $model,
+                    'modes' => $modes
         ]);
     }
 
@@ -159,7 +165,8 @@ class ModulesController extends AppController {
         }
     }
 
-    public function actionAccountmanager($id) {
+    public function actionAccountmanager() {
+        $id = \Yii::$app->session->get('module_id');
         $model = $this->findModel($id);
         $modules = Modules::getAll();
         if (Yii::$app->request->isPost) {
@@ -174,17 +181,16 @@ class ModulesController extends AppController {
             }
             if ($values['pay']) {
                 if ($values['card_info']) {
-                  if(is_numeric($values['card_info'])){
-                    try {
-                        $model->toClientPay(trim($values['card_info']));
-                        $alert = "Gửi yêu cầu thanh toán thành công!";
-                    } catch (Exception $e) {
-                        $alert = "Có lỗi xảy ra";
+                    if (is_numeric($values['card_info'])) {
+                        try {
+                            $model->toClientPay(trim($values['card_info']));
+                            $alert = "Gửi yêu cầu thanh toán thành công!";
+                        } catch (Exception $e) {
+                            $alert = "Có lỗi xảy ra";
+                        }
+                    } else {
+                        $alert = "Mã thẻ cào chưa chính xác!";
                     }
-                  } else {
-                    $alert = "Mã thẻ cào chưa chính xác!";
-                  }
-
                 } else {
                     $alert = "Bạn phải nhập mã thẻ!";
                 }
