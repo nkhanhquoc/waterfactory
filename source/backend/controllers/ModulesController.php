@@ -39,6 +39,10 @@ class ModulesController extends AppController {
         ]);
     }
 
+    public function actionAllView() {
+        return $this->redirect(['view', 'id' => \Yii::$app->session->get('module_id')]);
+    }
+
     /**
      * Displays a single Modules model.
      * @param string $id

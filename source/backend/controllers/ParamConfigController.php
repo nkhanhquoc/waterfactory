@@ -53,6 +53,15 @@ class ParamConfigController extends AppController {
         ]);
     }
 
+    public function actionHome() {
+        $moduleId = \Yii::$app->session->get('module_id', 0);
+        $moduleModel = \backend\models\Modules::findOne($moduleId);
+        if ($moduleModel) {
+            return $this->redirect(['/param-config/update', 'id' => $moduleModel->paramConfigs->id]);
+        }
+        return $this->redirect('/param-config/create');
+    }
+
     /**
      * Creates a new ParamConfig model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -61,7 +70,7 @@ class ParamConfigController extends AppController {
     public function actionCreate() {
         $model = new ParamConfig();
         $modules = Modules::getAll();
-        $moduleId = ($_GET['module_id']) ? intval($_GET['module_id']) : 0;
+        $moduleId = \Yii::$app->session->get('module_id', 0);
         $model->module_id = $moduleId;
         if (Yii::$app->request->isPost) {
             $values = Yii::$app->request->post();
