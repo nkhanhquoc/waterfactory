@@ -138,7 +138,8 @@ class OutputModeController extends AppController {
             if ($model->save(false)) {
                 $model->toClient();
                 Yii::$app->session->setFlash('success', 'Đã gửi bản tin Load Mode thành công!');
-                return $this->redirect(['/modules/view', 'id' => $model->module_id]);
+                // return $this->redirect(['/modules/view', 'id' => $model->module_id]);
+                return $this->redirect('/param-config/home');
             }
         }
         return $this->render('create', [
@@ -217,7 +218,8 @@ class OutputModeController extends AppController {
             if ($model->save(false)) {
                 $model->toClient();
                 Yii::$app->session->setFlash('success', 'Đã gửi bản tin Load Mode thành công!');
-                return $this->redirect(['/modules/view', 'id' => $model->module_id]);
+                // return $this->redirect(['/modules/view', 'id' => $model->module_id]);
+                return $this->redirect('/param-config/home');
             }
         }
         return $this->render('update', [

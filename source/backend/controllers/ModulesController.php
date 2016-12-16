@@ -122,13 +122,17 @@ class ModulesController extends AppController {
     public function actionMode($id) {
         $model = $this->findModel($id);
         $modes = Mode::find()->all();
-
-        if ($model->load(Yii::$app->request->post())) {
-          die("abc");
+        if(Yii::$app->request->isPost){
+          $values=Yii::$app->request->post();
+          // var_dump($values);die;
+        // }
+        // if ($model->load(Yii::$app->request->post())) {
+            $model->mode_id = $values['mode_id'];
             if ($model->save(false, ['mode_id'])) {
                 if ($model->mode2Client()) {
                     Yii::$app->session->setFlash('success', 'Đã gửi bản tin set System Mode thành công!');
-                    return $this->redirect(['view', 'id' => $model->id]);
+                    // return $this->redirect(['view', 'id' => $model->id]);
+                    return $this->redirect('/output-mode/home');
                 } else {
                     Yii::$app->session->setFlash('success', 'Gửi bản tin set System Mode không thành công!');
                 }

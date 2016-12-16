@@ -409,9 +409,9 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
             </div>
 
             <div class="row100">
-                <input type="submit" class="btn btn-primary" value="Send" />
+                <input type="submit" class="btn btn-primary" value="Save and Send" />
                 <!-- <input type="button" class="btn btn-primary" value="Send to Module" /> -->
-                <a href="#" class="btn btn-primary">Cancel</a>
+                <a href="/modules/view?id=<?php echo $model->module->id ?>" class="btn btn-primary">Cancel</a>
             </div>
         </div>
     </form>

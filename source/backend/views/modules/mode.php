@@ -29,6 +29,7 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
 <div class="info-diagram">
   <form method="post" id="form-choose-mode" action="/index.php/modules/mode?id=<?php echo $model->id ?>">
     <input type="hidden" name="_csrf" value="<?php Yii::$app->request->csrfToken ?>">
+    <!-- <?= Html::csrfMetaTags() ?> -->
   <div class="check-account">
             <h3 class="title">ID: <?php echo $model->id ?></h3>
             <p align="center">Choose your system:</p>
@@ -36,7 +37,7 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
               <input type="hidden" value="" name="mode_id" id="mode_id">
               <p align="center">
                 <?php foreach($modes as $mode): ?>
-                  <a href="javascript:void(0)" id="mode_<?php echo $mode->id ?>" onclick="chooseMode('<?php echo $mode->id ?>')" class="btn-check <?php if($model->mode_id == $mode->id) echo 'active' ;?>">
+                  <a href="javascript:void(0)" id="mode_<?php echo $mode->id ?>" onclick="chooseMode('<?php echo $mode->id ?>')" class="btn-check <?php if($model->mode_id == $mode->id) echo 'chosen' ;?>">
                     <!-- <img src="<?php echo $mode->getUrlImage(300,220) ?>" alt="<?php echo $mode->name ?>"/> -->
                     <?php echo $mode->getUrlImage(300,220) ?>
                   </a>
