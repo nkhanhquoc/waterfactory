@@ -42,7 +42,10 @@ class TimerCounterController extends AppController {
     public function actionHome() {
         $moduleId = \Yii::$app->session->get('module_id', 0);
         if ($moduleId) {
-            return $this->redirect(['view', 'id' => $moduleId]);
+            $module = \backend\models\Modules::findOne($moduleId);
+            if ($module && $module->timerCounters) {
+                return $this->redirect(['view', 'id' => $module->timerCounters->id]);
+            }
         }
         return $this->redirect(['index']);
     }
