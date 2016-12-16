@@ -33,6 +33,8 @@ class ModulesController extends AppController {
         $searchModel = new ModulesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        \Yii::$app->session->set('module_id', null);
+
         return $this->render('index', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
@@ -124,7 +126,7 @@ class ModulesController extends AppController {
         $modes = Mode::find()->all();
 
         if ($model->load(Yii::$app->request->post())) {
-          die("abc");
+            die("abc");
             if ($model->save(false, ['mode_id'])) {
                 if ($model->mode2Client()) {
                     Yii::$app->session->setFlash('success', 'Đã gửi bản tin set System Mode thành công!');

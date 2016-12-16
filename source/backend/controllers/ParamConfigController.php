@@ -57,9 +57,9 @@ class ParamConfigController extends AppController {
         $moduleId = \Yii::$app->session->get('module_id', 0);
         $moduleModel = \backend\models\Modules::findOne($moduleId);
         if ($moduleModel && $moduleModel->paramConfigs) {
-            return $this->redirect(['/param-config/update', 'id' => $moduleModel->paramConfigs->id]);
+            return $this->redirect(['update', 'id' => $moduleModel->paramConfigs->id]);
         }
-        return $this->redirect('/param-config/create');
+        return $this->redirect(['create']);
     }
 
     /**
