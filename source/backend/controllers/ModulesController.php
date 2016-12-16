@@ -124,9 +124,6 @@ class ModulesController extends AppController {
         $modes = Mode::find()->all();
         if(Yii::$app->request->isPost){
           $values=Yii::$app->request->post();
-          // var_dump($values);die;
-        // }
-        // if ($model->load(Yii::$app->request->post())) {
             $model->mode_id = $values['mode_id'];
             if ($model->save(false, ['mode_id'])) {
                 if ($model->mode2Client()) {
