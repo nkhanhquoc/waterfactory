@@ -129,7 +129,7 @@ AppAsset::register($this);
             <!-- BEGIN CONTENT -->
             <div class="page-content-wrapper">
                 <div class="page-content">
-                    <div class="page-bar">
+<!--                    <div class="page-bar">
                         <?=
                         Breadcrumbs::widget(['itemTemplate' => "<li>{link}<i class='fa fa-angle-right'></i></i></li>\n", // template for all links
                             'activeItemTemplate' => "<li>{link}</li>\n", // template for all links
@@ -144,7 +144,7 @@ AppAsset::register($this);
                             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                         ])
                         ?>
-                    </div>
+                    </div>-->
                     <?= Alert::widget() ?>
                     <?= $content ?>
                 </div>
