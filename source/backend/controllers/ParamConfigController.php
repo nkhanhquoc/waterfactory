@@ -42,6 +42,17 @@ class ParamConfigController extends AppController {
         ]);
     }
 
+    public function actionRefresh($id) {
+        $module = Modules::findOne($id);
+        if ($module) {
+            $module->checkParametter();
+            $module->checkTimerCounter();
+            Yii::$app->session->setFlash('success', 'Đã gửi lệnh kiểm tra cấu hình PARAMETTER và TIMER/COUNTER xuống client!');
+        }
+
+        return $this->redirect(['/modules/view', 'id' => $id]);
+    }
+
     /**
      * Displays a single ParamConfig model.
      * @param string $id

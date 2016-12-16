@@ -42,7 +42,17 @@ class ModulesController extends AppController {
     }
 
     public function actionAllView() {
-        return $this->redirect(['view', 'id' => \Yii::$app->session->get('module_id')]);
+        return $this->redirect(['view', 'id' => \Yii::$app->session->get('module_id', 0)]);
+    }
+
+    public function actionRefresh() {
+        $moduleId = \Yii::$app->session->get('module_id', 0);
+        $module = Modules::findOne($moduleId);
+        if ($module) {
+            
+        }
+
+        return $this->redirect(['view', 'id' => $moduleId]);
     }
 
     /**
