@@ -56,7 +56,7 @@ class OutputModeController extends AppController {
     public function actionHome() {
         $moduleId = \Yii::$app->session->get('module_id', 0);
         $moduleModel = \backend\models\Modules::findOne($moduleId);
-        if ($moduleModel) {
+        if ($moduleModel && $moduleModel->outputModes) {
             return $this->redirect(['/output-mode/update', 'id' => $moduleModel->outputModes->id]);
         }
         return $this->redirect('/output-mode/create');
