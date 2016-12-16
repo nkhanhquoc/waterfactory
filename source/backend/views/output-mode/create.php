@@ -542,11 +542,11 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'Load Mode');
                 </div>
             </div>
         </div>
+        <div class="row100" style="text-align:center">
+            <input type="submit" value="Save and Send" class="btn btn-primary"/>
+            <!-- <input type="button" class="btn btn-primary" value="Send to Module" /> -->
+            <a href="/modules/view?id=<?php echo $model->module->id ?>" class="btn btn-primary">Cancel</a>
+        </div>
+    </div>
 
-    </div>
-    <div class="row100">
-        <input type="submit" value="Save and Send" class="btn btn-primary"/>
-        <!-- <input type="button" class="btn btn-primary" value="Send to Module" /> -->
-        <a href="/modules/view?id=<?php echo $model->module->id ?>" class="btn btn-primary">Cancel</a>
-    </div>
 </form>

@@ -15,13 +15,13 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
             <input type="hidden" id="module-id" value="<?php echo $model->id ?>">
             <h3 class="title">ID: <?php echo $model->getModuleId() . ' - ' . \yii\helpers\Html::encode($model->name); ?></h3>
             <div class="row-check-account">
-                <a  class="link" onclick="$('#manager-form').submit()">Check <br>Account</a>
+                <button class="link"  onclick="$('#manager-form').submit()">Check <br>Account</button>
                 <div class="content">
                     <div class="text-02">Số tiền còn lại trong tài khoản của bạn là : <strong id="money-info"><?php echo number_format($model->money) ?></strong> đ</div>
                 </div>
             </div>
             <div class="row-check-account">
-                <a href="javascript:void(0)" onclick="$('#manager-form').submit()" class="link">Check <br>Data</a>
+                  <button class="link" onclick="$('#manager-form').submit()" class="link">Check <br>Data</button>
                 <div class="content">
                     <div class="text-02">Data con lại của bạn là : <strong id="data-info"><?php echo number_format($model->data) ?></strong> KB</div>
                 </div>
