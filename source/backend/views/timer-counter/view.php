@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model backend\models\TimerCounter */
 
-$this->title = $model->id;
+$this->title = $model->module->country->code . $model->module->privincial->code . $model->module->distric->code . $model->module->customer_code . ' - ' . $model->module->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Timer Counters'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
