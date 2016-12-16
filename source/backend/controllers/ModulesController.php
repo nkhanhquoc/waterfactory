@@ -33,6 +33,8 @@ class ModulesController extends AppController {
         $searchModel = new ModulesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        \Yii::$app->session->set('module_id', null);
+
         return $this->render('index', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
@@ -122,8 +124,8 @@ class ModulesController extends AppController {
     public function actionMode($id) {
         $model = $this->findModel($id);
         $modes = Mode::find()->all();
-        if(Yii::$app->request->isPost){
-          $values=Yii::$app->request->post();
+        if (Yii::$app->request->isPost) {
+            $values = Yii::$app->request->post();
             $model->mode_id = $values['mode_id'];
             if ($model->save(false, ['mode_id'])) {
                 if ($model->mode2Client()) {
