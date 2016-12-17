@@ -715,7 +715,7 @@
     float:left;
     width:150px;
     height:150px;
-    background:#fff;
+    background:#3e8ba5;
     text-align:center;
     line-height:150px;
 }
@@ -752,7 +752,8 @@
 }	
 
 .header .banner .banner-menu{
-    background-color:#595586;
+    /*background-color:#595586;*/
+    background-color:#3e8ba5;
     text-align:right;
     height:33px;
 }
