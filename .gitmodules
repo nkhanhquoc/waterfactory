@@ -1,3 +1,0 @@
-[submodule "socket/proscom_socket"]
-	path = socket/proscom_socket
-	url = ../../toanhv/proscom_socket.git
