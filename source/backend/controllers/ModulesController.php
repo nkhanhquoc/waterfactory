@@ -49,7 +49,8 @@ class ModulesController extends AppController {
         $moduleId = \Yii::$app->session->get('module_id', 0);
         $module = Modules::findOne($moduleId);
         if ($module) {
-            
+            $module->checkSystemStatus();
+            Yii::$app->session->setFlash('success', 'Đã gửi lệnh kiểm tra SYSTEM STATUS xuống client!');
         }
 
         return $this->redirect(['view', 'id' => $moduleId]);

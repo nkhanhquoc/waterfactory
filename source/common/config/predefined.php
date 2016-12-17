@@ -47,6 +47,9 @@ define('HARD_EMERGENCY_RESET_ACKNOWLEDGE_HEADER', '10110001');
 define('SOFT_EMERGENCY_STOP_NOTIFY_HEADER', '10110010');
 #Thông báo đã nhận được bản tin CANCEL dừng khẩn cấp từ phía Module (khi khắc phục xong lỗi).
 define('SOFT_EMERGENCY_RESET_ACKNOWLEDGE_HEADER', '10110011');
+#Gửi yêu cầu cập nhật SENSOR VALUE và ON/OFF STATUS
+define('CHECK_SYSTEM_STATUS_HEADER', '10001000');
+
 #output mode
 define('MANUAL_B1', '00000000');
 define('MANUAL_B2', '00000001');

@@ -177,21 +177,21 @@ class Modules extends ModulesBase {
         $data->save(false);
     }
 
-    public function checkSensorValue() {
+    public function checkSystemStatus() {
         $id = ID_HEADER . \common\socket\Socket::dec2bin($this->getModuleId());
-    }
-
-    public function checkOnOffStatus() {
-        $id = ID_HEADER . \common\socket\Socket::dec2bin($this->getModuleId());
+        $data = new \backend\models\DataClient();
+        $data->module_id = $this->id;
+        $data->data = CHECK_SYSTEM_STATUS_HEADER . $id;
+        $data->status = 0;
+        $data->created_at = new Expression('NOW()');
+        return $data->save(false);
     }
 
     public function checkParametter() {
         $id = ID_HEADER . \common\socket\Socket::dec2bin($this->getModuleId());
         $data = new \backend\models\DataClient();
         $data->module_id = $this->id;
-        $data->data = CHECK_PARAMETER_HEADER
-                . $id
-                . PARAMETER_HEADER;
+        $data->data = CHECK_PARAMETER_HEADER . $id;
         $data->status = 0;
         $data->created_at = new Expression('NOW()');
         return $data->save(false);
@@ -201,9 +201,7 @@ class Modules extends ModulesBase {
         $id = ID_HEADER . \common\socket\Socket::dec2bin($this->getModuleId());
         $data = new \backend\models\DataClient();
         $data->module_id = $this->id;
-        $data->data = CHECK_TIMER_COUNTER_HEADER
-                . $id
-                . TIMER_COUNTER_HEADER;
+        $data->data = CHECK_TIMER_COUNTER_HEADER . $id;
         $data->status = 0;
         $data->created_at = new Expression('NOW()');
         return $data->save(false);
