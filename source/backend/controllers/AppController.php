@@ -20,7 +20,7 @@ class AppController extends Controller {
             Yii::$app->language = Yii::$app->session->get('lang');
         } else {
             //or you may want to set lang session, this is just a sample
-            Yii::$app->language = 'vi';
+            Yii::$app->language = 'en';
         }
         return parent::beforeAction($action);
     }

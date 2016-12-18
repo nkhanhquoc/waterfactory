@@ -10,7 +10,7 @@ $this->title = "Reset default password";
     <div class="params">
         <div class="row100 text-center">
             <h1 class="title"><?php echo $module->getModuleId() . ' - ' . \yii\helpers\Html::encode($module->name); ?></h1>
-            <input type="submit" value="Cập nhật" class="btn btn-primary"/>
+            <input type="submit" value="Update" class="btn btn-primary"/>
             <!-- <input type="button" class="btn btn-primary" value="Send to Module" /> -->
         </div>
     </div>

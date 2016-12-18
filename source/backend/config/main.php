@@ -9,7 +9,7 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'language' => 'vi',
+    //'language' => 'vi',
     'components' => [
         'user' => [
             'identityClass' => 'common\models\User',

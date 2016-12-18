@@ -13,12 +13,12 @@ class ModulesBase extends \common\models\db\ModulesDB {
     public function attributeLabels() {
         return [
             'id' => Yii::t('backend', 'ID'),
-            'name' => Yii::t('backend', 'Tên khách hàng'),
-            'msisdn' => Yii::t('backend', 'Số điện thoại'),
-            'country_id' => Yii::t('backend', 'Quốc gia'),
-            'privincial_id' => Yii::t('backend', 'Tỉnh'),
-            'distric_id' => Yii::t('backend', 'Quận/Huyện'),
-            'customer_code' => Yii::t('backend', 'Mã khách hàng'),
+            'name' => Yii::t('backend', 'Customer'),
+            'msisdn' => Yii::t('backend', 'Phone'),
+            'country_id' => Yii::t('backend', 'Nation'),
+            'privincial_id' => Yii::t('backend', 'Province/City'),
+            'distric_id' => Yii::t('backend', 'City/District'),
+            'customer_code' => Yii::t('backend', 'Customer Code'),
             'address' => Yii::t('backend', 'Address'),
             'alarm' => Yii::t('backend', 'Alarm'),
             'created_by' => Yii::t('backend', 'Created By'),
