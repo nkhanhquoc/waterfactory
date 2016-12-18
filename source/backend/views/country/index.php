@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
             'code',
             'name',
-            'createdBy.username:html:Tạo bởi',
+            'createdBy.username:html:Created by',
             'created_at',
             // 'updated_by',
             // 'updated_at',

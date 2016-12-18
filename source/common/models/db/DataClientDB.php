@@ -9,6 +9,7 @@ use Yii;
  *
  * @property string $id
  * @property string $module_id
+ * @property string $ie_name
  * @property string $data
  * @property integer $status
  * @property string $created_at
@@ -37,7 +38,8 @@ class DataClientDB extends \yii\db\ActiveRecord
             [['module_id', 'data'], 'required'],
             [['module_id', 'status', 'created_by'], 'integer'],
             [['data'], 'string'],
-            [['created_at', 'updated_at'], 'safe']
+            [['created_at', 'updated_at'], 'safe'],
+            [['ie_name'], 'string', 'max' => 255]
         ];
     }
 
@@ -49,6 +51,7 @@ class DataClientDB extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('backend', 'ID'),
             'module_id' => Yii::t('backend', 'Module ID'),
+            'ie_name' => Yii::t('backend', 'Ie Name'),
             'data' => Yii::t('backend', 'Data'),
             'status' => Yii::t('backend', 'Status'),
             'created_at' => Yii::t('backend', 'Created At'),

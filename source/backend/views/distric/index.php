@@ -43,8 +43,6 @@ $listUsers = backend\models\User::getAllUser();
                 },
                 'filter' => $provincial
             ],
-//            'updated_by',
-//            'updated_at',
             [
                 'label' => 'Người tạo',
                 'attribute' => 'created_by',
