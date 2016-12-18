@@ -56,8 +56,15 @@ class TimerCounterController extends AppController {
      * @return mixed
      */
     public function actionView($id) {
+        $model = $this->findModel($id);
+
+        $module = $model->module;
+        if ($module->imsis->status == CONFIRM_STATUS) {
+            $module->checkTimerCounter();
+        }
+
         return $this->render('view', [
-                    'model' => $this->findModel($id),
+                    'model' => $model,
         ]);
     }
 
@@ -87,6 +94,11 @@ class TimerCounterController extends AppController {
      */
     public function actionUpdate($id) {
         $model = $this->findModel($id);
+
+        $module = $model->module;
+        if ($module->imsis->status == CONFIRM_STATUS) {
+            $module->checkTimerCounter();
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $model->toClient();

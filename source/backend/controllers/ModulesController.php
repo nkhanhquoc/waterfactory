@@ -66,6 +66,11 @@ class ModulesController extends AppController {
 
         \Yii::$app->session->set('module_id', $model->id);
 
+        //check system status
+        if ($model->imsis) {
+            $model->checkSystemStatus();
+        }
+
         $sensors = $model->sensors;
         $statuses = $model->moduleStatuses;
         $alarms = $model->alarms;

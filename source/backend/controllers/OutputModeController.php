@@ -157,6 +157,11 @@ class OutputModeController extends AppController {
     public function actionUpdate($id) {
         $model = $this->findModel($id);
 
+        $module = $model->module;
+        if ($module->imsis->status == CONFIRM_STATUS) {
+            $module->checkOutputMode();
+        }
+
         if (Yii::$app->request->isPost) {
             $values = Yii::$app->request->post();
             if ($values['OutputMode']['convection_pump']['time'] > 255) {
