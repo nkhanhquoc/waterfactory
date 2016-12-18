@@ -5,9 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\ParamConfig */
 
-$this->title = Yii::t('backend', 'Update {modelClass}: ', [
-            'modelClass' => 'Param Config',
-        ]) . ' ' . \yii\helpers\Html::encode($model->module->name);
+$idModule = $model->module->country->code . $model->module->privincial->code . $model->module->distric->code . $model->module->customer_code;
+$this->title = $idModule . ' - ' . $model->module->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Modules'), 'url' => ['/modules/view?id=' . $model->module->id]];
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Param Configs'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
@@ -28,7 +27,7 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
         <input type="hidden" name="_csrf" value="<?php Yii::$app->request->csrfToken ?>">
         <div class="params">
 
-            <div class="border row row100">
+<!--            <div class="border row row100">
                 <div class="row20 params-left padding10">
                     Module
                 </div>
@@ -43,7 +42,7 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
                         <span class="row20">&#8451;</span>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <div class="border row row100">
                 <div class="row20 params-left padding10">
                     Convection Pump

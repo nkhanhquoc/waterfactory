@@ -71,11 +71,10 @@ class OutputModeController extends AppController {
         $model = new OutputMode();
         $moduleId = \Yii::$app->session->get('module_id', 0);
         $model->module_id = $moduleId;
-        $modules = Modules::getAll();
+        $module = Modules::findOne($moduleId);
 
         if (Yii::$app->request->isPost) {
             $values = Yii::$app->request->post();
-            $model->module_id = $values['module_id'];
             if ($values['OutputMode']['convection_pump']['time'] > 255) {
                 $convectionPumptime = Socket::alldec2bin($values['OutputMode']['convection_pump']['time'], 16);
             } else {
@@ -144,7 +143,7 @@ class OutputModeController extends AppController {
         }
         return $this->render('create', [
                     'model' => $model,
-                    'modules' => $modules
+                    'module' => $module
         ]);
     }
 

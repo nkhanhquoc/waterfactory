@@ -80,13 +80,15 @@ class ParamConfigController extends AppController {
      */
     public function actionCreate() {
         $model = new ParamConfig();
-        $modules = Modules::getAll();
+
         $moduleId = \Yii::$app->session->get('module_id', 0);
         $model->module_id = $moduleId;
+        $module = Modules::findOne($moduleId);
+
         if (Yii::$app->request->isPost) {
             $values = Yii::$app->request->post();
 
-            $model->module_id = $values['module_id'];
+            //$model->module_id = $values['module_id'];
             $model->convection_pump = Socket::alldec2bin($values['convection_pump']);
             $model->cold_water_supply_pump = Socket::alldec2bin($values['cold_water_supply_pump_lv1'])
                     . Socket::alldec2bin($values['cold_water_supply_pump_lv2']);
@@ -115,7 +117,7 @@ class ParamConfigController extends AppController {
         }
         return $this->render('create', [
                     'model' => $model,
-                    'modules' => $modules
+                    'module' => $module
         ]);
     }
 
@@ -127,11 +129,10 @@ class ParamConfigController extends AppController {
      */
     public function actionUpdate($id) {
         $model = $this->findModel($id);
-        $modules = Modules::getAll();
+        //$modules = Modules::getAll();
         if (Yii::$app->request->isPost) {
             $values = Yii::$app->request->post();
-
-            $model->module_id = $values['module_id'];
+            //$model->module_id = $values['module_id'];
             $model->convection_pump = Socket::alldec2bin($values['convection_pump']);
             $model->cold_water_supply_pump = Socket::alldec2bin($values['cold_water_supply_pump_lv1'])
                     . Socket::alldec2bin($values['cold_water_supply_pump_lv2']);
@@ -159,7 +160,7 @@ class ParamConfigController extends AppController {
         }
         return $this->render('update', [
                     'model' => $model,
-                    'modules' => $modules
+                        //'modules' => $modules
         ]);
     }
 

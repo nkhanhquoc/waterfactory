@@ -6,9 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\OutputMode */
 
-$this->title = Yii::t('backend', 'Update {modelClass}: ', [
-            'modelClass' => 'Output Mode',
-        ]) . ' ' . \yii\helpers\Html::encode($model->module->name);
+$idModule = $model->module->country->code . $model->module->privincial->code . $model->module->distric->code . $model->module->customer_code;
+$this->title = $idModule . ' - ' . $model->module->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Modules'), 'url' => ['/modules/view?id=' . $model->module->id]];
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Output Modes'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];

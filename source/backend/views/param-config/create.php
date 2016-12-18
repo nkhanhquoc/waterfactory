@@ -2,11 +2,12 @@
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', \yii\helpers\Html::encode($model->module->name)), 'url' => ['/modules/view?id=' . $model->module->id]];
 $this->params['breadcrumbs'][] = Yii::t('backend', 'Parameter Config');
 ?>
+<h1 class="title">ID: <?php echo $module->getModuleId() . ' - ' . \yii\helpers\Html::encode($module->name); ?></h1>
 <form method="post" action="/index.php/param-config/create">
     <input type="hidden" name="_csrf" value="<?php Yii::$app->request->csrfToken ?>">
     <div class="params">
 
-        <div class="border row row100">
+<!--        <div class="border row row100">
             <div class="row20 params-left padding10">
                 Module
             </div>
@@ -21,7 +22,7 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'Parameter Config');
                     <span class="row20">&nbsp;</span>
                 </div>
             </div>
-        </div>
+        </div>-->
         <div class="border row row100">
             <div class="row20 params-left padding10">
                 Convection Pump

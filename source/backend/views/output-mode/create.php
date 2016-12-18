@@ -2,24 +2,25 @@
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', \yii\helpers\Html::encode($model->module->name)), 'url' => ['/modules/view?id=' . $model->module->id]];
 $this->params['breadcrumbs'][] = Yii::t('backend', 'Load Mode');
 ?>
+<h1 class="title">ID: <?php echo $module->getModuleId() . ' - ' . \yii\helpers\Html::encode($module->name); ?></h1>
 <form id="update-output-mode" method="post" action="/index.php/output-mode/create">
     <input type="hidden" name="_csrf" value="<?php Yii::$app->request->csrfToken ?>">
     <div class="params">
-        <div class="border row row100">
-            <div class="row20 params-left padding10">
-                Module
-            </div>
-            <div class="row80 params-right border-left">
-                <div class="row50 padding10">
-                    <select class="form-control row80" id="module_id" name="module_id">
-                        <?php foreach ($modules as $key => $m): ?>
-                            <option value="<?php echo $key ?>" <?php if ($model->module_id == $key) echo 'selected="selected"'; ?>><?php echo $m ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                    <span class="row20">&nbsp;</span>
-                </div>
-            </div>
-        </div>
+        <!--        <div class="border row row100">
+                    <div class="row20 params-left padding10">
+                        Module
+                    </div>
+                    <div class="row80 params-right border-left">
+                        <div class="row50 padding10">
+                            <select class="form-control row80" id="module_id" name="module_id">
+        <?php foreach ($modules as $key => $m): ?>
+                                            <option value="<?php echo $key ?>" <?php if ($model->module_id == $key) echo 'selected="selected"'; ?>><?php echo $m ?></option>
+        <?php endforeach; ?>
+                            </select>
+                            <span class="row20">&nbsp;</span>
+                        </div>
+                    </div>
+                </div>-->
         <div class="border row row100">
             <div class="row20 params-left padding10">
                 Convection Pump

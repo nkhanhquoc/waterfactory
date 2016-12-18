@@ -2,26 +2,17 @@
 
 use yii\helpers\Html;
 
-$this->title = "Reset mật khẩu mặc định";
+$this->title = "Reset default password";
 ?>
 <h1><?= Html::encode($this->title) ?></h1>
 <form method="post" action="/index.php/reset-password/index">
     <input type="hidden" name="_csrf" value="<?php Yii::$app->request->csrfToken ?>">
     <div class="params">
-        <div class="row80 params-right">
-
-            <div class="row50 padding10">
-                <select class="form-control row80" name="module_id">
-                    <?php foreach ($modules as $key => $m): ?>
-                        <option value="<?php echo $key ?>"><?php echo $m ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-        </div>
-        <div class="row100">
+        <div class="row100 text-center">
+            <h1 class="title"><?php echo $module->getModuleId() . ' - ' . \yii\helpers\Html::encode($module->name); ?></h1>
             <input type="submit" value="Cập nhật" class="btn btn-primary"/>
             <!-- <input type="button" class="btn btn-primary" value="Send to Module" /> -->
         </div>
     </div>
 
-</form
+</form>

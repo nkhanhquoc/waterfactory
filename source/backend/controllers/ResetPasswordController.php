@@ -26,10 +26,9 @@ class ResetPasswordController extends AppController {
      * @return mixed]
      */
     public function actionIndex() {
-        $modules = Modules::getAll();
+        $moduleId = \Yii::$app->session->get('module_id', 0);
+        $module = Modules::findOne($moduleId);
         if (Yii::$app->request->isPost) {
-            $values = Yii::$app->request->post();
-            $module = Modules::find()->where(['id' => $values['module_id']])->one();
             if ($module) {
                 $id = ID_HEADER . \common\socket\Socket::dec2bin($module->getModuleId());
                 $data = new \backend\models\DataClient();
@@ -43,7 +42,7 @@ class ResetPasswordController extends AppController {
         }
 
         return $this->render('index', [
-                    'modules' => $modules
+                    'module' => $module
         ]);
     }
 

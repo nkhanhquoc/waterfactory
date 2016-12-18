@@ -2936,4 +2936,9 @@ ul,li{
     color: #000;
     font-weight: bold;
 }
-/**********************     Quyetnx End    *************************/
+.page-content-wrapper h1 {
+    text-align: center !important;
+}
+.text-center {
+    text-align: center !important;
+}
