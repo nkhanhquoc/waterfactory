@@ -6,6 +6,7 @@
 define('NO_IMAGE', '/img/no-image.png');
 define('MODULE_READY', '/img/module_ready.png');
 define('MODULE_SETTING', '/img/module_setting.png');
+define('MODULE_ALARM', '/img/module_alarm.png');
 #STATUS CONFIRM
 define('CONFIRM_STATUS', 3);
 #ie header

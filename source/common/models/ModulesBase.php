@@ -129,4 +129,21 @@ class ModulesBase extends \common\models\db\ModulesDB {
         return $data->save(false);
     }
 
+    public function checkAlarm() {
+        $alarm = $this->alarms;
+        if ($alarm->qua_ap_suat == '11') {
+            return 1;
+        }
+        if ($alarm->tran_be == '11') {
+            return 1;
+        }
+        if ($alarm->mat_dien == '11') {
+            return 1;
+        }
+        if ($alarm->qua_nhiet == '11') {
+            return 1;
+        }
+        return 0;
+    }
+
 }
