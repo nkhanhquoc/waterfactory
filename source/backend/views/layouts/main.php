@@ -47,7 +47,7 @@ AppAsset::register($this);
         <!-- BEGIN HEADER -->
         <div class="page-header md-shadow-z-1-i navbar">
             <!-- BEGIN HEADER INNER -->
-            <a href="#" class="icon-refresh-fix"><img src="/images/refresh_icon.jpg" width="48"/></a>
+            <a href="javascript:void(0);" class="icon-refresh-fix"><img src="/images/refresh_icon.jpg" width="48"/></a>
             <div class="header">
                 <div class="header-left">
                     <a href="/" class="logo"><img src="/images/logo.png"/></a>
