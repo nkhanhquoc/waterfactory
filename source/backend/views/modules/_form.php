@@ -17,7 +17,7 @@ $distric = backend\models\Distric::getAll();
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => 255]) ?>
 
-    <?= $form->field($model, 'customer_code')->textInput(['maxlength' => 100, 'readonly' => 'readonly']) ?>
+    <?= $form->field($model, 'customer_code')->textInput(['maxlength' => 6]) ?>
 
     <?= $form->field($model, 'msisdn')->dropDownList($clients)->label('Client request') ?>
 

@@ -62,7 +62,7 @@ class Modules extends ModulesBase {
             [['msisdn'], 'match', 'pattern' => '((?=.*\d))',
                 'message' => \Yii::t('backend', 'Số điện thoại phải là chữ số')],
             [['msisdn'], 'string', 'min' => 15, 'max' => 15],
-            [['customer_code'], 'string', 'max' => 100],
+            [['customer_code'], 'string', 'min' => 6, 'max' => 6],
             [['money'], 'string', 'max' => 160],
             [['data', 'alarm'], 'string', 'max' => 50],
             [['customer_code'], 'unique']
