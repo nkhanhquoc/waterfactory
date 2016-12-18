@@ -39,6 +39,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => Yii::t('backend', 'Parent'),
             ],
             'route',
+            [
+                'attribute' => 'type',
+                'filter' => [0 => 'Home', 1 => 'Module'],
+            ],
+            'order',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]);

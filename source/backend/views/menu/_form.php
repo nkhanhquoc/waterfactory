@@ -34,6 +34,8 @@ foreach ($menuIcons as $icon) {
 
     <?= $form->field($model, 'order')->input('number') ?>
 
+    <?= $form->field($model, 'type')->dropDownList([0 => 'Home', 1 => 'Module']) ?>
+
     <div class="form-group">
         <?php
         $format = <<< SCRIPT
