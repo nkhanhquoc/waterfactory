@@ -2662,6 +2662,8 @@ ul,li{
 .params{
     margin: 0 auto;
     width: 90%;
+    text-align: center;
+    alignment-adjust: middle;
 }
 .params .row{
     display: block;

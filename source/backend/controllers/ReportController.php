@@ -14,10 +14,10 @@ class ReportController extends AppController {
         $from = "";
         $to = "";
         $module_id = \Yii::$app->session->get('module_id', 0);
-        $modules = Modules::getAll();
+        $modules = Modules::findOne($module_id);
         if (Yii::$app->request->isPost) {
             $values = Yii::$app->request->post();
-            $module_id = $values['module_id'];
+            //$module_id = $values['module_id'];
             $from = $values['from'];
             $to = $values['to'];
             if ($values['export']) {
@@ -31,7 +31,7 @@ class ReportController extends AppController {
                     'sensors' => $sensors,
                     'from' => $from,
                     'to' => $to,
-                    'modules' => $modules,
+                    'module' => $modules,
                     'module_id' => $module_id
         ]);
     }
@@ -41,10 +41,10 @@ class ReportController extends AppController {
         $from = "";
         $to = "";
         $module_id = \Yii::$app->session->get('module_id', 0);
-        $modules = Modules::getAll();
+        $modules = Modules::findOne($module_id);
         if (Yii::$app->request->isPost) {
             $values = Yii::$app->request->post();
-            $module_id = $values['module_id'];
+            //$module_id = $values['module_id'];
             $from = $values['from'];
             $to = $values['to'];
             if ($values['export']) {
@@ -56,7 +56,7 @@ class ReportController extends AppController {
                     'alarms' => $alarms,
                     'from' => $from,
                     'to' => $to,
-                    'modules' => $modules,
+                    'module' => $modules,
                     'module_id' => $module_id
         ]);
     }
