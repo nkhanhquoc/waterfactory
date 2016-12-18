@@ -9,11 +9,11 @@ use common\widgets\Alert;
 DefaultAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
-    <!DOCTYPE html>
-    <!--[if IE 8]> <html lang="<?= Yii::$app->language ?>" class="ie8 no-js"> <![endif]-->
-    <!--[if IE 9]> <html lang="<?= Yii::$app->language ?>" class="ie9 no-js"> <![endif]-->
-    <!--[if !IE]><!-->
-    <html lang="<?= Yii::$app->language ?>" class="no-js">
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="<?= Yii::$app->language ?>" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="<?= Yii::$app->language ?>" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="<?= Yii::$app->language ?>" class="no-js">
     <!--<![endif]-->
     <!-- BEGIN HEAD -->
     <head>
@@ -37,25 +37,25 @@ DefaultAsset::register($this);
     <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
     <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
     <body class="page-md login">
-    <?php $this->beginBody() ?>
-    <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-    <div class="menu-toggler sidebar-toggler">
-    </div>
-    <!-- END SIDEBAR TOGGLER BUTTON -->
-    <!-- BEGIN LOGO -->
-    <div class="logo">
-        <a href="/">
-            <img src="/img/logo.png" alt="" height="46"/>
-        </a>
-    </div>
-    <div class="content">
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
-    <div class="copyright">
-        2016 © proscom. Admin Dashboard Template.
-    </div>
-    <?php $this->endBody() ?>
+        <?php $this->beginBody() ?>
+        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+        <div class="menu-toggler sidebar-toggler">
+        </div>
+        <!-- END SIDEBAR TOGGLER BUTTON -->
+        <!-- BEGIN LOGO -->
+        <!--        <div class="logo">
+                    <a href="/">
+                        <img src="/img/logo.png" alt="" height="46"/>
+                    </a>
+                </div>-->
+        <div class="content">
+            <?= Alert::widget() ?>
+            <?= $content ?>
+        </div>
+        <div class="copyright">
+            2016 © proscom. Admin Dashboard Template.
+        </div>
+        <?php $this->endBody() ?>
     </body>
-    </html>
+</html>
 <?php $this->endPage() ?>

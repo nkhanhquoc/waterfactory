@@ -100,6 +100,15 @@ class ModulesController extends AppController {
                 Yii::$app->session->setFlash('error', 'Không tìm thấy client nào có imsi ' . $model->msisdn);
                 $this->findModel($model->id)->delete();
             }
+            $timerCounter = new \backend\models\TimerCounter();
+            $timerCounter->module_id = $model->id;
+            $timerCounter->counter = 0;
+            $timerCounter->timer_1 = 0;
+            $timerCounter->timer_2 = 0;
+            $timerCounter->timer_3 = 0;
+            $timerCounter->created_at = new \yii\db\Expression('now()');
+            $timerCounter->save(false);
+
             return $this->redirect(['index']);
         }
         return $this->render('create', [
