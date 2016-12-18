@@ -149,8 +149,5 @@ use yii\helpers\Html;
                     </ol>
                 </div>-->
     </div>
-    <p>
-        <?= Html::a('Update', ['refresh'], ['class' => 'btn btn-success']); ?>
-    </p>
 </div>
 
