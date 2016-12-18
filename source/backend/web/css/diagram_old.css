@@ -454,7 +454,7 @@
     width:100%;
     clear:both;
     font-family:Arial;
-    /*margin:20px 0;*/
+    margin:20px 0;
 }
 
 .info-diagram .title{
@@ -715,7 +715,7 @@
     float:left;
     width:150px;
     height:150px;
-    background:#fff;
+    background:#3e8ba5;
     text-align:center;
     line-height:150px;
 }
@@ -752,8 +752,10 @@
 }	
 
 .header .banner .banner-menu{
-    background-color:#595586;
+    /*background-color:#595586;*/
+    background-color:#3e8ba5;
     text-align:right;
+    height:33px;
 }
 
 .header .banner .banner-menu a{
@@ -763,6 +765,11 @@
     text-decoration:none;
     color:#fff;
     background:#1caf9a;
+    float:left;
+}
+
+.header .banner .banner-menu .content-menu{
+    float:right;
 }
 
 .header .banner .banner-menu .active{
@@ -808,3 +815,7 @@
 .btn-check img{
     border-radius:5px;
 }
+
+*{
+    box-sizing:border-box;	
+}	

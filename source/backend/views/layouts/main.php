@@ -47,6 +47,7 @@ AppAsset::register($this);
         <!-- BEGIN HEADER -->
         <div class="page-header md-shadow-z-1-i navbar">
             <!-- BEGIN HEADER INNER -->
+            <a href="#" class="icon-refresh-fix"><img src="/images/refresh_icon.jpg" width="48"/></a>
             <div class="header">
                 <div class="header-left">
                     <a href="/" class="logo"><img src="/images/logo.png"/></a>
@@ -129,22 +130,22 @@ AppAsset::register($this);
             <!-- BEGIN CONTENT -->
             <div class="page-content-wrapper">
                 <div class="page-content">
-<!--                    <div class="page-bar">
-                        <?=
-                        Breadcrumbs::widget(['itemTemplate' => "<li>{link}<i class='fa fa-angle-right'></i></i></li>\n", // template for all links
-                            'activeItemTemplate' => "<li>{link}</li>\n", // template for all links
-                            'options' => [
-                                'class' => 'page-breadcrumb'
-                            ],
-                            'homeLink' => [
-                                'label' => Yii::t('backend', 'Home'),
-                                'url' => Yii::$app->homeUrl,
-                                'template' => "<li><i class='fa fa-home'></i>{link}<i class='fa fa-angle-right'></i></li>\n",
-                            ],
-                            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                        ])
-                        ?>
-                    </div>-->
+                    <!--                    <div class="page-bar">
+                    <?=
+                    Breadcrumbs::widget(['itemTemplate' => "<li>{link}<i class='fa fa-angle-right'></i></i></li>\n", // template for all links
+                        'activeItemTemplate' => "<li>{link}</li>\n", // template for all links
+                        'options' => [
+                            'class' => 'page-breadcrumb'
+                        ],
+                        'homeLink' => [
+                            'label' => Yii::t('backend', 'Home'),
+                            'url' => Yii::$app->homeUrl,
+                            'template' => "<li><i class='fa fa-home'></i>{link}<i class='fa fa-angle-right'></i></li>\n",
+                        ],
+                        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                    ])
+                    ?>
+                                        </div>-->
                     <?= Alert::widget() ?>
                     <?= $content ?>
                 </div>
