@@ -37,7 +37,7 @@ class ResetPasswordController extends AppController {
                 $data->status = 0;
                 $data->created_at = new Expression('NOW()');
                 $data->save(false);
-                \Yii::$app->session->setFlash('success', 'Reset mật khẩu mặc định cho ' . yii\helpers\Html::encode($module->name) . ' thành công!');
+                \Yii::$app->session->setFlash('success', 'Reset default password to ' . yii\helpers\Html::encode($module->name) . ' success!');
             }
         }
 

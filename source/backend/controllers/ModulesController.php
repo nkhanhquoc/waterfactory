@@ -50,7 +50,7 @@ class ModulesController extends AppController {
         $module = Modules::findOne($moduleId);
         if ($module) {
             $module->checkSystemStatus();
-            Yii::$app->session->setFlash('success', 'Đã gửi lệnh kiểm tra SYSTEM STATUS xuống client!');
+            Yii::$app->session->setFlash('success', 'Check SYSTEM STATUS to module success!');
         }
 
         return $this->redirect(['view', 'id' => $moduleId]);
@@ -96,20 +96,20 @@ class ModulesController extends AppController {
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if ($model->toClient()) {
-                Yii::$app->session->setFlash('success', 'Set ID tới module ' . $model->getModuleId() . ' thành công!');
+                $timerCounter = new \backend\models\TimerCounter();
+                $timerCounter->module_id = $model->id;
+                $timerCounter->counter = 0;
+                $timerCounter->timer_1 = 0;
+                $timerCounter->timer_2 = 0;
+                $timerCounter->timer_3 = 0;
+                $timerCounter->created_at = new \yii\db\Expression('now()');
+                $timerCounter->save(false);
+                Yii::$app->session->setFlash('success', 'Set ID to module ' . $model->getModuleId() . ' success!');
                 return $this->redirect(['view', 'id' => $model->id]);
             } else {
-                Yii::$app->session->setFlash('error', 'Không tìm thấy client nào có imsi ' . $model->msisdn);
+                Yii::$app->session->setFlash('error', 'Not found imsi ' . $model->msisdn);
                 $this->findModel($model->id)->delete();
             }
-            $timerCounter = new \backend\models\TimerCounter();
-            $timerCounter->module_id = $model->id;
-            $timerCounter->counter = 0;
-            $timerCounter->timer_1 = 0;
-            $timerCounter->timer_2 = 0;
-            $timerCounter->timer_3 = 0;
-            $timerCounter->created_at = new \yii\db\Expression('now()');
-            $timerCounter->save(false);
 
             return $this->redirect(['index']);
         }
@@ -151,11 +151,11 @@ class ModulesController extends AppController {
             $model->mode_id = $values['mode_id'];
             if ($model->save(false, ['mode_id'])) {
                 if ($model->mode2Client()) {
-                    Yii::$app->session->setFlash('success', 'Đã gửi bản tin set System Mode thành công!');
+                    Yii::$app->session->setFlash('success', 'Set System Mode success!');
                     // return $this->redirect(['view', 'id' => $model->id]);
                     return $this->redirect('/output-mode/home');
                 } else {
-                    Yii::$app->session->setFlash('success', 'Gửi bản tin set System Mode không thành công!');
+                    Yii::$app->session->setFlash('success', 'Set System Mode fail!');
                 }
             }
         }
@@ -203,9 +203,9 @@ class ModulesController extends AppController {
             if ($values['check']) {
                 try {
                     $model->toClientManager();
-                    $alert = "Gửi yêu cầu kiểm tra thành công!";
+                    $alert = "Send to module success!";
                 } catch (Exception $e) {
-                    $alert = "Có lỗi xảy ra";
+                    $alert = "An error occurred";
                 }
             }
             if ($values['pay']) {
@@ -213,15 +213,15 @@ class ModulesController extends AppController {
                     if (is_numeric($values['card_info'])) {
                         try {
                             $model->toClientPay(trim($values['card_info']));
-                            $alert = "Gửi yêu cầu thanh toán thành công!";
+                            $alert = "Send to module success!";
                         } catch (Exception $e) {
-                            $alert = "Có lỗi xảy ra";
+                            $alert = "An error occurred";
                         }
                     } else {
-                        $alert = "Mã thẻ cào chưa chính xác!";
+                        $alert = "Card code invalid!";
                     }
                 } else {
-                    $alert = "Bạn phải nhập mã thẻ!";
+                    $alert = "You must enter card code!";
                 }
             }
         }

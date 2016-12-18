@@ -5,10 +5,8 @@ namespace backend\controllers;
 use Yii;
 use backend\models\ParamConfig;
 use backend\models\Modules;
-use backend\models\DataClient;
 use backend\models\ParamConfigSearch;
 use common\socket\Socket;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -47,7 +45,7 @@ class ParamConfigController extends AppController {
         if ($module) {
             $module->checkParametter();
             $module->checkTimerCounter();
-            Yii::$app->session->setFlash('success', 'Đã gửi lệnh kiểm tra cấu hình PARAMETTER và TIMER/COUNTER xuống client!');
+            Yii::$app->session->setFlash('success', 'Check PARAMETTER và TIMER/COUNTER to module success!');
         }
 
         return $this->redirect(['/modules/view', 'id' => $id]);
@@ -111,7 +109,7 @@ class ParamConfigController extends AppController {
 
             if ($model->save(false)) {
                 $model->toClient();
-                Yii::$app->session->setFlash('success', 'Đã gửi bản tin Parameter Config thành công!');
+                Yii::$app->session->setFlash('success', 'Set Parameter Config success!');
                 return $this->redirect(['/modules/view', 'id' => $model->module_id]);
             }
         }
@@ -154,7 +152,7 @@ class ParamConfigController extends AppController {
             $model->backflow_valve = Socket::alldec2bin($values['backflow_temp']);
             if ($model->save(false)) {
                 $model->toClient();
-                Yii::$app->session->setFlash('success', 'Đã gửi bản tin Parameter Config thành công!');
+                Yii::$app->session->setFlash('success', 'Set Parameter Config success!');
                 return $this->redirect(['/modules/view', 'id' => $model->module_id]);
             }
         }
