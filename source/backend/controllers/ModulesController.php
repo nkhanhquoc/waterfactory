@@ -88,9 +88,6 @@ class ModulesController extends AppController {
         $model->customer_code = $model->getMaxCustomerCode();
 
         $clients = \backend\models\Imsi::getClientRequest();
-        if (sizeof($clients) == 1) {
-            Yii::$app->session->setFlash('error', 'Hiện không có client nào gửi request khởi tạo ID');
-        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if ($model->toClient()) {

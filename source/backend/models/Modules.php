@@ -207,4 +207,14 @@ class Modules extends ModulesBase {
         return $data->save(false);
     }
 
+    public function getImg() {
+        if ($this->imsis->status == CONFIRM_STATUS) {
+            if ($this->outputModes) {
+                return MODULE_READY;
+            }
+            return MODULE_SETTING;
+        }
+        return NO_IMAGE;
+    }
+
 }

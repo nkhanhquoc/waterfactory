@@ -42,7 +42,7 @@ class ModulesSearch extends Modules {
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort' => ['defaultOrder' => ['created_at' => SORT_ASC]]
+            'sort' => ['defaultOrder' => ['created_at' => SORT_DESC]]
         ]);
 
         $this->load($params);

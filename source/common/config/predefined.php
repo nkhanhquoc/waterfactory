@@ -4,6 +4,10 @@
  *  define const default
  */
 define('NO_IMAGE', '/img/no-image.png');
+define('MODULE_READY', '/img/module_ready.png');
+define('MODULE_SETTING', '/img/module_setting.png');
+#STATUS CONFIRM
+define('CONFIRM_STATUS', 3);
 #ie header
 define('ID_HEADER', '01110000000010000000');
 define('IMSI_HEADER', '0111010100001010');
