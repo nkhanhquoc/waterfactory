@@ -47,8 +47,6 @@ class Mode extends ModeBase {
         return $data;
     }
 
-
-
     public function upload() {
         if ($this->validate()) {
             if (!is_dir(\Yii::getAlias('@webroot') . '/uploads/mode')) {

@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use backend\models\Mode;
+use backend\models\Modules;
 use backend\models\ModeSearch;
 use Yii;
 use yii\filters\VerbFilter;
@@ -31,12 +32,17 @@ class ModeController extends AppController {
      * @return mixed
      */
     public function actionIndex() {
-        $searchModel = new ModeSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $moduleId = \Yii::$app->session->get('module_id', 0);
+        $module = Modules::findOne(['id'=>$moduleId]);
+
+
+        // $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $modes = Mode::find()->all();
+        // var_dump($modes);die;
 
         return $this->render('index', [
-                    'searchModel' => $searchModel,
-                    'dataProvider' => $dataProvider,
+                    'module' => $module,
+                    'modes' => $modes,
         ]);
     }
 
