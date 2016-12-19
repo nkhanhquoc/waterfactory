@@ -10,7 +10,7 @@
 .right-content {
     font-size:14px;
     margin-left:50px;
-	float:right;
+    float:right;
 }
 
 .right-content ol{
@@ -64,7 +64,7 @@
 /***************Left content *********************/
 .left-content {
     background:url(../images/bg.jpg) no-repeat 0 0;
-	background-color:#fff;
+    background-color:#fff;
     height:510px;
     position:relative;
     float:left;
@@ -427,8 +427,9 @@
 
 @media (max-width:1280px){
     .left-content {
-        margin:0 auto;
-        float:left;
+        float: left;
+        left: 100px;
+        margin: 0 auto;
     }	
 
     .right-content {
@@ -462,8 +463,8 @@
 }	
 
 .right-info{
-	width:200px;
-	float:left;
+    width:200px;
+    float:left;
 }
 
 .info-block{
@@ -771,10 +772,10 @@
 }
 
 .fix-menu-top {
-	position:fixed !important;
-	right:0;
-	top:0;
-	z-index:1030;
+    position:fixed !important;
+    right:0;
+    top:0;
+    z-index:1030;
 }
 
 .header .banner .banner-menu a{
@@ -851,16 +852,16 @@
 
 .icon-refresh-fix img{
     border-radius:50%;
-	}
+}
 
 .animation-spin{
-  	animation: spinner .6s linear infinite;	
-	}
+    animation: spinner .6s linear infinite;	
+}
 
 @keyframes spinner {
     to {transform: rotate(360deg);}
-	}
- 
+}
+
 
 *{
     box-sizing:border-box;	
