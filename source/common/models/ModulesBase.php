@@ -131,19 +131,44 @@ class ModulesBase extends \common\models\db\ModulesDB {
 
     public function checkAlarm() {
         $alarm = $this->alarms;
+
+        $return = 0;
+
+        $module_alarm = Yii::$app->session->get('module_alarm', null);
+        if (!is_array($module_alarm)) {
+            $module_alarm['mat_dien']['status'] = 0;
+            $module_alarm['mat_dien']['count'] = 0;
+            $module_alarm['qua_ap_suat']['status'] = 0;
+            $module_alarm['qua_ap_suat']['count'] = 0;
+            $module_alarm['qua_nhiet']['status'] = 0;
+            $module_alarm['qua_nhiet']['count'] = 0;
+            $module_alarm['tran_be']['status'] = 0;
+            $module_alarm['tran_be']['count'] = 0;
+        }
+
         if ($alarm->qua_ap_suat == '11') {
-            return 1;
+            $module_alarm['qua_ap_suat']['status'] = 1;
+            $module_alarm['qua_ap_suat']['count'] +=1;
+            $return = 1;
         }
         if ($alarm->tran_be == '11') {
-            return 1;
+            $module_alarm['tran_be']['status'] = 1;
+            $module_alarm['tran_be']['count'] +=1;
+            $return = 1;
         }
         if ($alarm->mat_dien == '11') {
-            return 1;
+            $module_alarm['mat_dien']['status'] = 1;
+            $module_alarm['mat_dien']['count'] +=1;
+            $return = 1;
         }
         if ($alarm->qua_nhiet == '11') {
-            return 1;
+            $module_alarm['qua_nhiet']['status'] = 1;
+            $module_alarm['qua_nhiet']['count'] +=1;
+            $return = 1;
         }
-        return 0;
+        Yii::$app->session->set('module_alarm', $module_alarm);
+
+        return $return;
     }
 
 }

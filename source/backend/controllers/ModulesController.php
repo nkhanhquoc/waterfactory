@@ -33,6 +33,7 @@ class ModulesController extends AppController {
         $searchModel = new ModulesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        \Yii::$app->session->set('module_alarm', null);
         \Yii::$app->session->set('module_id', null);
 
         return $this->render('index', [
@@ -74,6 +75,19 @@ class ModulesController extends AppController {
         $sensors = $model->sensors;
         $statuses = $model->moduleStatuses;
         $alarms = $model->alarms;
+
+        $module_alarm = null;
+        Yii::$app->session->set('module_alarm', null);
+        $module_alarm['mat_dien']['status'] = $alarms->mat_dien == '11' ? 1 : 0;
+        $module_alarm['mat_dien']['count'] = 0;
+        $module_alarm['qua_ap_suat']['status'] = $alarms->qua_ap_suat == '11' ? 1 : 0;
+        $module_alarm['qua_ap_suat']['count'] = 0;
+        $module_alarm['qua_nhiet']['status'] = $alarms->qua_nhiet == '11' ? 1 : 0;
+        $module_alarm['qua_nhiet']['count'] = 0;
+        $module_alarm['tran_be']['status'] = $alarms->tran_be == '11' ? 1 : 0;
+        $module_alarm['tran_be']['count'] = 0;
+        Yii::$app->session->set('module_alarm', $module_alarm);
+
         $model->setVan_dien_tu_ba_nga_up();
         return $this->render('view', [
                     'model' => $model,
