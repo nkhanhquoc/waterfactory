@@ -13,9 +13,9 @@ use yii\helpers\Html;
 //$this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Html::encode($model->name);
 ?>
 <div class="output-mode-view">    
-<!--    <div class="info-diagram">
+    <div class="info-diagram">
         <h3 class="title">ID: <?php echo $model->getModuleId() . ' - ' . \yii\helpers\Html::encode($model->name); ?></h3>        
-    </div>-->
+    </div>
     <div class="diagram">
         <div class="left-content">
             <div class="c-00"><?php echo bindec($sensors->cam_bien_ap_suat_duong_ong); ?></div>
