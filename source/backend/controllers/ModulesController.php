@@ -89,6 +89,7 @@ class ModulesController extends AppController {
         Yii::$app->session->set('module_alarm', $module_alarm);
 
         $model->setVan_dien_tu_ba_nga_up();
+
         return $this->render('view', [
                     'model' => $model,
                     'sensors' => $sensors,
