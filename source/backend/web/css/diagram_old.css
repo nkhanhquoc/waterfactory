@@ -454,7 +454,8 @@
     width:100%;
     clear:both;
     font-family:Arial;
-    margin:20px 0;
+    /*margin:20px 0;*/
+    margin:0 0 20px 0;
 }
 
 .info-diagram .title{
@@ -504,7 +505,7 @@
     border:1px solid #ddd;
     margin:0 auto;
     width:700px;
-    padding:20px;
+    padding:20px !important;
     border-radius:4px;
     clear:both;
 
@@ -709,15 +710,19 @@
     float:left;
     width:100%;
     clear:both;
+    position:relative;
 }
 
 .header .header-left{
     float:left;
-    width:150px;
+    width:235px;
     height:150px;
     background:#3e8ba5;
     text-align:center;
     line-height:150px;
+    position:absolute;
+    top:0;
+    left:0;
 }
 
 .header .header-left .logo{
@@ -741,13 +746,13 @@
 }
 
 .header .banner .banner-image{
-    height:117px;
+    height:150px;
     background-color:#756fb0;
-    text-align:center;
+    text-align:right;
 }
 
 .header .banner .banner-image img{
-    max-height:117px;
+    max-height:150px;
     width:88%;
 }	
 
@@ -756,6 +761,9 @@
     background-color:#3e8ba5;
     text-align:right;
     height:33px;
+    position:absolute;
+    right:0;
+    bottom:0;
 }
 
 .header .banner .banner-menu a{
@@ -766,6 +774,10 @@
     color:#fff;
     background:#1caf9a;
     float:left;
+}
+
+.header .banner .banner-menu a:first-child{
+    border-left:0;
 }
 
 .header .banner .banner-menu .content-menu{
@@ -814,6 +826,20 @@
 
 .btn-check img{
     border-radius:5px;
+}
+
+.icon-refresh-fix {
+    position:fixed;
+    top:200px;
+    /*right:50px;*/
+    right:13px;
+    border-radius:50%;
+    background-color:#fff;
+    z-index:1030;
+}
+
+.icon-refresh-fix img{
+    border-radius:50%;
 }
 
 *{
