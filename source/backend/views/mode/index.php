@@ -34,6 +34,8 @@ $this->title = $idModule . ' - ' . $module->name;
         </div>
     </form>
 </div>
+<p>xxx</p>
+<div class="clearfix"></div>
 
 <script type="text/javascript">
     function chooseMode(id) {
