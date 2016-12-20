@@ -12,10 +12,10 @@ use yii\web\View;
 $idModule = $module->country->code . $module->privincial->code . $module->distric->code . $module->customer_code;
 $this->title = $idModule . ' - ' . $module->name;
 ?>
-<!--<div class="info-diagram">
+<div class="info-diagram">
     <form method="post" id="form-choose-mode" action="/index.php/modules/mode?id=<?php echo $module->id ?>">
         <input type="hidden" name="_csrf" value="<?php Yii::$app->request->csrfToken ?>">
-         <?= Html::csrfMetaTags() ?> 
+        <!-- <?= Html::csrfMetaTags() ?> -->
         <div class="check-account">
             <h3 class="title"><?php echo $this->title; ?></h3>
             <p align="center">Choose your system</p>
@@ -24,7 +24,7 @@ $this->title = $idModule . ' - ' . $module->name;
                 <p align="center">
                     <?php foreach ($modes as $mode): ?>
                         <a href="javascript:void(0)" id="mode_<?php echo $mode->id ?>" onclick="chooseMode('<?php echo $mode->id ?>')" class="btn-check <?php if ($module->mode_id == $mode->id) echo 'chosen'; ?>">
-                           <img src="<?php echo $mode->getUrlImage(300, 220) ?>" alt="<?php echo $mode->name ?>"/> 
+                          <!-- <img src="<?php echo $mode->getUrlImage(300, 220) ?>" alt="<?php echo $mode->name ?>"/> -->
                             <?php echo $mode->getUrlImage(300, 220) ?>
                         </a>
                     <?php endforeach; ?>
@@ -33,9 +33,7 @@ $this->title = $idModule . ' - ' . $module->name;
             </div>
         </div>
     </form>
-</div>-->
-
-aldkjflksdfj
+</div>
 
 <script type="text/javascript">
     function chooseMode(id) {
