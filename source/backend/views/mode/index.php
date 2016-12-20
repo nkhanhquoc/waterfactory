@@ -31,6 +31,7 @@ $this->title = $idModule . ' - ' . $module->name;
                 </p>
                 <p align="center"><a href="javascript:void(0)" onclick="$('#form-choose-mode').submit()" class="btn-link">Next</a></p>
                 <p>&nbsp;</p>
+                <p>&nbsp;xxxx</p>
             </div>
         </div>
     </form>
