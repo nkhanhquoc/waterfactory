@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
                 </div>
             </div>
             <div class="row-check-account">
-                  <button class="link" onclick="$('#manager-form').submit()" class="link">Check <br>Data</button>
+                <button class="link" onclick="$('#manager-form').submit()" class="link">Check <br>Data</button>
                 <div class="content">
                     <div class="text-02">Data con lại của bạn là : <strong id="data-info"><?php echo number_format($model->data) ?></strong> KB</div>
                 </div>
@@ -83,13 +83,13 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
     function checkCard() {
         var card = $('#card_info').val();
         if (card.length < 12 || card.length > 16) {
-            alert("Mã thẻ cào chưa chính xác!");
+            alert("Card code invalid!");
             $('#card_info').focus();
             return false;
         }
 
         if (!$.isNumeric(card)) {
-            alert("Mã thẻ cào chưa chính xác!");
+            alert("Card code invalid!");
             $('#card_info').focus();
             return false;
         }
