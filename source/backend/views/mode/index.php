@@ -34,7 +34,7 @@ $this->title = $idModule . ' - ' . $module->name;
         </div>
     </form>
 </div>
-<p>xxx</p>
+<p>&nbsp;</p>
 <div class="clearfix"></div>
 
 <script type="text/javascript">
