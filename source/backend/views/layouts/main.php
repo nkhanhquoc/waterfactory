@@ -42,13 +42,21 @@ AppAsset::register($this);
     <!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
     <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
     <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
-    <body class="page-md page-header-fixed page-quick-sidebar-over-content page-sidebar-closed-hide-logo ">
+    <!--<body class="page-md page-header-fixed page-quick-sidebar-over-content page-sidebar-closed-hide-logo fix-banner">-->
+    <body class="page-md page-header-fixed page-quick-sidebar-over-content page-sidebar-closed-hide-logo">
         <?php $this->beginBody() ?>
         <!-- BEGIN HEADER -->
         <div class="page-header md-shadow-z-1-i navbar">
             <!-- BEGIN HEADER INNER -->
             <a href="javascript:void(0);" class="icon-refresh-fix"><img src="/images/refresh_icon.jpg" width="48"/></a>
             <div class="header">
+                <!--                <div class="banner">
+                                    <div class="banner-menu fix-menu-top">
+                                        <div class="content-menu">
+                                            <a href="#" class="active">Over tank</a><a href="#">Lost connection</a><a href="#">Over heat</a><a href="#">Over pressure</a><a href="#">Lost supply</a>                                                                
+                                        </div>  
+                                    </div>
+                                </div>-->
                 <div class="header-left">
                     <a href="/" class="logo"><img src="/images/logo.png"/></a>
                 </div>

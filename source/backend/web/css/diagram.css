@@ -869,4 +869,25 @@
 *{
     box-sizing:border-box;	
 }	
+.fix-banner{
+
+}
+
+.fix-banner .header-left,.fix-banner .banner-image,.fix-banner .header-left,.fix-banner .header-left {display: none}
+
+.fix-banner .banner-menu {
+    position:fixed !important;
+    right:0;
+    top:0;
+    z-index:1030;    
+}
+
+.fix-banner .page-container{
+    margin-top: 0;
+}
+
+.fix-banner .page-header.navbar{
+    height: 0;
+    min-height: 0;
+}
 
