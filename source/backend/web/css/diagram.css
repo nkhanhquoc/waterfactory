@@ -9,8 +9,9 @@
 /***************Right content *********************/
 .right-content {
     font-size:14px;
-    margin-left:50px;
-    float:right;
+    margin-left:10px;
+	display:inline-block;
+	vertical-align:top;
 }
 
 .right-content ol{
@@ -64,14 +65,12 @@
 /***************Left content *********************/
 .left-content {
     background:url(../images/bg.jpg) no-repeat 0 0;
-    background-color:#fff;
+	background-color:#fff;
     height:510px;
     position:relative;
-    float:left;
+	display:inline-block;
     /*border:1px solid #f8a21e;*/
     width:585px;
-    margin: 0 auto;
-
 }
 
 .left-content p{
@@ -427,13 +426,12 @@
 
 @media (max-width:1280px){
     .left-content {
-        float: left;
-        left: 100px;
-        margin: 0 auto;
+        margin:0 auto;
+        float:none;
     }	
 
     .right-content {
-        float:right;
+        float:none;
         margin-left:20px;
         text-align:left;
         margin-top:10px;
@@ -463,8 +461,8 @@
 }	
 
 .right-info{
-    width:200px;
-    float:left;
+	width:200px;
+	float:left;
 }
 
 .info-block{
@@ -772,10 +770,10 @@
 }
 
 .fix-menu-top {
-    position:fixed !important;
-    right:0;
-    top:0;
-    z-index:1030;
+	position:fixed !important;
+	right:0;
+	top:0;
+	z-index:1030;
 }
 
 .header .banner .banner-menu a{
@@ -842,7 +840,7 @@
 
 .icon-refresh-fix {
     position:fixed;
-    top:200px;
+    top:190px;
     /*right:50px;*/
     right:13px;
     border-radius:50%;
@@ -852,17 +850,23 @@
 
 .icon-refresh-fix img{
     border-radius:50%;
-}
+	}
 
 .animation-spin{
-    animation: spinner .6s linear infinite;	
+  	animation: spinner .6s linear infinite;	
+	}
+
+.container-all {
+	width:800px;
+	margin:0 auto;	
 }
 
 @keyframes spinner {
     to {transform: rotate(360deg);}
-}
-
+	}
+ 
 
 *{
     box-sizing:border-box;	
 }	
+
