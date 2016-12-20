@@ -33,12 +33,16 @@ class ModeController extends AppController {
      */
     public function actionIndex() {
         $moduleId = \Yii::$app->session->get('module_id', 0);
-        $module = Modules::findOne(['id'=>$moduleId]);
+        if (!$moduleId) {
+            $moduleId = ($_GET['module_id']) ? intval($_GET['module_id']) : 0;
+        }
 
+        if (!$moduleId) {
+            return $this->goHome();
+        }
 
-        // $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $module = Modules::findOne(['id' => $moduleId]);
         $modes = Mode::find()->all();
-        // var_dump($modes);die;
 
         return $this->render('index', [
                     'module' => $module,

@@ -8,8 +8,7 @@
             if ($val->imsis->status == CONFIRM_STATUS) {
                 $url = '/modules/view?id=' . $val->id;
                 if ($img == MODULE_SETTING) {
-                    \Yii::$app->session->set('module_id', $val->id);
-                    $url = '/mode/index';
+                    $url = '/mode/index?module_id=' . $val->id;
                 }
             }
             ?>
