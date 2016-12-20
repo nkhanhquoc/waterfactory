@@ -9,9 +9,7 @@
 /***************Right content *********************/
 .right-content {
     font-size:14px;
-    margin-left:10px;
-    display:inline-block;
-    vertical-align:top;
+    margin-left:50px;
 }
 
 .right-content ol{
@@ -65,12 +63,13 @@
 /***************Left content *********************/
 .left-content {
     background:url(../images/bg.jpg) no-repeat 0 0;
-    background-color:#fff;
     height:510px;
     position:relative;
-    display:inline-block;
-    /*border:1px solid #f8a21e;*/
+    /*float:left;
+    border:1px solid #f8a21e;*/
     width:585px;
+    margin: 0 auto;
+
 }
 
 .left-content p{
@@ -428,10 +427,13 @@
     .left-content {
         margin:0 auto;
         float:none;
+        clear:both;
     }	
 
     .right-content {
         float:none;
+        margin:0 auto;
+        width:100%;
         margin-left:20px;
         text-align:left;
         margin-top:10px;
@@ -460,17 +462,12 @@
     text-align:center;
 }	
 
-.right-info{
-    width:200px;
+.info-diagram .info-block{
     float:left;
+    width:33.33333%;
 }
 
-.info-block{
-    float:left;
-    width:100%;
-}
-
-.info-block .info-block-item{
+.info-diagram .info-block .info-block-item{
     background:#fcf8e3;
     border:1px solid #fcd16b;
     padding:10px;
@@ -478,7 +475,7 @@
     margin:5px;
 }
 
-.info-block .info-block-item .text-01{
+.info-diagram .info-block .info-block-item .text-01{
     float:right;
     font-weight:bold;
 }	
@@ -769,13 +766,6 @@
     bottom:0;
 }
 
-.fix-menu-top {
-    position:fixed !important;
-    right:0;
-    top:0;
-    z-index:1030;
-}
-
 .header .banner .banner-menu a{
     border-left:1px solid #595586;
     display:inline-block;
@@ -840,7 +830,7 @@
 
 .icon-refresh-fix {
     position:fixed;
-    top:190px;
+    top:200px;
     /*right:50px;*/
     right:13px;
     border-radius:50%;
@@ -852,21 +842,6 @@
     border-radius:50%;
 }
 
-.animation-spin{
-    animation: spinner .6s linear infinite;	
-}
-
-.container-all {
-    width:810px;
-    margin:0 auto;	
-}
-
-@keyframes spinner {
-    to {transform: rotate(360deg);}
-}
-
-
 *{
     box-sizing:border-box;	
 }	
-
