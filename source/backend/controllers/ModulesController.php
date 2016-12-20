@@ -120,7 +120,8 @@ class ModulesController extends AppController {
                 $timerCounter->created_at = new \yii\db\Expression('now()');
                 $timerCounter->save(false);
                 Yii::$app->session->setFlash('success', 'Set ID to module ' . $model->getModuleId() . ' success!');
-                return $this->redirect(['view', 'id' => $model->id]);
+                //return $this->redirect(['view', 'id' => $model->id]);
+                return $this->goHome();
             } else {
                 Yii::$app->session->setFlash('error', 'Not found imsi ' . $model->msisdn);
                 $this->findModel($model->id)->delete();
