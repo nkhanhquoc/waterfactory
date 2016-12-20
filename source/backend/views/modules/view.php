@@ -1,16 +1,6 @@
 <?php
 
 use yii\helpers\Html;
-
-//$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Modules'), 'url' => ['index']];
-//$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Update'), 'url' => ['/modules/update?id=' . $model->id]];
-//$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'System mode config'), 'url' => ['/modules/mode?id=' . $model->id]];
-//$urlOP = ($model->outputModes) ? ['/output-mode/update?id=' . $model->outputModes->id] : ['/output-mode/create' . '?module_id=' . $model->id];
-//$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Load Mode'), 'url' => $urlOP];
-//$urlPC = ($model->paramConfigs) ? ['/param-config/update?id=' . $model->paramConfigs->id] : ['/param-config/create' . '?module_id=' . $model->id];
-//$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Parameter Config'), 'url' => $urlPC];
-//$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Account'), 'url' => ['accountmanager', 'id' => $model->id]];
-//$this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Html::encode($model->name);
 ?>
 <div class="output-mode-view">    
     <div class="info-diagram">
@@ -88,65 +78,45 @@ use yii\helpers\Html;
             <div class="right-info">
                 <div class="info-block">
                     <div class="info-block-item">
-                        <span class="text-02">Temp solar panels</span>
-                        <span class="text-01">80<sup>o</sup>C</span>
+                        <span class="text-02">Solar panels temp</span>
+                        <span class="text-01"><?php echo bindec($sensors->cam_bien_dan_thu); ?><sup>o</sup>C</span>
                     </div>
                     <div class="info-block-item">
-                        <span class="text-02">Temp solar panels</span>
-                        <span class="text-01">80<sup>o</sup>C</span>
+                        <span class="text-02">Solar tank temp</span>
+                        <span class="text-01"><?php echo bindec($sensors->cam_bien_bon_solar); ?><sup>o</sup>C</span>
                     </div>
                     <div class="info-block-item">
-                        <span class="text-02">Temp solar panels</span>
-                        <span class="text-01">80<sup>o</sup>C</span>
+                        <span class="text-02">Solar tank level</span>
+                        <span class="text-01"><?php echo bindec($sensors->cam_bien_muc_nuoc_bon_solar); ?><sup>o</sup>C</span>
                     </div>
                     <div class="info-block-item">
-                        <span class="text-02">Temp solar panels</span>
-                        <span class="text-01">80<sup>o</sup>C</span>
+                        <span class="text-02">Heater tank temp</span>
+                        <span class="text-01"><?php echo bindec($sensors->cam_bien_nhiet_do_bon_gia_nhiet); ?><sup>o</sup>C</span>
                     </div>
                     <div class="info-block-item">
-                        <span class="text-02">Temp solar panels</span>
-                        <span class="text-01">80<sup>o</sup>C</span>
+                        <span class="text-02">Heater tank pressure</span>
+                        <span class="text-01"><?php echo bindec($sensors->cam_bien_ap_suat_bon_gia_nhiet); ?><sup>o</sup>C</span>
                     </div>
                     <div class="info-block-item">
-                        <span class="text-02">Temp solar panels</span>
-                        <span class="text-01">80<sup>o</sup>C</span>
+                        <span class="text-02">Lingh intensity</span>
+                        <span class="text-01"><?php echo bindec($sensors->cam_bien_buc_xa_dan_thu); ?><sup>o</sup>C</span>
                     </div>
                     <div class="info-block-item">
-                        <span class="text-02">Temp solar panels</span>
-                        <span class="text-01">80<sup>o</sup>C</span>
+                        <span class="text-02">Top of Solar tank temp</span>
+                        <span class="text-01"><?php echo bindec($sensors->cam_bien_nhiet_dinh_bon_solar); ?><sup>o</sup>C</span>
                     </div>
                     <div class="info-block-item">
-                        <span class="text-02">Temp solar panels</span>
-                        <span class="text-01">80<sup>o</sup>C</span>
+                        <span class="text-02">Pipeline pressure</span>
+                        <span class="text-01"><?php echo bindec($sensors->cam_bien_ap_suat_duong_ong); ?><sup>o</sup>C</span>
                     </div>
                     <div class="info-block-item">
-                        <span class="text-02">Temp solar panels</span>
-                        <span class="text-01">80<sup>o</sup>C</span>
+                        <span class="text-02">Pipeline temp 1</span>
+                        <span class="text-01"><?php echo bindec($sensors->cam_bien_nhiet_do_duong_ong_1); ?><sup>o</sup>C</span>
                     </div>
                 </div>
-            </div>	
-
-            <!--<ol>
-                <li><a href="#">Cường độ bức xạ của mặt trời</a></li>
-                <li><a href="#">Nhiệt độ dàn thu</a></li>
-                <li><a href="#">Nhiệt độ đỉnh bồn Solar</a></li>
-                <li><a href="#">Mức nước trong bồn Solar</a></li>
-                <li><a href="#">Nhiệt độ đấy bồn Solar</a></li>
-                <li><a href="#">Trạng thái bơm tối ưu (<span class="txt-green">xanh ON</span>, <span class="txt-red">đỏ OFF</span>)</a></li>
-                <li><a href="#">Trạng thái van ba ngả (<span class="txt-green">xanh ON</span>, <span class="txt-red">đỏ OFF</span>)</a></li>
-                <li><a href="#">Nhiệt độ bồn gia nhiệt</a></li>
-                <li><a href="#">Áp suất bồn gia nhiệt</a></li>
-                <li><a href="#">Trạng thái điện trở nhiệt (<span class="txt-green">xanh ON</span>, <span class="txt-red">đỏ OFF</span>)</a></li>
-                <li><a href="#">Trạng thái bơm nhiệt (<span class="txt-green">xanh ON</span>, <span class="txt-red">đỏ OFF</span>)</a></li>
-                <li><a href="#">Trạng thái bơm tăng áp (<span class="txt-green">xanh ON</span>, <span class="txt-red">đỏ OFF</span>)</a></li>
-                <li><a href="#">Áp suất đường ống</a></li>
-                <li><a href="#">Nhiệt độ đường ống 1</a></li>
-                <li><a href="#">Trạng thái bơm cấp nước lạnh (<span class="txt-green">xanh ON</span>, <span class="txt-red">đỏ OFF</span>)</a></li>
-                <li><a href="#">Trạng thái bơm hồi đường ống (<span class="txt-green">xanh ON</span>, <span class="txt-red">đỏ OFF</span>)</a></li>
-                <li><a href="#">Nhiệt độ đường ống</a></li>
-                <li><a href="#">Các vòi nước ra ở các tầng</a></li>                                                
-            </ol>-->
-        </div>
+            </div>
+        </div>	
+        <div class="clear">&nbsp;</div>
     </div>
 </div>
 
