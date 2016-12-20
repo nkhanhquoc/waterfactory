@@ -18,7 +18,7 @@ $this->title = $idModule . ' - ' . $module->name;
         <!-- <?= Html::csrfMetaTags() ?> -->
         <div class="check-account">
             <h3 class="title"><?php echo $this->title; ?></h3>
-            <p align="center">Choose your system:</p>
+            <p align="center">Choose your system</p>
             <div class="row-check-account">
                 <input type="hidden" value="" name="mode_id" id="mode_id">
                 <p align="center">
