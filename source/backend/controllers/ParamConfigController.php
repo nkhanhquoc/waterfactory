@@ -57,8 +57,14 @@ class ParamConfigController extends AppController {
      * @return mixed
      */
     public function actionView($id) {
+        $model = $this->findModel($id);
+
+        $module = $model->module;
+        if ($_GET['reload'] == 'true') {
+            $module->checkParametter();
+        }
         return $this->render('view', [
-                    'model' => $this->findModel($id),
+                    'model' => $model,
         ]);
     }
 
@@ -133,7 +139,12 @@ class ParamConfigController extends AppController {
      */
     public function actionUpdate($id) {
         $model = $this->findModel($id);
-        //$modules = Modules::getAll();
+
+        $module = $model->module;
+        if ($_GET['reload'] == 'true') {
+            $module->checkParametter();
+        }
+
         if (Yii::$app->request->isPost) {
             $values = Yii::$app->request->post();
             //$model->module_id = $values['module_id'];

@@ -62,7 +62,7 @@ class TimerCounterController extends AppController {
         $model = $this->findModel($id);
 
         $module = $model->module;
-        if ($module->imsis->status == CONFIRM_STATUS) {
+        if ($_GET['reload'] == 'true') {
             $module->checkTimerCounter();
         }
 
@@ -99,7 +99,7 @@ class TimerCounterController extends AppController {
         $model = $this->findModel($id);
 
         $module = $model->module;
-        if ($module->imsis->status == CONFIRM_STATUS) {
+        if ($_GET['reload'] == 'true') {
             $module->checkTimerCounter();
         }
 

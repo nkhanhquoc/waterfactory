@@ -48,8 +48,13 @@ class OutputModeController extends AppController {
      * @return mixed
      */
     public function actionView($id) {
+        $model = $this->findModel($id);
+        $module = $model->module;
+        if ($module->mode_id && $_GET['reload'] == 'true') {
+            $module->checkOutputMode();
+        }
         return $this->render('view', [
-                    'model' => $this->findModel($id),
+                    'model' => $model,
         ]);
     }
 
@@ -163,7 +168,7 @@ class OutputModeController extends AppController {
         $model = $this->findModel($id);
 
         $module = $model->module;
-        if ($module->imsis->status == CONFIRM_STATUS) {
+        if ($module->mode_id && $_GET['reload'] == 'true') {
             $module->checkOutputMode();
         }
 
