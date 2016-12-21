@@ -64,6 +64,9 @@ class ParamConfigController extends AppController {
 
     public function actionHome() {
         $moduleId = \Yii::$app->session->get('module_id', 0);
+        if (!$moduleId) {
+            return $this->goHome();
+        }
         $moduleModel = \backend\models\Modules::findOne($moduleId);
         if ($moduleModel && $moduleModel->paramConfigs) {
             return $this->redirect(['update', 'id' => $moduleModel->paramConfigs->id]);
@@ -80,6 +83,9 @@ class ParamConfigController extends AppController {
         $model = new ParamConfig();
 
         $moduleId = \Yii::$app->session->get('module_id', 0);
+        if (!$moduleId) {
+            return $this->goHome();
+        }
         $model->module_id = $moduleId;
         $module = Modules::findOne($moduleId);
 

@@ -41,6 +41,9 @@ class TimerCounterController extends AppController {
 
     public function actionHome() {
         $moduleId = \Yii::$app->session->get('module_id', 0);
+        if (!$moduleId) {
+            return $this->goHome();
+        }
         if ($moduleId) {
             $module = \backend\models\Modules::findOne($moduleId);
             if ($module && $module->timerCounters) {

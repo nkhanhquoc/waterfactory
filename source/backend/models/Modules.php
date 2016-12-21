@@ -55,13 +55,13 @@ class Modules extends ModulesBase {
     public function rules() {
         return [
             [['name', 'country_id', 'privincial_id', 'distric_id', 'customer_code'], 'required'],
-            [['msisdn'], 'required', 'message' => 'Không có client nào chờ thiết lập ID'],
+            [['msisdn'], 'required', 'message' => 'No client request'],
             [['country_id', 'privincial_id', 'distric_id', 'mode_id', 'created_by', 'updated_by'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['name', 'address', 'password'], 'string', 'max' => 255],
-            [['msisdn'], 'match', 'pattern' => '((?=.*\d))',
-                'message' => \Yii::t('backend', 'Số điện thoại phải là chữ số')],
+            [['msisdn'], 'match', 'pattern' => '((?=.*\d))', 'message' => \Yii::t('backend', 'Phone number must be number')],
             [['msisdn'], 'string', 'min' => 15, 'max' => 15],
+            [['customer_code'], 'match', 'pattern' => '((?=.*\d))', 'message' => \Yii::t('backend', 'Customer code must be number')],
             [['customer_code'], 'string', 'min' => 6, 'max' => 6],
             [['money'], 'string', 'max' => 160],
             [['data', 'alarm'], 'string', 'max' => 50],
@@ -129,9 +129,7 @@ class Modules extends ModulesBase {
     }
 
     public function toClientManager() {
-        #Ban tin ID module la cai nay:
         $id = ID_HEADER . \common\socket\Socket::dec2bin($this->getModuleId());
-        #$id = BACKUP . \common\socket\Socket::dec2bin($this->country->code . $this->privincial->code . $this->distric->code . $this->customer_code);
         $data = new \backend\models\DataClient();
         $data->module_id = $this->id;
         $data->data = CHECK_ACCOUNT_HEADER
@@ -160,9 +158,7 @@ class Modules extends ModulesBase {
                 $bkCode .= \common\socket\Socket::alldec2bin("0");
             }
         }
-        #Ban tin ID module la cai nay:
         $id = ID_HEADER . \common\socket\Socket::dec2bin($this->getModuleId());
-        #$id = BACKUP . \common\socket\Socket::dec2bin($this->country->code . $this->privincial->code . $this->distric->code . $this->customer_code);
         $data = new \backend\models\DataClient();
         $data->module_id = $this->id;
         $data->data = RECHARGE_ACCOUNT_HEADER

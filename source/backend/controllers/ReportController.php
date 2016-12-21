@@ -14,6 +14,9 @@ class ReportController extends AppController {
         $from = "";
         $to = "";
         $module_id = \Yii::$app->session->get('module_id', 0);
+        if (!$module_id) {
+            return $this->goHome();
+        }
         $modules = Modules::findOne($module_id);
         if (Yii::$app->request->isPost) {
             $values = Yii::$app->request->post();
@@ -41,6 +44,9 @@ class ReportController extends AppController {
         $from = "";
         $to = "";
         $module_id = \Yii::$app->session->get('module_id', 0);
+        if (!$module_id) {
+            return $this->goHome();
+        }
         $modules = Modules::findOne($module_id);
         if (Yii::$app->request->isPost) {
             $values = Yii::$app->request->post();
