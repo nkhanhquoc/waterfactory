@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'module.name',
-            'convection_pump',
+            'convectionPumpDetail',
             'cold_water_supply_pump',
             'return_pump',
             'incresed_pressure_pump',

@@ -164,4 +164,9 @@ class OutputMode extends OutputModeBase {
         $data->save(false);
     }
 
+    public function getConvectionPumpDetail(){
+          return "1";
+
+    }
+
 }
