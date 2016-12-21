@@ -5,6 +5,40 @@
         foreach ($data as $val) {
             $url = 'javascript:void(0);';
             $img = $val->getImg();
+            $alarm = ($_GET['alarm']) ? intval($_GET['alarm']) : 0;
+            if ($alarm) {
+                $continue = false;
+                $alarmModel = $val->alarms;
+                switch ($alarm) {
+                    case 1:
+                        if ($alarmModel->tran_be != '11') {
+                            $continue = true;
+                            break;
+                        }
+                        break;
+                    case 3:
+                        if ($alarmModel->qua_nhiet != '11') {
+                            $continue = true;
+                            break;
+                        }
+                        break;
+                    case 4:
+                        if ($alarmModel->qua_ap_suat != '11') {
+                            $continue = true;
+                            break;
+                        }
+                        break;
+                    case 5:
+                        if ($alarmModel->mat_dien != '11') {
+                            $continue = true;
+                            break;
+                        }
+                        break;
+                }
+                if ($continue) {
+                    continue;
+                }
+            }
             if ($val->imsis->status == CONFIRM_STATUS) {
                 $url = '/modules/view?id=' . $val->id;
                 if ($img == MODULE_SETTING) {

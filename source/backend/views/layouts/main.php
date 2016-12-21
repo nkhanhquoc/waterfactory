@@ -61,20 +61,25 @@ AppAsset::register($this);
                         <div class="banner-menu">
                             <div class="content-menu">
                                 <?php $alarms = \Yii::$app->session->get('module_alarm', null); ?>
-                                <a href="/modules/index?alarm=1" <?php echo ($alarms) && $alarms['tran_be']['status'] ? 'class="active"' : '' ?>>
+                                <?php $url = ($alarms) && $alarms['tran_be']['status'] ? '?alarm=1' : ''; ?>
+                                <a href="/modules/index<?php echo $url; ?>" <?php echo ($alarms) && $alarms['tran_be']['status'] ? 'class="active"' : '' ?>>
                                     Over tank<?php echo ($alarms) && $alarms['tran_be']['count'] ? '(' . $alarms['tran_be']['count'] . ')' : '' ?>
                                 </a>
-                                <a href="/modules/index?alarm=2" <?php echo ($alarms) && $alarms['lost_conn']['status'] ? 'class="active"' : '' ?>>
+                                <?php $url = ($alarms) && $alarms['lost_conn']['status'] ? '?alarm=2' : ''; ?>
+                                <a href="/modules/index<?php echo $url; ?>" <?php echo ($alarms) && $alarms['lost_conn']['status'] ? 'class="active"' : '' ?>>
                                     Lost connection<?php echo ($alarms) && $alarms['lost_conn']['count'] ? '(' . $alarms['lost_conn']['count'] . ')' : '' ?>
                                 </a>
-                                <a href="/modules/index?alarm=3" <?php echo ($alarms) && $alarms['qua_nhiet']['status'] ? 'class="active"' : '' ?>>
+                                <?php $url = ($alarms) && $alarms['qua_nhiet']['status'] ? '?alarm=3' : ''; ?>
+                                <a href="/modules/index<?php echo $url; ?>" <?php echo ($alarms) && $alarms['qua_nhiet']['status'] ? 'class="active"' : '' ?>>
                                     Over heat<?php echo ($alarms) && $alarms['qua_nhiet']['count'] ? '(' . $alarms['qua_nhiet']['count'] . ')' : '' ?>
                                 </a>
-                                <a href="/modules/index?alarm=4" <?php echo ($alarms) && $alarms['qua_ap_suat']['status'] ? 'class="active"' : '' ?>>
+                                <?php $url = ($alarms) && $alarms['qua_ap_suat']['status'] ? '?alarm=4' : ''; ?>
+                                <a href="/modules/index<?php echo $url; ?>" <?php echo ($alarms) && $alarms['qua_ap_suat']['status'] ? 'class="active"' : '' ?>>
                                     Over pressure<?php echo ($alarms) && $alarms['qua_ap_suat']['count'] ? '(' . $alarms['qua_ap_suat']['count'] . ')' : '' ?>
                                 </a>
-                                <a href="/modules/index?alarm=5" <?php echo ($alarms) && $alarms['mat_dien']['status'] ? 'class="active"' : '' ?>>
-                                    Lost supply<?php echo ($alarms) && $alarms['tran_be']['count'] ? '(' . $alarms['mat_dien']['count'] . ')' : '' ?>
+                                <?php $url = ($alarms) && $alarms['mat_dien']['status'] ? '?alarm=5' : ''; ?>
+                                <a href="/modules/index<?php echo $url; ?>" <?php echo ($alarms) && $alarms['mat_dien']['status'] ? 'class="active"' : '' ?>>
+                                    Lost supply<?php echo ($alarms) && $alarms['mat_dien']['count'] ? '(' . $alarms['mat_dien']['count'] . ')' : '' ?>
                                 </a>                                                                
                             </div>  
                         </div>
@@ -112,28 +117,33 @@ AppAsset::register($this);
                     <ul>
                         <?php $alarms = \Yii::$app->session->get('module_alarm', null); ?>
                         <li>
-                            <a href="/modules/index?alarm=1" <?php echo ($alarms) && $alarms['tran_be']['status'] ? 'class="active"' : '' ?>>
+                            <?php $url = ($alarms) && $alarms['tran_be']['status'] ? '?alarm=1' : ''; ?>
+                            <a href="/modules/index<?php echo $url; ?>" <?php echo ($alarms) && $alarms['tran_be']['status'] ? 'class="active"' : '' ?>>
                                 Over tank<?php echo ($alarms) && $alarms['tran_be']['count'] ? '(' . $alarms['tran_be']['count'] . ')' : '' ?>
                             </a>
                         </li>
                         <li>
-                            <a href="/modules/index?alarm=2" <?php echo ($alarms) && $alarms['lost_conn']['status'] ? 'class="active"' : '' ?>>
+                            <?php $url = ($alarms) && $alarms['lost_conn']['status'] ? '?alarm=2' : ''; ?>
+                            <a href="/modules/index<?php echo $url; ?>" <?php echo ($alarms) && $alarms['lost_conn']['status'] ? 'class="active"' : '' ?>>
                                 Lost connection<?php echo ($alarms) && $alarms['lost_conn']['count'] ? '(' . $alarms['lost_conn']['count'] . ')' : '' ?>
                             </a>
                         </li>
                         <li>
-                            <a href="/modules/index?alarm=3" <?php echo ($alarms) && $alarms['qua_nhiet']['status'] ? 'class="active"' : '' ?>>
+                            <?php $url = ($alarms) && $alarms['qua_nhiet']['status'] ? '?alarm=3' : ''; ?>
+                            <a href="/modules/index<?php echo $url; ?>" <?php echo ($alarms) && $alarms['qua_nhiet']['status'] ? 'class="active"' : '' ?>>
                                 Over heat<?php echo ($alarms) && $alarms['qua_nhiet']['count'] ? '(' . $alarms['qua_nhiet']['count'] . ')' : '' ?>
                             </a>
                         </li>
                         <li>
-                            <a href="/modules/index?alarm=4" <?php echo ($alarms) && $alarms['qua_ap_suat']['status'] ? 'class="active"' : '' ?>>
+                            <?php $url = ($alarms) && $alarms['qua_ap_suat']['status'] ? '?alarm=4' : ''; ?>
+                            <a href="/modules/index<?php echo $url; ?>" <?php echo ($alarms) && $alarms['qua_ap_suat']['status'] ? 'class="active"' : '' ?>>
                                 Over pressure<?php echo ($alarms) && $alarms['qua_ap_suat']['count'] ? '(' . $alarms['qua_ap_suat']['count'] . ')' : '' ?>
                             </a>
                         </li>
                         <li>
-                            <a href="/modules/index?alarm=5" <?php echo ($alarms) && $alarms['mat_dien']['status'] ? 'class="active"' : '' ?>>
-                                Lost supply<?php echo ($alarms) && $alarms['tran_be']['count'] ? '(' . $alarms['mat_dien']['count'] . ')' : '' ?>
+                            <?php $url = ($alarms) && $alarms['mat_dien']['status'] ? '?alarm=5' : ''; ?>
+                            <a href="/modules/index<?php echo $url; ?>" <?php echo ($alarms) && $alarms['mat_dien']['status'] ? 'class="active"' : '' ?>>
+                                Lost supply<?php echo ($alarms) && $alarms['mat_dien']['count'] ? '(' . $alarms['mat_dien']['count'] . ')' : '' ?>
                             </a>           
                         </li>
                     </ul>
