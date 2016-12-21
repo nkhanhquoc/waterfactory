@@ -115,6 +115,10 @@ use yii\helpers\Html;
                             <span class="text-02">Pipeline temp 1</span>
                             <span class="text-01"><?php echo bindec($sensors->cam_bien_nhiet_do_duong_ong_1); ?><sup>o</sup>C</span>
                         </div>
+                        <div class="info-block-item">
+                            <span class="text-02">Pipeline temp 2</span>
+                            <span class="text-01"><?php echo bindec($sensors->cam_bien_nhiet_do_duong_ong_2); ?><sup>o</sup>C</span>
+                        </div>
                     </div>
                 </div>
             </div>
