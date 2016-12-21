@@ -104,7 +104,7 @@ use yii\helpers\Html;
                             <span class="text-01"><?php echo bindec($sensors->cam_bien_buc_xa_dan_thu); ?><sup>o</sup>C</span>
                         </div>
                         <div class="info-block-item">
-                            <span class="text-02">Top of Solar tank temp</span>
+                            <span class="text-02">Top of Solar tank</span>
                             <span class="text-01"><?php echo bindec($sensors->cam_bien_nhiet_dinh_bon_solar); ?><sup>o</sup>C</span>
                         </div>
                         <div class="info-block-item">

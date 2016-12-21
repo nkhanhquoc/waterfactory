@@ -473,7 +473,7 @@
 .info-block .info-block-item{
     background:#fcf8e3;
     border:1px solid #fcd16b;
-    padding:10px;
+    padding:10px 1px 10px 10px;
     border-radius:4px;
     margin:5px;
 }
