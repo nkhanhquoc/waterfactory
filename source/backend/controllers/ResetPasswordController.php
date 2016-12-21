@@ -4,7 +4,6 @@ namespace backend\controllers;
 
 use yii;
 use backend\models\Modules;
-use common\socket\Socket;
 use yii\filters\VerbFilter;
 use yii\db\Expression;
 
@@ -27,6 +26,9 @@ class ResetPasswordController extends AppController {
      */
     public function actionIndex() {
         $moduleId = \Yii::$app->session->get('module_id', 0);
+        if (!$moduleId) {
+            return $this->goHome();
+        }
         $module = Modules::findOne($moduleId);
         if (Yii::$app->request->isPost) {
             if ($module) {

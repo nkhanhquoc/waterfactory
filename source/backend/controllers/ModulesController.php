@@ -4,7 +4,6 @@ namespace backend\controllers;
 
 use Yii;
 use backend\models\Modules;
-use backend\models\Mode;
 use backend\models\ModulesSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -67,26 +66,28 @@ class ModulesController extends AppController {
 
         \Yii::$app->session->set('module_id', $model->id);
 
-        //check system status
-        if ($model->imsis) {
-            $model->checkSystemStatus();
-        }
-
         $sensors = $model->sensors;
         $statuses = $model->moduleStatuses;
         $alarms = $model->alarms;
 
+        //check system status
+        if ($model->mode_id && $_GET['reload'] == 'true') {
+            $model->checkSystemStatus();
+        }
+
         $module_alarm = null;
         Yii::$app->session->set('module_alarm', null);
-        $module_alarm['mat_dien']['status'] = $alarms->mat_dien == '11' ? 1 : 0;
-        $module_alarm['mat_dien']['count'] = 0;
-        $module_alarm['qua_ap_suat']['status'] = $alarms->qua_ap_suat == '11' ? 1 : 0;
-        $module_alarm['qua_ap_suat']['count'] = 0;
-        $module_alarm['qua_nhiet']['status'] = $alarms->qua_nhiet == '11' ? 1 : 0;
-        $module_alarm['qua_nhiet']['count'] = 0;
-        $module_alarm['tran_be']['status'] = $alarms->tran_be == '11' ? 1 : 0;
-        $module_alarm['tran_be']['count'] = 0;
-        Yii::$app->session->set('module_alarm', $module_alarm);
+        if ($alarms) {
+            $module_alarm['mat_dien']['status'] = $alarms->mat_dien == '11' ? 1 : 0;
+            $module_alarm['mat_dien']['count'] = 0;
+            $module_alarm['qua_ap_suat']['status'] = $alarms->qua_ap_suat == '11' ? 1 : 0;
+            $module_alarm['qua_ap_suat']['count'] = 0;
+            $module_alarm['qua_nhiet']['status'] = $alarms->qua_nhiet == '11' ? 1 : 0;
+            $module_alarm['qua_nhiet']['count'] = 0;
+            $module_alarm['tran_be']['status'] = $alarms->tran_be == '11' ? 1 : 0;
+            $module_alarm['tran_be']['count'] = 0;
+            Yii::$app->session->set('module_alarm', $module_alarm);
+        }
 
         $model->setVan_dien_tu_ba_nga_up();
 
@@ -120,7 +121,8 @@ class ModulesController extends AppController {
                 $timerCounter->created_at = new \yii\db\Expression('now()');
                 $timerCounter->save(false);
                 Yii::$app->session->setFlash('success', 'Set ID to module ' . $model->getModuleId() . ' success!');
-                return $this->redirect(['view', 'id' => $model->id]);
+                //return $this->redirect(['view', 'id' => $model->id]);
+                return $this->goHome();
             } else {
                 Yii::$app->session->setFlash('error', 'Not found imsi ' . $model->msisdn);
                 $this->findModel($model->id)->delete();
@@ -160,24 +162,20 @@ class ModulesController extends AppController {
      */
     public function actionMode($id) {
         $model = $this->findModel($id);
-        $modes = Mode::find()->all();
         if (Yii::$app->request->isPost) {
             $values = Yii::$app->request->post();
-            $model->mode_id = $values['mode_id'];
+            $model->mode_id = intval($values['mode_id']);
             if ($model->save(false, ['mode_id'])) {
                 if ($model->mode2Client()) {
+                    \Yii::$app->session->set('module_id', $model->id);
                     Yii::$app->session->setFlash('success', 'Set System Mode success!');
-                    // return $this->redirect(['view', 'id' => $model->id]);
                     return $this->redirect('/output-mode/home');
                 } else {
                     Yii::$app->session->setFlash('success', 'Set System Mode fail!');
                 }
             }
         }
-        return $this->render('mode', [
-                    'model' => $model,
-                    'modes' => $modes
-        ]);
+        return $this->redirect(['/mode/index', 'module_id' => $model->id]);
     }
 
     /**
@@ -211,6 +209,9 @@ class ModulesController extends AppController {
 
     public function actionAccountmanager() {
         $id = \Yii::$app->session->get('module_id');
+        if (!$id) {
+            return $this->goHome();
+        }
         $model = $this->findModel($id);
         $modules = Modules::getAll();
         if (Yii::$app->request->isPost) {

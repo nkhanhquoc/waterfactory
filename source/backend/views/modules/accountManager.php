@@ -1,15 +1,6 @@
-<?php
-
-use backend\components\common\Utility;
-
-$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Modules'), 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Html::encode($model->name);
-?>
-
-
 <div class="info-diagram">
     <div class="check-account">
-        <form id="manager-form" method="post" action="/index.php/modules/accountmanager?id=<?php echo $model->id ?>">
+        <form id="manager-form" method="post" action="/modules/accountmanager?id=<?php echo $model->id ?>">
             <input type="hidden" name="_csrf" value="<?php Yii::$app->request->csrfToken ?>">
             <input type="hidden" name="check" value="1">
             <input type="hidden" id="module-id" value="<?php echo $model->id ?>">
@@ -17,17 +8,17 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
             <div class="row-check-account">
                 <button class="link"  onclick="$('#manager-form').submit()">Check <br>Account</button>
                 <div class="content">
-                    <div class="text-02">Số tiền còn lại trong tài khoản của bạn là : <strong id="money-info"><?php echo number_format($model->money) ?></strong> đ</div>
+                    <div class="text-02">Money: <strong id="money-info"><?php echo number_format($model->money) ?></strong> VND</div>
                 </div>
             </div>
             <div class="row-check-account">
-                  <button class="link" onclick="$('#manager-form').submit()" class="link">Check <br>Data</button>
+                <button class="link" onclick="$('#manager-form').submit()" class="link">Check <br>Data</button>
                 <div class="content">
-                    <div class="text-02">Data con lại của bạn là : <strong id="data-info"><?php echo number_format($model->data) ?></strong> KB</div>
+                    <div class="text-02">Data: <strong id="data-info"><?php echo number_format($model->data) ?></strong> KB</div>
                 </div>
             </div>
         </form>
-        <form action="/index.php/modules/accountmanager?id=<?php echo $model->id ?>" id="pay_card_form" method="post">
+        <form action="/modules/accountmanager?id=<?php echo $model->id ?>" id="pay_card_form" method="post">
             <input type="hidden" name="_csrf" value="<?php Yii::$app->request->csrfToken ?>">
             <input type="hidden" name="pay" value="1">
             <div class="row-check-account">
@@ -83,13 +74,13 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
     function checkCard() {
         var card = $('#card_info').val();
         if (card.length < 12 || card.length > 16) {
-            alert("Mã thẻ cào chưa chính xác!");
+            alert("Card code invalid!");
             $('#card_info').focus();
             return false;
         }
 
         if (!$.isNumeric(card)) {
-            alert("Mã thẻ cào chưa chính xác!");
+            alert("Card code invalid!");
             $('#card_info').focus();
             return false;
         }

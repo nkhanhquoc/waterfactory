@@ -41,6 +41,9 @@ class TimerCounterController extends AppController {
 
     public function actionHome() {
         $moduleId = \Yii::$app->session->get('module_id', 0);
+        if (!$moduleId) {
+            return $this->goHome();
+        }
         if ($moduleId) {
             $module = \backend\models\Modules::findOne($moduleId);
             if ($module && $module->timerCounters) {
@@ -59,7 +62,7 @@ class TimerCounterController extends AppController {
         $model = $this->findModel($id);
 
         $module = $model->module;
-        if ($module->imsis->status == CONFIRM_STATUS) {
+        if ($_GET['reload'] == 'true') {
             $module->checkTimerCounter();
         }
 
@@ -96,7 +99,7 @@ class TimerCounterController extends AppController {
         $model = $this->findModel($id);
 
         $module = $model->module;
-        if ($module->imsis->status == CONFIRM_STATUS) {
+        if ($_GET['reload'] == 'true') {
             $module->checkTimerCounter();
         }
 

@@ -93,7 +93,6 @@ class UserController extends AppController {
      */
     public function actionDelete($id) {
         $this->findModel($id)->delete();
-        Yii::$app->session->setFlash('success', 'Xóa user thành công!');
         return $this->redirect(['index']);
     }
 

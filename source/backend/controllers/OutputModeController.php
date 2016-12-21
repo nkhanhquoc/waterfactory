@@ -48,13 +48,21 @@ class OutputModeController extends AppController {
      * @return mixed
      */
     public function actionView($id) {
+        $model = $this->findModel($id);
+        $module = $model->module;
+        if ($module->mode_id && $_GET['reload'] == 'true') {
+            $module->checkOutputMode();
+        }
         return $this->render('view', [
-                    'model' => $this->findModel($id),
+                    'model' => $model,
         ]);
     }
 
     public function actionHome() {
         $moduleId = \Yii::$app->session->get('module_id', 0);
+        if (!$moduleId) {
+            return $this->goHome();
+        }
         $moduleModel = \backend\models\Modules::findOne($moduleId);
         if ($moduleModel && $moduleModel->outputModes) {
             return $this->redirect(['update', 'id' => $moduleModel->outputModes->id]);
@@ -70,6 +78,9 @@ class OutputModeController extends AppController {
     public function actionCreate() {
         $model = new OutputMode();
         $moduleId = \Yii::$app->session->get('module_id', 0);
+        if (!$moduleId) {
+            return $this->goHome();
+        }
         $model->module_id = $moduleId;
         $module = Modules::findOne($moduleId);
 
@@ -157,7 +168,7 @@ class OutputModeController extends AppController {
         $model = $this->findModel($id);
 
         $module = $model->module;
-        if ($module->imsis->status == CONFIRM_STATUS) {
+        if ($module->mode_id && $_GET['reload'] == 'true') {
             $module->checkOutputMode();
         }
 

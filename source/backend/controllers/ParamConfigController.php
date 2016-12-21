@@ -57,13 +57,22 @@ class ParamConfigController extends AppController {
      * @return mixed
      */
     public function actionView($id) {
+        $model = $this->findModel($id);
+
+        $module = $model->module;
+        if ($_GET['reload'] == 'true') {
+            $module->checkParametter();
+        }
         return $this->render('view', [
-                    'model' => $this->findModel($id),
+                    'model' => $model,
         ]);
     }
 
     public function actionHome() {
         $moduleId = \Yii::$app->session->get('module_id', 0);
+        if (!$moduleId) {
+            return $this->goHome();
+        }
         $moduleModel = \backend\models\Modules::findOne($moduleId);
         if ($moduleModel && $moduleModel->paramConfigs) {
             return $this->redirect(['update', 'id' => $moduleModel->paramConfigs->id]);
@@ -80,6 +89,9 @@ class ParamConfigController extends AppController {
         $model = new ParamConfig();
 
         $moduleId = \Yii::$app->session->get('module_id', 0);
+        if (!$moduleId) {
+            return $this->goHome();
+        }
         $model->module_id = $moduleId;
         $module = Modules::findOne($moduleId);
 
@@ -127,7 +139,12 @@ class ParamConfigController extends AppController {
      */
     public function actionUpdate($id) {
         $model = $this->findModel($id);
-        //$modules = Modules::getAll();
+
+        $module = $model->module;
+        if ($_GET['reload'] == 'true') {
+            $module->checkParametter();
+        }
+
         if (Yii::$app->request->isPost) {
             $values = Yii::$app->request->post();
             //$model->module_id = $values['module_id'];

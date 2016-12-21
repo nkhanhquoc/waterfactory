@@ -5,7 +5,18 @@
  */
 $(document).ready(function () {
     $('.icon-refresh-fix').click(function () {
-        location.reload();
+        var url = window.location.href;
+        if (url.indexOf('?') > 0 && url.indexOf('reload') < 0) {
+            url += '&reload=true';
+        }
+        if (url.indexOf('?') < 0 && url.indexOf('reload') < 0) {
+            url += '?reload=true';
+        }
+        $(this).addClass('animation-spin');
+        window.location.href = url;
+        setTimeout(function () {
+            $(this).removeClass('animation-spin')
+        }, 10000);
     });
 
     $("ul.mode-select li").click(function () {

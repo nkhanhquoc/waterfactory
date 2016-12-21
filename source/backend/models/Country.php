@@ -25,6 +25,21 @@ class Country extends CountryBase {
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function rules() {
+        return [
+            [['code', 'name'], 'required'],
+            [['created_by', 'updated_by'], 'integer'],
+            [['created_at', 'updated_at'], 'safe'],
+            [['code'], 'string', 'min' => 3, 'max' => 3],
+            [['code'], 'match', 'pattern' => '((?=.*\d))'],
+            [['name'], 'string', 'max' => 255],
+            [['code'], 'unique']
+        ];
+    }
+
     public static function getAll() {
         $country = \backend\models\Country::find()->all();
         $data = [];

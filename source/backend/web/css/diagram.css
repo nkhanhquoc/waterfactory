@@ -9,8 +9,9 @@
 /***************Right content *********************/
 .right-content {
     font-size:14px;
-    margin-left:50px;
-    float:right;
+    margin-left:10px;
+    display:inline-block;
+    vertical-align:top;
 }
 
 .right-content ol{
@@ -67,11 +68,9 @@
     background-color:#fff;
     height:510px;
     position:relative;
-    float:left;
+    display:inline-block;
     /*border:1px solid #f8a21e;*/
     width:585px;
-    margin: 0 auto;
-
 }
 
 .left-content p{
@@ -427,13 +426,12 @@
 
 @media (max-width:1280px){
     .left-content {
-        float: left;
-        left: 100px;
-        margin: 0 auto;
+        margin:0 auto;
+        float:none;
     }	
 
     .right-content {
-        float:right;
+        float:none;
         margin-left:20px;
         text-align:left;
         margin-top:10px;
@@ -475,7 +473,7 @@
 .info-block .info-block-item{
     background:#fcf8e3;
     border:1px solid #fcd16b;
-    padding:10px;
+    padding:10px 1px 10px 10px;
     border-radius:4px;
     margin:5px;
 }
@@ -842,7 +840,7 @@
 
 .icon-refresh-fix {
     position:fixed;
-    top:200px;
+    top:190px;
     /*right:50px;*/
     right:13px;
     border-radius:50%;
@@ -855,7 +853,12 @@
 }
 
 .animation-spin{
-    animation: spinner .6s linear infinite;	
+    animation: spinner 1.6s linear infinite;	
+}
+
+.container-all {
+    width:810px;
+    margin:0 auto;	
 }
 
 @keyframes spinner {
@@ -866,3 +869,25 @@
 *{
     box-sizing:border-box;	
 }	
+.fix-banner{
+
+}
+
+.fix-banner .header-left,.fix-banner .banner-image,.fix-banner .header-left,.fix-banner .header-left {display: none}
+
+.fix-banner .banner-menu {
+    position:fixed !important;
+    right:0;
+    top:0;
+    z-index:1030;    
+}
+
+.fix-banner .page-container{
+    margin-top: 0;
+}
+
+.fix-banner .page-header.navbar{
+    height: 0;
+    min-height: 0;
+}
+

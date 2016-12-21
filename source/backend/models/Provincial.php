@@ -25,6 +25,21 @@ class Provincial extends ProvincialBase {
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function rules() {
+        return [
+            [['name', 'code', 'country_id'], 'required'],
+            [['country_id', 'created_by', 'updated_by'], 'integer'],
+            [['created_at', 'updated_at'], 'safe'],
+            [['name'], 'string', 'max' => 255],
+            [['code'], 'string', 'min' => 3, 'max' => 3],
+            [['code'], 'match', 'pattern' => '((?=.*\d))'],
+            [['code'], 'unique']
+        ];
+    }
+
     public static function getAll() {
         $country = \backend\models\Provincial::find()->all();
         $data = [];

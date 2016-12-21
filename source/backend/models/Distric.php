@@ -25,6 +25,21 @@ class Distric extends DistricBase {
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function rules() {
+        return [
+            [['name', 'code', 'provincial_id'], 'required'],
+            [['provincial_id', 'updated_by', 'created_by'], 'integer'],
+            [['updated_at', 'created_at'], 'safe'],
+            [['name'], 'string', 'max' => 255],
+            [['code'], 'string', 'min' => 3, 'max' => 3],
+            [['code'], 'match', 'pattern' => '((?=.*\d))'],
+            [['code'], 'unique']
+        ];
+    }
+
     public static function getAll() {
         $country = \backend\models\Distric::find()->all();
         $data = [];
