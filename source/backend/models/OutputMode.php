@@ -165,8 +165,176 @@ class OutputMode extends OutputModeBase {
     }
 
     public function getConvectionPumpDetail(){
-          return "1";
+        $mode="";
+          if($this->getConvectionMode() == MANUAL_B1){
+            $mode = "MANUAL";
+          } else {
+            $mode = "AUTO";
+          }
+          $pump = "";
+          if($this->getConvectionPump() == PUMP_SLAVE){
+            $pump = "PUMP 1 SLAVE";
+          } else if($this->getConvectionPump() == PUMP_MASTER){
+            $pump = "PUMP 1 MASTER";
+          } else {
+            $pump = "ALL";
+          }
+          $time = $this->getConvectionTime();
+        return $mode."|".$pump."|".$time;
+    }
+
+    public function getColdWaterSupplyPumpDetail(){
+        $mode="";
+          if($this->getCwspMode() == MANUAL_B1){
+            $mode = "MANUAL";
+          } else {
+            $mode = "AUTO";
+          }
+          $pump = "";
+          if($this->getCwspPump() == PUMP_SLAVE){
+            $pump = "PUMP 1";
+          } else if($this->getCwspPump() == PUMP_MASTER){
+            $pump = "PUMP 2";
+          } else {
+            $pump = "ALL";
+          }
+          $time = $this->getCwspTime();
+        return $mode."|".$pump."|".$time;
+    }
+
+    public function getReturnPumpDetail(){
+        $mode="";
+          if($this->getReturnPumpMode() == MANUAL_B1){
+            $mode = "MANUAL";
+          } else {
+            $mode = "AUTO";
+          }
+          $pump = "";
+          if($this->getReturnPumpPump() == PUMP_SLAVE){
+            $pump = "PUMP 1";
+          } else if($this->getReturnPumpPump() == PUMP_MASTER){
+            $pump = "PUMP 2";
+          } else {
+            $pump = "ALL";
+          }
+          $time = $this->getReturnPumpTime();
+        return $mode."|".$pump."|".$time;
+    }
+
+    public function getIncresedPressurePumpDetail(){
+      $mode="";
+        if($this->getPressurePumpMode() == MANUAL_B1){
+          $mode = "MANUAL";
+        } else {
+          $mode = "AUTO";
+        }
+        $pump = "";
+        if($this->getPressurePumpPump() == PUMP_SLAVE){
+          $pump = "PUMP 1 ON";
+        } else if($this->getPressurePumpPump() == PUMP_MASTER){
+          $pump = "PUMP 2 ON";
+        } else {
+          $pump = "ALL";
+        }
+        $time = $this->getPressurePumpTime();
+      return $mode."|".$pump."|".$time;
 
     }
+
+    public function getHeatPumpDetail(){
+      $mode="";
+        if($this->getHeatPumpMode() == MANUAL_B1){
+          $mode = "MANUAL";
+        } else {
+          $mode = "AUTO";
+        }
+        $pump = "";
+        if($this->getHeatPumpPump() == PUMP_SLAVE){
+          $pump = "PUMP 1 MASTER";
+        } else if($this->getHeatPumpPump() == PUMP_MASTER){
+          $pump = "PUMP 2 MASTER";
+        } else {
+          $pump = "ALL";
+        }
+        $time = $this->getHeatPumpTime();
+      return $mode."|".$pump."|".$time;
+    }
+
+    public function getHeaterResisterDetail(){
+      $mode="";
+        if($this->getHeaterResisMode() == MANUAL_B1){
+          $mode = "MANUAL";
+        } else {
+          $mode = "AUTO";
+        }
+        $pump = "";
+        if($this->getHeaterResisPump() == PUMP_SLAVE){
+          $pump = "RESITOR 1 MASTER";
+        } else if($this->getHeaterResisPump() == PUMP_MASTER){
+          $pump = "RESITOR 2 MASTER";
+        } else {
+          $pump = "ALL";
+        }
+        $time = $this->getHeaterResisTime();
+      return $mode."|".$pump."|".$time;
+    }
+
+    public function getThreeWayDetail(){
+      $mode="";
+        if($this->get3wayMode() == MANUAL_B1){
+          $mode = "MANUAL";
+        } else {
+          $mode = "AUTO";
+        }
+        $pump = "";
+        if($this->get3wayPump() == PUMP_SLAVE){
+          $pump = "VALVE 1 MASTER";
+        } else if($this->get3wayPump() == PUMP_MASTER){
+          $pump = "VALVE 2 MASTER";
+        } else {
+          $pump = "ALL";
+        }
+        $time = $this->get3wayTime();
+      return $mode."|".$pump."|".$time;
+    }
+
+    public function getBlakflowValveDetail(){
+      $mode="";
+        if($this->getBlakflowMode() == MANUAL_B1){
+          $mode = "MANUAL";
+        } else {
+          $mode = "AUTO";
+        }
+        $pump = "";
+        if($this->getBlakflowPump() == PUMP_SLAVE){
+          $pump = "VALVE 1 MASTER";
+        } else if($this->getBlakflowPump() == PUMP_MASTER){
+          $pump = "VALVE 2 MASTER";
+        } else {
+          $pump = "ALL";
+        }
+        $time = $this->getBlakflowTime();
+      return $mode."|".$pump."|".$time;
+    }
+
+    public function getReservedDetail(){
+      $mode="";
+        if($this->getReservedMode() == MANUAL_B1){
+          $mode = "MANUAL";
+        } else {
+          $mode = "AUTO";
+        }
+        $pump = "";
+        if($this->getReservedPump() == PUMP_SLAVE){
+          $pump = "VALVE 1 MASTER";
+        } else if($this->getReservedPump() == PUMP_MASTER){
+          $pump = "VALVE 2 MASTER";
+        } else {
+          $pump = "ALL";
+        }
+        $time = $this->getReservedTime();
+      return $mode."|".$pump."|".$time;
+    }
+
 
 }
