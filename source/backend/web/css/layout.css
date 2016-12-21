@@ -2632,8 +2632,8 @@ ul,li{
 }
 .bottom-menu {
     position: absolute;
-    right: 21px;
-    top: 0px;
+    right: 0px;
+    top: 13px;
 }
 .bottom-menu ul li{
     float: left;
@@ -2644,16 +2644,16 @@ ul,li{
     width: 100%;
     text-align: center;
     color: #fff;
-    height: 25px;
-    line-height: 25px;
+    height: 33px;
+    /*line-height: 33px;*/
     display: block;
-    background: #56b92b;
+    background: #1caf9a;
     /*border-radius: 20px 0px 0px 0px;*/
-    border: 1px solid #c6de7b;
-    padding: 0px 20px;
-    text-transform: uppercase;
+    border-left: 1px solid #c6de7b;
+    padding: 7px 15px;
+    /*text-transform: uppercase;*/
 }
-.bottom-menu ul li a.alarm{
+.bottom-menu ul li a.alarm,a.active{
     background: red !important;
 }    
 .modules a p{

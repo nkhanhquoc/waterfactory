@@ -46,46 +46,99 @@ AppAsset::register($this);
     <body class="page-md page-header-fixed page-quick-sidebar-over-content page-sidebar-closed-hide-logo">
         <?php $this->beginBody() ?>
         <!-- BEGIN HEADER -->
-        <div class="page-header md-shadow-z-1-i navbar">
+        <div class="page-header md-shadow-z-1-i navbar <?php echo ($_SERVER['REQUEST_URI'] == '/' || $_SERVER['REQUEST_URI'] == '/modules/index') ? '' : 'navbar-fixed-top' ?>">
             <!-- BEGIN HEADER INNER -->
             <a href="javascript:void(0);" class="icon-refresh-fix"><img src="/images/refresh_icon.jpg" width="48"/></a>
-            <div class="header">
-                <!--                <div class="banner">
-                                    <div class="banner-menu fix-menu-top">
-                                        <div class="content-menu">
-                                            <a href="#" class="active">Over tank</a><a href="#">Lost connection</a><a href="#">Over heat</a><a href="#">Over pressure</a><a href="#">Lost supply</a>                                                                
-                                        </div>  
-                                    </div>
-                                </div>-->
-                <div class="header-left">
-                    <a href="/" class="logo"><img src="/images/logo.png"/></a>
-                </div>
-                <div class="banner">
-                    <div class="banner-image">
-                        <img src="/images/banner.jpg"  alt=""/>
+            <?php if ($_SERVER['REQUEST_URI'] == '/' || $_SERVER['REQUEST_URI'] == '/modules/index') { ?>
+                <div class="header">
+                    <div class="header-left">
+                        <a href="/" class="logo"><img src="/images/logo.png"/></a>
                     </div>
-                    <div class="banner-menu">
-                        <div class="content-menu">
-                            <?php $alarms = \Yii::$app->session->get('module_alarm', null); ?>
+                    <div class="banner">
+                        <div class="banner-image">
+                            <img src="/images/banner.jpg"  alt=""/>
+                        </div>
+                        <div class="banner-menu">
+                            <div class="content-menu">
+                                <?php $alarms = \Yii::$app->session->get('module_alarm', null); ?>
+                                <a href="/modules/index?alarm=1" <?php echo ($alarms) && $alarms['tran_be']['status'] ? 'class="active"' : '' ?>>
+                                    Over tank<?php echo ($alarms) && $alarms['tran_be']['count'] ? '(' . $alarms['tran_be']['count'] . ')' : '' ?>
+                                </a>
+                                <a href="/modules/index?alarm=2" <?php echo ($alarms) && $alarms['lost_conn']['status'] ? 'class="active"' : '' ?>>
+                                    Lost connection<?php echo ($alarms) && $alarms['lost_conn']['count'] ? '(' . $alarms['lost_conn']['count'] . ')' : '' ?>
+                                </a>
+                                <a href="/modules/index?alarm=3" <?php echo ($alarms) && $alarms['qua_nhiet']['status'] ? 'class="active"' : '' ?>>
+                                    Over heat<?php echo ($alarms) && $alarms['qua_nhiet']['count'] ? '(' . $alarms['qua_nhiet']['count'] . ')' : '' ?>
+                                </a>
+                                <a href="/modules/index?alarm=4" <?php echo ($alarms) && $alarms['qua_ap_suat']['status'] ? 'class="active"' : '' ?>>
+                                    Over pressure<?php echo ($alarms) && $alarms['qua_ap_suat']['count'] ? '(' . $alarms['qua_ap_suat']['count'] . ')' : '' ?>
+                                </a>
+                                <a href="/modules/index?alarm=5" <?php echo ($alarms) && $alarms['mat_dien']['status'] ? 'class="active"' : '' ?>>
+                                    Lost supply<?php echo ($alarms) && $alarms['tran_be']['count'] ? '(' . $alarms['mat_dien']['count'] . ')' : '' ?>
+                                </a>                                                                
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            <?php } else { ?>
+                <!-- BEGIN HEADER INNER -->
+                <div class="page-header-inner">
+                    <!-- BEGIN LOGO -->
+                    <div class="page-logo" style="padding-right: 0;">
+                        <a href="/">
+                            <img src="/images/logo.png" alt="logo" class="logo-default" height="30"/>
+                        </a>
+                        <div class="page-sidebar sidebar-toggler-container">
+                            <div class="sidebar-toggler">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END LOGO -->
+                    <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                    <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"></a>
+                    <!-- END RESPONSIVE MENU TOGGLER -->
+                    <!-- BEGIN TOP NAVIGATION MENU -->
+                    <div class="top-menu">
+                        <ul class="nav navbar-nav pull-right">
+                            <!-- BEGIN USER LOGIN DROPDOWN -->
+                            <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+
+                            <!-- END USER LOGIN DROPDOWN -->
+                        </ul>
+                    </div>                
+                    <!-- END TOP NAVIGATION MENU -->
+                </div>
+                <div class="bottom-menu">
+                    <ul>
+                        <?php $alarms = \Yii::$app->session->get('module_alarm', null); ?>
+                        <li>
                             <a href="/modules/index?alarm=1" <?php echo ($alarms) && $alarms['tran_be']['status'] ? 'class="active"' : '' ?>>
                                 Over tank<?php echo ($alarms) && $alarms['tran_be']['count'] ? '(' . $alarms['tran_be']['count'] . ')' : '' ?>
                             </a>
+                        </li>
+                        <li>
                             <a href="/modules/index?alarm=2" <?php echo ($alarms) && $alarms['lost_conn']['status'] ? 'class="active"' : '' ?>>
                                 Lost connection<?php echo ($alarms) && $alarms['lost_conn']['count'] ? '(' . $alarms['lost_conn']['count'] . ')' : '' ?>
                             </a>
+                        </li>
+                        <li>
                             <a href="/modules/index?alarm=3" <?php echo ($alarms) && $alarms['qua_nhiet']['status'] ? 'class="active"' : '' ?>>
                                 Over heat<?php echo ($alarms) && $alarms['qua_nhiet']['count'] ? '(' . $alarms['qua_nhiet']['count'] . ')' : '' ?>
                             </a>
+                        </li>
+                        <li>
                             <a href="/modules/index?alarm=4" <?php echo ($alarms) && $alarms['qua_ap_suat']['status'] ? 'class="active"' : '' ?>>
                                 Over pressure<?php echo ($alarms) && $alarms['qua_ap_suat']['count'] ? '(' . $alarms['qua_ap_suat']['count'] . ')' : '' ?>
                             </a>
+                        </li>
+                        <li>
                             <a href="/modules/index?alarm=5" <?php echo ($alarms) && $alarms['mat_dien']['status'] ? 'class="active"' : '' ?>>
                                 Lost supply<?php echo ($alarms) && $alarms['tran_be']['count'] ? '(' . $alarms['mat_dien']['count'] . ')' : '' ?>
-                            </a>                                                                
-                        </div>  
-                    </div>
+                            </a>           
+                        </li>
+                    </ul>
                 </div>
-            </div>
+            <?php } ?>
             <!-- END HEADER INNER -->
         </div>
         <!-- END HEADER -->
