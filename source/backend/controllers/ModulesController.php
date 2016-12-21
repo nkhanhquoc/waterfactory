@@ -71,7 +71,7 @@ class ModulesController extends AppController {
         $alarms = $model->alarms;
 
         //check system status
-        if ($model->mode_id) {
+        if ($model->mode_id && $_GET['reload'] == 'true') {
             $model->checkSystemStatus();
         }
 
