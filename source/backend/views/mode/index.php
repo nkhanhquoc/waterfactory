@@ -30,6 +30,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php echo $mode->getUrlImage(300,220) ?>
                   </a>
                 <?php endforeach; ?>
+                <a href="/mode/create">
+                  <img src="/images/add.png" style="width:300px;height:220px" alt=""/>
+                </a>
               </p>
               <p align="center"><a href="javascript:void(0)" onclick="$('#form-choose-mode').submit()" class="btn-link">Next</a></p>
             </div>

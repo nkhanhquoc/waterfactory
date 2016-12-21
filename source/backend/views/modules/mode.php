@@ -37,11 +37,14 @@ $this->params['breadcrumbs'][] = $model->getModuleId() . ' - ' . \yii\helpers\Ht
               <input type="hidden" value="" name="mode_id" id="mode_id">
               <p align="center">
                 <?php foreach($modes as $mode): ?>
-                  <a href="javascript:void(0)" id="mode_<?php echo $mode->id ?>" onclick="chooseMode('<?php echo $mode->id ?>')" class="btn-check <?php if($model->mode_id == $mode->id) echo 'chosen' ;?>">
+                  <a href="javascript:void(0)" id="mode_<?php echo $mode->id ?>" onclick="chooseMode('<?php echo $mode->id ?>')" class="btn-check">
                     <!-- <img src="<?php echo $mode->getUrlImage(300,220) ?>" alt="<?php echo $mode->name ?>"/> -->
                     <?php echo $mode->getUrlImage(300,220) ?>
                   </a>
                 <?php endforeach; ?>
+                <a href="javascript:void(0)" onclick="chooseMode('<?php echo $mode->id ?>')" class="btn-check <?php if($model->mode_id == $mode->id) echo 'chosen' ;?>">
+                  <img src="add.png" alt=""/>
+                </a>
               </p>
               <p align="center"><a href="javascript:void(0)" onclick="$('#form-choose-mode').submit()" class="btn-link">Next</a></p>
             </div>
