@@ -49,7 +49,7 @@ AppAsset::register($this);
         <div class="page-header md-shadow-z-1-i navbar <?php echo (in_array($_SERVER['REQUEST_URI'], ['/', '/?reload=true', '/modules/index'])) ? '' : 'navbar-fixed-top' ?>">
             <!-- BEGIN HEADER INNER -->
             <a href="javascript:void(0);" class="icon-refresh-fix"><img src="/images/refresh_icon.jpg" width="48"/></a>
-            <?php if ($_SERVER['REQUEST_URI'] == '/' || $_SERVER['REQUEST_URI'] == '/modules/index') { ?>
+            <?php if (in_array($_SERVER['REQUEST_URI'], ['/', '/?reload=true', '/modules/index'])) { ?>
                 <div class="header">
                     <div class="header-left">
                         <a href="/" class="logo"><img src="/images/logo.png"/></a>
