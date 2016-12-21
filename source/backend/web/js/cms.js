@@ -6,6 +6,11 @@
 $(document).ready(function () {
     $('.icon-refresh-fix').click(function () {
         location.reload();
+        $(this).addClass('animation-spin');
+        setTimeout(function () {
+            $(this).removeClass('animation-spin')
+        }, 5000);
+        location.reload();
     });
 
     $("ul.mode-select li").click(function () {

@@ -853,7 +853,7 @@
 }
 
 .animation-spin{
-    animation: spinner .6s linear infinite;	
+    animation: spinner 1.6s linear infinite;	
 }
 
 .container-all {
