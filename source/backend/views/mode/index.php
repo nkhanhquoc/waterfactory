@@ -27,8 +27,10 @@ $this->title = $idModule . ' - ' . $module->name;
                         </a>
                     <?php endforeach; ?>
                 </p>
-                <p align="center"><a href="/mode/create" class="btn-link">Create</a></p>
-                <p align="center"><a href="javascript:void(0)" onclick="$('#form-choose-mode').submit()" class="btn-link">Next</a></p>
+                <p align="center">
+                    <a href="/mode/create" class="btn-link">Create</a>
+                    <a href="javascript:void(0)" onclick="$('#form-choose-mode').submit()" class="btn-link">Next</a>
+                </p>
             </div>
         </div>
     </form>
