@@ -62,6 +62,8 @@ class ParamConfigController extends AppController {
         $module = $model->module;
         if ($_GET['reload'] == 'true') {
             $module->checkParametter();
+            sleep(TIME_OUT_REFRESH);
+            return $this->redirect(['view', 'id' => $id]);
         }
         return $this->render('view', [
                     'model' => $model,
@@ -143,6 +145,8 @@ class ParamConfigController extends AppController {
         $module = $model->module;
         if ($_GET['reload'] == 'true') {
             $module->checkParametter();
+            sleep(TIME_OUT_REFRESH);
+            return $this->redirect(['update', 'id' => $id]);
         }
 
         if (Yii::$app->request->isPost) {

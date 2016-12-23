@@ -64,6 +64,8 @@ class TimerCounterController extends AppController {
         $module = $model->module;
         if ($_GET['reload'] == 'true') {
             $module->checkTimerCounter();
+            sleep(TIME_OUT_REFRESH);
+            return $this->redirect(['view', 'id' => $id]);
         }
 
         return $this->render('view', [
@@ -101,6 +103,8 @@ class TimerCounterController extends AppController {
         $module = $model->module;
         if ($_GET['reload'] == 'true') {
             $module->checkTimerCounter();
+            sleep(TIME_OUT_REFRESH);
+            return $this->redirect(['update', 'id' => $id]);
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

@@ -52,6 +52,8 @@ class OutputModeController extends AppController {
         $module = $model->module;
         if ($module->mode_id && $_GET['reload'] == 'true') {
             $module->checkOutputMode();
+            sleep(TIME_OUT_REFRESH);
+            return $this->redirect(['view', 'id' => $id]);
         }
         return $this->render('view', [
                     'model' => $model,
@@ -170,6 +172,8 @@ class OutputModeController extends AppController {
         $module = $model->module;
         if ($module->mode_id && $_GET['reload'] == 'true') {
             $module->checkOutputMode();
+            sleep(TIME_OUT_REFRESH);
+            return $this->redirect(['update', 'id' => $id]);
         }
 
         if (Yii::$app->request->isPost) {

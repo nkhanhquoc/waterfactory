@@ -73,6 +73,8 @@ class ModulesController extends AppController {
         //check system status
         if ($model->mode_id && $_GET['reload'] == 'true') {
             $model->checkSystemStatus();
+            sleep(TIME_OUT_REFRESH);
+            return $this->redirect(['view', 'id' => $id]);
         }
 
         $module_alarm = null;
