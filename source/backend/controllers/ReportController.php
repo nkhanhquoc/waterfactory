@@ -11,13 +11,16 @@ class ReportController extends AppController {
 
     public function actionIndex() {
         $sensors = array();
-        $from = "";
-        $to = "";
+        $from = date('Y-m-d', strtotime('-1 day'));
+        $to = date('Y-m-d');
         $module_id = \Yii::$app->session->get('module_id', 0);
         if (!$module_id) {
             return $this->goHome();
         }
         $modules = Modules::findOne($module_id);
+
+        $sensors = Sensor::getReport($from, $to, $module_id);
+
         if (Yii::$app->request->isPost) {
             $values = Yii::$app->request->post();
             //$module_id = $values['module_id'];
@@ -41,13 +44,14 @@ class ReportController extends AppController {
 
     public function actionReportalarm() {
         $alarms = array();
-        $from = "";
-        $to = "";
+        $from = date('Y-m-d', strtotime('-1 day'));
+        $to = date('Y-m-d');
         $module_id = \Yii::$app->session->get('module_id', 0);
         if (!$module_id) {
             return $this->goHome();
         }
         $modules = Modules::findOne($module_id);
+        $alarms = Alarm::getReport($from, $to, $module_id);
         if (Yii::$app->request->isPost) {
             $values = Yii::$app->request->post();
             //$module_id = $values['module_id'];
