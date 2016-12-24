@@ -77,17 +77,18 @@ $this->params['breadcrumbs'][] = $this->title;
                         apsuat_duongong = addData(apsuat_duongong,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo Socket::bin2dec($sens->cam_bien_ap_suat_duong_ong) ?>);
                         nhietdo_duongong_1 = addData(nhietdo_duongong_1,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo Socket::bin2dec($sens->cam_bien_nhiet_do_duong_ong_1) ?>);
     <?php endforeach; ?>
-                    drawChart(danthu, 'draw-dan-thu', 'Cảm biến Dàn thu');
-                    drawChart(bonsolar, 'draw-bon-solar', 'Cảm biến Bồn Solar');
-                    drawChart(mucnuoc_bonsolar, 'draw-mucnuoc_bonsolar', 'Cảm biến Mức nước bồn solar');
-                    drawChart(nhietdo_bongianhiet, 'draw-nhietdo_bongianhiet', 'Cảm biến Nhiệt độ bồn gia nhiệt');
-                    drawChart(apsuat_bongianhiet, 'draw-apsuat_bongianhiet', 'Cảm biến áp suất bồn gia nhiệt');
-                    drawChart(bucxa_danthu, 'draw-bucxa_danthu', 'Cảm biến Bức xạ dàn thu');
-                    drawChart(tran, 'draw-tran', 'Cảm biến Tràn');
-                    drawChart(nhietdo_duongong_2, 'draw-nhietdo_duongong_2', 'Cảm biến Nhiệt độ đường ống 2');
-                    drawChart(duphong, 'draw-duphong', 'Cảm biến Dự phòng');
-                    drawChart(apsuat_duongong, 'draw-apsuat_duongong', 'Cảm biến Áp suất đường ống');
-                    drawChart(nhietdo_duongong_1, 'draw-nhietdo_duongong_1', 'Cảm biến Nhiệt độ đường ống 1');
+                    drawChart(danthu, 'draw-dan-thu', 'Solar panels temp');
+                    drawChart(bonsolar, 'draw-bon-solar', 'Solar tank temp');
+                    drawChart(mucnuoc_bonsolar, 'draw-mucnuoc_bonsolar', 'Solar tank level');
+                    drawChart(nhietdo_bongianhiet, 'draw-nhietdo_bongianhiet', 'Heater tank temp');
+                    drawChart(apsuat_bongianhiet, 'draw-apsuat_bongianhiet', 'Heater tank pressure');
+                    drawChart(bucxa_danthu, 'draw-bucxa_danthu', 'Lingh intensity');
+                    drawChart(nhietdinh_bonsolar, 'draw-nhietdinh_bonsolar', 'Top of Solar tank temp');
+                    drawChart(tran, 'draw-tran', 'Overflow temp');
+                    drawChart(duphong, 'draw-duphong', 'Backup temp');
+                    drawChart(apsuat_duongong, 'draw-apsuat_duongong', 'Pipeline pressure');
+                    drawChart(nhietdo_duongong_1, 'draw-nhietdo_duongong_1', 'Pipeline temp 1');
+                    drawChart(nhietdo_duongong_2, 'draw-nhietdo_duongong_2', 'Pipeline temp 2');
 
                 }
 

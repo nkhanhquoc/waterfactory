@@ -30,6 +30,10 @@ class ReportController extends AppController {
                 $this->exportCsv($module_id, $from, $to);
             }
             $sensors = Sensor::getReport($from, $to, $module_id);
+            // var_dump($from);
+            // var_dump($to);
+            // var_dump($module_id);
+            // die;
             // $alarms = Alarm::getReport($from,$to,$module_id);
             // var_dump($sensors);die;
         }
