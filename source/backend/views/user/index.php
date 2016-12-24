@@ -11,7 +11,7 @@ use yii\web\View;
 /* @var $searchModel UserSearch */
 /* @var $dataProvider ActiveDataProvider */
 
-$this->title = Yii::t('backend', 'Vt Users');
+$this->title = Yii::t('backend', 'Users');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="vt-user-index">
