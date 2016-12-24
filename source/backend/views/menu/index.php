@@ -41,6 +41,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'route',
             [
                 'attribute' => 'type',
+                'content' => function($data) {
+                    return $data->type == 1 ? 'Home' : 'Module';
+                },
                 'filter' => [0 => 'Home', 1 => 'Module'],
             ],
             'order',
