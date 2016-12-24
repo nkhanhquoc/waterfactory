@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'type',
                 'content' => function($data) {
-                    return $data->type == 1 ? 'Home' : 'Module';
+                    return $data->type == 1 ? 'Module' : 'Home';
                 },
                 'filter' => [0 => 'Home', 1 => 'Module'],
             ],
