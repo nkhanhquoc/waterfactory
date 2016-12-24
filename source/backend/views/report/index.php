@@ -62,21 +62,22 @@ $this->params['breadcrumbs'][] = $this->title;
                     duphong.addRows(<?php echo count($sensors) ?>);
                     apsuat_duongong.addRows(<?php echo count($sensors) ?>);
                     nhietdo_duongong_1.addRows(<?php echo count($sensors) ?>);
-    <?php foreach ($sensors as $k => $sens): ?>
-                        danthu = addData(danthu,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo Socket::bin2dec($sens->cam_bien_dan_thu) ?>);
 
-                        bonsolar = addData(danthu,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo Socket::bin2dec($sens->cam_bien_bon_solar) ?>);
-                        mucnuoc_bonsolar = addData(mucnuoc_bonsolar,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo Socket::bin2dec($sens->cam_bien_muc_nuoc_bon_solar) ?>);
-                        nhietdo_bongianhiet = addData(nhietdo_bongianhiet,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo Socket::bin2dec($sens->cam_bien_nhiet_do_bon_gia_nhiet) ?>);
-                        apsuat_bongianhiet = addData(apsuat_bongianhiet,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo Socket::bin2dec($sens->cam_bien_ap_suat_bon_gia_nhiet) ?>);
-                        bucxa_danthu = addData(bucxa_danthu,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo Socket::bin2dec($sens->cam_bien_buc_xa_dan_thu) ?>);
-                        nhietdinh_bonsolar = addData(nhietdinh_bonsolar,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo Socket::bin2dec($sens->cam_bien_nhiet_dinh_bon_solar) ?>);
-                        tran = addData(tran,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo Socket::bin2dec($sens->cam_bien_tran) ?>);
-                        nhietdo_duongong_2 = addData(nhietdo_duongong_2,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo Socket::bin2dec($sens->cam_bien_nhiet_do_duong_ong_2) ?>);
-                        duphong = addData(duphong,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo Socket::bin2dec($sens->du_phong) ?>);
-                        apsuat_duongong = addData(apsuat_duongong,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo Socket::bin2dec($sens->cam_bien_ap_suat_duong_ong) ?>);
-                        nhietdo_duongong_1 = addData(nhietdo_duongong_1,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo Socket::bin2dec($sens->cam_bien_nhiet_do_duong_ong_1) ?>);
-    <?php endforeach; ?>
+              <?php foreach ($sensors as $k => $sens): ?>
+                    danthu = addData(danthu,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo bindec($sens->cam_bien_dan_thu) ?>);
+                    bonsolar = addData(danthu,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo bindec($sens->cam_bien_bon_solar) ?>);
+                    mucnuoc_bonsolar = addData(mucnuoc_bonsolar,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo bindec($sens->cam_bien_muc_nuoc_bon_solar) ?>);
+                    nhietdo_bongianhiet = addData(nhietdo_bongianhiet,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo bindec($sens->cam_bien_nhiet_do_bon_gia_nhiet) ?>);
+                    apsuat_bongianhiet = addData(apsuat_bongianhiet,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo bindec($sens->cam_bien_ap_suat_bon_gia_nhiet) ?>);
+                    bucxa_danthu = addData(bucxa_danthu,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo bindec($sens->cam_bien_buc_xa_dan_thu) ?>);
+                    nhietdinh_bonsolar = addData(nhietdinh_bonsolar,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo bindec($sens->cam_bien_nhiet_dinh_bon_solar) ?>);
+                    tran = addData(tran,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo bindec($sens->cam_bien_tran) ?>);
+                    nhietdo_duongong_2 = addData(nhietdo_duongong_2,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo bindec($sens->cam_bien_nhiet_do_duong_ong_2) ?>);
+                    duphong = addData(duphong,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo bindec($sens->du_phong) ?>);
+                    apsuat_duongong = addData(apsuat_duongong,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo bindec($sens->cam_bien_ap_suat_duong_ong) ?>);
+                    nhietdo_duongong_1 = addData(nhietdo_duongong_1,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo bindec($sens->cam_bien_nhiet_do_duong_ong_1) ?>);
+              <?php endforeach; ?>
+
                     drawChart(danthu, 'draw-dan-thu', 'Solar panels temp');
                     drawChart(bonsolar, 'draw-bon-solar', 'Solar tank temp');
                     drawChart(mucnuoc_bonsolar, 'draw-mucnuoc_bonsolar', 'Solar tank level');
@@ -89,7 +90,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     drawChart(apsuat_duongong, 'draw-apsuat_duongong', 'Pipeline pressure');
                     drawChart(nhietdo_duongong_1, 'draw-nhietdo_duongong_1', 'Pipeline temp 1');
                     drawChart(nhietdo_duongong_2, 'draw-nhietdo_duongong_2', 'Pipeline temp 2');
-
                 }
 
                 function initData() {
@@ -119,7 +119,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                 min: 0
                             }
 
-                        }
+                        },
+                        chartArea:{ backgroundColor: '#f1f8e9'}
                     };
 
                     var chart = new google.charts.Line(document.getElementById(id));
