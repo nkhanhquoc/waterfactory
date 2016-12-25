@@ -7,13 +7,13 @@
 * @github https://github.com/cinghie/yii2-articles
 * @license GNU GENERAL PUBLIC LICENSE VERSION 3
 * @package yii2-articles
-* @version 0.6.1
+* @version 0.6.3
 */
 
 use yii\helpers\Html;
 
 // Set Title and Breadcrumbs
-$this->title = Yii::t('articles', 'Update {modelClass}: ', ['modelClass' => 'Items',]) . ' ' . $model->title;
+$this->title = Yii::t('articles', 'Update Items') . ': ' . $model->title;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('articles', 'Items'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 

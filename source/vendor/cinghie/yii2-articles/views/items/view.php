@@ -7,7 +7,7 @@
 * @github https://github.com/cinghie/yii2-articles
 * @license GNU GENERAL PUBLIC LICENSE VERSION 3
 * @package yii2-articles
-* @version 0.6.1
+* @version 0.6.3
 */
 
 use yii\helpers\Html;
@@ -19,7 +19,7 @@ ArticlesAsset::register($this);
 $asset = $this->assetBundles['cinghie\articles\assets\ArticlesAsset'];
 
 // Set Title and Breadcrumbs
-$this->title = $model->title;
+$this->title = Html::encode($model->title);
 $this->params['breadcrumbs'][] = $this->title;
 
 /* Render MetaData */
@@ -48,7 +48,7 @@ $this->render('@vendor/cinghie/yii2-articles/views/default/_meta_twitter.php',[ 
             </figure>
         <?php endif; ?>
     </header>
-    <?php if ($model->introtext): ?>
+    <?php if ($model->introtext && $model->getOption($model->category->params,"itemIntroText") == "Yes"): ?>
         <div class="intro-text">
             <?= $model->introtext ?>
         </div>
@@ -61,11 +61,17 @@ $this->render('@vendor/cinghie/yii2-articles/views/default/_meta_twitter.php',[ 
     <?php endif; ?>
 </article>
 
-<div class="items-view">
+<?php if($model->getOption($model->category->params,"itemDebug") == "Yes"): ?>
+
+<div class="items-view-debug">
+
+    <h2>Item Debug</h2>
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
+            'id',
+            'title',
             'alias',
             'catid',
             'userid',
@@ -85,7 +91,14 @@ $this->render('@vendor/cinghie/yii2-articles/views/default/_meta_twitter.php',[ 
             'modified',
             'modified_by',
             'params:ntext',
+            'metadesc:ntext',
+            'metakey:ntext',
+            'robots',
+            'author',
+            'copyright',
         ],
     ]) ?>
 
 </div>
+
+<?php endif; ?>

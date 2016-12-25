@@ -7,7 +7,7 @@
 * @github https://github.com/cinghie/yii2-articles
 * @license GNU GENERAL PUBLIC LICENSE VERSION 3
 * @package yii2-articles
-* @version 0.6.1
+* @version 0.6.3
 */
 
 namespace cinghie\articles\controllers;
@@ -26,7 +26,7 @@ class DefaultController extends Controller
                 'rules' => [
                     ['allow' => true, 'actions' => ['index'], 'roles' => ['@']],
                 ],
-                'denyCallback' => function ($rule, $action) {
+                'denyCallback' => function () {
                     throw new \Exception('You are not allowed to access this page');
                 }
             ],

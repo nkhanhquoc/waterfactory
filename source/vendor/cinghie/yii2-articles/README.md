@@ -56,12 +56,16 @@ Set on your configuration file, in modules section
 	// Module Articles
 	'articles' => [
 		'class' => 'cinghie\articles\Articles',
+		'userClass' => 'dektrium\user\models\User',
 		
 		// Select Languages allowed
 		'languages' => [ 
 			"it-IT" => "it-IT", 
 			"en-GB" => "en-GB" 
 		],			
+		
+		// Select Date Format
+        'dateFormat' => 'd F Y';
 		
 		// Select Editor: no-editor, ckeditor, imperavi, tinymce, markdown
 		'editor' => 'ckeditor',
@@ -246,10 +250,12 @@ The migrations add to the database 4 types of users:
 ## CHANGELOG
 
 <ul>
+  <li>Version 0.6.3 - Implementing Pull Request #9</li>
+  <li>Version 0.6.2 - Implementing Pull Request #6</li>
   <li>Version 0.6.1 - Fixed #4 #5 and adding active/deactive buttons</li>
   <li>Version 0.6.0 - Adding Url Rules</li>
   <li>Version 0.5.2 - Adding Attachments</li>
-  <li>Version 0.6.1 - Adding Access to Categories and Articles</li>
+  <li>Version 0.6.2 - Adding Access to Categories and Articles</li>
   <li>Version 0.5.0 - Update Articles index, Categories index, Refactor RBAC functions</li>
   <li>Version 0.4.1 - Update RBAC functions</li>
   <li>Version 0.4.0 - Adding first RBAC functions</li>

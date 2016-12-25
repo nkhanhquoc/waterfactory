@@ -7,7 +7,7 @@
 * @github https://github.com/cinghie/yii2-articles
 * @license GNU GENERAL PUBLIC LICENSE VERSION 3
 * @package yii2-articles
-* @version 0.6.1
+* @version 0.6.3
 */
 
 namespace cinghie\articles\controllers;
@@ -62,6 +62,7 @@ class ItemsController extends Controller
 
     /**
      * Lists all Items models.
+     *
      * @return mixed
      * @throws ForbiddenHttpException
      */
@@ -84,6 +85,7 @@ class ItemsController extends Controller
 
     /**
      * Displays a single Items model.
+     *
      * @param integer $id
      * @return mixed
      * @throws ForbiddenHttpException
@@ -91,10 +93,12 @@ class ItemsController extends Controller
     public function actionView($id)
     {
         // Check RBAC Permission
-        if($this->userCanView($id))
+        if($this->userCanView($id) && $this->checkArticleLanguage($id))
         {
+            $model = $this->findModel($id);
+
             return $this->render('view', [
-                'model' => $this->findModel($id),
+                'model' => $model,
             ]);
         } else {
             throw new ForbiddenHttpException;
@@ -104,6 +108,7 @@ class ItemsController extends Controller
     /**
      * Creates a new Items model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     *
      * @return mixed
      * @throws ForbiddenHttpException
      */
@@ -171,6 +176,7 @@ class ItemsController extends Controller
     /**
      * Updates an existing Items model.
      * If update is successful, the browser will be redirected to the 'view' page.
+     *
      * @param integer $id
      * @return mixed
      * @throws ForbiddenHttpException
@@ -205,6 +211,10 @@ class ItemsController extends Controller
 
                 // Create UploadFile Instance
                 $image = $model->uploadFile($imgName, $imgNameType, $imagePath, $fileField);
+
+                if($model->image == false && $image === false) {
+                    unset($model->image);
+                }
 
                 if ($model->save()) {
 
@@ -241,6 +251,7 @@ class ItemsController extends Controller
     /**
      * Deletes an existing Items model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+     *
      * @param integer $id
      * @return mixed
      * @throws ForbiddenHttpException
@@ -272,7 +283,9 @@ class ItemsController extends Controller
      * Deletes selected Items models.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      *
-     * @return mixed
+     * @throws ForbiddenHttpException
+     * @throws NotFoundHttpException
+     * @throws \Exception
      */
     public function actionDeletemultiple()
     {
@@ -311,6 +324,7 @@ class ItemsController extends Controller
 	/**
      * Deletes an existing Items Image.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+     *
      * @param integer $id
      * @return mixed
      * @throws ForbiddenHttpException
@@ -340,8 +354,11 @@ class ItemsController extends Controller
 
     /**
      * Change article state: published or unpublished
-     * @param int $id
-     * @return Response
+     *
+     * @param $id
+     * @return \yii\web\Response
+     * @throws ForbiddenHttpException
+     * @throws NotFoundHttpException
      */
     public function actionChangestate($id)
     {
@@ -384,7 +401,7 @@ class ItemsController extends Controller
 
             if(!$model->state) {
                 $model->publish();
-                Yii::$app->getSession()->setFlash('success', Yii::t('essentials', 'Rest API actived'));
+                Yii::$app->getSession()->setFlash('success', Yii::t('articles', 'Items actived'));
             }
         }
     }
@@ -409,7 +426,7 @@ class ItemsController extends Controller
 
             if($model->state) {
                 $model->unpublish();
-                Yii::$app->getSession()->setFlash('warning', Yii::t('essentials', 'Rest API inactived'));
+                Yii::$app->getSession()->setFlash('warning', Yii::t('articles', 'Items inactived'));
             }
         }
     }
@@ -417,6 +434,7 @@ class ItemsController extends Controller
     /**
      * Finds the Items model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     *
      * @param integer $id
      * @return Items the loaded model
      * @throws NotFoundHttpException if the model cannot be found
@@ -432,82 +450,93 @@ class ItemsController extends Controller
 
     /**
      * Check if user can Index Items
+     *
      * @return bool
      */
     protected function userCanIndex()
     {
-        if( Yii::$app->user->can('articles-index-all-items') || Yii::$app->user->can('articles-index-his-items'))
-            return true;
-        else
-            return false;
+        return ( Yii::$app->user->can('articles-index-all-items') || Yii::$app->user->can('articles-index-his-items'));
     }
 
     /**
      * Check if user can view Items
+     *
+     * @param $id
      * @return bool
+     * @throws NotFoundHttpException
      */
     protected function userCanView($id)
     {
         $model = $this->findModel($id);
 
-        if( Yii::$app->user->can('articles-view-items') || $model->access == "Public" )
-            return true;
-        else
-            return false;
+        return ( Yii::$app->user->can('articles-view-items') || $model->access == "public" );
     }
 
     /**
      * Check if user can create Items
+     *
      * @return bool
      */
     protected function userCanCreate()
     {
-        if( Yii::$app->user->can('articles-create-items') )
-            return true;
-        else
-            return false;
+        return ( Yii::$app->user->can('articles-create-items') );
     }
 
     /**
      * Check if user can update Items
+     *
+     * @param $id
      * @return bool
      */
     protected function userCanUpdate($id)
     {
         $model = $this->findModel($id);
 
-        if( Yii::$app->user->can('articles-update-all-items') || ( Yii::$app->user->can('articles-update-his-items') && ($model->isUserAuthor()) ) )
-            return true;
-        else
-            return false;
+        return ( Yii::$app->user->can('articles-update-all-items') || ( Yii::$app->user->can('articles-update-his-items') && ($model->isUserAuthor()) ) );
     }
 
     /**
      * Check if user can publish Items
+     *
+     * @param $id
      * @return bool
      */
     protected function userCanPublish($id)
     {
         $model = $this->findModel($id);
 
-        if( Yii::$app->user->can('articles-publish-all-items') || ( Yii::$app->user->can('articles-publish-his-items') && ($model->isUserAuthor()) ) )
-            return true;
-        else
-            return false;
+        return ( Yii::$app->user->can('articles-publish-all-items') || ( Yii::$app->user->can('articles-publish-his-items') && ($model->isUserAuthor()) ) );
     }
 
     /**
      * Check if user can delete Items
+     *
+     * @param $id
      * @return bool
      */
     protected function userCanDelete($id)
     {
         $model = $this->findModel($id);
 
-        if( Yii::$app->user->can('articles-delete-all-items') || ( Yii::$app->user->can('articles-delete-his-items') && ($model->isUserAuthor()) ) )
+        return ( Yii::$app->user->can('articles-delete-all-items') || ( Yii::$app->user->can('articles-delete-his-items') && ($model->isUserAuthor()) ) );
+    }
+
+    /**
+     * Check article language
+     *
+     * @param $id
+     * @return bool
+     */
+    protected function checkArticleLanguage($id)
+    {
+        $model = $this->findModel($id);
+
+        if(Yii::$app->language == $model->getLang() || $model->getLangTag() == "All")
+        {
             return true;
-        else
+        } else {
             return false;
+        }
     }
 
 }

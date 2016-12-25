@@ -7,7 +7,7 @@
 * @github https://github.com/cinghie/yii2-articles
 * @license GNU GENERAL PUBLIC LICENSE VERSION 3
 * @package yii2-articles
-* @version 0.6.1
+* @version 0.6.3
 */
 
 namespace cinghie\articles\models;
@@ -19,8 +19,7 @@ class Categories extends Articles
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return '{{%article_categories}}';
     }
 
@@ -37,6 +36,7 @@ class Categories extends Articles
             [['access'], 'string', 'max' => 64],
 			[['author', 'copyright'], 'string', 'max' => 50],
 			[['language'], 'string', 'max' => 7],
+            [['theme'], 'string', 'max' => 12],
 			[['robots'], 'string', 'max' => 20],
 			[['image'], 'file', 'extensions' => Yii::$app->controller->module->imageType,],
 			[['image'], 'safe']
@@ -56,6 +56,7 @@ class Categories extends Articles
             'parentid' => Yii::t('articles', 'Parent'),
             'state' => Yii::t('articles', 'State'),
             'access' => Yii::t('articles', 'Access'),
+            'theme' => Yii::t('articles', 'Theme'),
             'ordering' => Yii::t('articles', 'Ordering'),
             'image' => Yii::t('articles', 'Image'),
             'image_caption' => Yii::t('articles', 'Image Caption'),
@@ -69,14 +70,20 @@ class Categories extends Articles
             'language' => Yii::t('articles', 'Language'),
         ];
     }
-	
-	// Return Parent ID
+
+    /**
+     * Return Parent Category
+     * @return Categories
+     */
     public function getParent()
     {
         return $this->hasOne(self::className(), ['id' => 'parentid'])->from(self::tableName() . ' AS parent');
     }
-	
-	// Return Parent Name
+
+    /**
+     * Return Parent Name
+     * @return string
+     */
 	public function getParentName()
 	{
         $model = $this->parent;
@@ -84,7 +91,8 @@ class Categories extends Articles
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * Return all Categories by parent Category
+     * @return Categories
      */
     public function getCategories()
     {
@@ -92,11 +100,12 @@ class Categories extends Articles
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * Return all Items by Category
+     * @return Items
      */
     public function getArticleItems()
     {
-        return $this->hasMany(ArticleItems::className(), ['catid' => 'id']);
+        return $this->hasMany(Items::className(), ['catid' => 'id']);
     }
 	
 	/**
@@ -118,9 +127,10 @@ class Categories extends Articles
         $file = isset($this->image) ? $this->image : 'default.jpg';
         return Yii::getAlias(Yii::$app->controller->module->categoryImageURL).$file;
     }
-	
-	/**
+
+    /**
      * fetch stored image url
+     * @param $size
      * @return string
      */
     public function getImageThumbUrl($size)
@@ -162,13 +172,35 @@ class Categories extends Articles
 		}
 		
 	}
-		
-	// Return array for Category Select2
+
+    /**
+     * Get Items by Category ID
+     * @param integer $catid
+     * @param string $order
+     * @return Items
+     */
+    public function getItemsByCategory($catid,$order = 'title')
+    {
+        $items = Items::find()
+            ->where(['catid' => $catid])
+            ->andWhere(['state' => 1])
+            ->andWhere(['or',['language' => 'All'],['SUBSTRING(language,1,2)' => Yii::$app->language]])
+            ->orderBy($order)
+            ->all();
+
+        return $items;
+    }
+
+    /**
+     * Return array for Category Select2
+     * @return array
+     */
 	public function getCategoriesSelect2()
 	{
-		$sql = 'SELECT id,name FROM {{%article_categories}} WHERE state = 1';
-		$categories = Categories::findBySql($sql)->asArray()->all();
-		
+        $categories = Categories::find()
+            ->orderBy('name')
+            ->all();
+
 		$array[0] = Yii::t('articles', 'No Parent'); 
 		
 		foreach($categories as $category)
@@ -178,5 +210,16 @@ class Categories extends Articles
 		
 		return $array;
 	}
+
+    /**
+     * Return array with Categories Themes
+     * @return array
+     */
+    public function getThemesSelect2()
+    {
+        $array = ['blog' => 'blog','portfolio' => 'portfolio'];
+
+        return $array;
+    }
 	
 }

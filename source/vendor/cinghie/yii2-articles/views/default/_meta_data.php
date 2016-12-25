@@ -7,14 +7,11 @@
 * @github https://github.com/cinghie/yii2-articles
 * @license GNU GENERAL PUBLIC LICENSE VERSION 3
 * @package yii2-articles
-* @version 0.6.1
+* @version 0.6.3
 */
 
 use yii\helpers\Html;
 use yii\helpers\Url;
-
-// Set Title
-$this->title = Html::encode($model->title);
 
 // Set Link Canonical
 $this->registerLinkTag([

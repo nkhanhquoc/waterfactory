@@ -7,10 +7,11 @@
  * @github https://github.com/cinghie/yii2-articles
  * @license GNU GENERAL PUBLIC LICENSE VERSION 3
  * @package yii2-articles
- * @version 0.6.1
+ * @version 0.6.3
  */
 
 return array(
+	'All' => 'Tutte',
 	'Yes'=>'Si',
 	'No'=>'No',
 	'New'=>'Nuovo',
@@ -63,7 +64,8 @@ return array(
 	'Browse &hellip;'=>'Sfoglia',
 	'Allowed Extensions'=>'Estensioni Permesse',
 	'Save & Exit'=>'Salva & Esci',
-	'Update'=>'Modifica',
+	'Update Items' => 'Modifica Articolo',
+	'Update Categories' => 'Modifica Categoria',
 	'Reset Grid'=>'Reset',
 	'Name'=>'Nome',
 	'Description'=>'Descrizione',
@@ -71,6 +73,7 @@ return array(
 	'No Parent'=>'Nessun Genitore',
 	'State'=>'Stato',
 	'Active'=>'Attivo',
+	'Deactive'=>'Disattiva',
 	'Inactive'=>'Non Attivo',
 	'Unpublished'=>'Non Pubblicato',
 	'Trashed'=>'Cestinato',
@@ -88,12 +91,10 @@ return array(
 	'Category View'=>'Vista Categoria',
 	'Item View'=>'Vista Articolo',
 	'Image Width (px)'=>'Larghezza Immagine',
-	'Show Item Data'=>'Mostra Data Articoli',
 	'Title' => 'Titolo',
 	'Catid' => 'Categoria',
 	'Created' => 'Data Creazione',
 	'Modified' => 'Data Modifica',
-	'Catid' => 'Categoria',
 	'Userid' => 'Utente',
 	'Created By' => 'Creato Da',
 	'Modified By' => 'Modificato Da',
@@ -103,7 +104,6 @@ return array(
 	'Alias' => 'Alias',
 	'Author' => 'Autore',
 	'Copyright' => 'Copyright',
-	'Hits' => 'Visualizzazioni',
 	'Meta Description' => 'Meta Descrizione',
 	'Meta Keywords' => 'Meta Parole Chiave',
 	'Video ID' => 'ID Video',
@@ -122,4 +122,18 @@ return array(
 	'Article published' => 'Articolo pubblicato',
 	'Category unpublished' => 'Categoria non pubblicata',
 	'Category published' => 'Categoria pubblicata',
+	'Image Width' => 'Grandezza Immagine',
+	'Small'  => 'Piccola',
+	'Medium' => 'Media',
+	'Large'  => 'Grande',
+	'Extra'  => 'Molto Grande',
+	'Show Created Data'=>'Mostra Data Creazione',
+	'Show Modified Data'=>'Mostra Data Modifica',
+	'Show Debug' => 'Mostra Debug',
+	'Show IntroText' => 'Mostra Testo Introduttivo',
+	'Show FullText' => 'Mostra Testo Completo',
+    'Show Hits' => 'Mostra Visualizzazioni',
+	'Show User' => 'Mostra Utente',
+	'Theme' => 'Tema',
+	'No Category' => 'Nessuna Categoria'
 );

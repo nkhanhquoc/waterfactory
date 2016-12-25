@@ -7,7 +7,7 @@
 * @github https://github.com/cinghie/yii2-articles
 * @license GNU GENERAL PUBLIC LICENSE VERSION 3
 * @package yii2-articles
-* @version 0.6.1
+* @version 0.6.3
 */
 
 namespace cinghie\articles;
@@ -18,11 +18,18 @@ class Articles extends \yii\base\Module
 {
 
     public $controllerNamespace = 'cinghie\articles\controllers';
-	
+
+		// Select User Class
+	public $userClass         = 'dektrium\user\models\User';
+
+	// Select Article Languages
 	public $languages         = [ "en-GB" => "en-GB" ];
 
+    // Select Date Format
+    public $dateFormat        = "d F Y";
+
 	// Select Editor: no-editor, ckeditor, imperavi, tinymce, markdown
-	public $editor 	          = "ckeditor";
+	public $editor 	          = "imperavi";
 
 	// Select Path To Upload Category Image
 	public $categoryImagePath = "@webroot/img/articles/categories/";
@@ -87,6 +94,8 @@ class Articles extends \yii\base\Module
     {
         parent::init();
 		$this->registerTranslations();
+        $this->setupImageDirectory();
+        Yii::$container->set($this->userClass);
     }
 
 	/**
@@ -101,6 +110,38 @@ class Articles extends \yii\base\Module
 				'basePath' => __DIR__ . '/messages',
 			];
 		}
+    }
+
+	/**
+	 * Setup image directory
+	 */
+    protected function setupImageDirectory()
+    {
+        // create image directory as described if it's not exist yet
+        if(!file_exists(Yii::getAlias($this->categoryImagePath)))
+        {
+            mkdir(Yii::getAlias($this->categoryImagePath), 0755, true);
+        }
+
+        if(!file_exists(Yii::getAlias($this->categoryThumbPath)))
+        {
+            mkdir(Yii::getAlias($this->categoryThumbPath), 0755, true);
+        }
+
+        if(!file_exists(Yii::getAlias($this->itemImagePath)))
+        {
+            mkdir(Yii::getAlias($this->itemImagePath), 0755, true);
+        }
+
+        if(!file_exists(Yii::getAlias($this->itemThumbPath)))
+        {
+            mkdir(Yii::getAlias($this->itemThumbPath), 0755, true);
+        }
+
+        if(!file_exists(Yii::getAlias($this->attachPath)))
+        {
+            mkdir(Yii::getAlias($this->attachPath), 0755, true);
+        }
     }
 
 }

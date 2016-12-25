@@ -7,7 +7,7 @@
 * @github https://github.com/cinghie/yii2-articles
 * @license GNU GENERAL PUBLIC LICENSE VERSION 3
 * @package yii2-articles
-* @version 0.6.1
+* @version 0.6.3
 */
 
 namespace cinghie\articles\controllers;
@@ -62,6 +62,7 @@ class CategoriesController extends Controller
 
     /**
      * Lists all Categories models.
+     *
      * @return mixed
      * @throws ForbiddenHttpException
      */
@@ -84,18 +85,27 @@ class CategoriesController extends Controller
 
     /**
      * Displays a single Categories model.
+     *
      * @param string $id
      * @return mixed
      * @throws ForbiddenHttpException
+     * @throws NotFoundHttpException
      */
     public function actionView($id)
     {
         // Check RBAC Permission
         if($this->userCanView($id))
         {
-            return $this->render('view', [
-                'model' => $this->findModel($id),
-            ]);
+            $model = $this->findModel($id);
+
+            if($model->state) {
+                return $this->render('view', [
+                    'model' => $model,
+                ]);
+            } else {
+                throw new NotFoundHttpException;
+            }
+
         } else {
             throw new ForbiddenHttpException;
         }
@@ -104,6 +114,7 @@ class CategoriesController extends Controller
     /**
      * Creates a new Categories model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     *
      * @return mixed
      * @throws ForbiddenHttpException
      */
@@ -112,24 +123,48 @@ class CategoriesController extends Controller
         // Check RBAC Permission
         if($this->userCanCreate())
         {
+            $post  = Yii::$app->request->post();
             $model = new Categories();
 
-            if ($model->load(Yii::$app->request->post())) {
+            if ($model->load($post)) {
+
+                // If user can publish, set state = 1
+                if($model->state = 1 && $this->userCanPublish()) {
+                    $model->state = 1;
+                }
 
                 // If alias is not set, generate it
-                if ($_POST['Categories']['alias'] == "") {
+                if ($post['Categories']['alias'] == "") {
                     $model->alias = $model->generateAlias($model->name);
                 }
 
                 // Genarate Json Params
-                $params = array(
-                    'categoriesImageWidth' => $_POST['categoriesImageWidth'],
-                    'categoriesViewData' => $_POST['categoriesViewData'],
-                    'categoryImageWidth' => $_POST['categoryImageWidth'],
-                    'categoryViewData' => $_POST['categoryViewData'],
-                    'itemImageWidth' => $_POST['itemImageWidth'],
-                    'itemViewData' => $_POST['itemViewData']
-                );
+                $params = [
+                    'categoriesImageWidth' => $post['categoriesImageWidth'],
+                    'categoriesIntroText' => $post['categoriesIntroText'],
+                    'categoriesFullText' => $post['categoriesFullText'],
+                    'categoriesCreatedData' => $post['categoriesCreatedData'],
+                    'categoriesModifiedData' => $post['categoriesModifiedData'],
+                    'categoriesUser' => $post['categoriesUser'],
+                    'categoriesHits' => $post['categoriesHits'],
+                    'categoriesDebug' => $post['categoriesDebug'],
+                    'categoryImageWidth' => $post['categoryImageWidth'],
+                    'categoryIntroText' => $post['categoryIntroText'],
+                    'categoryFullText' => $post['categoryFullText'],
+                    'categoryCreatedData' => $post['categoryCreatedData'],
+                    'categoryModifiedData' => $post['categoryModifiedData'],
+                    'categoryUser' => $post['categoryUser'],
+                    'categoryHits' => $post['categoryHits'],
+                    'categoryDebug' => $post['categoryDebug'],
+                    'itemImageWidth' => $post['itemImageWidth'],
+                    'itemIntroText' => $post['itemIntroText'],
+                    'itemFullText' => $post['itemFullText'],
+                    'itemCreatedData' => $post['itemCreatedData'],
+                    'itemModifiedData' => $post['itemModifiedData'],
+                    'itemUser' => $post['itemUser'],
+                    'itemHits' => $post['itemHits'],
+                    'itemDebug' => $post['itemDebug']
+                ];
                 $params = $model->generateJsonParams($params);
                 $model->params = $params;
 
@@ -177,6 +212,7 @@ class CategoriesController extends Controller
     /**
      * Updates an existing Categories model.
      * If update is successful, the browser will be redirected to the 'view' page.
+     *
      * @param string $id
      * @return mixed
      * @throws ForbiddenHttpException
@@ -186,26 +222,44 @@ class CategoriesController extends Controller
         // Check RBAC Permission
         if($this->userCanUpdate())
         {
+            $post     = Yii::$app->request->post();
             $model    = $this->findModel($id);
             $oldImage = $model->image;
 
-            if ($model->load(Yii::$app->request->post())) {
+            if ($model->load($post)) {
 
                 // If alias is not set, generate it
-                if ($_POST['Categories']['alias']=="")
-                {
+                if ($post['Categories']['alias'] == "") {
                     $model->alias = $model->generateAlias($model->name);
                 }
 
                 // Genarate Json Params
-                $params = array(
-                    'categoriesImageWidth' => $_POST['categoriesImageWidth'],
-                    'categoriesViewData'   => $_POST['categoriesViewData'],
-                    'categoryImageWidth'   => $_POST['categoryImageWidth'],
-                    'categoryViewData'     => $_POST['categoryViewData'],
-                    'itemImageWidth'       => $_POST['itemImageWidth'],
-                    'itemViewData'         => $_POST['itemViewData']
-                 );
+                $params = [
+                    'categoriesImageWidth' => $post['categoriesImageWidth'],
+                    'categoriesIntroText' => $post['categoriesIntroText'],
+                    'categoriesFullText' => $post['categoriesFullText'],
+                    'categoriesCreatedData' => $post['categoriesCreatedData'],
+                    'categoriesModifiedData' => $post['categoriesModifiedData'],
+                    'categoriesUser' => $post['categoriesUser'],
+                    'categoriesHits' => $post['categoriesHits'],
+                    'categoriesDebug' => $post['categoriesDebug'],
+                    'categoryImageWidth' => $post['categoryImageWidth'],
+                    'categoryIntroText' => $post['categoryIntroText'],
+                    'categoryFullText' => $post['categoryFullText'],
+                    'categoryCreatedData' => $post['categoryCreatedData'],
+                    'categoryModifiedData' => $post['categoryModifiedData'],
+                    'categoryUser' => $post['categoryUser'],
+                    'categoryHits' => $post['categoryHits'],
+                    'categoryDebug' => $post['categoryDebug'],
+                    'itemImageWidth' => $post['itemImageWidth'],
+                    'itemIntroText' => $post['itemIntroText'],
+                    'itemFullText' => $post['itemFullText'],
+                    'itemCreatedData' => $post['itemCreatedData'],
+                    'itemModifiedData' => $post['itemModifiedData'],
+                    'itemUser' => $post['itemUser'],
+                    'itemHits' => $post['itemHits'],
+                    'itemDebug' => $post['itemDebug']
+                ];
                 $params = $model->generateJsonParams($params);
                 $model->params = $params;
 
@@ -261,6 +315,7 @@ class CategoriesController extends Controller
     /**
      * Deletes an existing Categories model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+     *
      * @param string $id
      * @return mixed
      * @throws ForbiddenHttpException
@@ -294,7 +349,9 @@ class CategoriesController extends Controller
      * Deletes selected Categories models.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      *
-     * @return mixed
+     * @throws ForbiddenHttpException
+     * @throws NotFoundHttpException
+     * @throws \Exception
      */
     public function actionDeletemultiple()
     {
@@ -307,11 +364,12 @@ class CategoriesController extends Controller
         foreach ($ids as $id)
         {
             // Check RBAC Permission
-            if($this->userCanDelete($id))
+            if($this->userCanDelete())
             {
                 $model = $this->findModel($id);
 
-                if ($model->delete()) {
+                if ($model->delete())
+                {
                     if (!$model->deleteImage() && !empty($model->image)) {
                         Yii::$app->session->setFlash('error', Yii::t('articles', 'Error deleting image'));
                     } else {
@@ -332,6 +390,7 @@ class CategoriesController extends Controller
 
     /**
      * Delete the Image from the Categories model
+     *
      * @param int $id
      * @return Categories update view
      * @throws ForbiddenHttpException
@@ -362,8 +421,11 @@ class CategoriesController extends Controller
 
     /**
      * Change category state: published or unpublished
-     * @param int $id
-     * @return Response
+     *
+     * @param $id
+     * @return \yii\web\Response
+     * @throws ForbiddenHttpException
+     * @throws NotFoundHttpException
      */
     public function actionChangestate($id)
     {
@@ -406,7 +468,7 @@ class CategoriesController extends Controller
 
             if(!$model->state) {
                 $model->publish();
-                Yii::$app->getSession()->setFlash('success', Yii::t('essentials', 'Rest API actived'));
+                Yii::$app->getSession()->setFlash('success', Yii::t('articles', 'Categories actived'));
             }
         }
     }
@@ -431,7 +493,7 @@ class CategoriesController extends Controller
 
             if($model->state) {
                 $model->unpublish();
-                Yii::$app->getSession()->setFlash('warning', Yii::t('essentials', 'Rest API inactived'));
+                Yii::$app->getSession()->setFlash('warning', Yii::t('articles', 'Categories inactived'));
             }
         }
     }
@@ -439,6 +501,7 @@ class CategoriesController extends Controller
     /**
      * Finds the Categories model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     *
      * @param string $id
      * @return Categories the loaded model
      * @throws NotFoundHttpException if the model cannot be found
@@ -454,76 +517,65 @@ class CategoriesController extends Controller
 
     /**
      * Check if user can Index Categories
+     *
      * @return bool
      */
     protected function userCanIndex()
     {
-        if( Yii::$app->user->can('articles-index-categories'))
-            return true;
-        else
-            return false;
+        return ( Yii::$app->user->can('articles-index-categories'));
     }
 
     /**
      * Check if user can view Categories
+     *
+     * @param $id
      * @return bool
      */
     protected function userCanView($id)
     {
         $model = $this->findModel($id);
 
-        if( Yii::$app->user->can('articles-view-categories') || $model->access == "Public" )
-            return true;
-        else
-            return false;
+        return ( Yii::$app->user->can('articles-view-categories') || $model->access == "public" );
     }
 
     /**
      * Check if user can create Categories
+     *
      * @return bool
      */
     protected function userCanCreate()
     {
-        if( Yii::$app->user->can('articles-create-categories') )
-            return true;
-        else
-            return false;
+        return ( Yii::$app->user->can('articles-create-categories') );
     }
 
     /**
      * Check if user can update Categories
+     *
      * @return bool
      */
     protected function userCanUpdate()
     {
-        if( Yii::$app->user->can('articles-update-categories') )
-            return true;
-        else
-            return false;
+        return ( Yii::$app->user->can('articles-update-categories') );
     }
 
     /**
      * Check if user can publish Categories
+     *
      * @return bool
      */
     protected function userCanPublish()
     {
-        if( Yii::$app->user->can('articles-publish-categories') )
-            return true;
-        else
-            return false;
+        return ( Yii::$app->user->can('articles-publish-categories') );
     }
 
     /**
      * Check if user can delete Categories
+     *
      * @return bool
      */
     protected function userCanDelete()
     {
-        if( Yii::$app->user->can('articles-delete-categories') )
-            return true;
-        else
-            return false;
+        return ( Yii::$app->user->can('articles-delete-categories') );
     }
 
 }

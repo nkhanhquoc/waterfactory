@@ -7,7 +7,7 @@
 * @github https://github.com/cinghie/yii2-articles
 * @license GNU GENERAL PUBLIC LICENSE VERSION 3
 * @package yii2-articles
-* @version 0.6.1
+* @version 0.6.3
 */
 
 use cinghie\articles\assets\ArticlesAsset;
@@ -165,6 +165,9 @@ $this->registerJs('
 				[
 					'attribute' => 'access',
 					'hAlign' => 'center',
+				],[
+					'attribute' => 'theme',
+					'hAlign' => 'center',
 				],
 				[
 					'attribute' => 'image',
@@ -224,10 +227,10 @@ $this->registerJs('
                     Html::a('<i class="fa fa-eye"></i> '.Yii::t('articles', 'Preview'),
                         '#', ['class' => 'btn btn-preview btn-info']
                     ).'</span><span style="float: right; margin-right: 5px;">'.
-                    Html::a('<i class="glyphicon glyphicon-remove"></i> '.Yii::t('essentials', 'Deactive'),
+                    Html::a('<i class="glyphicon glyphicon-remove"></i> '.Yii::t('articles', 'Deactive'),
                         '#', ['class' => 'btn btn-deactive btn-danger']
                     ).'</span><span style="float: right; margin-right: 5px;">'.
-                    Html::a('<i class="glyphicon glyphicon-ok"></i> '.Yii::t('essentials', 'Active'),
+                    Html::a('<i class="glyphicon glyphicon-ok"></i> '.Yii::t('articles', 'Active'),
                         ['#'], ['class' => 'btn btn-active btn-success']
                     ).'</span>',
 				'after' => Html::a('<i class="glyphicon glyphicon-repeat"></i> '.

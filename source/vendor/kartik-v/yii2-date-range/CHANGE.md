@@ -1,6 +1,25 @@
 Change Log: `yii2-date-range`
 =============================
 
+## Version 1.6.7
+
+**Date:** 12-Jul-2016
+
+- (enh #58): Add support for separate start and end attributes and inputs.
+- (enh #59): Add Hungarian Translations.
+- (enh #61): Add Dutch Translations.
+- (enh #62): Add Romanian Translations.
+- Add branch alias for dev-master latest release.
+- (bug #65): Correct moment `weekdaysStart` to `weekdaysMin`.
+- (enh #67): Parse input change correctly when range input value is cleared.
+- (enh #68): Update to latest release of bootstrap-daterangepicker plugin and moment library.
+- (bug #70): More better attribute and input options parsing.
+- (enh #71): Add Thai translations.
+- (bug #73): Correct dependency for `DateRangePickerAsset` and `LanguageAsset`.
+- (bug #74): Correct asset bundle dependency.
+- (bug #75): Correct code for PHP 5.5.
+- (bug #76, #77, #78, #79): Correct dependency for `DateRangePickerAsset`.
+
 ## Version 1.6.6
 
 **Date:** 11-Jan-2016

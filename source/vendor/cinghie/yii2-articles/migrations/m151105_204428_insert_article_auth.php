@@ -7,7 +7,7 @@
  * @github https://github.com/cinghie/yii2-articles
  * @license GNU GENERAL PUBLIC LICENSE VERSION 3
  * @package yii2-articles
- * @version 0.6.1
+ * @version 0.6.3
  */
 
 use yii\db\Migration;
@@ -142,6 +142,27 @@ class m151105_204428_insert_article_auth extends Migration
         $this->delete('{{%auth_item_child}}', ['parent' => 'articles-update-categories']);
         $this->delete('{{%auth_item_child}}', ['parent' => 'articles-view-items']);
         $this->delete('{{%auth_item_child}}', ['parent' => 'articles-view-categories']);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function insert($table, $columns)
+    {
+        if ($table != '{{%auth_item}}' || !isset($columns['name'])) {
+            return parent::insert($table, $columns);
+        }
+
+        $item = (new \yii\db\Query())
+            ->from($table)
+            ->where([
+                'name' => $columns['name'],
+            ])
+            ->exists();
+
+        if (!$item) {
+            return parent::insert($table, $columns);
+        }
     }
 
 }

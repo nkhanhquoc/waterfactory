@@ -7,22 +7,27 @@
 * @github https://github.com/cinghie/yii2-articles
 * @license GNU GENERAL PUBLIC LICENSE VERSION 3
 * @package yii2-articles
-* @version 0.6.1
+* @version 0.6.3
 */
 
 namespace cinghie\articles\models;
 
 use Yii;
+use dektrium\user\models\User;
+use yii\db\ActiveRecord;
 use yii\imagine\Image;
 use yii\web\UploadedFile;
 
-class Articles extends \yii\db\ActiveRecord
+class Articles extends ActiveRecord
 {
-	
-	/**
-    * Upload file
-    * @return mixed the uploaded image instance
-    */
+    /**
+     * Upload file
+     * @param $fileName
+     * @param $fileNameType
+     * @param $filePath
+     * @param $fileField
+     * @return mixed the uploaded image instance
+     */
     public function uploadFile($fileName,$fileNameType,$filePath,$fileField) 
 	{
         // get the uploaded file instance. for multiple file uploads
@@ -53,30 +58,36 @@ class Articles extends \yii\db\ActiveRecord
 			}
 			
 			// file extension
-			$fileExt = end((explode(".", $file->name)));
+			$fileExt  = $file->extension;
 			// purge filename
 			$fileName = $this->generateFileName($name);
 			// set field to filename.extensions
 			$this->$fileField = $fileName.".{$fileExt}";
 			// update file->name
-			$file->name  = $fileName.".{$fileExt}";
+			$file->name = $fileName.".{$fileExt}";
 			// save images to imagePath
 			$file->saveAs($filePath.$fileName.".{$fileExt}");
 	 
 			// the uploaded file instance
 			return $file;
-		
 		}
     }
 
-	/**
-    * createThumbImages files
-    * @return mixed the uploaded image instance
-    */
+    /**
+     * createThumbImages files
+     * @param $image
+     * @param $imagePath
+     * @param $imgOptions
+     * @param $thumbPath
+     * @return mixed the uploaded image instance
+     */
 	public function createThumbImages($image,$imagePath,$imgOptions,$thumbPath)
 	{	
 		$imageName = $image->name;
 		$imageLink = $imagePath.$image->name;
+
+        // Check thumbPath exist, else create
+        $this->createDirectory($thumbPath);
 		
 		// Save Image Thumbs
 		Image::thumbnail($imageLink, $imgOptions['small']['width'], $imgOptions['small']['height'])
@@ -88,11 +99,12 @@ class Articles extends \yii\db\ActiveRecord
 		Image::thumbnail($imageLink, $imgOptions['extra']['width'], $imgOptions['extra']['height'])
 			->save($thumbPath."extra/".$imageName, ['quality' => $imgOptions['extra']['quality']]);		
 	}
-	
-	/**
-	* Generate fileName
-	* @return string fileName
-	*/ 
+
+    /**
+     * Generate fileName
+     * @param $name
+     * @return string fileName
+     */
 	public function generateFileName($name)
     {	
 		// remove any duplicate whitespace, and ensure all characters are alphanumeric
@@ -105,14 +117,15 @@ class Articles extends \yii\db\ActiveRecord
     }
 	
 	/**
-	* Generate URL alias
-	* @return string alias
-	*/ 
+	 * Generate URL alias
+     * @param $name
+	 * @return string alias
+	 */
 	public function generateAlias($name)
     {
         // remove any '-' from the string they will be used as concatonater
-        $str = str_replace('-', ' ', $name);
-        $str = str_replace('_', ' ', $name);
+		$str = str_replace('-', ' ', $name);
+        $str = str_replace('_', ' ', $str);
 		
 		// remove any duplicate whitespace, and ensure all characters are alphanumeric
 		$str = preg_replace(array('/\s+/','/[^A-Za-z0-9\-]/'), array('-',''), $str);
@@ -122,13 +135,29 @@ class Articles extends \yii\db\ActiveRecord
 		
         return $str;
     }
-	
+
+	/*
+	 * Get lang code like en
+	 * @return string lang
+	 */
+	public function getLang() {
+		return substr($this->language,0,2);
+	}
+
+	/*
+	 * Get lang tag like en-GB
+	 * @return string lang
+	 */
+	public function getLangTag() {
+		return $this->language;
+	}
+
 	/**
-	* Generate JSON for Params
-	* @return string json encoded
-	*/ 
-	public function generateJsonParams($params)
-	{
+	 * Generate JSON for Params
+     * @param $params
+	 * @return string json encoded
+	 */
+	public function generateJsonParams($params) {
 		return json_encode($params);
 	}
 
@@ -156,12 +185,17 @@ class Articles extends \yii\db\ActiveRecord
 
 	/**
 	 * Return array for User Select2 with current user selected
+     * @param $userid
+     * @param $username
 	 * @return array
 	 */
 	public function getUsersSelect2($userid,$username)
 	{
-		$sql   = 'SELECT id,username FROM {{%user}} WHERE id != '.$userid;
-		$users = Items::findBySql($sql)->asArray()->all();
+        $users = User::find()
+            ->select(['id','username'])
+            ->where(['blocked_at' => null, 'unconfirmed_email' => null])
+            ->andWhere(['!=', 'id', $userid])
+            ->all();
 
 		$array[$userid] = ucwords($username);
 
@@ -173,13 +207,16 @@ class Articles extends \yii\db\ActiveRecord
 	}
 
 	/**
-	 * Return array for User Select2 with current user selected
-	 * @return string
+	 * Return array with all Items
+	 * @return array
 	 */
-	public function getArticlesSelect2()
+	public function getItemsSelect2()
 	{
-		$sql   = 'SELECT id,title FROM {{%article_items}}';
-		$items = Items::findBySql($sql)->asArray()->all();
+        $array = array();
+
+        $items = Items::find()
+            ->select(['id','title'])
+            ->all();
 
 		foreach($items as $item) {
 			$array[$item['id']] = $item['title'];
@@ -189,42 +226,29 @@ class Articles extends \yii\db\ActiveRecord
 	}
 
 	/**
-	 * Return Username by UserID
-	 * @return string
-	 */
-	public function getUsernameByUserID($id)
-	{
-		$sql      = 'SELECT username FROM {{%user}} WHERE id='.$id;
-		$username = Items::findBySql($sql)->asArray()->one();
-
-		return $username['username'];
-	}
-
-	/**
 	 * Return an array with the user roles
 	 * @return array
 	 */
 	public function getRoles()
 	{
-		$sql   = 'SELECT name FROM {{%auth_item}} WHERE type = 1 ORDER BY name ASC';
-		$roles = Categories::findBySql($sql)->asArray()->all();
+		$roles = Yii::$app->authManager->getRoles();
 		$array = ['public' => 'Public'];
 
 		foreach($roles as $role) {
-			$array[ucwords($role['name'])] = ucwords($role['name']);
+			$array[ucwords($role->name)] = ucwords($role->name);
 		}
 
 		return $array;
 	}
 
 	/**
-	 * Return languages Select
+	 * Return an array with languages
 	 * @return array
 	 */
 	public function getLanguagesSelect2()
 	{
-		$languages = Yii::$app->urlManager->languages;
-		$languagesSelect = array('All' => Yii::t('essentials', 'All'));
+		$languages = Yii::$app->controller->module->languages;
+		$languagesSelect = array('All' => Yii::t('articles', 'All'));
 
 		if($languages)
 		{
@@ -235,5 +259,40 @@ class Articles extends \yii\db\ActiveRecord
 
 		return $languagesSelect;
 	}
+
+	/**
+	 * Return param
+     * @param $params
+     * @param $param
+	 * @return $param
+	 */
+	public function getOption($params,$param)
+	{
+		$params = json_decode($params);
+
+		return $params->$param;
+	}
+
+    /**
+     * Function for creating directory to save file
+     * @param string $path file to create
+     */
+    protected function createDirectory($path)
+    {
+        $sizes = array(
+            'small',
+            'medium',
+            'large',
+            'extra',
+        );
+
+        foreach($sizes as $size)
+        {
+            if(!file_exists($path.$size))
+            {
+                mkdir($path.$size, 0755, true);
+            }
+        }
+    }
 
 }

@@ -7,7 +7,7 @@
 * @github https://github.com/cinghie/yii2-articles
 * @license GNU GENERAL PUBLIC LICENSE VERSION 3
 * @package yii2-articles
-* @version 0.6.1
+* @version 0.6.3
 */
 
 use cinghie\articles\assets\ArticlesAsset;
@@ -22,7 +22,7 @@ $asset = $this->assetBundles['cinghie\articles\assets\ArticlesAsset'];
 
 // Load info
 $attachType       = Yii::$app->controller->module->attachType;
-$select2articles = $model->getArticlesSelect2();
+$select2articles = $model->getItemsSelect2();
 
 if ($model->isNewRecord) {
     $hits = "0";

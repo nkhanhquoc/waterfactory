@@ -7,7 +7,7 @@
  * @github https://github.com/cinghie/yii2-articles
  * @license GNU GENERAL PUBLIC LICENSE VERSION 3
  * @package yii2-articles
- * @version 0.6.1
+ * @version 0.6.3
  */
 
 use cinghie\articles\migrations\Migration;
@@ -19,12 +19,12 @@ class m151021_200518_create_article_attachments_table extends Migration
     public function up()
     {
         $this->createTable('{{%article_attachments}}', [
-            'id' => Schema::TYPE_PK,
-            'itemid' => 'int(11) NOT NULL',
-            'filename' => Schema::TYPE_STRING . ' NOT NULL',
-            'title' => Schema::TYPE_STRING . ' NOT NULL',
-            'titleAttribute' => Schema::TYPE_TEXT,
-            'hits' => 'int(10) unsigned NOT NULL DEFAULT 0',
+            'id' => $this->primaryKey(),
+            'itemid' => $this->integer(11)->notNull(),
+            'filename' => $this->string(255)->notNull(),
+            'title' => $this->string(255)->notNull(),
+            'titleAttribute' => $this->text(),
+            'hits' => $this->integer(11)->notNull()->defaultValue(0),
         ], $this->tableOptions);
     }
 
