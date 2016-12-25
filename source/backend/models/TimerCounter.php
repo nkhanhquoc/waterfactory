@@ -37,4 +37,24 @@ class TimerCounter extends \common\models\TimerCounterBase {
         return $data->save(false);
     }
 
+    public function OperationLog() {
+        $log = new \backend\models\OperationLog();
+        $log->module_id = $this->module_id;
+        $log->message = 'Timer Counter Configuration message, sent by user ' . Yii::$app->user->identity->username;
+        $log->created_time = new \yii\db\Expression('NOW()');
+        $log->save(false);
+    }
+
+    public function configLog() {
+        $log = new \backend\models\ConfigurationLog();
+        $log->module_id = $this->module_id;
+        $log->created_by = Yii::$app->user->getId();
+        $log->message = 'Timer/counter: ' . 'counter ' . $this->counter
+                . '|Confirm Timer ' . $this->timer_1
+                . '|Resend Timer ' . $this->timer_2
+                . '|Report Timer ' . $this->timer_3;
+        $log->created_time = new \yii\db\Expression('NOW()');
+        $log->save(false);
+    }
+
 }

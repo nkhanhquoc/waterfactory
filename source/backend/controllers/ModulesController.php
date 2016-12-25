@@ -169,6 +169,8 @@ class ModulesController extends AppController {
             $model->mode_id = intval($values['mode_id']);
             if ($model->save(false, ['mode_id'])) {
                 if ($model->mode2Client()) {
+                    $model->OperationLog();
+                    $model->configLog();
                     \Yii::$app->session->set('module_id', $model->id);
                     Yii::$app->session->setFlash('success', 'Set System Mode success!');
                     return $this->redirect('/output-mode/home');

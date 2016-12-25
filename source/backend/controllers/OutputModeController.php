@@ -148,10 +148,13 @@ class OutputModeController extends AppController {
             $model->reserved = $values['OutputMode']['reserved']['mode'] . $values['OutputMode']['reserved']['pump'] . Socket::alldec2bin($values['OutputMode']['reserved']['time'], 8);
 
             if ($model->save(false)) {
-                $model->toClient();
-                Yii::$app->session->setFlash('success', 'Set Load Mode to module success!');
-                // return $this->redirect(['/modules/view', 'id' => $model->module_id]);
-                return $this->redirect('/param-config/home');
+                if ($model->toClient()) {
+                    $model->OperationLog();
+                    $model->configLog();
+                    Yii::$app->session->setFlash('success', 'Set Load Mode to module success!');
+                    // return $this->redirect(['/modules/view', 'id' => $model->module_id]);
+                    return $this->redirect('/param-config/home');
+                }
             }
         }
         return $this->render('create', [
@@ -235,10 +238,13 @@ class OutputModeController extends AppController {
             $model->backflow_valve = $values['OutputMode']['blakflow']['mode'] . $values['OutputMode']['blakflow']['pump'] . $blakflowPumptime;
             $model->reserved = $values['OutputMode']['reserved']['mode'] . $values['OutputMode']['reserved']['pump'] . Socket::alldec2bin($values['OutputMode']['reserved']['time'], 8);
             if ($model->save(false)) {
-                $model->toClient();
-                Yii::$app->session->setFlash('success', 'Set Load Mode to module success!');
-                // return $this->redirect(['/modules/view', 'id' => $model->module_id]);
-                return $this->redirect('/param-config/home');
+                if ($model->toClient()) {
+                    $model->OperationLog();
+                    $model->configLog();
+                    Yii::$app->session->setFlash('success', 'Set Load Mode to module success!');
+                    // return $this->redirect(['/modules/view', 'id' => $model->module_id]);
+                    return $this->redirect('/param-config/home');
+                }
             }
         }
         return $this->render('update', [

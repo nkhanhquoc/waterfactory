@@ -186,4 +186,21 @@ class Modules extends ModulesBase {
         return NO_IMAGE;
     }
 
+    public function OperationLog() {
+        $log = new \backend\models\OperationLog();
+        $log->module_id = $this->module_id;
+        $log->message = 'System Mode Configuration message, sent by user ' . Yii::$app->user->identity->username;
+        $log->created_time = new \yii\db\Expression('NOW()');
+        $log->save(false);
+    }
+
+    public function configLog() {
+        $log = new \backend\models\ConfigurationLog();
+        $log->module_id = $this->module_id;
+        $log->created_by = Yii::$app->user->getId();
+        $log->message = 'System mode ' . $this->mode->mode;
+        $log->created_time = new \yii\db\Expression('NOW()');
+        $log->save(false);
+    }
+
 }

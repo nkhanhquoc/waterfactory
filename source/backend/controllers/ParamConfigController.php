@@ -122,9 +122,12 @@ class ParamConfigController extends AppController {
             $model->backflow_valve = Socket::alldec2bin($values['backflow_temp']);
 
             if ($model->save(false)) {
-                $model->toClient();
-                Yii::$app->session->setFlash('success', 'Set Parameter Config success!');
-                return $this->redirect(['/modules/view', 'id' => $model->module_id]);
+                if ($model->toClient()) {
+                    $model->OperationLog();
+                    $model->configLog();
+                    Yii::$app->session->setFlash('success', 'Set Parameter Config success!');
+                    return $this->redirect(['/modules/view', 'id' => $model->module_id]);
+                }
             }
         }
         return $this->render('create', [
@@ -172,9 +175,12 @@ class ParamConfigController extends AppController {
                     . Socket::alldec2bin($values['3way_temp']);
             $model->backflow_valve = Socket::alldec2bin($values['backflow_temp']);
             if ($model->save(false)) {
-                $model->toClient();
-                Yii::$app->session->setFlash('success', 'Set Parameter Config success!');
-                return $this->redirect(['/modules/view', 'id' => $model->module_id]);
+                if ($model->toClient()) {
+                    $model->OperationLog();
+                    $model->configLog();
+                    Yii::$app->session->setFlash('success', 'Set Parameter Config success!');
+                    return $this->redirect(['/modules/view', 'id' => $model->module_id]);
+                }
             }
         }
         return $this->render('update', [

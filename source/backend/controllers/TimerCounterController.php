@@ -108,8 +108,11 @@ class TimerCounterController extends AppController {
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $model->toClient();
-            return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->toClient()) {
+                $model->OperationLog();
+                $model->configLog();
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         } else {
             return $this->render('update', [
                         'model' => $model,

@@ -118,7 +118,24 @@ class ParamConfig extends ParamConfigBase {
                 . $this->backflow_valve;
         $data->status = 0;
         $data->created_at = new Expression('NOW()');
-        $data->save(false);
+        return $data->save(false);
+    }
+
+    public function OperationLog() {
+        $log = new \backend\models\OperationLog();
+        $log->module_id = $this->module_id;
+        $log->message = 'Parameter Configuration message, sent by user ' . Yii::$app->user->identity->username;
+        $log->created_time = new \yii\db\Expression('NOW()');
+        $log->save(false);
+    }
+
+    public function configLog() {
+        $log = new \backend\models\ConfigurationLog();
+        $log->module_id = $this->module_id;
+        $log->created_by = Yii::$app->user->getId();
+        $log->message = '';
+        $log->created_time = new \yii\db\Expression('NOW()');
+        $log->save(false);
     }
 
 }
