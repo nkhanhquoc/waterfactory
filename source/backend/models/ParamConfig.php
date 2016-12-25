@@ -6,6 +6,7 @@ use common\models\ParamConfigBase;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
+use Yii;
 
 class ParamConfig extends ParamConfigBase {
 

@@ -6,6 +6,7 @@ use common\models\ModulesBase;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
+use Yii;
 
 class Modules extends ModulesBase {
 
@@ -189,7 +190,7 @@ class Modules extends ModulesBase {
     public function OperationLog() {
         $log = new \backend\models\OperationLog();
         $log->module_id = $this->id;
-        $log->message = 'System Mode Configuration message, sent by user ' . Yii::$app->user->identity->username;
+        $log->message = 'System Mode Configuration message, sent by user ' . \Yii::$app->user->identity->username;
         $log->created_time = new \yii\db\Expression('NOW()');
         $log->save(false);
     }
@@ -197,7 +198,7 @@ class Modules extends ModulesBase {
     public function configLog() {
         $log = new \backend\models\ConfigurationLog();
         $log->module_id = $this->id;
-        $log->created_by = Yii::$app->user->getId();
+        $log->created_by = \Yii::$app->user->getId();
         $log->message = 'System mode ' . $this->mode->mode;
         $log->created_time = new \yii\db\Expression('NOW()');
         $log->save(false);
