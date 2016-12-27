@@ -93,6 +93,7 @@ class ModulesBase extends \common\models\db\ModulesDB {
         $id = ID_HEADER . \common\socket\Socket::dec2bin($this->getModuleId());
         $data = new \backend\models\DataClient();
         $data->module_id = $this->id;
+        $data->ie_name = CHECK_SYSTEM_STATUS_HEADER;
         $data->data = CHECK_SYSTEM_STATUS_HEADER . $id;
         $data->status = 0;
         $data->created_at = new Expression('NOW()');
@@ -103,6 +104,7 @@ class ModulesBase extends \common\models\db\ModulesDB {
         $id = ID_HEADER . \common\socket\Socket::dec2bin($this->getModuleId());
         $data = new \backend\models\DataClient();
         $data->module_id = $this->id;
+        $data->ie_name = CHECK_PARAMETER_HEADER;
         $data->data = CHECK_PARAMETER_HEADER . $id;
         $data->status = 0;
         $data->created_at = new Expression('NOW()');
@@ -113,6 +115,7 @@ class ModulesBase extends \common\models\db\ModulesDB {
         $id = ID_HEADER . \common\socket\Socket::dec2bin($this->getModuleId());
         $data = new \backend\models\DataClient();
         $data->module_id = $this->id;
+        $data->ie_name = CHECK_TIMER_COUNTER_HEADER;
         $data->data = CHECK_TIMER_COUNTER_HEADER . $id;
         $data->status = 0;
         $data->created_at = new Expression('NOW()');
@@ -123,6 +126,7 @@ class ModulesBase extends \common\models\db\ModulesDB {
         $id = ID_HEADER . \common\socket\Socket::dec2bin($this->getModuleId());
         $data = new \backend\models\DataClient();
         $data->module_id = $this->id;
+        $data->ie_name = CHECK_OUTPUT_MODE_HEADER;
         $data->data = CHECK_OUTPUT_MODE_HEADER . $id;
         $data->status = 0;
         $data->created_at = new Expression('NOW()');
