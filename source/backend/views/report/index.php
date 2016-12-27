@@ -65,7 +65,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
               <?php foreach ($sensors as $k => $sens): ?>
                     danthu = addData(danthu,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo bindec($sens->cam_bien_dan_thu) ?>);
-                    bonsolar = addData(danthu,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo bindec($sens->cam_bien_bon_solar) ?>);
+                    bonsolar = addData(bonsolar,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo bindec($sens->cam_bien_bon_solar) ?>);
                     mucnuoc_bonsolar = addData(mucnuoc_bonsolar,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo bindec($sens->cam_bien_muc_nuoc_bon_solar) ?>);
                     nhietdo_bongianhiet = addData(nhietdo_bongianhiet,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo bindec($sens->cam_bien_nhiet_do_bon_gia_nhiet) ?>);
                     apsuat_bongianhiet = addData(apsuat_bongianhiet,<?php echo $k ?>, '<?php echo $sens->created_at ?>',<?php echo bindec($sens->cam_bien_ap_suat_bon_gia_nhiet) ?>);
@@ -114,7 +114,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         width: 900,
                         height: 300,
                         vAxis: {
-                            viewWindowMode: 'explicit',
+                            viewWindowMode: 'pretty',
                             viewWindow: {
                                 min: 0
                             }

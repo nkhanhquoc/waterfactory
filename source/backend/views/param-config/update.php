@@ -26,23 +26,6 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
     <form method="post" action="/index.php/param-config/update?id=<?php echo $model->id ?>">
         <input type="hidden" name="_csrf" value="<?php Yii::$app->request->csrfToken ?>">
         <div class="params">
-
-<!--            <div class="border row row100">
-                <div class="row20 params-left padding10">
-                    Module
-                </div>
-                <div class="row80 params-right border-left">
-
-                    <div class="row50 padding10">
-                        <select class="form-control row80" name="module_id">
-                            <?php foreach ($modules as $key => $m): ?>
-                                <option value="<?php echo $key ?>" <?php if ($model->module_id == $key) echo 'selected="selected"'; ?>><?php echo $m ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                        <span class="row20">&#8451;</span>
-                    </div>
-                </div>
-            </div>-->
             <div class="border row row100">
                 <div class="row20 params-left padding10">
                     Convection Pump
