@@ -1,9 +1,7 @@
 <?php
 
-use yii\helpers\Html;
+use kartik\export\ExportMenu;
 use yii\grid\GridView;
-use yii\widgets\Pjax;
-use backend\widgets\AwsGridView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\OperationLogSearch */
@@ -12,32 +10,27 @@ use backend\widgets\AwsGridView;
 $this->title = Yii::t('backend', 'Operation Logs');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="operation-log-index">
-                <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-    
-    <p>
-        <?= Html::a(Yii::t('backend', 'Create {modelClass}', [
-    'modelClass' => 'Operation Log',
-]), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-    <?php 
-    Pjax::begin(['formSelector' => 'form', 'enablePushState' => false]);
-    ?>
-            <?= AwsGridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
+<div class="configuration-log-index">
+    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php
+    $gridColumns = [
         ['class' => 'yii\grid\SerialColumn'],
+        'module.name:raw:Module',
+        'message',
+        'created_time',
+    ];
 
-                    'id',
-            'created_time',
-            'module_id',
-            'message',
-
-        ['class' => 'yii\grid\ActionColumn'],
-        ],
-        ]); ?>
-        <?php 
-    Pjax::end();
-    ?>
+    echo ExportMenu::widget([
+        'dataProvider' => $dataProvider,
+        'columns' => $gridColumns,
+        'fontAwesome' => true,
+        'asDropdown' => false,
+        'target' => '_self',
+        'showConfirmAlert' => false,
+    ]) . "<hr>\n" .
+    GridView::widget([
+        'dataProvider' => $dataProvider,
+        'columns' => $gridColumns,
+    ]);
+    ?>   
 </div>
