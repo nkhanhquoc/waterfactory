@@ -120,6 +120,7 @@ class Modules extends ModulesBase {
         $id = ID_HEADER . \common\socket\Socket::dec2bin($this->getModuleId());
         $data = new \backend\models\DataClient();
         $data->module_id = $this->id;
+        $data->ie_name = SYSTEM_MODE_CONFIG_HEADER;
         $data->data = SYSTEM_MODE_CONFIG_HEADER
                 . $id
                 . SYSTEM_MODE_HEADER
@@ -133,6 +134,7 @@ class Modules extends ModulesBase {
         $id = ID_HEADER . \common\socket\Socket::dec2bin($this->getModuleId());
         $data = new \backend\models\DataClient();
         $data->module_id = $this->id;
+        $data->ie_name = CHECK_ACCOUNT_HEADER;
         $data->data = CHECK_ACCOUNT_HEADER
                 . $id
                 . CHECK_MONEY_DATA_HEADER
@@ -162,6 +164,7 @@ class Modules extends ModulesBase {
         $id = ID_HEADER . \common\socket\Socket::dec2bin($this->getModuleId());
         $data = new \backend\models\DataClient();
         $data->module_id = $this->id;
+        $data->ie_name = RECHARGE_ACCOUNT_HEADER;
         $data->data = RECHARGE_ACCOUNT_HEADER
                 . $id
                 . CARD_CODE_HEADER

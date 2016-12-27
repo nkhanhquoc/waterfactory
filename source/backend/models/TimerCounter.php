@@ -25,6 +25,7 @@ class TimerCounter extends \common\models\TimerCounterBase {
         $id = ID_HEADER . \common\socket\Socket::dec2bin($this->module->country->code . $this->module->privincial->code . $this->module->distric->code . $this->module->customer_code);
         $data = new \backend\models\DataClient();
         $data->module_id = $this->module_id;
+        $data->ie_name = TIMER_COUNTER_CONFIG_HEADER;
         $data->data = TIMER_COUNTER_CONFIG_HEADER
                 . $id
                 . TIMER_COUNTER_HEADER
