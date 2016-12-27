@@ -135,7 +135,7 @@ class ParamConfig extends ParamConfigBase {
         $log = new \backend\models\ConfigurationLog();
         $log->module_id = $this->module_id;
         $log->created_by = Yii::$app->user->getId();
-        $log->message = '';
+        $log->message = 'Paramater: ';
         $log->created_time = new \yii\db\Expression('NOW()');
         $log->save(false);
     }
