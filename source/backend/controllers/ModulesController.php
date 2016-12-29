@@ -167,16 +167,20 @@ class ModulesController extends AppController {
         if (Yii::$app->request->isPost) {
             $values = Yii::$app->request->post();
             $model->mode_id = intval($values['mode_id']);
-            if ($model->save(false, ['mode_id'])) {
-                if ($model->mode2Client()) {
-                    $model->OperationLog();
-                    $model->configLog();
-                    \Yii::$app->session->set('module_id', $model->id);
-                    Yii::$app->session->setFlash('success', 'Set System Mode success!');
-                    return $this->redirect('/output-mode/home');
-                } else {
-                    Yii::$app->session->setFlash('success', 'Set System Mode fail!');
+            if ($model->mode_id) {
+                if ($model->save(false, ['mode_id'])) {
+                    if ($model->mode2Client()) {
+                        $model->OperationLog();
+                        $model->configLog();
+                        \Yii::$app->session->set('module_id', $model->id);
+                        Yii::$app->session->setFlash('success', 'Set System Mode success!');
+                        return $this->redirect('/output-mode/home');
+                    } else {
+                        Yii::$app->session->setFlash('success', 'Set System Mode fail!');
+                    }
                 }
+            } else {
+                Yii::$app->session->setFlash('error', 'You must choose one mode!');
             }
         }
         return $this->redirect(['/mode/index', 'module_id' => $model->id]);
