@@ -89,6 +89,17 @@ class ModulesBase extends \common\models\db\ModulesDB {
         return $this->country->code . $this->privincial->code . $this->distric->code . $this->customer_code;
     }
 
+    public function checkSystemMode() {
+        $id = ID_HEADER . \common\socket\Socket::dec2bin($this->getModuleId());
+        $data = new \backend\models\DataClient();
+        $data->module_id = $this->id;
+        $data->ie_name = CHECK_SYSTEM_MODE_HEADER;
+        $data->data = CHECK_SYSTEM_MODE_HEADER . $id;
+        $data->status = 0;
+        $data->created_at = new Expression('NOW()');
+        return $data->save(false);
+    }
+
     public function checkSystemStatus() {
         $id = ID_HEADER . \common\socket\Socket::dec2bin($this->getModuleId());
         $data = new \backend\models\DataClient();

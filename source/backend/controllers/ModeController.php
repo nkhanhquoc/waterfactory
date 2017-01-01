@@ -42,6 +42,13 @@ class ModeController extends AppController {
         }
 
         $module = Modules::findOne(['id' => $moduleId]);
+
+        if ($module && $module->mode_id && $_GET['reload'] == 'true') {
+            $module->checkSystemMode();
+            sleep(TIME_OUT_REFRESH);
+            return $this->redirect(['index']);
+        }
+
         $modes = Mode::find()->all();
 
         return $this->render('index', [
