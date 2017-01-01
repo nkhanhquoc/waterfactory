@@ -42,29 +42,8 @@ class ModulesController extends AppController {
     }
 
     public function actionAllView() {
-        return $this->redirect(['view', 'id' => \Yii::$app->session->get('module_id', 0)]);
-    }
-
-    public function actionRefresh() {
-        $moduleId = \Yii::$app->session->get('module_id', 0);
-        $module = Modules::findOne($moduleId);
-        if ($module) {
-            $module->checkSystemStatus();
-            Yii::$app->session->setFlash('success', 'Check SYSTEM STATUS to module success!');
-        }
-
-        return $this->redirect(['view', 'id' => $moduleId]);
-    }
-
-    /**
-     * Displays a single Modules model.
-     * @param string $id
-     * @return mixed
-     */
-    public function actionView($id) {
+        $id = \Yii::$app->session->get('module_id', 0);
         $model = $this->findModel($id);
-
-        \Yii::$app->session->set('module_id', $model->id);
 
         $sensors = $model->sensors;
         $statuses = $model->moduleStatuses;
@@ -102,6 +81,16 @@ class ModulesController extends AppController {
     }
 
     /**
+     * Displays a single Modules model.
+     * @param string $id
+     * @return mixed
+     */
+    public function actionView($id) {
+        \Yii::$app->session->set('module_id', $id);
+        return $this->redirect(['all-view']);
+    }
+
+    /**
      * Creates a new Modules model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -114,6 +103,7 @@ class ModulesController extends AppController {
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if ($model->toClient()) {
+                //timer counter
                 $timerCounter = new \backend\models\TimerCounter();
                 $timerCounter->module_id = $model->id;
                 $timerCounter->counter = 0;
@@ -122,6 +112,15 @@ class ModulesController extends AppController {
                 $timerCounter->timer_3 = 0;
                 $timerCounter->created_at = new \yii\db\Expression('now()');
                 $timerCounter->save(false);
+                //load mode
+                $loadMode = new \backend\models\OutputMode();
+                $loadMode->module_id = $model->id;
+                $loadMode->save(false);
+                //Param config
+                $paramConfig = new \backend\models\ParamConfig();
+                $paramConfig->module_id = $model->id;
+                $paramConfig->save(false);
+
                 Yii::$app->session->setFlash('success', 'Set ID to module ' . $model->getModuleId() . ' success!');
                 sleep(TIME_OUT_REFRESH);
                 return $this->goHome();
@@ -216,7 +215,7 @@ class ModulesController extends AppController {
     }
 
     public function actionAccountmanager() {
-        $id = \Yii::$app->session->get('module_id');
+        $id = \Yii::$app->session->get('module_id', 0);
         if (!$id) {
             return $this->goHome();
         }
