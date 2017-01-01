@@ -40,17 +40,6 @@ class ParamConfigController extends AppController {
         ]);
     }
 
-    public function actionRefresh($id) {
-        $module = Modules::findOne($id);
-        if ($module) {
-            $module->checkParametter();
-            $module->checkTimerCounter();
-            Yii::$app->session->setFlash('success', 'Check PARAMETTER và TIMER/COUNTER to module success!');
-        }
-
-        return $this->redirect(['/modules/view', 'id' => $id]);
-    }
-
     /**
      * Displays a single ParamConfig model.
      * @param string $id
@@ -83,69 +72,22 @@ class ParamConfigController extends AppController {
     }
 
     /**
-     * Creates a new ParamConfig model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate() {
-        $model = new ParamConfig();
-
-        $moduleId = \Yii::$app->session->get('module_id', 0);
-        if (!$moduleId) {
-            return $this->goHome();
-        }
-        $model->module_id = $moduleId;
-        $module = Modules::findOne($moduleId);
-
-        if (Yii::$app->request->isPost) {
-            $values = Yii::$app->request->post();
-
-            //$model->module_id = $values['module_id'];
-            $model->convection_pump = Socket::alldec2bin($values['convection_pump']);
-            $model->cold_water_supply_pump = Socket::alldec2bin($values['cold_water_supply_pump_lv1'])
-                    . Socket::alldec2bin($values['cold_water_supply_pump_lv2']);
-            $model->return_pump = Socket::alldec2bin($values['return_pump_t1_start'])
-                    . Socket::alldec2bin($values['return_pump_t2_start'])
-                    . Socket::alldec2bin($values['return_pump_t1_end'])
-                    . Socket::alldec2bin($values['return_pump_t2_end'])
-                    . Socket::alldec2bin($values['return_pump_delta_t']);
-            $model->incresed_pressure_pump = Socket::alldec2bin($values['pressure_pump_p1']);
-            $model->heat_pump = Socket::alldec2bin($values['heat_pump_t1']);
-            $model->heat_resistor = Socket::alldec2bin($values['heater_resis_t1'])
-                    . Socket::alldec2bin($values['heater_resister_delay_time']);
-            $model->three_way_valve = Socket::alldec2bin($values['3way_t1_h'])
-                    . Socket::alldec2bin($values['3way_t1_m'])
-                    . Socket::alldec2bin($values['3way_t2_h'])
-                    . Socket::alldec2bin($values['3way_t2_m'])
-                    . Socket::alldec2bin($values['3way_temp']);
-            $model->backflow_valve = Socket::alldec2bin($values['backflow_temp']);
-
-            if ($model->save(false)) {
-                if ($model->toClient()) {
-                    $model->OperationLog();
-                    $model->configLog();
-                    Yii::$app->session->setFlash('success', 'Set Parameter Config success!');
-                    //sleep(TIME_OUT_REFRESH);
-                    return $this->redirect(['/modules/view', 'id' => $model->module_id]);
-                }
-            }
-        }
-        return $this->render('create', [
-                    'model' => $model,
-                    'module' => $module
-        ]);
-    }
-
-    /**
      * Updates an existing ParamConfig model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
      * @return mixed
      */
-    public function actionUpdate($id) {
-        $model = $this->findModel($id);
-
-        $module = $model->module;
+    public function actionUpdate() {
+        $moduleId = \Yii::$app->session->get('module_id', 0);
+        if (!$moduleId) {
+            return $this->goHome();
+        }
+        $module = \backend\models\Modules::findOne($moduleId);
+        if ($module && $module->paramConfigs) {
+            $model = $this->findModel($module->paramConfigs->id);
+        } else {
+            return $this->goHome();
+        }
         if ($_GET['reload'] == 'true') {
             $module->checkParametter();
             sleep(TIME_OUT_REFRESH);
