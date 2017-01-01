@@ -179,7 +179,7 @@ class Modules extends ModulesBase {
 
     public function getImg() {
         if ($this->imsis->status == CONFIRM_STATUS) {
-            if ($this->outputModes) {
+            if ($this->mode_id) {
                 if ($this->checkAlarm()) {
                     return MODULE_ALARM;
                 }
