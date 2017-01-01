@@ -158,8 +158,7 @@ class OutputModeController extends AppController {
                     $model->OperationLog();
                     $model->configLog();
                     Yii::$app->session->setFlash('success', 'Set Load Mode to module success!');
-                    // return $this->redirect(['/modules/view', 'id' => $model->module_id]);
-                    return $this->redirect('/param-config/home');
+                    return $this->redirect('/param-config/update');
                 }
             }
         }

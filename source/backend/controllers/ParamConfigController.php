@@ -120,7 +120,6 @@ class ParamConfigController extends AppController {
                     $model->OperationLog();
                     $model->configLog();
                     Yii::$app->session->setFlash('success', 'Set Parameter Config success!');
-                    //sleep(TIME_OUT_REFRESH);
                     return $this->redirect(['/modules/view', 'id' => $model->module_id]);
                 }
             }
