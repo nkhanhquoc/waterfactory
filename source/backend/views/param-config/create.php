@@ -234,8 +234,8 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'Parameter Config');
             <div class="row80 params-right border-left">
                 <div class="row100 border-bottom">
                     <div class="row80 padding10">
-                        <p class="title">Temperature value to turn on Resistor 1</p>
-                        <i>(R1 ON when temperature in the Heater tank lower than this value)</i>
+                        <p class="title">Temperature value to turn on Resistor</p>
+                        <i>(R ON when temperature in the Heater tank lower than this value)</i>
                     </div>
                     <div class="row20 padding10">
                         <select class="form-control row80" name="heater_resis_t1">
@@ -248,7 +248,7 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'Parameter Config');
                         <span class="row20">&#8451;</span>
                     </div>
                 </div>
-                <div class="row100 border-bottom">
+<!--                <div class="row100 border-bottom">
                     <div class="row80 padding10">
                         <p class="title">Temperature value to turn on Resistor 2</p>
                         <i>(R2 ON when temperature in the Heater tank lower than this value)</i>
@@ -263,7 +263,7 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'Parameter Config');
                         </select>
                         <span class="row20">&#8451;</span>
                     </div>
-                </div>
+                </div>-->
                 <div class="row100 border-bottom">
                     <div class="row80 padding10">
                         <p class="title">Delay time to return on Resistor</p>

@@ -9,8 +9,10 @@ use Yii;
  *
  * @property string $id
  * @property string $created_time
- * @property integer $module_id
+ * @property string $module_id
  * @property string $message
+ *
+ * @property ModulesDB $module
  */
 class OperationLogDB extends \yii\db\ActiveRecord
 {
@@ -45,5 +47,13 @@ class OperationLogDB extends \yii\db\ActiveRecord
             'module_id' => Yii::t('backend', 'Module ID'),
             'message' => Yii::t('backend', 'Message'),
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getModule()
+    {
+        return $this->hasOne(ModulesDB::className(), ['id' => 'module_id']);
     }
 }

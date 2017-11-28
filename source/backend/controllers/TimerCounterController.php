@@ -44,13 +44,17 @@ class TimerCounterController extends AppController {
         if (!$moduleId) {
             return $this->goHome();
         }
-        if ($moduleId) {
-            $module = \backend\models\Modules::findOne($moduleId);
-            if ($module && $module->timerCounters) {
-                return $this->redirect(['view', 'id' => $module->timerCounters->id]);
-            }
+        $module = \backend\models\Modules::findOne($moduleId);
+        $model = $this->findModel($module->timerCounters->id);
+        if ($_GET['reload'] == 'true') {
+            $module->checkTimerCounter();
+            sleep(TIME_OUT_REFRESH);
+            return $this->redirect(['view', 'id' => $id]);
         }
-        return $this->redirect(['index']);
+
+        return $this->render('view', [
+                    'model' => $model,
+        ]);
     }
 
     /**
@@ -111,7 +115,8 @@ class TimerCounterController extends AppController {
             if ($model->toClient()) {
                 $model->OperationLog();
                 $model->configLog();
-                return $this->redirect(['view', 'id' => $model->id]);
+                Yii::$app->session->setFlash('success', 'Set Timer/Counter to module success!');
+                return $this->redirect(['home']);
             }
         } else {
             return $this->render('update', [

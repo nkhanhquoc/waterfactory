@@ -10,13 +10,12 @@ use backend\models\OperationLog;
 /**
  * OperationLogSearch represents the model behind the search form about `backend\models\OperationLog`.
  */
-class OperationLogSearch extends OperationLog
-{
+class OperationLogSearch extends OperationLog {
+
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['id', 'module_id'], 'integer'],
             [['created_time', 'message'], 'safe'],
@@ -26,8 +25,7 @@ class OperationLogSearch extends OperationLog
     /**
      * @inheritdoc
      */
-    public function scenarios()
-    {
+    public function scenarios() {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
@@ -39,8 +37,7 @@ class OperationLogSearch extends OperationLog
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
-    {
+    public function search($params) {
         $query = OperationLog::find();
 
         $dataProvider = new ActiveDataProvider([
@@ -58,12 +55,14 @@ class OperationLogSearch extends OperationLog
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'created_time' => $this->created_time,
             'module_id' => $this->module_id,
         ]);
+
+        $query->andFilterWhere(['between', 'created_time', $this->fromDate, $this->toDate]);
 
         $query->andFilterWhere(['like', 'message', $this->message]);
 
         return $dataProvider;
     }
+
 }
